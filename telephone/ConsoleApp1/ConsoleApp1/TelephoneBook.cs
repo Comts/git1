@@ -16,11 +16,9 @@ namespace telephone
     }
     class TelephoneBook
     {
-        private Number mNum;
         private BookController mBookController;
         public TelephoneBook()
         {
-            mNum = new Number();
             mBookController = new BookController();
         }
         public void MainLoop()
@@ -54,17 +52,15 @@ namespace telephone
                 switch ((eMainCommand)Command)
                 {
                     case eMainCommand.Add:
-                        Console.Write("전화번호 입력해주세요>>>");
-                        mNum.PhoneNumber = int.Parse(Console.ReadLine());
-                        Console.Write("이름을 입력해주세요>>>");
-                        mNum.Name = Console.ReadLine();
-                        Console.Write("생일을 입력해주세요>>>");
-                        mNum.Birthday = int.Parse(Console.ReadLine());
-                        mBookController.AddNum(mNum);
+                        mBookController.AddNum();
                         break;
                     case eMainCommand.Delete:
+                        mBookController.ShowAll();
+                        Console.WriteLine("삭제할 번호의 자리를 입력해주세요>>>");
+                        mBookController.DeleteNum(int.Parse(Console.ReadLine()));
                         break;
                     case eMainCommand.search:
+                        mBookController.SerchNum();
                         break;
                     case eMainCommand.Show:
                         mBookController.ShowAll();
