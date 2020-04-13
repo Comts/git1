@@ -1,0 +1,5 @@
+Directional Light// Rotation만 중요
+
+핸드폰 9:16 대부분 
+Main camera-Clear Flags-Solid Color시 black사용
+-Perspective -절두체 
