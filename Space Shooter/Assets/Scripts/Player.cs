@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
 {
     [Header("Fire bolt")]
     [SerializeField]
-    private GameObject Bolt;
+    private BoltPool mBoltPool;
     [SerializeField]
     private Transform mBoltPos;
     [SerializeField]
@@ -49,8 +49,9 @@ public class Player : MonoBehaviour
 
         if (Input.GetButton("Fire1") && mCurrnetFireLate >= mFireLate) //if (Input.GetKeyDown(KeyCode.Space))
         {
-            GameObject obj  = Instantiate(Bolt);  
-            obj.transform.position = mBoltPos.position; //월드 좌표
+            //GameObject obj  = Instantiate(Bolt);  
+            Bolt blot =mBoltPool.GetFromPool();
+            blot.gameObject.transform.position = mBoltPos.position; //월드 좌표
             //mBoltPos.localPosition // 오브젝트의 하위
             mCurrnetFireLate = 0;
         }

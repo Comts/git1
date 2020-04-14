@@ -3,3 +3,13 @@ Directional Light// Rotation만 중요
 핸드폰 9:16 대부분 
 Main camera-Clear Flags-Solid Color시 black사용
 -Perspective -절두체 
+=============0414
+collider - is Trigger 아니면 안에있으면 팅겨나감 
+Instantiate-복사 // Renderer-mesh renderer
+unity texture scroll
+ctrl + d 복제
+
+offset이용 , 배경2개로 컨베이어처럼 sprite 
+Angular Drag 회전 저항
+
+awake(1번)-onenable(껐다킬때마다)-start(1번) 순으로 
