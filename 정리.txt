@@ -22,3 +22,26 @@ awake(1번)-onenable(껐다킬때마다)-start(1번) 순으로
 프로포티는 인스펙터에 안보임..
 부모가 꺼지면 자식안켜짐..
 하이어아키에있는거 찾아오는건 awake단계에서가능
+========================0417
+코루틴은 끄면 안도는데 인보크는 꺼도 돌아서 코루틴사용.
+UI추가시 Text  
+EventSystem 건드리지말기.
+Canvas // Canvas Scaler- UI Scale Mode => Scale Wirh Screen Size 선택
+
+Canvas-Render Mode Overlay:  가려지지않는 글자
+	Render Mode Camera : 3D일때 게임에ui가 가려질 수 있다.
+Canvas-Plane Distance :카레라부터 UI 거리
+
+UI obj는 무조건 canvas안에 있어야된다. 밖으로 빠지면 표시x// UI 좌표계가 다르다. 
+Rect Transform Scale 로 크기조절 x Width,Height,FontSize 사용
+
+폰트. 상업적사용가능인지확인필요(저작권)
+Text- Paragraph //Wrap,Truncate 짤라서 글자표시. //Bestfit 표시화면에따라 글자크기줄어서 표시됨.
+
+Audio 인스펙터 Loop,Play On Awake,  코드로 Volume조절
+
+0번 scene이 먼저 로드됨
+========================0420
+유도탄만듦
+아이템만들때(태그많이x)- 라이브러리(발동될때 접근하는느낌),단순,델리게이트(미리연결되있는느낌)
+코루틴 디버그어렵
