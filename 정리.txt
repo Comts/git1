@@ -50,3 +50,35 @@ UI는 마지막쯤 작업
 리짓이둘중하나있어야 콜리더됨
 태그로찾는건 한번이라도 하이어라키에서 켜져야된다.
 어웨이크는 활성화되야지 된다.
+========================0422
+플랫포머 ,런, 스탠드
+royalty free game assets 검색 ex) Open GameArt , Game Are 2D
+aseprite -도트
+png- vector {이미지에 vector값도 포함/일러스트} 
+drag 시 sprite로 생성  UI로 생성시 다른방법.
+sprite 객체는 이미지가 들어가야지보인다.
+===Additional Settings===
+Sourting Layer //레이어 분리
+Order in Layer //레이어중 숫자가 클수록 앞쪽에보임, 나중에 그려짐. 
+
+projextSettings 파일과 assets파일이 같아야 유니티됨
+
+==애니메이션==
+휴머노이드.뼈있는거=> 아바타 마스크
+애니메이션,애니메이터 컨트롤러와 조합// 컨트롤러1:애니메이션n개 조합
+Assets파일에 Animaiton만듦
+add Component -animator사용 animation 사용x
+==
+window 	- animation //Ctrl+6
+	- Animator
+
+Animator창에 animation 드래그.
+Exit// Layer나갈때사용
+Samples= 1초동안 몇프레임 사용 애니메이션 18~24,30정도//60사용/이유초당프레임 설정가능
+이름 바꾼후 애니메이션등록.
+set as Layer Default 로 entry->연결바꿈
+Exit Time //2D에서는 잡지않는다.
+duratior 2D에서 0 // 0아닐시겹친다
+parameters에서 조건 추가후 Conditions에 추가
+any state 아무조건에서 다 
+Can Transition To //anyState에 포함시킬것인지 확인 
