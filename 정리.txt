@@ -82,3 +82,29 @@ duratior 2D에서 0 // 0아닐시겹친다
 parameters에서 조건 추가후 Conditions에 추가
 any state 아무조건에서 다 
 Can Transition To //anyState에 포함시킬것인지 확인 
+========================0423
+애니메이터, 파라메터 관련소스작성
+        mAnim.SetBool();
+        mAnim.SetInteger();
+        mAnim.SetFloat();
+        mAnim.SetTrigger();
+        mAnim.GetBool;
+해쉬맵 어레이처럼 접근   //문자열비교보단 인트비교가 효율적.
+    private int AttackHash;
+        AttackHash = Animator.StringToHash("IsAttack");
+        mAnim.SetBool(AttackHash, true); 동일
+        mAnim.SetBool("IsAttack", true);
+const는 입력할때 계산없이 들어가야된다.
+    public static readonly int Attack = Animator.StringToHash("IsAttack"); //수정불가
+
+rigidbody 2D gravty scale 조정해서 중력조절 0이면 중력없음
+애니메이터 float// less 미만 great 초과
+Freeze Rotation Z설정
+
+Platform Effector 2D --Surface Arc 표면 입사 플렛포머 120~140 정도 
+distance joint,fixed joint, areaeffector(바람밀리는거) == 유튜브 or 유니티 홈페이지. 
+
+Sprtire Renderer== Flip X해서 좌우변환가능, attack Area안바뀜.
+
+콜리더 2개 부딛치면 마찰,  physics meterial 2D 생성 Friction 0, Meterial에 추가
+bounciness하면 탄성
