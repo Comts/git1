@@ -108,3 +108,22 @@ Sprtire Renderer== Flip X해서 좌우변환가능, attack Area안바뀜.
 
 콜리더 2개 부딛치면 마찰,  physics meterial 2D 생성 Friction 0, Meterial에 추가
 bounciness하면 탄성
+========================0424
+
+      Player p = collision.gameObject.GetComponent<Player>();  
+      p.Hit(1);              
+=====================동일=============여러종류확인후 실핼할때 사용
+      collision.gameObject.SendMessage("Hit",1, SendMessageOptions.DontRequireReceiver); 
+	//파라메터 1개가능//있으면실행 효율x쓰긴씀    Hit이 없어도 에러 안뜸
+SendMessageUpwards 위전부로 메세지. BroadcastMessage 하위 전체.
+
+애니메이터안뜨면 껏다키면됨...
+
+애니메이션,코루틴 싱크 안맞음,  add event 애니메이터에붙어있는 스크립트실행가능
+기본자료형1개 or 파라메터 x
+
+<제너릭>
+public class ObjectPool<T> : MonoBehaviour where T :Component 
+
+Layer = 물리 리짓바디 콜리더.
+Edit-Project Settings-Layer Collision Matrix 체크돼있으면 충돌함.온트리거도안됨.
