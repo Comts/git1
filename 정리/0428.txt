@@ -1,0 +1,29 @@
+Canvas Scaler 
+canvas 좌표 설정
+rect transform /stretch 0 설정 전체화면가림
+Canvas내부 밑에있는애가 나중에 그려짐.
+녹색슬라이스선사용한뒤 Image Type - Sliced 선택
+Image Type - Filled /Fill Method Gorizontal -HP바표시 // Image옵션사용시 sprite필요
+button Pressed Color 
+Highlighted,Selected          Navigation- None//활성화된 하이라이트 테두리 사라짐
+Interactable 터치불가능상태 OnClick 하이어아키에있는거만 프리팹비추.
+버튼은 하강엣지느낌. 인스펙터로에서 할때 파라메터1개만가능,enum 불가능. transfrom가능
+코드연결은 인스펙터에 안보임  //델리게이트,액션/ 장.수정하기쉽다./단.파라미터넣을수없다.
+람다함수,무기명함수
+
+//폰트변경 
+상업용 무료폰트 https://noonnu.cc/  
+TTF파일
+Assets폴더에 폰트저장
+button넣을수 있는 구조/rect transform,canvasrenderer,inage가 있어야지
+
+스크롤UI
+똑같은거 투명하게 추가후 그안에 							//ScrollArea
+scroll rect, //밀면 움직여주느거 /MoveMent Type Elastic(위에공백보임),Clamped(공백없음)    	//Content //ScrollTarget추가  
+rect mask 2D 추가 //보여주고싶은 범위만 보이게해주는용도
+
+그안에 //스크롤내용설정								//ScrollTarget-하위이미지추가 Pivot Y:1 설정시 게임도중 밑으로 이미지생김
+Layout Group //내용물들 크기,간격 등 설정   CellSize//이미지 크기대로 입력, Constraint/Fixed Column Count "1"
+Content Size Fitter 추가 // Fit Min Size하위로 들어갈 사이즈의 최소크기로변경
+
+
