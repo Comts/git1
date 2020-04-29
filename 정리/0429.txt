@@ -1,0 +1,24 @@
+overlay - 스크린좌표계
+====Text크기 25정도 보임(폰트마다크기다름) ,컴퓨터에서는 보이는데 폰에서는 안보이는경우가나옴,
+스크롤바 추가후 스크롤렉트에 추가
+스크롤버튼변경후 크기 바꿀때 Scrollbar - OnValue Changed에 추가
+scrollbar추가  scrollbar. float size =0으로 //스크롤바 비추.
+grid Layout group에서 start Conrner설정에따라 시작점달라짐.
+
+텍스트에 가려서,프레임에 버튼이 있을때 Image-raycast target을 끄면 누를수 있다.
+
+<용량>
+폰트 5Mb 안쪽으로 
+이미지최적화 Inspector Override for Android / format : RGBA Crunched ETC2 (4의배수여야만 압축가능)/// 용량이 적어진다.
+
+UI쪾은 범용적으로 쓸수 있겠끔 파라메터 여러개로 (표시할게 같으므로)
+
+UI컨트롤러는 밖에다 생성, UI가 꺼져서 실행안될수있다.
+
+람다식 i반복문 문제점/LevelUp(i) 임시값이 들어가므로 나중에 덮어쓰기됨
+
+델리게이트 .메서드주소.함수포인터,//매서드 여러개 중첩가능  get;set; dictionary
+
+Canvas 안에 UI-TextMeshPro  import  //TextMeshPro 모바일서한글어려움
+Window-TextMeshPro-FontAssetCreator-Character Set(unicord,custom range
+using TMPro; 추가 TextMeshProUGUI
