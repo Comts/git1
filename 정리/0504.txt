@@ -1,0 +1,29 @@
+화면구성하기-kakao oven
+조작구성하기-다이어그램 활용  //플로차트
+
+using UnityEngine.SceneManagement; //씬연결
+File-BuildSetting
+ SceneManager.LoadScene(1);
+
+DontDestroyOnLoad(gameObject);//씬이 바뀌어도 메모리를 지우지않음 //전체 게임에 데이터 or 기능 동작, 저장, 관리 하위도 같이 적용
+싱글턴패턴 -컨트롤러에 사용 하나만존재하게만듦
+DontDestroyOnLoad은 싱글턴으로만 접근
+
+Resources assets 하위폴더 이름 똑같이 ex)Image/Icons  하위폴더도 다 확인해서가져옴. 로드할것들만 넣어놔야됨.
+LoadAll순서대로 로드됨 숫자를이용해서 순서정렬
+
+Instantiate(mOriginArr[id], mGaugeBarArea); 부모
+
+
+2D게임하면서 배운거
+애니메이션
+소팅레이어소팅오더
+UI 
+델리게이트
+폰트
+제너릭풀
+
+무료오디오파일 효과음/배경음
+http://sonniss.com/GameAudioGDC.torrent 토렌트파일
+https://sonniss.com/gameaudiogdc2016/ 17
+https://sonniss.com/gameaudiogdc18/ 19
