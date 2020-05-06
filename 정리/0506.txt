@@ -1,0 +1,22 @@
+데이터 테이블
+비쥬얼 연결 - edit-preferences-external Tools
+
+Portrait 가로
+
+
+mStartButton.interactable = false; //버튼은 켜져있는데 비활성화 
+레이캐스트 -콜라이더 검출
+클릭커게임 - 3D레이캐스트 , 3d cube생성           ui-touch-back순으로
+버튼크기만큼 박스콜리더 싸이즈 설정.
+
+마우스 포지션-스크린 좌표  //스크린투 월드로 월드좌표계산
+
+Main Camera -Clipping Planes -Near~Far 
+
+터치 현재 액티브되고있는게 앞번호가됨. 유니티 멀티터치개수 최대 10개
+
+            LayerMask mask = (1 << LayerMask.NameToLayer("Buliding")) + 
+                             (1 << LayerMask.NameToLayer("Enemy"));
+RaycastHit2D hit2D = Physics2D.Raycast(Vector2.one, Vector2.zero, 0, mask);// 2D는 Z축이 없기에 방향벡터 zero, distance 0
+레이어마스크 - 원하는 레이어의 해당하는애들만 검출,아군공격 x
+
