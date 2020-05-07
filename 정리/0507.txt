@@ -1,0 +1,23 @@
+Tween¾Ö´Ï¸ŞÀÌ¼Ç 
+lerp, colorÁ¶ÀÛ
+
+½Ì±ÛÅæ-°ÙÄÄÆ÷ÅÍ³ÍÆ® ÇÊ¿ä¾ø°ÔÇÔ (À¯´ÏÆ¼¶ó¼­ °¡´É)
+
+        //mMaxProgress = 10 * Mathf.Pow(mProgressWeight, mCurrentStage); //float
+        mMaxProgress = 10 * Math.Pow(mProgressWeight, mCurrentStage); //double       10* 1.08^n
+using System; Ãß°¡ ÇÏ¿© Math»ç¿ë
+using System; Ãß°¡½Ã // system¿¡µµ randomÀÌÀÖÀ½  UnityEngine.random»ç¿ë
+
+TMP
+Font Asset Creator
+Atlas Resolution- 4096/4096
+Character Set- Unicode Range
+
+Textmesh pro unicode 0000-007F, 00A0-024F, 1100-11FF, 3130-318F, AC00-D7AF       //¸ğ¹ÙÀÏ »ç¿ëºÒ°¡ ¿ë·® Å©´Ù.
+		        ENG         Latin         ÇÑ±ÛÀÚ¸ğ    Æ¯¼öÀÚ¸ğ     °¡-ÆR
+
+using ½Ã ¾ËÆÄºª¼øÀ¸·Î 
+Textmesh pro ¼³Á¤ º¯°æ½Ã ´Ù°°ÀÌ º¯°æ.
+
+Ç¥ÁØ ¼ıÀÚ ¼­½Ä ¹®ÀÚ¿­ 
+ToString("P"); //float ÀÌ 0~1»çÀÌ¸é %Ç¥½Ã°¡´É
