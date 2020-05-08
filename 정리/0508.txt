@@ -1,0 +1,15 @@
+골드가 충분한지 확인후 진행하는것 GoldCallback 어려우면 USEGOLD ex)textrpg
+mUpgrade.onClick.Invoke(); //버튼을 클릭하지않더라도 기능 동작 가능     그냥 Invoke와 다르다.
+
+
+TMP - OUTLINE이 잘나온다.
+
+
+===아트===
+전경색alt+Delete 배경색Ctrl+Delete       x눌러서 전경색/배경색 변경
+ctrl+D 해제
+ctrl+shift+i Inverse
+ctrl+U 색상변경
+ctrl+j 선택부분레이어카피
+ctrl+Shift+J 선택부분컷레이어생성
+ctrl+E 레이어합침
