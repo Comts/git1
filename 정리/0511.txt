@@ -1,0 +1,10 @@
+using System;
+추가후 [Serializable] 써야 인스펙터에서 보인다
+
+제이슨(JSON)-XML비슷
+json .net -구글링 https://www.newtonsoft.com/json -Json120r3-다운 Json120r3.zip\Bin\net45
+Assets\Plugins파일 생성후 45 Newtonsft.Json.dll파일 추가 // IL2CPP-Json안됨.
+
+안드로이드
+Build Settings- Player Settings- Player - Other Settings - Scrinpting Backend -// Mono,IL2CPP-64bit      
+Unity Asset Store- json.net검색 임폴트 //IL2CPP -64bit 가능
