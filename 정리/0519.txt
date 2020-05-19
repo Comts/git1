@@ -1,0 +1,14 @@
+#pragma warning disable 0649
+
+
+    [SerializeField]변수 할당안되서 생긴 경고 0649
+#pragma warning restore 0649
+
+스프라이트별 중점 Pivot조절해서 좌표점 중심 조절가능
+
+
+======아트===
+
+콘트라포스토 =짝다리 자세
+
+무게다리 - 곧다,뒷꿈치 땅에 땋다,정중선쪽으로 기울어있다.
