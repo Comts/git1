@@ -1,0 +1,24 @@
+쿨타임 표기 300 ->290 
+
+기존 동작하고있던 쿨타임 표기 - 실시간적용
+
+로드될떄 누가먼저 로드?
+
+-쿨타임감소 적용 
+
+파티클 이펙트 -소팅레이어
+
+FX-shader. mobile/particles/alpha blended
+
+글씨 색바꾸는거 Extra Settings- Rich Text 체크돼있어야됨
+unity rich text 검색하면 나옴.
+New <color=red>Text</color>rrrr 
+hexadecimal값 633016
+New <color=#633016>Text</color>rrrr
+
+볼드 
+<b>wewew </b>
+사이즈 변경
+<size=10> </size>
+
+텍스트안에 이모티콘(TMP만가능) Hierarchy- TMP -Extra Settings-Sprite Asset에 추가 후 <sprite=0>
