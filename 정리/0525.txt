@@ -1,0 +1,20 @@
+이미지는 null하면 흰색으로 나옴, 투명을 만들어 놔야됨
+
+코드블럭만들기
+
+	#region 이름
+	#endregion
+
+
+if (Application.systemLanguage == SystemLanguage.Korean)//초창기 언어설정
+            {
+                LanguageType = 0;
+            }
+            else
+            {
+                LanguageType = 1;
+            }
+
+ilspy - decompiler binary
+
+apk다운로드 assembly-csharp이 있어야됨
