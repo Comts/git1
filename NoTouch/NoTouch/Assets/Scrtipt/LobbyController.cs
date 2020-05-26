@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-
 public class LobbyController : MonoBehaviour
 {
     [SerializeField]
@@ -12,11 +11,11 @@ public class LobbyController : MonoBehaviour
     [SerializeField]
     private Text mStartText;
     [SerializeField]
-    private float mAlphaAnimPeriod = 2; 
-
+    private float mAlphaAnimPeriod = 2;
     // Start is called before the first frame update
     void Start()
     {
+
         mStartButton.onClick.AddListener(() => { SceneManager.LoadScene(1); });
         mStartButton.interactable = false; //버튼은 켜져있는데 비활성화 
         ActivateGameStart();
@@ -32,14 +31,14 @@ public class LobbyController : MonoBehaviour
         WaitForFixedUpdate fixedUpdate = new WaitForFixedUpdate();
         bool bAscending = true;
         float HalfTime = mAlphaAnimPeriod / 2;
-        Color color =new Color(0, 0, 0, 1/HalfTime *Time.fixedDeltaTime);
-        while(true)
+        Color color = new Color(0, 0, 0, 1 / HalfTime * Time.fixedDeltaTime);
+        while (true)
         {
             yield return fixedUpdate;
-            if(bAscending)
+            if (bAscending)
             {
                 mStartText.color += color;
-                if(mStartText.color.a>=1)
+                if (mStartText.color.a >= 1)
                 {
                     bAscending = false;
                 }
