@@ -17,4 +17,4 @@ if (Application.systemLanguage == SystemLanguage.Korean)//초창기 언어설정
 
 ilspy - decompiler binary
 
-apk다운로드 assembly-csharp이 있어야됨
+apk다운로드 assets\bin\Data\Managed assembly-csharp이 있어야됨
