@@ -61,7 +61,7 @@ public class TouchManager : MonoBehaviour
             {
                 Timer effect = mEffectPool.GetFromPool();
                 effect.transform.position = hit.point;
-                //GameController Touch
+                GameController.Instance.Touch();
             }
         }
         Vector3 pos;
@@ -69,7 +69,7 @@ public class TouchManager : MonoBehaviour
         {
             Timer effect = mEffectPool.GetFromPool();
             effect.transform.position = pos;
-            //GameController Touch
+            GameController.Instance.Touch();
         }
     }
 }

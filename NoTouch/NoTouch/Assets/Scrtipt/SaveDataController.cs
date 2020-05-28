@@ -35,6 +35,18 @@ public class SaveDataController : MonoBehaviour
     {
         mUser = new SaveData();
         mUser.TotalGold = 0;
+        mUser.AmoutGem_A = new double[Constants.Max_floor];
+        mUser.AmoutGem_S = new double[Constants.Max_floor];
+        mUser.AmoutGem_SS = new double[Constants.Max_floor];
+        mUser.AmoutGem_SSS = new double[Constants.Max_floor];
+
+        mUser.PlayerLevel = 0;
+        mUser.CoworkerLevelArr = new int [Constants.Max_floor];
+
+        mUser.Stage = 1;
+        mUser.PlayerPos = 1;
+        mUser.Progress = 0;
+
 
     }
 
