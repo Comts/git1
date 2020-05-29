@@ -5,5 +5,4 @@
 
     public const int Max_floor = 17;
 
-    public const float GemCostIncrese = 1.2f;
 }

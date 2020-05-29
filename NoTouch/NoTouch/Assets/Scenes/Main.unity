@@ -1342,6 +1342,8 @@ MonoBehaviour:
     PlayerPos: 0
     Progress: 0
   mTextEffectPos: {fileID: 0}
+  GemCostIncrese: 1.2
+  ManPowerGap: 0.5
 --- !u!4 &928477015
 Transform:
   m_ObjectHideFlags: 0

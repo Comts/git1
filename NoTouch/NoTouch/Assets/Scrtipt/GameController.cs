@@ -13,6 +13,10 @@ public class GameController : SaveDataController
 #pragma warning disable 0649
     [SerializeField]
     private Transform mTextEffectPos;
+    [SerializeField]
+    private float GemCostIncrese = 1.2f;
+    [SerializeField]
+    private double ManPowerGap = 0.5;
 #pragma warning restore 0649
     private float[] mFloorProgress, mFloorProgressCal;
     private double mManPower;
@@ -61,12 +65,12 @@ public class GameController : SaveDataController
             //TODO 게임로드
             if(Application.systemLanguage==SystemLanguage.Korean)
             {
-                Debug.Log("Kor " + (int)Application.systemLanguage);
+                //Debug.Log("Kor " + (int)Application.systemLanguage);
                 LanguageType = 0;
             }
             else
             {
-                Debug.Log("Non Kor" + (int)Application.systemLanguage);
+                //Debug.Log("Non Kor" + (int)Application.systemLanguage);
                 LanguageType = 1;
             }
         }
@@ -79,6 +83,7 @@ public class GameController : SaveDataController
     // Start is called before the first frame update
     void Start()
     {
+        CalManPower();
         mFloorProgress = new float[Constants.Max_floor];
         mFloorProgressCal = new float[Constants.Max_floor];
         for (int i =0;i<Constants.Max_floor;i++)
@@ -87,17 +92,26 @@ public class GameController : SaveDataController
             {
                 mFloorProgress[i] = 10;
                 mFloorProgressCal[i] = 10;
-                Debug.Log((i+1)+"번째 층 " + mFloorProgress[i]);
+                //Debug.Log((i)+"번째 층 " + mFloorProgress[i]);
             }
             else
             {
-                mFloorProgressCal[i] = mFloorProgressCal[i - 1] * Constants.GemCostIncrese;
+                mFloorProgressCal[i] = mFloorProgressCal[i - 1] * GemCostIncrese;
                 mFloorProgress[i] = Mathf.Round(mFloorProgressCal[i]); 
-                Debug.Log((i + 1) + "번째 층 " + mFloorProgress[i]);
+                //Debug.Log((i ) + "번째 층 " + mFloorProgress[i]);
             }
         }
+
     }
-    
+    private void CalManPower()
+    {
+        mManPower = 1;
+        for (int i=0;i<mUser.PlayerLevel;i++)
+        {
+            mManPower = mManPower + (ManPowerGap * (i+1));
+            Debug.Log((i+1) + "렙 노동력 : "+ mManPower);
+        }
+    }
     public void Touch()
     {
         int gain = 0;
@@ -121,5 +135,8 @@ public class GameController : SaveDataController
         ////TODO Icon 변경 effect.SetIcon();
         //effect.transform.position = mTextEffectPos.position;
 
+    }
+    private void Update()
+    {
     }
 }
