@@ -1,4 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -23,12 +26,12 @@ public class GameController : SaveDataController
     public Delegates.VoidCallback GoldCallback;
     public double Gold
     {
-        get { return mUser.TotalGold; }
+        get { return mUser.Gold; }
         set
         {
             if(value >=0)
             {
-                mUser.TotalGold = value;
+                mUser.Gold = value;
                 if (GoldCallback != null)
                 {
                     GoldCallback();
@@ -62,8 +65,8 @@ public class GameController : SaveDataController
         {
             Instance = this;
             //DontDestroyOnLoad(gameObject);
-            //TODO 게임로드
-            if(Application.systemLanguage==SystemLanguage.Korean)
+            LoadGame();
+            if (Application.systemLanguage==SystemLanguage.Korean)
             {
                 //Debug.Log("Kor " + (int)Application.systemLanguage);
                 LanguageType = 0;
@@ -102,6 +105,15 @@ public class GameController : SaveDataController
             }
         }
 
+    }
+    private void OnApplicationQuit()
+    {
+        Save();
+    }
+
+    public int GetPlayerLevel()
+    {
+        return mUser.PlayerLevel;
     }
     private void CalManPower()
     {

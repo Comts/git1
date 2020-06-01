@@ -17,6 +17,9 @@ public class PlayerStat
     public double ValueBase;
     public double ValueWeight;
     public double ValueCurrent;
+
+    public float Cooltime;
+    public float Duration;
 }
 [Serializable]
 public class PlayerStatText
@@ -53,7 +56,7 @@ public class CoworkerTextInfo
 [Serializable]
 public class SaveData
 {
-    public double TotalGold;
+    public double Gold;
 
     public double[] AmoutGem_A;
     public double[] AmoutGem_S;
@@ -62,6 +65,8 @@ public class SaveData
 
     public int PlayerLevel;
     public int[] CoworkerLevelArr;
+    public float[] SkillCooltimeArr;
+    public float[] SkillMaxCooltimeArr;
 
     public int Stage;
     public int PlayerPos;
