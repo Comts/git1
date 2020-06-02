@@ -86,7 +86,7 @@ public class GameController : SaveDataController
     // Start is called before the first frame update
     void Start()
     {
-        CalManPower();
+        //CalManPower();
         mFloorProgress = new float[Constants.Max_floor];
         mFloorProgressCal = new float[Constants.Max_floor];
         for (int i =0;i<Constants.Max_floor;i++)
@@ -111,14 +111,22 @@ public class GameController : SaveDataController
         Save();
     }
 
-    public int GetPlayerLevel()
+    public int[] GetPlayerLevelArr()
     {
-        return mUser.PlayerLevel;
+        return mUser.PlayerLevelArr;
+    }
+    public float[] GetSkillCooltimeArr()
+    {
+        return mUser.SkillCooltimeArr;
+    }
+    public float[] GetSkillMaxCooltimeArr()
+    {
+        return mUser.SkillMaxCooltimeArr;
     }
     private void CalManPower()
     {
         mManPower = 1;
-        for (int i=0;i<mUser.PlayerLevel;i++)
+        for (int i=0;i<mUser.PlayerLevelArr[0];i++)
         {
             mManPower = mManPower + (ManPowerGap * (i+1));
             Debug.Log((i+1) + "렙 노동력 : "+ mManPower);

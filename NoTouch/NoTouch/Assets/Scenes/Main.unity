@@ -1007,6 +1007,7 @@ GameObject:
   - component: {fileID: 408048121}
   - component: {fileID: 408048123}
   - component: {fileID: 408048122}
+  - component: {fileID: 408048124}
   m_Layer: 5
   m_Name: BG
   m_TagString: Untagged
@@ -1074,6 +1075,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 408048120}
   m_CullTransparentMesh: 0
+--- !u!114 &408048124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 408048120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acfac3ed545160b4d8213941eba37fa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mIconImage: {fileID: 150766248}
+  mTitleText: {fileID: 515778039}
+  mLevelText: {fileID: 1834747368}
+  mContentsText: {fileID: 1000661587}
+  mCostText: {fileID: 1095880098}
+  mButton: {fileID: 128950755}
 --- !u!1 &411261476
 GameObject:
   m_ObjectHideFlags: 0
@@ -1682,7 +1701,7 @@ MonoBehaviour:
     AmoutGem_S: []
     AmoutGem_SS: []
     AmoutGem_SSS: []
-    PlayerLevel: 0
+    PlayerLevelArr: 
     CoworkerLevelArr: 
     SkillCooltimeArr: []
     SkillMaxCooltimeArr: []
@@ -1966,12 +1985,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d920752b94c3f348a6ad52a5e854dc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mIconImage: {fileID: 150766248}
-  mTitleText: {fileID: 515778039}
-  mLevelText: {fileID: 1834747368}
-  mContentsText: {fileID: 1000661587}
-  mCostText: {fileID: 1095880098}
-  mButton: {fileID: 128950755}
+  mInfoArr: []
+  mTextInfoArr: []
+  mSkillCooltimeArr: []
+  mSkillMaxCooltimeArr: []
+  mSkillIndexList: 
+  mElementArr:
+  - {fileID: 408048124}
 --- !u!4 &1045052102
 Transform:
   m_ObjectHideFlags: 0
@@ -3029,6 +3049,49 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1467435611}
   m_CullTransparentMesh: 0
+--- !u!1 &1548310477
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1548310479}
+  - component: {fileID: 1548310478}
+  m_Layer: 0
+  m_Name: JsonGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1548310478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1548310477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2c4fb8efb5cd574c803084fca23d0f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1548310479
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1548310477}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1623854809
 GameObject:
   m_ObjectHideFlags: 0

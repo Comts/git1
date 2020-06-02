@@ -12,13 +12,22 @@ public class JsonGenerator : MonoBehaviour
     {
 
     }
-    
-    
-    public void GeneratePlayerItemInfo()
+
+
+    public void GeneratePlayerTextInfo()
     {
-        PlayerStat infoArr = new PlayerStat();//PlayerUpgradeController.Instance.GetInfoArr();
-        
-        infoArr.ID = 0;
+        PlayerStatText[] infoArr = new PlayerStatText[Constants.PLAYER_STAT_COUNT];// PlayerUpgradeController.Instance.GetTextInfoArr();
+        infoArr[0] = new PlayerStatText();
+        infoArr[0].ID = 0;
+        infoArr[0].Title = "장인의손길";
+        string data = JsonConvert.SerializeObject(infoArr, Formatting.Indented);
+        WriteFile(data, "PlayerText.json");
+    }
+    public void GeneratePlayerInfo()
+    {
+        PlayerStat[] infoArr = new PlayerStat[Constants.PLAYER_STAT_COUNT];//PlayerUpgradeController.Instance.GetInfoArr();
+        infoArr[0] = new PlayerStat();
+        infoArr[0].ID = 0;
         string data = JsonConvert.SerializeObject(infoArr, Formatting.Indented);
         WriteFile(data, "Player.json");
     }

@@ -12,7 +12,6 @@ public class SaveDataController : MonoBehaviour
 
     protected void LoadGame()
     {
-        Debug.Log("LoadGame");
         string data = PlayerPrefs.GetString("SaveData");
         if (string.IsNullOrEmpty(data))
         {
@@ -23,13 +22,27 @@ public class SaveDataController : MonoBehaviour
             BinaryFormatter formatter = new BinaryFormatter();
             MemoryStream stream = new MemoryStream(Convert.FromBase64String(data));
             mUser = (SaveData)formatter.Deserialize(stream);
-            Debug.Log("SaveData");
         }
         FixSaveData();
     }
 
     protected void FixSaveData()
     {
+        if (mUser.PlayerLevelArr == null)
+        {
+            mUser.PlayerLevelArr = new int[Constants.PLAYER_STAT_COUNT];
+            mUser.PlayerLevelArr[0] = 1;
+        }
+        else if (mUser.PlayerLevelArr.Length != Constants.PLAYER_STAT_COUNT)
+        {
+            int[] temp = new int[Constants.PLAYER_STAT_COUNT];
+            int count = Mathf.Min(Constants.PLAYER_STAT_COUNT, mUser.PlayerLevelArr.Length);
+            for (int i = 0; i < count; i++)
+            {
+                temp[i] = mUser.PlayerLevelArr[i];
+            }
+            mUser.PlayerLevelArr = temp;
+        }
 
         if (mUser.SkillCooltimeArr == null)
         {
@@ -71,7 +84,7 @@ public class SaveDataController : MonoBehaviour
         mUser.AmoutGem_SS = new double[Constants.Max_floor];
         mUser.AmoutGem_SSS = new double[Constants.Max_floor];
 
-        mUser.PlayerLevel = 0;
+        mUser.PlayerLevelArr = new int[Constants.PLAYER_STAT_COUNT];
         mUser.CoworkerLevelArr = new int [Constants.Max_floor];
         mUser.SkillCooltimeArr = new float[Constants.SKILL_COUNT];
         mUser.SkillMaxCooltimeArr = new float[Constants.SKILL_COUNT];

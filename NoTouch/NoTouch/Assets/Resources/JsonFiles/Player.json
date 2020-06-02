@@ -1,0 +1,15 @@
+[
+  {
+    "ID": 0,
+    "CurrentLevel": 0,
+    "MaxLevel": 0,
+    "CostBase": 0.0,
+    "CostWeight": 0.0,
+    "CostCurrent": 0.0,
+    "ValueBase": 0.0,
+    "ValueWeight": 0.0,
+    "ValueCurrent": 0.0,
+    "Cooltime": 0.0,
+    "Duration": 0.0
+  }
+]

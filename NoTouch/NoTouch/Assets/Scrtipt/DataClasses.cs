@@ -63,7 +63,7 @@ public class SaveData
     public double[] AmoutGem_SS;
     public double[] AmoutGem_SSS;
 
-    public int PlayerLevel;
+    public int[] PlayerLevelArr;
     public int[] CoworkerLevelArr;
     public float[] SkillCooltimeArr;
     public float[] SkillMaxCooltimeArr;
