@@ -1,0 +1,26 @@
+Doween (HOTween v2)
+
+apply해줘야됨 
+
+using DG.Tweening;추가
+
+
+transform.DOMove(mDest.position, 1);거리가 가까워지면서 속도감소   .SetEase(Ease.Linear);속도일정  Ease 움직이는거 설정
+            transform.DOMove(mDest.position, 1).SetEase(Ease.Linear);
+
+
+            transform.DOMove(mDest.position, 1).
+                SetEase(Ease.Linear).
+                OnComplete(()=> {
+                                    Debug.Log ("finish");
+                                });
+도착했을때 OnComplete동작 
+
+버튼 Onclick RectTransform.SetAsLastSibling 겹쳐졌을떄 앞에나오게
+
+
+Audio Source - output 추가 window-audio mixer 창 설정
+
+Exposed Parameter 추가
+
+using UnityEngine.Audio; 코드 추가
