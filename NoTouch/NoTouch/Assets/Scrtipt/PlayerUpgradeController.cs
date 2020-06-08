@@ -35,6 +35,8 @@ public class PlayerUpgradeController : InformationLoader
             Destroy(gameObject);
         }
     }
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -73,7 +75,7 @@ public class PlayerUpgradeController : InformationLoader
                       string.Format(mTextInfoArr[i].ContentsFormat,
                                     UnitSetter.GetUnitStr(mInfoArr[i].ValueCurrent),
                                     mInfoArr[i].Duration.ToString()),
-                      UnitSetter.GetUnitStr(mInfoArr[i].CostCurrent),
+                      UnitSetter.GetUnitStr(Math.Round( mInfoArr[i].CostCurrent)),
                       LevelUP);
         }
     }
@@ -82,7 +84,7 @@ public class PlayerUpgradeController : InformationLoader
         Delegates.VoidCallback callback = () => { LevelUpCallback(id, amount); };
 
         GameController.Instance.GoldCallback = callback;
-        double cost = mInfoArr[id].CostCurrent;
+        double cost = Math.Round(mInfoArr[id].CostCurrent);
         GameController.Instance.Gold -= cost;
     }
     public void LevelUpCallback(int id, int level)
@@ -106,8 +108,8 @@ public class PlayerUpgradeController : InformationLoader
     {
         mInfoArr[id].CostCurrent = mInfoArr[id].CostBase *
                                 Math.Pow(mInfoArr[id].CostWeight, mInfoArr[id].CurrentLevel);
-        
-        mInfoArr[id].ValueCurrent = mInfoArr[id].ValueBase *
-                            Math.Pow(mInfoArr[id].ValueWeight, mInfoArr[id].CurrentLevel);
-    }
+
+        mInfoArr[id].ValueCurrent = mInfoArr[id].ValueBase + (mInfoArr[id].CurrentLevel + 1) * mInfoArr[id].CurrentLevel * mInfoArr[id].ValueWeight / 2;
+        GameController.Instance.ManPower = mInfoArr[id].ValueCurrent;
+    }  
 }

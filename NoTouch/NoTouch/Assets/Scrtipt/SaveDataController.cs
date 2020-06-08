@@ -89,8 +89,8 @@ public class SaveDataController : MonoBehaviour
         mUser.SkillCooltimeArr = new float[Constants.SKILL_COUNT];
         mUser.SkillMaxCooltimeArr = new float[Constants.SKILL_COUNT];
 
-        mUser.Stage = 1;
-        mUser.PlayerPos = 1;
+        mUser.Stage = 0;
+        mUser.PlayerPos = 0;
         mUser.Progress = 0;
         
 

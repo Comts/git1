@@ -22,6 +22,7 @@ public class GameController : SaveDataController
     private double ManPowerGap = 0.5;
 #pragma warning restore 0649
     private float[] mFloorProgress, mFloorProgressCal;
+    [SerializeField]
     private double mManPower;
     public Delegates.VoidCallback GoldCallback;
     public double Gold
@@ -86,6 +87,10 @@ public class GameController : SaveDataController
     // Start is called before the first frame update
     void Start()
     {
+        if(mUser.Stage<mUser.PlayerPos)
+        {
+            mUser.PlayerPos = mUser.Stage;
+        }
         //CalManPower();
         mFloorProgress = new float[Constants.Max_floor];
         mFloorProgressCal = new float[Constants.Max_floor];
@@ -123,32 +128,20 @@ public class GameController : SaveDataController
     {
         return mUser.SkillMaxCooltimeArr;
     }
-    private void CalManPower()
-    {
-        mManPower = 1;
-        for (int i=0;i<mUser.PlayerLevelArr[0];i++)
-        {
-            mManPower = mManPower + (ManPowerGap * (i+1));
-            Debug.Log((i+1) + "렙 노동력 : "+ mManPower);
-        }
-    }
     public void Touch()
     {
         int gain = 0;
-        mUser.Progress += ManPower;
+        mUser.Progress += mManPower;
         //TODO Sound FX
         //TODO VFX +Text Effect
 
-
-        if (mUser.Progress >= mFloorProgress[mUser.Stage])
+        
+        while (mUser.Progress >= mFloorProgress[mUser.PlayerPos])
         {
-            while (mUser.Progress >= mFloorProgress[mUser.Stage])
-            {
-                mUser.Progress -= mFloorProgress[mUser.Stage];
-                mUser.AmoutGem_A[mUser.Stage]++;
-                gain++;
-            }
+            mUser.Progress -= mFloorProgress[mUser.PlayerPos];
+            gain++;
         }
+        mUser.AmoutGem_A[mUser.PlayerPos] +=gain;
 
         //TextEffect effect = TextEffectPool.Instance.GetFromPool();
         //effect.SetText(gain.ToString());
