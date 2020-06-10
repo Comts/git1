@@ -18,8 +18,6 @@ public class GameController : SaveDataController
     private Transform mTextEffectPos;
     [SerializeField]
     private float GemCostIncrese = 1.2f;
-    [SerializeField]
-    private double ManPowerGap = 0.5;
 #pragma warning restore 0649
     private float[] mFloorProgress, mFloorProgressCal;
     [SerializeField]
@@ -127,6 +125,10 @@ public class GameController : SaveDataController
     public float[] GetSkillMaxCooltimeArr()
     {
         return mUser.SkillMaxCooltimeArr;
+    }
+    public int[] GetCoworkerLevelArr()
+    {
+        return mUser.CoworkerLevelArr;
     }
     public void Touch()
     {

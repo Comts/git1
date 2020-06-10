@@ -1,0 +1,12 @@
+[
+  {
+    "ID": 0,
+    "Title": "톰",
+    "ContentsFormat": "{0}골드 획득"
+  },
+  {
+    "ID": 1,
+    "Title": "맥스",
+    "ContentsFormat": "{0}작업 진행 보조"
+  }
+]

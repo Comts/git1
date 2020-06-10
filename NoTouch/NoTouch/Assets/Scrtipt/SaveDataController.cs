@@ -73,6 +73,30 @@ public class SaveDataController : MonoBehaviour
             }
             mUser.SkillMaxCooltimeArr = temp;
         }
+        if (mUser.CoworkerLevelArr == null)
+        {
+            mUser.CoworkerLevelArr = new int[Constants.Max_floor];
+            for (int i = 0; i < mUser.CoworkerLevelArr.Length; i++)
+            {
+                mUser.CoworkerLevelArr[i] = -1;
+            }
+            mUser.CoworkerLevelArr[0] = 0;
+        }
+        else if (mUser.CoworkerLevelArr.Length != Constants.Max_floor)
+        {
+            int[] temp = new int[Constants.Max_floor];
+            for (int i = 0; i < temp.Length; i++)
+            {
+                temp[i] = -1;
+            }
+            temp[0] = 0;
+            int count = Mathf.Min(Constants.Max_floor, mUser.CoworkerLevelArr.Length);
+            for (int i = 0; i < count; i++)
+            {
+                temp[i] = mUser.CoworkerLevelArr[i];
+            }
+            mUser.CoworkerLevelArr = temp;
+        }
     }
 
     protected void CreateNewSaveData()
@@ -84,14 +108,21 @@ public class SaveDataController : MonoBehaviour
         mUser.AmoutGem_SS = new double[Constants.Max_floor];
         mUser.AmoutGem_SSS = new double[Constants.Max_floor];
 
-        mUser.PlayerLevelArr = new int[Constants.PLAYER_STAT_COUNT];
-        mUser.CoworkerLevelArr = new int [Constants.Max_floor];
-        mUser.SkillCooltimeArr = new float[Constants.SKILL_COUNT];
-        mUser.SkillMaxCooltimeArr = new float[Constants.SKILL_COUNT];
-
         mUser.Stage = 0;
         mUser.PlayerPos = 0;
         mUser.Progress = 0;
+
+        mUser.PlayerLevelArr = new int[Constants.PLAYER_STAT_COUNT];
+        mUser.SkillCooltimeArr = new float[Constants.SKILL_COUNT];
+        mUser.SkillMaxCooltimeArr = new float[Constants.SKILL_COUNT];
+
+        mUser.CoworkerLevelArr = new int [Constants.Max_floor];
+        for (int i = 0; i < mUser.CoworkerLevelArr.Length; i++)
+        {
+            mUser.CoworkerLevelArr[i] = -1;
+        }
+        mUser.CoworkerLevelArr[0] = 0;
+
         
 
     }

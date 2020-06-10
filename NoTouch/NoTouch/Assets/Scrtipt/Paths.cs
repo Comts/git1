@@ -9,6 +9,6 @@
     public const string PLAYER_TEXT_TABLE = JSON_FILE_LOCATION + "PlayerText";
 
     public const string COWORKER_INFO_TABLE = JSON_FILE_LOCATION + "CoworkerInfo";
-    public const string COWORKER_INFO_TEXT_TABLE = JSON_FILE_LOCATION + "CoworkerInfoText";
+    public const string COWORKER_TEXT_INFO_TABLE = JSON_FILE_LOCATION + "CoworkerInfoText";
 }
 
