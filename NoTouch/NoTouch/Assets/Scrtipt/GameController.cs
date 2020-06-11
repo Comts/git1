@@ -17,9 +17,12 @@ public class GameController : SaveDataController
     [SerializeField]
     private Transform mTextEffectPos;
     [SerializeField]
-    private float GemCostIncrese = 1.2f;
+    private float WorkIncrese = 1.2f;
+    [SerializeField]
+    private double GemCostIncrese = 1.3;
 #pragma warning restore 0649
     private float[] mFloorProgress, mFloorProgressCal;
+    private double[] mFloorGemCost, mFloorGemCostCal;
     [SerializeField]
     private double mManPower;
     public Delegates.VoidCallback GoldCallback;
@@ -41,6 +44,14 @@ public class GameController : SaveDataController
                 Debug.Log("not enough gold");
             }
             GoldCallback = null;
+        }
+    }
+    public double[] AddAmoutGem_A
+    {
+        get { return mUser.AmoutGem_A; }
+        set
+        {
+                mUser.AmoutGem_A = value;
         }
     }
     public double ManPower
@@ -92,19 +103,28 @@ public class GameController : SaveDataController
         //CalManPower();
         mFloorProgress = new float[Constants.Max_floor];
         mFloorProgressCal = new float[Constants.Max_floor];
+        mFloorGemCost = new double[Constants.Max_floor];
+        mFloorGemCostCal = new double[Constants.Max_floor];
         for (int i =0;i<Constants.Max_floor;i++)
         {
             if(i==0)
             {
                 mFloorProgress[i] = 10;
                 mFloorProgressCal[i] = 10;
-                //Debug.Log((i)+"번째 층 " + mFloorProgress[i]);
+                mFloorGemCost[i] = 1;
+                mFloorGemCostCal[i] = 1;
+                Debug.Log((i) + "번째 층 노동력" + mFloorProgress[i]);
+                Debug.Log((i) + "번째 층 원석가격" + mFloorGemCost[i]);
             }
             else
             {
-                mFloorProgressCal[i] = mFloorProgressCal[i - 1] * GemCostIncrese;
-                mFloorProgress[i] = Mathf.Round(mFloorProgressCal[i]); 
-                //Debug.Log((i ) + "번째 층 " + mFloorProgress[i]);
+                mFloorProgressCal[i] = mFloorProgressCal[i - 1] * WorkIncrese;
+                mFloorProgress[i] = Mathf.Round(mFloorProgressCal[i]);
+                mFloorGemCostCal[i] = mFloorGemCost[i - 1] * GemCostIncrese;
+                mFloorGemCost[i] = Math.Round(mFloorGemCostCal[i],1);
+                Debug.Log((i) + "번째 층 노동력" + mFloorProgress[i]);
+                Debug.Log((i) + "번째 층 원석계산" + mFloorGemCostCal[i]);
+                Debug.Log((i) + "번째 층 원석가격" + mFloorGemCost[i]);
             }
         }
 
@@ -130,6 +150,10 @@ public class GameController : SaveDataController
     {
         return mUser.CoworkerLevelArr;
     }
+    //public void AddAmoutGem_A(int id,double amount)
+    //{
+    //    mUser.AmoutGem_A[id] += amount; ;
+    //}
     public void Touch()
     {
         int gain = 0;

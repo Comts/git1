@@ -16,9 +16,25 @@ public class Coworker : MonoBehaviour
         
     }
 
+    public void StartWork(int id, float period)
+    {
+        mID = id;
+        mWorkPeriod = period;
+        mCurrentTime = 0;
+    }
+
     // Update is called once per frame
     void Update()
     {
-        
+        if (mWorkPeriod > 0)
+        {
+            mCurrentTime += Time.deltaTime;
+            if (mCurrentTime >= mWorkPeriod)
+            {
+                CoworkerController.Instance.JobFinish(mID);//TODO FX, mTextEffectPos.position);
+                mCurrentTime = 0;
+            }
+        }
+
     }
 }

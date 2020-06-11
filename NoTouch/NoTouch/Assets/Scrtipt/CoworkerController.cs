@@ -7,6 +7,7 @@ public class CoworkerController : InformationLoader
 {
     public static CoworkerController Instance;
 
+
     private CoworkerInfo[] mInfoArr;
     private CoworkerTextInfo[] mTextInfoArr;
 
@@ -14,6 +15,8 @@ public class CoworkerController : InformationLoader
 
     //textdata class
 #pragma warning disable 0649
+    [SerializeField]
+    private int mCoworkerWork=2;
     [SerializeField]
     private Sprite[] mIconArr;
 
@@ -49,6 +52,7 @@ public class CoworkerController : InformationLoader
             if (mInfoArr[i].CurrentLevel > 0)
             {
                 mCoworkerArr[i].gameObject.SetActive(true);
+                mCoworkerArr[i].StartWork(i, mInfoArr[i].PeriodCurrent);
             }
             UIElement element = Instantiate(mElementPrefab, mElementArea);
             element.Init(i, mIconArr[i],
@@ -76,6 +80,14 @@ public class CoworkerController : InformationLoader
         Load();
     }
 
+    public void JobFinish(int id)//TODO FX, Vector3 effectPos)
+    {
+        double AddAmount = mInfoArr[id].CurrentLevel * mCoworkerWork;
+        GameController.Instance.AddAmoutGem_A[id]+= AddAmount;
+        //TODO FX
+    }
+
+
 
     public void LevelUP(int id, int amount)
     {
@@ -95,16 +107,24 @@ public class CoworkerController : InformationLoader
 
         CalcData(id);
 
+        mCoworkerArr[id].StartWork(id, mInfoArr[id].PeriodCurrent);
+
         mElementList[id].Refresh(mInfoArr[id].CurrentLevel.ToString(),
                       string.Format(mTextInfoArr[id].ContentsFormat,
                                     UnitSetter.GetUnitStr(mInfoArr[id].ValueCurrent)),
                       UnitSetter.GetUnitStr(mInfoArr[id].CostCurrent));
     }
-        private void CalcData(int id)
+    private void CalcData(int id)
     {
         mInfoArr[id].CostCurrent = mInfoArr[id].CostBase *
                                 Math.Pow(mInfoArr[id].CostWeight, mInfoArr[id].CurrentLevel);
         mInfoArr[id].ValueCurrent = mInfoArr[id].ValueBase *
                             Math.Pow(mInfoArr[id].ValueWeight, mInfoArr[id].CurrentLevel);
+        float periodsSub = mInfoArr[id].PeriodUpgradeAmount *
+                           (int)(mInfoArr[id].CurrentLevel / mInfoArr[id].PeriodLevelStep);
+        if (mInfoArr[id].CurrentLevel > 0)
+        {
+            mInfoArr[id].PeriodCurrent = mInfoArr[id].PeriodBase - periodsSub;
+        }
     }
 }

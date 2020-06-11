@@ -38,7 +38,12 @@ public class CoworkerInfo
     public double CostBase;
     public double CostWeight;
     public double CostCurrent;
-        
+
+    public float PeriodBase;
+    public float PeriodCurrent;
+    public float PeriodUpgradeAmount;
+    public int PeriodLevelStep;
+
     public double ValueBase;
     public double ValueWeight;
     public double ValueCurrent;
