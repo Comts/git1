@@ -56,12 +56,13 @@ public class CoworkerController : InformationLoader
             }
             UIElement element = Instantiate(mElementPrefab, mElementArea);
             element.Init(i, mIconArr[i],
-                      mTextInfoArr[i].Title,
-                      mInfoArr[i].CurrentLevel.ToString(),
-                      string.Format(mTextInfoArr[i].ContentsFormat,
+                        mTextInfoArr[i].Title,
+                        mInfoArr[i].CurrentLevel.ToString(),
+                        string.Format(mTextInfoArr[i].ContentsFormat,
                                     UnitSetter.GetUnitStr(mInfoArr[i].ValueCurrent)),
-                      UnitSetter.GetUnitStr(mInfoArr[i].CostCurrent),
-                      LevelUP);
+                        UnitSetter.GetUnitStr(mInfoArr[i].CostCurrent),
+                        LevelUP);
+
 
             mElementList.Add(element);
         }
@@ -104,6 +105,30 @@ public class CoworkerController : InformationLoader
             mElementList[id].SetButtonActive(false);
         }
         mLevelArr[id] = mInfoArr[id].CurrentLevel;
+        if(mInfoArr[id].CurrentLevel == 1)
+        {
+            mCoworkerArr[id].gameObject.SetActive(true);
+
+        }
+        if (mInfoArr[id].CurrentLevel >= 10 && GameController.Instance.Stage > id && id<mInfoArr.Length)
+        {
+            int nextID = id + 1;
+            mLevelArr[nextID] = mInfoArr[nextID].CurrentLevel = 0;
+            CalcData(nextID);
+            UIElement element = Instantiate(mElementPrefab, mElementArea);
+
+            element.Init(nextID, mIconArr[nextID],
+                        mTextInfoArr[nextID].Title,
+                        mInfoArr[nextID].CurrentLevel.ToString(),
+                        string.Format(mTextInfoArr[nextID].ContentsFormat,
+                                    UnitSetter.GetUnitStr(mInfoArr[nextID].ValueCurrent)),
+                        UnitSetter.GetUnitStr(mInfoArr[nextID].CostCurrent),
+                        LevelUP);
+
+
+            mElementList.Add(element);
+        }
+
 
         CalcData(id);
 
@@ -116,8 +141,25 @@ public class CoworkerController : InformationLoader
     }
     private void CalcData(int id)
     {
-        mInfoArr[id].CostCurrent = mInfoArr[id].CostBase *
-                                Math.Pow(mInfoArr[id].CostWeight, mInfoArr[id].CurrentLevel);
+        for(int i=0;i<=mInfoArr[id].CurrentLevel;i++)
+        {
+            if (i == 0)
+            {
+                mInfoArr[id].CostCurrent = Math.Round(mInfoArr[id].CostBase *
+                                        Math.Pow((1 + (mInfoArr[id].CostWeight * i)), 2),0);
+            }
+            else
+            {
+                mInfoArr[id].CostCurrent = Math.Round(mInfoArr[id].CostCurrent *
+                                        Math.Pow((1 + (mInfoArr[id].CostWeight * i)), 2),0);
+            }
+            //Debug.Log(i + "번째 금액" + mInfoArr[id].CostCurrent);
+        }
+
+        //Debug.Log(id + "번째" + mInfoArr[id].CostCurrent);
+        //Debug.Log(id + "번째 costbase" + mInfoArr[id].CostBase);
+        //Debug.Log(id + "번째 costweight" + mInfoArr[id].CostWeight);
+        //Debug.Log(id + "번째 CurrentLevel" + mInfoArr[id].CurrentLevel);
         mInfoArr[id].ValueCurrent = mInfoArr[id].ValueBase *
                             Math.Pow(mInfoArr[id].ValueWeight, mInfoArr[id].CurrentLevel);
         float periodsSub = mInfoArr[id].PeriodUpgradeAmount *

@@ -1526,7 +1526,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &527451127
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1933,7 +1933,7 @@ MonoBehaviour:
     Progress: 0
   mTextEffectPos: {fileID: 0}
   WorkIncrese: 1.2
-  GemCostIncrese: 1.2999999523162842
+  GemCostIncrese: 1.3
   mManPower: 0
 --- !u!4 &928477015
 Transform:
@@ -3010,7 +3010,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 224.75015}
-  m_SizeDelta: {x: 821, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1297741782
 MonoBehaviour:

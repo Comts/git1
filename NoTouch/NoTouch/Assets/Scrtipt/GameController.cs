@@ -54,6 +54,15 @@ public class GameController : SaveDataController
                 mUser.AmoutGem_A = value;
         }
     }
+    public int Stage
+    {
+        get { return mUser.Stage; }
+        set
+        {
+            mUser.Stage = value;
+        }
+
+    }
     public double ManPower
     {
         get { return mManPower; }
@@ -113,8 +122,8 @@ public class GameController : SaveDataController
                 mFloorProgressCal[i] = 10;
                 mFloorGemCost[i] = 1;
                 mFloorGemCostCal[i] = 1;
-                Debug.Log((i) + "번째 층 노동력" + mFloorProgress[i]);
-                Debug.Log((i) + "번째 층 원석가격" + mFloorGemCost[i]);
+                //Debug.Log((i) + "번째 층 노동력" + mFloorProgress[i]);
+                //Debug.Log((i) + "번째 층 원석가격" + mFloorGemCost[i]);
             }
             else
             {
@@ -122,9 +131,8 @@ public class GameController : SaveDataController
                 mFloorProgress[i] = Mathf.Round(mFloorProgressCal[i]);
                 mFloorGemCostCal[i] = mFloorGemCost[i - 1] * GemCostIncrese;
                 mFloorGemCost[i] = Math.Round(mFloorGemCostCal[i],1);
-                Debug.Log((i) + "번째 층 노동력" + mFloorProgress[i]);
-                Debug.Log((i) + "번째 층 원석계산" + mFloorGemCostCal[i]);
-                Debug.Log((i) + "번째 층 원석가격" + mFloorGemCost[i]);
+                //Debug.Log((i) + "번째 층 노동력" + mFloorProgress[i]);
+                //Debug.Log((i) + "번째 층 원석가격" + mFloorGemCost[i]);
             }
         }
 
