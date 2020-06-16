@@ -113,20 +113,24 @@ public class CoworkerController : InformationLoader
         if (mInfoArr[id].CurrentLevel >= 10 && GameController.Instance.Stage > id && id<mInfoArr.Length)
         {
             int nextID = id + 1;
-            mLevelArr[nextID] = mInfoArr[nextID].CurrentLevel = 0;
-            CalcData(nextID);
-            UIElement element = Instantiate(mElementPrefab, mElementArea);
 
-            element.Init(nextID, mIconArr[nextID],
-                        mTextInfoArr[nextID].Title,
-                        mInfoArr[nextID].CurrentLevel.ToString(),
-                        string.Format(mTextInfoArr[nextID].ContentsFormat,
-                                    UnitSetter.GetUnitStr(mInfoArr[nextID].ValueCurrent)),
-                        UnitSetter.GetUnitStr(mInfoArr[nextID].CostCurrent),
-                        LevelUP);
+            if (mElementList.Count <= nextID)
+            {
+                mLevelArr[nextID] = mInfoArr[nextID].CurrentLevel = 0;
+                CalcData(nextID);
 
+                UIElement element = Instantiate(mElementPrefab, mElementArea);
 
-            mElementList.Add(element);
+                element.Init(nextID, mIconArr[nextID],
+                            mTextInfoArr[nextID].Title,
+                            mInfoArr[nextID].CurrentLevel.ToString(),
+                            string.Format(mTextInfoArr[nextID].ContentsFormat,
+                                        UnitSetter.GetUnitStr(mInfoArr[nextID].ValueCurrent)),
+                            UnitSetter.GetUnitStr(mInfoArr[nextID].CostCurrent),
+                            LevelUP);
+
+                mElementList.Add(element);
+            }
         }
 
 

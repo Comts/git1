@@ -8,5 +8,10 @@
     "ID": 1,
     "Title": "맥스",
     "ContentsFormat": "{0}작업 진행 보조"
+  },
+  {
+    "ID": 2,
+    "Title": "라이언",
+    "ContentsFormat": "{0} 보조"
   }
 ]

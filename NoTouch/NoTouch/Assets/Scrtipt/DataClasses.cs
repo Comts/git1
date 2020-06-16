@@ -57,6 +57,23 @@ public class CoworkerTextInfo
     public string ContentsFormat;
 
 }
+[Serializable]
+public class MineInfo
+{
+    public int ID;
+    public double CostBase;
+    public double CostWeight;
+    public double CostCurrent;
+
+}
+[Serializable]
+public class MineTextInfo
+{
+    public int ID;
+    public string Title;
+    public string ContentsFormat;
+
+}
 
 [Serializable]
 public class SaveData
@@ -76,6 +93,8 @@ public class SaveData
     public int Stage;
     public int PlayerPos;
     public double Progress;
+
+    public int[] MineArr;
 
 
 }

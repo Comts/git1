@@ -10,5 +10,9 @@
 
     public const string COWORKER_INFO_TABLE = JSON_FILE_LOCATION + "CoworkerInfo";
     public const string COWORKER_TEXT_INFO_TABLE = JSON_FILE_LOCATION + "CoworkerInfoText";
+
+    public const string MINE_INFO_TABLE = JSON_FILE_LOCATION + "MineInfo";
+    public const string MINE_TEXT_INFO_TABLE = JSON_FILE_LOCATION + "MineInfoText";
+    public const string MINE_ICON = "MineIcon";
 }
 
