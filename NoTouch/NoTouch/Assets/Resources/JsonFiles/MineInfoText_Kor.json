@@ -1,0 +1,17 @@
+[
+  {
+    "ID": 0,
+    "Title": "아오지",
+    "ContentsFormat": "석탄 획득"
+  },
+  {
+    "ID": 1,
+    "Title": "금광",
+    "ContentsFormat": "작업 진행 보조"
+  },
+  {
+    "ID": 2,
+    "Title": "흐아",
+    "ContentsFormat": "보조"
+  }
+]

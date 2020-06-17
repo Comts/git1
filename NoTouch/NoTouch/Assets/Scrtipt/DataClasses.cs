@@ -61,9 +61,7 @@ public class CoworkerTextInfo
 public class MineInfo
 {
     public int ID;
-    public double CostBase;
-    public double CostWeight;
-    public double CostCurrent;
+    public double Cost;
 
 }
 [Serializable]

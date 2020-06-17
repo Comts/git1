@@ -78,6 +78,15 @@ public class GameController : SaveDataController
             }
         }
     }
+    public int[] HaveMine
+    {
+        get { return mUser.MineArr; }
+        set
+        {
+            mUser.MineArr = value;
+        }
+
+    }
     private void Awake()
     {
         if(Instance == null)
@@ -110,11 +119,11 @@ public class GameController : SaveDataController
             mUser.PlayerPos = mUser.Stage;
         }
         //CalManPower();
-        mFloorProgress = new float[Constants.Max_floor];
-        mFloorProgressCal = new float[Constants.Max_floor];
-        mFloorGemCost = new double[Constants.Max_floor];
-        mFloorGemCostCal = new double[Constants.Max_floor];
-        for (int i =0;i<Constants.Max_floor;i++)
+        mFloorProgress = new float[Constants.MAX_fLOOR];
+        mFloorProgressCal = new float[Constants.MAX_fLOOR];
+        mFloorGemCost = new double[Constants.MAX_fLOOR];
+        mFloorGemCostCal = new double[Constants.MAX_fLOOR];
+        for (int i =0;i<Constants.MAX_fLOOR;i++)
         {
             if(i==0)
             {

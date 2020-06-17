@@ -75,27 +75,42 @@ public class SaveDataController : MonoBehaviour
         }
         if (mUser.CoworkerLevelArr == null)
         {
-            mUser.CoworkerLevelArr = new int[Constants.Max_floor];
+            mUser.CoworkerLevelArr = new int[Constants.MAX_fLOOR];
             for (int i = 0; i < mUser.CoworkerLevelArr.Length; i++)
             {
                 mUser.CoworkerLevelArr[i] = -1;
             }
             mUser.CoworkerLevelArr[0] = 0;
         }
-        else if (mUser.CoworkerLevelArr.Length != Constants.Max_floor)
+        else if (mUser.CoworkerLevelArr.Length != Constants.MAX_fLOOR)
         {
-            int[] temp = new int[Constants.Max_floor];
+            int[] temp = new int[Constants.MAX_fLOOR];
             for (int i = 0; i < temp.Length; i++)
             {
                 temp[i] = -1;
             }
             temp[0] = 0;
-            int count = Mathf.Min(Constants.Max_floor, mUser.CoworkerLevelArr.Length);
+            int count = Mathf.Min(Constants.MAX_fLOOR, mUser.CoworkerLevelArr.Length);
             for (int i = 0; i < count; i++)
             {
                 temp[i] = mUser.CoworkerLevelArr[i];
             }
             mUser.CoworkerLevelArr = temp;
+        }
+
+        if (mUser.MineArr == null)
+        {
+            mUser.MineArr = new int[Constants.MINE_COUNT];
+        }
+        else if (mUser.MineArr.Length != Constants.MINE_COUNT)
+        {
+            int[] temp = new int[Constants.MINE_COUNT];
+            int count = Mathf.Min(Constants.MINE_COUNT, mUser.MineArr.Length);
+            for (int i = 0; i < count; i++)
+            {
+                temp[i] = mUser.MineArr[i];
+            }
+            mUser.MineArr = temp;
         }
     }
 
@@ -103,10 +118,11 @@ public class SaveDataController : MonoBehaviour
     {
         mUser = new SaveData();
         mUser.Gold = 0;
-        mUser.AmoutGem_A = new double[Constants.Max_floor];
-        mUser.AmoutGem_S = new double[Constants.Max_floor];
-        mUser.AmoutGem_SS = new double[Constants.Max_floor];
-        mUser.AmoutGem_SSS = new double[Constants.Max_floor];
+        mUser.AmoutGem_A = new double[Constants.MAX_fLOOR];
+        mUser.AmoutGem_S = new double[Constants.MAX_fLOOR];
+        mUser.AmoutGem_SS = new double[Constants.MAX_fLOOR];
+        mUser.AmoutGem_SSS = new double[Constants.MAX_fLOOR];
+
 
         mUser.Stage = 0;
         mUser.PlayerPos = 0;
@@ -116,14 +132,15 @@ public class SaveDataController : MonoBehaviour
         mUser.SkillCooltimeArr = new float[Constants.SKILL_COUNT];
         mUser.SkillMaxCooltimeArr = new float[Constants.SKILL_COUNT];
 
-        mUser.CoworkerLevelArr = new int [Constants.Max_floor];
+        mUser.CoworkerLevelArr = new int [Constants.MAX_fLOOR];
         for (int i = 0; i < mUser.CoworkerLevelArr.Length; i++)
         {
             mUser.CoworkerLevelArr[i] = -1;
         }
         mUser.CoworkerLevelArr[0] = 0;
 
-        
+        mUser.MineArr = new int[Constants.MINE_COUNT];
+
 
     }
 
