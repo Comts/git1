@@ -57,7 +57,7 @@ public class TouchManager : MonoBehaviour
         {
             Ray ray = GenerateRay(Input.mousePosition);
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit))
+            if (Physics.Raycast(ray, out hit) && hit.collider.gameObject.CompareTag("Touch"))
             {
                 Timer effect = mEffectPool.GetFromPool();
                 effect.transform.position = hit.point;

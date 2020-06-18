@@ -93,6 +93,7 @@ public class SaveData
     public double Progress;
 
     public int[] MineArr;
+    public double[] GetFromMine;
 
 
 }

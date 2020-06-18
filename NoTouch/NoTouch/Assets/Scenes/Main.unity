@@ -982,6 +982,7 @@ GameObject:
   - component: {fileID: 392257103}
   - component: {fileID: 392257105}
   - component: {fileID: 392257104}
+  - component: {fileID: 392257106}
   m_Layer: 5
   m_Name: MineShopWindow
   m_TagString: Untagged
@@ -1045,6 +1046,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 392257102}
   m_CullTransparentMesh: 0
+--- !u!65 &392257106
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 392257102}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 940, y: 500, z: 5}
+  m_Center: {x: 0, y: 0, z: 5}
 --- !u!1 &408040090
 GameObject:
   m_ObjectHideFlags: 0
@@ -1641,6 +1655,7 @@ GameObject:
   - component: {fileID: 527451127}
   - component: {fileID: 527451129}
   - component: {fileID: 527451128}
+  - component: {fileID: 527451130}
   m_Layer: 5
   m_Name: CoworkerUpgradeWindow
   m_TagString: Untagged
@@ -1704,6 +1719,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 527451126}
   m_CullTransparentMesh: 0
+--- !u!65 &527451130
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 527451126}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 940, y: 500, z: 5}
+  m_Center: {x: 0, y: 0, z: 5}
 --- !u!1 &540388478
 GameObject:
   m_ObjectHideFlags: 0
@@ -2064,6 +2092,7 @@ MonoBehaviour:
     PlayerPos: 0
     Progress: 0
     MineArr: 
+    GetFromMine: []
   mTextEffectPos: {fileID: 0}
   WorkIncrese: 1.2
   GemCostIncrese: 1.3
@@ -2374,6 +2403,7 @@ GameObject:
   - component: {fileID: 1064315965}
   - component: {fileID: 1064315967}
   - component: {fileID: 1064315966}
+  - component: {fileID: 1064315968}
   m_Layer: 5
   m_Name: PlayerUpgradeWindow
   m_TagString: Untagged
@@ -2437,6 +2467,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1064315964}
   m_CullTransparentMesh: 0
+--- !u!65 &1064315968
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1064315964}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 940, y: 500, z: 5}
+  m_Center: {x: 0, y: 0, z: 5}
 --- !u!1 &1094088523
 GameObject:
   m_ObjectHideFlags: 0
@@ -3260,7 +3303,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 225}
+  m_AnchoredPosition: {x: 0, y: 224.75044}
   m_SizeDelta: {x: 821, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1297741782
@@ -3794,9 +3837,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mInfoArr: []
   mTextInfoArr: []
-  mElementPrefab: {fileID: 1379399122265667899, guid: 1afe6035e80134240b3290fb1965dd08,
+  mElementPrefab: {fileID: 889934510873513002, guid: 1afe6035e80134240b3290fb1965dd08,
     type: 3}
   mElementArea: {fileID: 2042276795}
+  mCurrentTime: 0
 --- !u!1 &1623854809
 GameObject:
   m_ObjectHideFlags: 0
@@ -4650,7 +4694,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 225}
-  m_SizeDelta: {x: 821, y: 933.6}
+  m_SizeDelta: {x: 821, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &2042276796
 MonoBehaviour:
@@ -4674,8 +4718,8 @@ MonoBehaviour:
   m_StartAxis: 0
   m_CellSize: {x: 821, y: 175}
   m_Spacing: {x: 0, y: 20}
-  m_Constraint: 0
-  m_ConstraintCount: 2
+  m_Constraint: 1
+  m_ConstraintCount: 1
 --- !u!114 &2042276797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4688,8 +4732,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalFit: 0
-  m_VerticalFit: 0
+  m_HorizontalFit: 1
+  m_VerticalFit: 1
 --- !u!114 &2042276798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4740,7 +4784,7 @@ GameObject:
   - component: {fileID: 2047944535}
   m_Layer: 0
   m_Name: TouchManager
-  m_TagString: Untagged
+  m_TagString: Touch
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

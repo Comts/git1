@@ -112,6 +112,21 @@ public class SaveDataController : MonoBehaviour
             }
             mUser.MineArr = temp;
         }
+
+        if (mUser.GetFromMine == null)
+        {
+            mUser.GetFromMine = new double[Constants.MINE_COUNT];
+        }
+        else if (mUser.GetFromMine.Length != Constants.MINE_COUNT)
+        {
+            double[] temp = new double[Constants.MINE_COUNT];
+            int count = Mathf.Min(Constants.MINE_COUNT, mUser.MineArr.Length);
+            for (int i = 0; i < count; i++)
+            {
+                temp[i] = mUser.GetFromMine[i];
+            }
+            mUser.GetFromMine = temp;
+        }
     }
 
     protected void CreateNewSaveData()
@@ -140,6 +155,7 @@ public class SaveDataController : MonoBehaviour
         mUser.CoworkerLevelArr[0] = 0;
 
         mUser.MineArr = new int[Constants.MINE_COUNT];
+        mUser.GetFromMine = new double[Constants.MINE_COUNT];
 
 
     }

@@ -87,6 +87,15 @@ public class GameController : SaveDataController
         }
 
     }
+    public double[] AddFromMine
+    {
+        get { return mUser.GetFromMine; }
+        set
+        {
+            mUser.GetFromMine = value;
+        }
+
+    }
     private void Awake()
     {
         if(Instance == null)
@@ -191,8 +200,5 @@ public class GameController : SaveDataController
         ////TODO Icon 변경 effect.SetIcon();
         //effect.transform.position = mTextEffectPos.position;
 
-    }
-    private void Update()
-    {
     }
 }
