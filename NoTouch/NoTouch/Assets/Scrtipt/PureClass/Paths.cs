@@ -14,5 +14,9 @@
     public const string MINE_INFO_TABLE = JSON_FILE_LOCATION + "MineInfo";
     public const string MINE_TEXT_INFO_TABLE = JSON_FILE_LOCATION + "MineInfoText";
     public const string MINE_ICON = "MineIcon";
+
+    public const string CRAFT_INFO_TABLE = JSON_FILE_LOCATION + "CraftInfo";
+    public const string CRAFT_TEXT_INFO_TABLE = JSON_FILE_LOCATION + "CraftInfoText";
+    public const string CRAFT_ICON = "CraftIcon";
 }
 

@@ -74,6 +74,21 @@ public class MineTextInfo
 }
 
 [Serializable]
+public class CraftInfo
+{
+    public int ID;
+    public double MaxProgress;
+
+}
+[Serializable]
+public class CraftTextInfo
+{
+    public int ID;
+    public string Title;
+    public string ContentsFormat;
+
+}
+[Serializable]
 public class SaveData
 {
     public double Gold;
