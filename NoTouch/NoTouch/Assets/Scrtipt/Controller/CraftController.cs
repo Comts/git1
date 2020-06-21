@@ -35,15 +35,29 @@ public class CraftController : InformationLoader
     void Start()
     {
 
-        LoadJson(out mInfoArr, Paths.MINE_INFO_TABLE);
+        LoadJson(out mInfoArr, Paths.CRAFT_INFO_TABLE);
         LoadJson(out mTextInfoArr,
-            Paths.MINE_TEXT_INFO_TABLE +
+            Paths.CRAFT_TEXT_INFO_TABLE +
             Paths.LANGUAGE_TYPE_ARR[GameController.Instance.LanguageType]);
 
-        mIconArr = Resources.LoadAll<Sprite>(Paths.MINE_ICON);
+        mIconArr = Resources.LoadAll<Sprite>(Paths.CRAFT_ICON);
 
         mElementList = new List<CraftUIElement>();
         Load();
+    }
+    private void Update()
+    {
+        for (int i = 0; i < mInfoArr.Length; i++) 
+        { 
+            if (GameController.Instance.AddAmoutGem_A[i] < 1000)
+            {
+                mElementList[i].SetCraftButtonActive(false);
+            }
+            else
+            {
+                mElementList[i].SetCraftButtonActive(true);
+            }
+        }
     }
     private void Load()
     {
@@ -56,16 +70,21 @@ public class CraftController : InformationLoader
             element.Init(i, mIconArr[i],
                         mTextInfoArr[i].Title,
                         mTextInfoArr[i].ContentsFormat,
-                        UnitSetter.GetUnitStr(mInfoArr[i].Cost),
-                        null);
+                        //string.Format("{0}EA", GameController.Instance.AddAmoutGem_A[i]),
+                        "1000EA",
+                        StartCraft);
 
 
             mElementList.Add(element);
-            if (GameController.Instance.HaveMine[i] != 0)
+            if (GameController.Instance.AddAmoutGem_A[i] < 1000)
             {
-                mElementList[i].SetBuyButtonActive(false);
+                mElementList[i].SetCraftButtonActive(false);
             }
         }
+    }
+    public void StartCraft(int id, int amount)
+    {
+        GameController.Instance.AddAmoutGem_A[id] -= amount;
     }
     public void ShowGaugeBar(double current, double max)
     {

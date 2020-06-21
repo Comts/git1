@@ -13,15 +13,30 @@ public class CraftUIElement : MonoBehaviour
     [SerializeField]
     private Button mCraftButton;
 #pragma warning restore 0649
-    // Start is called before the first frame update
-    void Start()
+    private int mID;
+    public void Init(int id,
+                     Sprite icon,
+                     string title,
+                     string contents,
+                     string cost,
+                     Delegates.TwoIntInVoidCallback callback)
     {
-        
+        mID = id;
+        mIconImage.sprite = icon;
+        mTitleText.text = title;
+        mContentsText.text = contents;
+        mConsumeText.text = cost;
+
+        mCraftButton.onClick.AddListener(() =>
+        {
+            callback(mID, 1000);
+        });
+
     }
 
-    // Update is called once per frame
-    void Update()
+
+    public void SetCraftButtonActive(bool isActive)
     {
-        
+        mCraftButton.interactable = isActive;
     }
 }
