@@ -46,6 +46,15 @@ public class GameController : SaveDataController
             GoldCallback = null;
         }
     }
+    #region Gem Count
+    public double[] AddAmoutGem_O
+    {
+        get { return mUser.AmoutGem_O; }
+        set
+        {
+            mUser.AmoutGem_O = value;
+        }
+    }
     public double[] AddAmoutGem_A
     {
         get { return mUser.AmoutGem_A; }
@@ -53,6 +62,39 @@ public class GameController : SaveDataController
         {
                 mUser.AmoutGem_A = value;
         }
+    }
+    public double[] AddAmoutGem_S
+    {
+        get { return mUser.AmoutGem_S; }
+        set
+        {
+            mUser.AmoutGem_S = value;
+        }
+    }
+    public double[] AddAmoutGem_SS
+    {
+        get { return mUser.AmoutGem_SS; }
+        set
+        {
+            mUser.AmoutGem_SS = value;
+        }
+    }
+    public double[] AddAmoutGem_SSS
+    {
+        get { return mUser.AmoutGem_SSS; }
+        set
+        {
+            mUser.AmoutGem_SSS = value;
+        }
+    }
+    #endregion
+    public double[] GetGemCost
+    {
+        get { return mFloorGemCost; }
+    }
+    public float[] GetRequireProgerss
+    {
+        get { return mFloorProgress; }
     }
     public int Stage
     {
@@ -193,7 +235,7 @@ public class GameController : SaveDataController
             mUser.Progress -= mFloorProgress[mUser.PlayerPos];
             gain++;
         }
-        mUser.AmoutGem_A[mUser.PlayerPos] +=gain;
+        mUser.AmoutGem_O[mUser.PlayerPos] +=gain;
 
         //TextEffect effect = TextEffectPool.Instance.GetFromPool();
         //effect.SetText(gain.ToString());

@@ -93,6 +93,7 @@ public class SaveData
 {
     public double Gold;
 
+    public double[] AmoutGem_O;
     public double[] AmoutGem_A;
     public double[] AmoutGem_S;
     public double[] AmoutGem_SS;

@@ -84,7 +84,7 @@ public class CoworkerController : InformationLoader
     public void JobFinish(int id)//TODO FX, Vector3 effectPos)
     {
         double AddAmount = mInfoArr[id].CurrentLevel * mCoworkerWork;
-        GameController.Instance.AddAmoutGem_A[id]+= AddAmount;
+        GameController.Instance.AddAmoutGem_O[id]+= AddAmount;
         //TODO FX
     }
 

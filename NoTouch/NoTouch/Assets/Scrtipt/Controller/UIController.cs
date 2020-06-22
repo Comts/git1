@@ -6,8 +6,10 @@ using UnityEngine.UI;
 public class UIController : MonoBehaviour
 {
     public static UIController Instance;
+#pragma warning disable 0649
     [SerializeField]
     private Image[] mWindowArr;
+#pragma warning restore 0649
     private void Awake()
     {
         if (Instance == null)

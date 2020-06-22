@@ -133,6 +133,7 @@ public class SaveDataController : MonoBehaviour
     {
         mUser = new SaveData();
         mUser.Gold = 0;
+        mUser.AmoutGem_O = new double[Constants.MAX_fLOOR];
         mUser.AmoutGem_A = new double[Constants.MAX_fLOOR];
         mUser.AmoutGem_S = new double[Constants.MAX_fLOOR];
         mUser.AmoutGem_SS = new double[Constants.MAX_fLOOR];

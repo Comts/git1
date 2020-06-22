@@ -63,6 +63,12 @@ public class TouchManager : MonoBehaviour
                 effect.transform.position = hit.point;
                 GameController.Instance.Touch();
             }
+            if (Physics.Raycast(ray, out hit) && hit.collider.gameObject.CompareTag("Craft"))
+            {
+                Timer effect = mEffectPool.GetFromPool();
+                effect.transform.position = hit.point;
+                CraftController.Instance.Touch();
+            }
         }
         Vector3 pos;
         if (CheckTouch(out pos))

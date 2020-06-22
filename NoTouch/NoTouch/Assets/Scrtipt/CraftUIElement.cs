@@ -30,6 +30,7 @@ public class CraftUIElement : MonoBehaviour
         mCraftButton.onClick.AddListener(() =>
         {
             callback(mID, 1000);
+            UIController.Instance.Popwindow(4);
         });
 
     }

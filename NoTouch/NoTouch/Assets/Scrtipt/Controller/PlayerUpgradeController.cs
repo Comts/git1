@@ -18,8 +18,10 @@ public class PlayerUpgradeController : InformationLoader
     private Sprite[] mIconArr;
     [SerializeField]
     private List<int> mSkillIndexList;
+#pragma warning disable 0649
     [SerializeField]
     private UIElement[] mElementArr;
+#pragma warning restore 0649
     public PlayerStatText[] GetTextInfoArr()
     {
         return mTextInfoArr;

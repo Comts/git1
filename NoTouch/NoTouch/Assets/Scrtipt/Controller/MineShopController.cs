@@ -106,7 +106,7 @@ public class MineShopController : InformationLoader
     {
         double cost = mInfoArr[id].Cost;
         GameController.Instance.Gold += cost;
-        GameController.Instance.AddAmoutGem_A[id] += GameController.Instance.AddFromMine[id];
+        GameController.Instance.AddAmoutGem_O[id] += GameController.Instance.AddFromMine[id];
         GameController.Instance.AddFromMine[id] = 0;
         GameController.Instance.HaveMine[id] = 0;
         mElementList[id].SetBuyButtonActive(true);
