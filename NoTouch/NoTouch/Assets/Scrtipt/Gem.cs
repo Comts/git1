@@ -19,26 +19,15 @@ public class Gem : MonoBehaviour
     private double GapCal;
 
     // Start is called before the first frame update
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
 
     private void OnEnable()
     {
-        mShiftGap = new double[4];
         mCurrentImageIndex = 0;
         mRenderer.sprite = mSprites[0];
     }
     public double SetShiftGap(int id)
     {
+        mShiftGap = new double[Constants.GEM_RANK_COUNT];
         mGemCost = GameController.Instance.GetGemCost[id];
         mGemProgress = GameController.Instance.GetRequireProgerss[id];
         GapCal= mGemProgress * mGemCost * 1000 * 0.8;

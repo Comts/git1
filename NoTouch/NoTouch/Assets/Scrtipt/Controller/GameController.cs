@@ -235,7 +235,7 @@ public class GameController : SaveDataController
             mUser.Progress -= mFloorProgress[mUser.PlayerPos];
             gain++;
         }
-        mUser.AmoutGem_O[mUser.PlayerPos] +=gain;
+        AddAmoutGem_O[mUser.PlayerPos] +=gain;
 
         //TextEffect effect = TextEffectPool.Instance.GetFromPool();
         //effect.SetText(gain.ToString());

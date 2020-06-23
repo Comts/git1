@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CraftController : InformationLoader
 {
@@ -26,7 +27,15 @@ public class CraftController : InformationLoader
 
     [SerializeField]
     private GaugeBar mGaugeBar;
+    [SerializeField]
+    private Image mPopWindow;
+    [SerializeField]
+    private Transform mGemArea;
+    [SerializeField]
+    private GemPool mGemPool;
 #pragma warning restore 0649
+    [SerializeField]
+    private Gem mCurrentGem;
     private Coroutine mCraftCountDown;
     private IEnumerator CraftCountDown(float time)
     {
@@ -36,27 +45,43 @@ public class CraftController : InformationLoader
             yield return frame;
             time -= Time.fixedDeltaTime;
         }
-        switch (GemGrade)    
+        CraftFinish();
+    }
+
+    public void CraftFinish()
+    {
+        switch (GemGrade)
         {
             case 0:
-                GameController.Instance.AddAmoutGem_A[GemID]++;
+                GameController.Instance.AddAmoutGem_O[GemID]+=800;
                 break;
             case 1:
-                GameController.Instance.AddAmoutGem_S[GemID]++;
+                GameController.Instance.AddAmoutGem_A[GemID]++;
                 break;
             case 2:
-                GameController.Instance.AddAmoutGem_SS[GemID]++;
+                GameController.Instance.AddAmoutGem_S[GemID]++;
                 break;
             case 3:
+                GameController.Instance.AddAmoutGem_SS[GemID]++;
+                break;
+            case 4:
                 GameController.Instance.AddAmoutGem_SSS[GemID]++;
                 break;
             default:
                 Debug.LogError("GemGrade Error " + GemGrade);
                 break;
         }
+        mPopWindow.gameObject.SetActive(false);
+        if (mCurrentGem != null)
+        {
+            mCurrentGem.gameObject.SetActive(false);
+        }
+        mCurrentGem = null;
         UIController.Instance.Popwindow(3);
+        StopCoroutine(mCraftCountDown);
         mCraftCountDown = null;
     }
+
     private void Awake()
     {
         if (Instance == null)
@@ -79,8 +104,7 @@ public class CraftController : InformationLoader
         mIconArr = Resources.LoadAll<Sprite>(Paths.CRAFT_ICON);
 
         mElementList = new List<CraftUIElement>();
-        mTouchPower = GameController.Instance.ManPower;
-        mCraftTime = 60;
+        mCraftTime = Constants.CRAFT_TIME;
         Load();
     }
     private void Update()
@@ -123,12 +147,14 @@ public class CraftController : InformationLoader
     public void StartCraft(int id, int amount)
     {
         GameController.Instance.AddAmoutGem_O[id] -= amount;
-        //CraftLastProgress = Gem.Instance.SetShiftGap(id);
         CurrentProgress = 0;
         mCraftCountDown = StartCoroutine(CraftCountDown(mCraftTime));
         GemID = id;
         GemGrade = 0;
-        CraftLastProgress = Gem.Instance.SetShiftGap(id);
+        mCurrentGem = mGemPool.GetFromPool(GemID);
+        CraftLastProgress = mCurrentGem.SetShiftGap(id);
+        mTouchPower = GameController.Instance.ManPower;
+        ShowGaugeBar(CurrentProgress, CraftLastProgress);
     }
     public void ShowGaugeBar(double current, double max)
     {
@@ -142,19 +168,16 @@ public class CraftController : InformationLoader
     {
         if(CurrentProgress >= CraftLastProgress)
         {
-            GameController.Instance.AddAmoutGem_SSS[GemID]++;
-            StopCoroutine(mCraftCountDown);
-            UIController.Instance.Popwindow(3);
-            mCraftCountDown = null;
+            CraftFinish();
         }
         else
         {
             CurrentProgress += mTouchPower;
-            if(CurrentProgress > CraftLastProgress)
+            if (CurrentProgress > CraftLastProgress)
             {
                 CurrentProgress = CraftLastProgress;
             }
-            GemGrade = Gem.Instance.SetProgress(CurrentProgress);
+            GemGrade = mCurrentGem.SetProgress(CurrentProgress);
         }
         ShowGaugeBar(CurrentProgress, CraftLastProgress);
     }
