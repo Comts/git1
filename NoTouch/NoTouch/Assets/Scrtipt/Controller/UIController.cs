@@ -23,6 +23,7 @@ public class UIController : MonoBehaviour
     }
     public void Popwindow(int id)
     {
+
         if (!mWindowArr[id].gameObject.activeInHierarchy)
         {
             mWindowArr[id].gameObject.SetActive(true);

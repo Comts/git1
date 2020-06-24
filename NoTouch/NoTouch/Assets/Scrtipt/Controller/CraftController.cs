@@ -33,6 +33,8 @@ public class CraftController : InformationLoader
     private Transform mGemArea;
     [SerializeField]
     private GemPool mGemPool;
+    [SerializeField]
+    private Image mButtonBlock;
 #pragma warning restore 0649
     [SerializeField]
     private Gem mCurrentGem;
@@ -78,8 +80,12 @@ public class CraftController : InformationLoader
         }
         mCurrentGem = null;
         UIController.Instance.Popwindow(3);
-        StopCoroutine(mCraftCountDown);
+        if (mCraftCountDown != null)
+        {
+            StopCoroutine(mCraftCountDown);
+        }
         mCraftCountDown = null;
+        mButtonBlock.gameObject.SetActive(false);
     }
 
     private void Awake()
@@ -155,6 +161,7 @@ public class CraftController : InformationLoader
         CraftLastProgress = mCurrentGem.SetShiftGap(id);
         mTouchPower = GameController.Instance.ManPower;
         ShowGaugeBar(CurrentProgress, CraftLastProgress);
+        mButtonBlock.gameObject.SetActive(true);
     }
     public void ShowGaugeBar(double current, double max)
     {
