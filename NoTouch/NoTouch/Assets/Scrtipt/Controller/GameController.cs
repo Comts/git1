@@ -208,11 +208,11 @@ public class GameController : SaveDataController
     }
     public float[] GetSkillCooltimeArr()
     {
-        return mUser.SkillCooltimeArr;
+        return mUser.ItemCooltimeArr;
     }
     public float[] GetSkillMaxCooltimeArr()
     {
-        return mUser.SkillMaxCooltimeArr;
+        return mUser.ItemMaxCooltimeArr;
     }
     public int[] GetCoworkerLevelArr()
     {
@@ -235,7 +235,7 @@ public class GameController : SaveDataController
             mUser.Progress -= mFloorProgress[mUser.PlayerPos];
             gain++;
         }
-        AddAmoutGem_O[mUser.PlayerPos] +=gain;
+        AddAmoutGem_O[mUser.PlayerPos] +=(gain * ItemUseController.Instance.GetGemMulti[0]);
 
         //TextEffect effect = TextEffectPool.Instance.GetFromPool();
         //effect.SetText(gain.ToString());

@@ -44,34 +44,34 @@ public class SaveDataController : MonoBehaviour
             mUser.PlayerLevelArr = temp;
         }
 
-        if (mUser.SkillCooltimeArr == null)
+        if (mUser.ItemCooltimeArr == null)
         {
-            mUser.SkillCooltimeArr = new float[Constants.SKILL_COUNT];
+            mUser.ItemCooltimeArr = new float[Constants.USEITEM_AMOUT];
         }
-        else if (mUser.SkillCooltimeArr.Length != Constants.SKILL_COUNT)
+        else if (mUser.ItemCooltimeArr.Length != Constants.USEITEM_AMOUT)
         {
-            float[] temp = new float[Constants.SKILL_COUNT];
-            int count = Mathf.Min(Constants.SKILL_COUNT, mUser.SkillCooltimeArr.Length);
+            float[] temp = new float[Constants.USEITEM_AMOUT];
+            int count = Mathf.Min(Constants.USEITEM_AMOUT, mUser.ItemCooltimeArr.Length);
             for (int i = 0; i < count; i++)
             {
-                temp[i] = mUser.SkillCooltimeArr[i];
+                temp[i] = mUser.ItemCooltimeArr[i];
             }
-            mUser.SkillCooltimeArr = temp;
+            mUser.ItemCooltimeArr = temp;
         }
 
-        if (mUser.SkillMaxCooltimeArr == null)
+        if (mUser.ItemMaxCooltimeArr == null)
         {
-            mUser.SkillMaxCooltimeArr = new float[Constants.SKILL_COUNT];
+            mUser.ItemMaxCooltimeArr = new float[Constants.USEITEM_AMOUT];
         }
-        else if (mUser.SkillMaxCooltimeArr.Length != Constants.SKILL_COUNT)
+        else if (mUser.ItemMaxCooltimeArr.Length != Constants.USEITEM_AMOUT)
         {
-            float[] temp = new float[Constants.SKILL_COUNT];
-            int count = Mathf.Min(Constants.SKILL_COUNT, mUser.SkillMaxCooltimeArr.Length);
+            float[] temp = new float[Constants.USEITEM_AMOUT];
+            int count = Mathf.Min(Constants.USEITEM_AMOUT, mUser.ItemMaxCooltimeArr.Length);
             for (int i = 0; i < count; i++)
             {
-                temp[i] = mUser.SkillMaxCooltimeArr[i];
+                temp[i] = mUser.ItemMaxCooltimeArr[i];
             }
-            mUser.SkillMaxCooltimeArr = temp;
+            mUser.ItemMaxCooltimeArr = temp;
         }
         if (mUser.CoworkerLevelArr == null)
         {
@@ -145,8 +145,8 @@ public class SaveDataController : MonoBehaviour
         mUser.Progress = 0;
 
         mUser.PlayerLevelArr = new int[Constants.PLAYER_STAT_COUNT];
-        mUser.SkillCooltimeArr = new float[Constants.SKILL_COUNT];
-        mUser.SkillMaxCooltimeArr = new float[Constants.SKILL_COUNT];
+        mUser.ItemCooltimeArr = new float[Constants.USEITEM_AMOUT];
+        mUser.ItemMaxCooltimeArr = new float[Constants.USEITEM_AMOUT];
 
         mUser.CoworkerLevelArr = new int [Constants.MAX_fLOOR];
         for (int i = 0; i < mUser.CoworkerLevelArr.Length; i++)

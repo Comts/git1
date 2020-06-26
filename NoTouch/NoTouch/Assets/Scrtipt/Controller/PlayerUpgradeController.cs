@@ -13,11 +13,7 @@ public class PlayerUpgradeController : InformationLoader
     private PlayerStat[] mInfoArr;
     [SerializeField]
     private PlayerStatText[] mTextInfoArr;
-    [SerializeField]
-    private float[] mSkillCooltimeArr, mSkillMaxCooltimeArr;
     private Sprite[] mIconArr;
-    [SerializeField]
-    private List<int> mSkillIndexList;
 #pragma warning disable 0649
     [SerializeField]
     private UIElement[] mElementArr;
@@ -50,16 +46,9 @@ public class PlayerUpgradeController : InformationLoader
         mIconArr = Resources.LoadAll<Sprite>(Paths.PLAYER_ICON);
 
         mLevelArr = GameController.Instance.GetPlayerLevelArr();
-        mSkillCooltimeArr = GameController.Instance.GetSkillCooltimeArr();
-        mSkillMaxCooltimeArr = GameController.Instance.GetSkillMaxCooltimeArr();
-        mSkillIndexList = new List<int>();
         //mElementArr = new UIElement[Constants.PLAYER_STAT_COUNT];
         for (int i = 0; i < mInfoArr.Length; i++)
         {
-            if (mInfoArr[i].Cooltime > 0)
-            {
-                mSkillIndexList.Add(i);
-            }
 
             mInfoArr[i].CurrentLevel = mLevelArr[i];
             

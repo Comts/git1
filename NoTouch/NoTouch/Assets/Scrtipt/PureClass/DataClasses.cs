@@ -101,8 +101,8 @@ public class SaveData
 
     public int[] PlayerLevelArr;
     public int[] CoworkerLevelArr;
-    public float[] SkillCooltimeArr;
-    public float[] SkillMaxCooltimeArr;
+    public float[] ItemCooltimeArr;
+    public float[] ItemMaxCooltimeArr;
 
     public int Stage;
     public int PlayerPos;
