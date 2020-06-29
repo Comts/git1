@@ -37,19 +37,15 @@ public class Gem : MonoBehaviour
             {
                 case 0:
                     mShiftGap[i] = GapCal * 0.2;
-                    Debug.Log(i+"번째 갭"+mShiftGap[i]);
                     break;
                 case 1:
                     mShiftGap[i] = GapCal * 0.5;
-                    Debug.Log(i + "번째 갭" + mShiftGap[i]);
                     break;
                 case 2:
                     mShiftGap[i] = GapCal * 1;
-                    Debug.Log(i + "번째 갭" + mShiftGap[i]);
                     break;
                 case 3:
                     mShiftGap[i] = GapCal * 2;
-                    Debug.Log(i + "번째 갭" + mShiftGap[i]);
                     break;
                 default:
                     Debug.LogError("mShiftGap.Length Over " + i);
@@ -76,7 +72,6 @@ public class Gem : MonoBehaviour
             }
 
         }
-        Debug.Log(mCurrentImageIndex);
         return mCurrentImageIndex;
     }
 }

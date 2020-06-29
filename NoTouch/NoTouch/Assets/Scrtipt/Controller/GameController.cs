@@ -129,6 +129,24 @@ public class GameController : SaveDataController
         }
 
     }
+    public int[] HaveItem
+    {
+        get { return mUser.HaveItmeArr; }
+        set
+        {
+            mUser.HaveItmeArr = value;
+        }
+
+    }
+    public float[] GetItemCooltimeArr()
+    {
+        return mUser.ItemCooltimeArr;
+    }
+
+    public float[] GetItemMaxCooltimeArr()
+    {
+        return mUser.ItemMaxCooltimeArr;
+    }
     public double[] AddFromMine
     {
         get { return mUser.GetFromMine; }

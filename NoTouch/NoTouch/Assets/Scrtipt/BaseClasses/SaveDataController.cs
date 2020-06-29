@@ -73,6 +73,20 @@ public class SaveDataController : MonoBehaviour
             }
             mUser.ItemMaxCooltimeArr = temp;
         }
+        if (mUser.HaveItmeArr == null)
+        {
+            mUser.HaveItmeArr = new int[Constants.ITEM_COUNT];
+        }
+        else if (mUser.HaveItmeArr.Length != Constants.ITEM_COUNT)
+        {
+            int[] temp = new int[Constants.ITEM_COUNT];
+            int count = Mathf.Min(Constants.ITEM_COUNT, mUser.HaveItmeArr.Length);
+            for (int i = 0; i < count; i++)
+            {
+                temp[i] = mUser.HaveItmeArr[i];
+            }
+            mUser.HaveItmeArr = temp;
+        }
         if (mUser.CoworkerLevelArr == null)
         {
             mUser.CoworkerLevelArr = new int[Constants.MAX_fLOOR];
@@ -147,6 +161,9 @@ public class SaveDataController : MonoBehaviour
         mUser.PlayerLevelArr = new int[Constants.PLAYER_STAT_COUNT];
         mUser.ItemCooltimeArr = new float[Constants.USEITEM_AMOUT];
         mUser.ItemMaxCooltimeArr = new float[Constants.USEITEM_AMOUT];
+        mUser.HaveItmeArr = new int[Constants.ITEM_COUNT];
+        mUser.HaveItmeArr[0] = 5;
+        mUser.HaveItmeArr[1] = 1;
 
         mUser.CoworkerLevelArr = new int [Constants.MAX_fLOOR];
         for (int i = 0; i < mUser.CoworkerLevelArr.Length; i++)
