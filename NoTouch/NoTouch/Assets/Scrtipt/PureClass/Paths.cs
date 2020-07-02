@@ -18,5 +18,8 @@
     public const string CRAFT_INFO_TABLE = JSON_FILE_LOCATION + "CraftInfo";
     public const string CRAFT_TEXT_INFO_TABLE = JSON_FILE_LOCATION + "CraftInfoText";
     public const string CRAFT_ICON = "CraftIcon";
+
+    public const string SELLGEM_INFO_TABLE = JSON_FILE_LOCATION + "SellGemInfo";
+    public const string SELLGEM_TEXT_INFO_TABLE = JSON_FILE_LOCATION + "SellGemInfoText";
 }
 

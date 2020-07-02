@@ -74,4 +74,8 @@ public class Gem : MonoBehaviour
         }
         return mCurrentImageIndex;
     }
+    public Sprite GetSprite(int id)
+    {
+        return mSprites[id];
+    }
 }

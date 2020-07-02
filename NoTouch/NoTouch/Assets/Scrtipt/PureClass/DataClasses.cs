@@ -88,6 +88,22 @@ public class CraftTextInfo
     public string ContentsFormat;
 
 }
+
+[Serializable]
+public class GemSellInfo
+{
+    public int ID;
+    public double Cost;
+
+}
+[Serializable]
+public class GemSellTextInfo
+{
+    public int ID;
+    public string Title;
+    public string ContentsFormat;
+
+}
 [Serializable]
 public class SaveData
 {

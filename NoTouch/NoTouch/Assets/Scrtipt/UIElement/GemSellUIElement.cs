@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,19 +16,20 @@ public class GemSellUIElement : MonoBehaviour
     [SerializeField]
     private Slider mSlider;
     private double mSellAmount;
+    private double mMaxSellAmount;
 #pragma warning restore 0649
 
     private int mID;
     public void Init(int id,
                      Sprite icon,
                      string title,
-                     string amount,
                      string contents,
                      Delegates.IntDoubleInVoidCallback callback)
     {
         mID = id;
         mIconImage.sprite = icon;
         mTitleText.text = title;
+        mContentsText.text = contents;
         CalSellAmount();
 
         mButton.onClick.AddListener(() =>
@@ -50,23 +52,32 @@ public class GemSellUIElement : MonoBehaviour
         switch(div)
         {
             case 0:
-                mSellAmount = GameController.Instance.AddAmoutGem_O[mID / 5];
+                mMaxSellAmount = GameController.Instance.AddAmoutGem_O[mID / 5];
                 break;
             case 1:
-                mSellAmount = GameController.Instance.AddAmoutGem_A[mID / 5];
+                mMaxSellAmount = GameController.Instance.AddAmoutGem_A[mID / 5];
                 break;
             case 2:
-                mSellAmount = GameController.Instance.AddAmoutGem_S[mID / 5];
+                mMaxSellAmount = GameController.Instance.AddAmoutGem_S[mID / 5];
                 break;
             case 3:
-                mSellAmount = GameController.Instance.AddAmoutGem_SS[mID / 5];
+                mMaxSellAmount = GameController.Instance.AddAmoutGem_SS[mID / 5];
                 break;
             case 4:
-                mSellAmount = GameController.Instance.AddAmoutGem_SSS[mID / 5];
+                mMaxSellAmount = GameController.Instance.AddAmoutGem_SSS[mID / 5];
                 break;
         }
-        mAmountText.text = mSellAmount.ToString();
-        mSellAmountText.text = (mSlider.value * mSellAmount).ToString();
+        if (mMaxSellAmount > 0)
+        {
+            SetButtonActive(true);
+        }
+        else
+        {
+            SetButtonActive(false);
+        }
+        mAmountText.text = mMaxSellAmount.ToString();
+        mSellAmount = Math.Round( mSlider.value * mMaxSellAmount);
+        mSellAmountText.text = string.Format("-{0}", mSellAmount);
     }
 
 }

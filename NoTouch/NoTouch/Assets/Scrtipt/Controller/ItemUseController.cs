@@ -9,8 +9,10 @@ public class ItemUseController : MonoBehaviour
     [SerializeField]
     private float[] mItemCooltimeArr, mItemMaxCooltimeArr;
 
+#pragma warning disable 0649
     [SerializeField]
     private ItemButton[] mItemButtonArr;
+#pragma warning restore 0649
     public double[] GetGemMulti { get; set; }
     public double SellGemMulti { get; set; }
     // Start is called before the first frame update
