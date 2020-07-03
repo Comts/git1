@@ -44,6 +44,16 @@ public class GemSellUIElement : MonoBehaviour
     {
         mButton.interactable = isActive;
     }
+    public void SetSliderActive(bool isActive)
+    {
+
+        mSlider.interactable = isActive;
+    }
+    public void ReSetSlider()
+    {
+
+        mSlider.value = 1;
+    }
 
     public void CalSellAmount()
     {
@@ -70,10 +80,12 @@ public class GemSellUIElement : MonoBehaviour
         if (mMaxSellAmount > 0)
         {
             SetButtonActive(true);
+            SetSliderActive(true);
         }
         else
         {
             SetButtonActive(false);
+            SetSliderActive(false);
         }
         mAmountText.text = mMaxSellAmount.ToString();
         mSellAmount = Math.Round( mSlider.value * mMaxSellAmount);

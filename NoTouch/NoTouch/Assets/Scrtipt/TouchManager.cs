@@ -62,6 +62,7 @@ public class TouchManager : MonoBehaviour
                 Timer effect = mEffectPool.GetFromPool();
                 effect.transform.position = hit.point;
                 GameController.Instance.Touch();
+                GemSellController.Instance.RefreshGemData();
             }
             if (Physics.Raycast(ray, out hit) && hit.collider.gameObject.CompareTag("Craft"))
             {

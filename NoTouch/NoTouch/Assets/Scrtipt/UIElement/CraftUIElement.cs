@@ -34,7 +34,10 @@ public class CraftUIElement : MonoBehaviour
         });
 
     }
-
+    private void Update()
+    {
+        mAmonutText.text = GameController.Instance.AddAmoutGem_O[mID].ToString();
+    }
 
     public void SetCraftButtonActive(bool isActive)
     {

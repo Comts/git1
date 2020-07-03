@@ -85,6 +85,7 @@ public class CoworkerController : InformationLoader
     {
         double AddAmount = mInfoArr[id].CurrentLevel * mCoworkerWork;
         GameController.Instance.AddAmoutGem_O[id]+= (AddAmount * ItemUseController.Instance.GetGemMulti[1]);
+        GemSellController.Instance.RefreshGemData();
         //TODO FX
     }
 

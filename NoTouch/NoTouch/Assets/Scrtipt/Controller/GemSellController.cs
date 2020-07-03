@@ -61,6 +61,14 @@ public class GemSellController : InformationLoader
             mElementList.Add(element);
         }
     }
+    public void RefreshGemData()
+    {
+        for(int i =0; i<mInfoArr.Length;i++)
+        {
+            mElementList[i].CalSellAmount();
+            mElementList[i].ReSetSlider();
+        }
+    }
     public void SellGem(int id, double amount)
     {
         double cost = mInfoArr[id].Cost * amount;
@@ -87,6 +95,7 @@ public class GemSellController : InformationLoader
         }
         GameController.Instance.Gold += cost;
         mElementList[id].CalSellAmount();
+        mElementList[id].ReSetSlider();
     }
 
 }
