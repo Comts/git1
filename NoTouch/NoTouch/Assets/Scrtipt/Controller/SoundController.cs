@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Audio;
 
 public class SoundController : MonoBehaviour
@@ -8,13 +9,16 @@ public class SoundController : MonoBehaviour
     private const string MIXER_MASTER = "MixerMaster";
     private const string MIXER_BGM = "MixerBGM";
     private const string MIXER_FX = "MixerEffect";
+#pragma warning disable 0649
     [SerializeField]
     private AudioSource mBGM, mEffect;
     [SerializeField]
     private AudioClip[] mBGMArr, mEffectArr;
     [SerializeField]
     private AudioMixer mMixer;
-
+    [SerializeField] 
+    private Image mMuteMaster,mMuteBGM, mMuteEffect;
+#pragma warning restore 0649
     private float LoadMaster,LoadBGM,LoadFX;
     public float MasterVolume
     {
@@ -31,18 +35,23 @@ public class SoundController : MonoBehaviour
             {
                 LoadMaster = value;
             }
-            mMixer.SetFloat(MIXER_MASTER, vol);
+            if(!mMuteMaster.gameObject.activeInHierarchy)
+            {
+                mMixer.SetFloat(MIXER_MASTER, vol);
+            }
         }
     }
     public void MuteMasterVolume()
     {
-        if(LoadMaster != 0.00001f)
+        if (!mMuteMaster.gameObject.activeInHierarchy)
         {
             MasterVolume = 0.00001f;
+            mMuteMaster.gameObject.SetActive(true);
         }
         else
         {
             MasterVolume = LoadMaster;
+            mMuteMaster.gameObject.SetActive(false);
         }
     }
 
@@ -61,18 +70,23 @@ public class SoundController : MonoBehaviour
             {
                 LoadBGM = value;
             }
-            mMixer.SetFloat(MIXER_BGM, vol);
+            if (!mMuteBGM.gameObject.activeInHierarchy)
+            {
+                mMixer.SetFloat(MIXER_BGM, vol);
+            }
         }
     }
     public void MuteBGMVolume()
     {
-        if (LoadBGM != 0.00001f)
+        if (!mMuteBGM.gameObject.activeInHierarchy)
         {
             BGMVolume = 0.00001f;
+            mMuteBGM.gameObject.SetActive(true);
         }
         else
         {
             BGMVolume = LoadBGM;
+            mMuteBGM.gameObject.SetActive(false);
         }
     }
 
@@ -91,18 +105,23 @@ public class SoundController : MonoBehaviour
             {
                 LoadFX = value;
             }
-            mMixer.SetFloat(MIXER_FX, vol);
+            if (!mMuteEffect.gameObject.activeInHierarchy)
+            {
+                mMixer.SetFloat(MIXER_FX, vol);
+            }
         }
     }
     public void MuteEffectVolume()
     {
-        if (LoadFX != 0.00001f)
+        if (!mMuteEffect.gameObject.activeInHierarchy)
         {
             EffectVolume = 0.00001f;
+            mMuteEffect.gameObject.SetActive(true);
         }
         else
         {
             EffectVolume = LoadFX;
+            mMuteEffect.gameObject.SetActive(false);
         }
     }
 

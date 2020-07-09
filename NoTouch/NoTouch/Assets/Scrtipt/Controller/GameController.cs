@@ -215,6 +215,37 @@ public class GameController : SaveDataController
         }
 
     }
+    public void ReStart()
+    {
+        mUser.Gold = 0;
+        mUser.AmoutGem_O = new double[Constants.MAX_fLOOR];
+        mUser.AmoutGem_A = new double[Constants.MAX_fLOOR];
+        mUser.AmoutGem_S = new double[Constants.MAX_fLOOR];
+        mUser.AmoutGem_SS = new double[Constants.MAX_fLOOR];
+        mUser.AmoutGem_SSS = new double[Constants.MAX_fLOOR];
+
+
+        mUser.Stage = 0;
+        mUser.PlayerPos = 0;
+        mUser.Progress = 0;
+
+        mUser.PlayerLevelArr = new int[Constants.PLAYER_STAT_COUNT];
+        mUser.ItemCooltimeArr = new float[Constants.USEITEM_AMOUT];
+        mUser.ItemMaxCooltimeArr = new float[Constants.USEITEM_AMOUT];
+        mUser.HaveItmeArr = new int[Constants.ITEM_COUNT];
+        mUser.HaveItmeArr[0] = 5;
+        mUser.HaveItmeArr[1] = 1;
+
+        mUser.CoworkerLevelArr = new int[Constants.MAX_fLOOR];
+        for (int i = 0; i < mUser.CoworkerLevelArr.Length; i++)
+        {
+            mUser.CoworkerLevelArr[i] = -1;
+        }
+        mUser.CoworkerLevelArr[0] = 0;
+
+        mUser.MineArr = new int[Constants.MINE_COUNT];
+        mUser.GetFromMine = new double[Constants.MINE_COUNT];
+    }
     private void OnApplicationQuit()
     {
         Save();

@@ -174,8 +174,6 @@ public class SaveDataController : MonoBehaviour
 
         mUser.MineArr = new int[Constants.MINE_COUNT];
         mUser.GetFromMine = new double[Constants.MINE_COUNT];
-
-
     }
 
     protected void Save()
