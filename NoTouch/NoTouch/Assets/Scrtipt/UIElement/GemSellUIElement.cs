@@ -17,6 +17,9 @@ public class GemSellUIElement : MonoBehaviour
     private Slider mSlider;
     private double mSellAmount;
     private double mMaxSellAmount;
+    [SerializeField]
+    private Toggle mToggle;
+    private bool bToggleOn;
 #pragma warning restore 0649
 
     private int mID;
@@ -36,7 +39,18 @@ public class GemSellUIElement : MonoBehaviour
         {
             callback(mID, mSellAmount);
         });
+        mToggle.onValueChanged.AddListener((bOn) =>
+        {
+            bToggleOn= bOn;
+        });
 
+    }
+    private void Update()
+    {
+        if(bToggleOn)
+        {
+            GemSellController.Instance.SellGem(mID, mMaxSellAmount);
+        }
     }
 
 
