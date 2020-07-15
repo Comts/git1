@@ -2,3 +2,16 @@ alt + w 선택창 확대
 F3,4 보기 변경
 shift drag 복사
 원점 잡기 z
+alt+c cut
+m 머티리얼
+backspace 지우기
+3D모델링 삼각형이나 사각형으로 마무리
+compound
+extrude
+=========
+modifier List
+3번째에서 s symmetry
+slice along mirror
+
+e Edit Poly
+
