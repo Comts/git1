@@ -105,6 +105,14 @@ public class GameController : SaveDataController
         }
 
     }
+    public int PlayerPos
+    {
+        get { return mUser.PlayerPos; }
+        set
+        {
+            mUser.PlayerPos = value;
+        }
+    }
     public double ManPower
     {
         get { return mManPower; }
