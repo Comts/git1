@@ -12,6 +12,8 @@ public class StageController : MonoBehaviour
     private StageUIElement mElementPrefab;
     [SerializeField]
     private Transform mElementArea;
+    [SerializeField]
+    private Transform mLastSibling;
 #pragma warning restore 0649
     private void Awake()
     {
@@ -43,5 +45,12 @@ public class StageController : MonoBehaviour
             mElementList.Add(element);
         }
         mElementList[GameController.Instance.PlayerPos].PlayerActive(true);
+    }
+    public void AddStage()
+    {
+        if (GameController.Instance.Stage < Constants.MAX_fLOOR)
+        {
+            mLastSibling.transform.SetAsLastSibling();
+        }
     }
 }
