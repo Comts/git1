@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class StageController : MonoBehaviour
@@ -13,7 +14,7 @@ public class StageController : MonoBehaviour
     [SerializeField]
     private Transform mElementArea;
     [SerializeField]
-    private Transform mLastSibling;
+    private AddStageUIElement mLastSibling;
 #pragma warning restore 0649
     private void Awake()
     {
@@ -44,13 +45,50 @@ public class StageController : MonoBehaviour
 
             mElementList.Add(element);
         }
-        mElementList[GameController.Instance.PlayerPos].PlayerActive(true);
-    }
-    public void AddStage()
-    {
+        mLastSibling.Init(mElementList.Count, UnitSetter.GetUnitStr(100000 * math.pow(2, mElementList.Count-1)), AddStage); 
         if (GameController.Instance.Stage < Constants.MAX_fLOOR)
         {
             mLastSibling.transform.SetAsLastSibling();
+        }
+        else
+        {
+            mLastSibling.gameObject.SetActive(false);
+        }
+        mElementList[GameController.Instance.PlayerPos].PlayerActive(true);
+    }
+    public void AddStage(int id, int amount)
+    {
+        Delegates.VoidCallback callback = () => { AddStageCallback(id, amount); };
+
+        GameController.Instance.GoldCallback = callback;
+        double cost = 100000*math.pow(2,id);
+        Debug.Log(cost);
+        GameController.Instance.Gold -= cost;
+    }
+    public void AddStageCallback(int id, int amoun)
+    {
+        GameController.Instance.Stage = id;
+        int nextID = id + 1;
+        Debug.Log(mElementList.Count);
+        Debug.Log(nextID);
+
+        if (mElementList.Count <= nextID)
+        {
+
+            StageUIElement element = Instantiate(mElementPrefab, mElementArea);
+            element.Init(nextID, mAnimArr[nextID]);
+
+
+            mElementList.Add(element);
+            mLastSibling.Refresh(UnitSetter.GetUnitStr(100000 * math.pow(2, nextID)));
+        }
+        if (GameController.Instance.Stage < Constants.MAX_fLOOR)
+        {
+            mLastSibling.transform.SetAsLastSibling();
+        }
+        else
+        {
+            mLastSibling.gameObject.SetActive(false);
         }
     }
 }
