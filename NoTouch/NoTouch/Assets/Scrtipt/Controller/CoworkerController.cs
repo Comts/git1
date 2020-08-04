@@ -109,7 +109,7 @@ public class CoworkerController : InformationLoader
         if(mInfoArr[id].CurrentLevel == 1)
         {
             mCoworkerArr[id].gameObject.SetActive(true);
-
+            StageController.Instance.CoworkerActive(id);
         }
         if (mInfoArr[id].CurrentLevel >= 10 && GameController.Instance.Stage > id && id<mInfoArr.Length)
         {

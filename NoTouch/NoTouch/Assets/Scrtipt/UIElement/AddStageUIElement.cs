@@ -18,16 +18,16 @@ public class AddStageUIElement : MonoBehaviour
                      string cost,
                      Delegates.TwoIntInVoidCallback callback)
     {
-        mID = id;
-        Refresh( cost);
+        Refresh(id,cost);
 
         mAddButton.onClick.AddListener(() =>
         {
             callback(mID, 1);
         });
     }
-    public void Refresh(string cost)
+    public void Refresh(int id, string cost)
     {
+        mID = id;
         mCostText.text = cost;
     }
 

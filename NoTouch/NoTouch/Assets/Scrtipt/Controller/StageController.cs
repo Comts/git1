@@ -41,9 +41,12 @@ public class StageController : MonoBehaviour
         {
             StageUIElement element = Instantiate(mElementPrefab, mElementArea);
             element.Init(i, mAnimArr[i]);
-
-
             mElementList.Add(element);
+
+            if(GameController.Instance.GetCoworkerLevelArr()[i]>0)
+            {
+                mElementList[i].CoworkerActive(true);
+            }
         }
         mLastSibling.Init(mElementList.Count, UnitSetter.GetUnitStr(100000 * math.pow(2, mElementList.Count-1)), AddStage); 
         if (GameController.Instance.Stage < Constants.MAX_fLOOR)
@@ -56,12 +59,16 @@ public class StageController : MonoBehaviour
         }
         mElementList[GameController.Instance.PlayerPos].PlayerActive(true);
     }
+    public void CoworkerActive(int f)
+    {
+        mElementList[f].CoworkerActive(true);
+    }
     public void AddStage(int id, int amount)
     {
         Delegates.VoidCallback callback = () => { AddStageCallback(id, amount); };
 
         GameController.Instance.GoldCallback = callback;
-        double cost = 100000*math.pow(2,id);
+        double cost = 100000*math.pow(2,id-1);
         Debug.Log(cost);
         GameController.Instance.Gold -= cost;
     }
@@ -69,8 +76,8 @@ public class StageController : MonoBehaviour
     {
         GameController.Instance.Stage = id;
         int nextID = id + 1;
-        Debug.Log(mElementList.Count);
-        Debug.Log(nextID);
+        Debug.Log("mElementList" + mElementList.Count);
+        Debug.Log("nextID" + nextID);
 
         if (mElementList.Count <= nextID)
         {
@@ -80,7 +87,7 @@ public class StageController : MonoBehaviour
 
 
             mElementList.Add(element);
-            mLastSibling.Refresh(UnitSetter.GetUnitStr(100000 * math.pow(2, nextID)));
+            mLastSibling.Refresh(mElementList.Count, UnitSetter.GetUnitStr(100000 * math.pow(2, id)));
         }
         if (GameController.Instance.Stage < Constants.MAX_fLOOR)
         {
