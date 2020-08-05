@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StageController : MonoBehaviour
 {
@@ -15,6 +17,8 @@ public class StageController : MonoBehaviour
     private Transform mElementArea;
     [SerializeField]
     private AddStageUIElement mLastSibling;
+    [SerializeField]
+    private Toggle[] mPlayerPos;
 #pragma warning restore 0649
     private void Awake()
     {
@@ -57,11 +61,24 @@ public class StageController : MonoBehaviour
         {
             mLastSibling.gameObject.SetActive(false);
         }
+        mPlayerPos[GameController.Instance.PlayerPos].SetIsOnWithoutNotify(true);
         mElementList[GameController.Instance.PlayerPos].PlayerActive(true);
     }
     public void CoworkerActive(int f)
     {
         mElementList[f].CoworkerActive(true);
+    }
+    public void PlayerActive(int f)
+    {
+        for(int i =0;i<= GameController.Instance.Stage;i++)
+        {
+            mElementList[i].PlayerActive(false);
+            if(i==f)
+            {
+                mElementList[f].PlayerActive(true);
+                GameController.Instance.PlayerPos = f;
+            }
+        }
     }
     public void AddStage(int id, int amount)
     {
