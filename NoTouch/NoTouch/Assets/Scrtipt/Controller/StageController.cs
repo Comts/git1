@@ -14,6 +14,10 @@ public class StageController : MonoBehaviour
     [SerializeField]
     private StageUIElement mElementPrefab;
     [SerializeField]
+    private ScrollRect mScrollArea;
+    [SerializeField]
+    private Toggle mPinToggle;
+    [SerializeField]
     private Transform mElementArea;
     [SerializeField]
     private AddStageUIElement mLastSibling;
@@ -46,8 +50,9 @@ public class StageController : MonoBehaviour
             StageUIElement element = Instantiate(mElementPrefab, mElementArea);
             element.Init(i, mAnimArr[i]);
             mElementList.Add(element);
+            PlayerButtoninteractable(i);
 
-            if(GameController.Instance.GetCoworkerLevelArr()[i]>0)
+            if (GameController.Instance.GetCoworkerLevelArr()[i]>0)
             {
                 mElementList[i].CoworkerActive(true);
             }
@@ -63,10 +68,21 @@ public class StageController : MonoBehaviour
         }
         mPlayerPos[GameController.Instance.PlayerPos].SetIsOnWithoutNotify(true);
         mElementList[GameController.Instance.PlayerPos].PlayerActive(true);
+        mPinToggle.onValueChanged.AddListener((bool bOn) =>
+        {
+            mScrollArea.vertical = !bOn;
+        });
+
+
+
     }
     public void CoworkerActive(int f)
     {
         mElementList[f].CoworkerActive(true);
+    }
+    public void PlayerButtoninteractable(int f)
+    {
+        mPlayerPos[f].interactable = true;
     }
     public void PlayerActive(int f)
     {
@@ -104,6 +120,7 @@ public class StageController : MonoBehaviour
 
 
             mElementList.Add(element);
+            PlayerButtoninteractable(id);
             mLastSibling.Refresh(mElementList.Count, UnitSetter.GetUnitStr(100000 * math.pow(2, id)));
         }
         if (GameController.Instance.Stage < Constants.MAX_fLOOR)
