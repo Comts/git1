@@ -44,6 +44,7 @@ public class GameController : SaveDataController
                 Debug.Log("not enough gold");
             }
             GoldCallback = null;
+            UIController.Instance.ShowMoney();
         }
     }
     #region Gem Count
@@ -200,6 +201,7 @@ public class GameController : SaveDataController
         mFloorProgressCal = new float[Constants.MAX_fLOOR];
         mFloorGemCost = new double[Constants.MAX_fLOOR];
         mFloorGemCostCal = new double[Constants.MAX_fLOOR];
+        UIController.Instance.ShowMoney();
         for (int i =0;i<Constants.MAX_fLOOR;i++)
         {
             if(i==0)

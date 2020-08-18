@@ -9,6 +9,8 @@ public class UIController : MonoBehaviour
 #pragma warning disable 0649
     [SerializeField]
     private Image[] mWindowArr;
+    [SerializeField]
+    private Text mMoneyText;
 #pragma warning restore 0649
     private void Awake()
     {
@@ -40,6 +42,10 @@ public class UIController : MonoBehaviour
         {
             mWindowArr[id].gameObject.SetActive(false);
         }
+    }
+    public void ShowMoney()
+    {
+        mMoneyText.text = UnitSetter.GetUnitStr(GameController.Instance.Gold);
     }
 
 }
