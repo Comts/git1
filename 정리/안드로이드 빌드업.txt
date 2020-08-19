@@ -1,0 +1,47 @@
+모듈추가 - 안드로이드 빌드 서포트 
+
+bulid setting - android 
+
+@Player Setting
+Company Name - 회사이름.팀이름.제작사이름 (DefaultCompany 스토어에 못올림)  
+Product Name - 게임이름
+플레이스토어용 Icon 사용가능 512*512
+Cursor - 전용마우스커서 필요없음
+
+-Resolution and Presentation
+Auto Rotation (Portrait/Landscape) 선택
+
+-Splash Image - 게임시작할때 뜨는 화면 /기본적으로 터치 먹음-막아야됨 
+draw mode- all sequential
+
+-Other settings
+Rendering 기본유지-3d게임때 필요
+Identification  
+ Package Name-자동으로 채워짐
+ Version 정식출시 1.0  0.8.5  3자리가능(겹치면안되고 점점 올라가는형식으로)
+ Bundle Version Code 무조건 1씩 증가 (겹치면안됨)
+ Minimum API Level - 최저지원 버전 / 놔두면됨
+
+Configuration
+ Scripting Backend - IL2CPP // json.net IL2CPP -Asset store에서 다운받아야됨.
+ Api Compatibility Level  - .NET 4.x 설정
+ Target Architerctures / ARMv7, ARM64 둘다 설정
+
+-Publishing Settings 
+Keystore Manager /git ignore있는곳에 키스토어 저장 / 프로젝트별로 새로생성
+비번
+Alias - Release
+비번
+
+빌드엔런 usb연결시 빌드후 핸드폰에 넣어줌
+
+@안드로이드핸드폰 개발자모드  usb 디버깅 해제
+Project Settings -Editor -Device-Any android device
+
+
+안될때
+@Edit - Preferences  / JDK,SDK,NDK안될때 수동설치 /JDK구버전 드랍박스에있음
+
+안드로이드-SDK매니저 
+sdk platform showpackage detail / sdk platform 19부터체크,
+sdk tools -Google Play Service,Usb Driver sdk tool ,paltform툴 skd bulid tool체크 
