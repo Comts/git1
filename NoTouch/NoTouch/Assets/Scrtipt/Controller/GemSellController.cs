@@ -45,6 +45,17 @@ public class GemSellController : InformationLoader
         mElementList = new List<GemSellUIElement>();
         Load();
     }
+    private void Update()
+    {
+        for(int i =0;i< mElementList.Count;i++)
+        {
+            if(GameController.Instance.CheckAutoSell[i])
+            {
+
+                SellGem(i, mElementList[i].GetMaxSellAmount());
+            }
+        }
+    }
     private void Load()
     {
         for (int i = 0; i < mInfoArr.Length; i++)

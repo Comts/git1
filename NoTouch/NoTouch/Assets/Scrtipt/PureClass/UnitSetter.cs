@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class UnitSetter
 {
-    private static readonly string[] UnitArr = { "원", "만", "억", "조", "경", "해", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M" };
+    private static readonly string[] UnitArr = { "", "만", "억", "조", "경", "해", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M" };
     public static string GetUnitStr(double value)
     {
         string baseStr = value.ToString("N0");

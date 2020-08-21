@@ -66,7 +66,6 @@ public class StageController : MonoBehaviour
         {
             mLastSibling.gameObject.SetActive(false);
         }
-        mPlayerPos[GameController.Instance.PlayerPos].SetIsOnWithoutNotify(true);
         mElementList[GameController.Instance.PlayerPos].PlayerActive(true);
         mPinToggle.onValueChanged.AddListener((bool bOn) =>
         {
@@ -75,6 +74,10 @@ public class StageController : MonoBehaviour
 
 
 
+    }
+    public void mPlayerPosSet()
+    {
+        mPlayerPos[GameController.Instance.PlayerPos].SetIsOnWithoutNotify(true);
     }
     public void CoworkerActive(int f)
     {

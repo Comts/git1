@@ -141,6 +141,21 @@ public class SaveDataController : MonoBehaviour
             }
             mUser.GetFromMine = temp;
         }
+
+        if (mUser.AutoSellCheck == null)
+        {
+            mUser.AutoSellCheck = new bool[Constants.MAX_fLOOR * 5];
+        }
+        else if (mUser.AutoSellCheck.Length != (Constants.MAX_fLOOR * 5))
+        {
+            bool[] temp = new bool[Constants.MAX_fLOOR * 5];
+            int count = Mathf.Min((Constants.MAX_fLOOR * 5), mUser.MineArr.Length);
+            for (int i = 0; i < count; i++)
+            {
+                temp[i] = mUser.AutoSellCheck[i];
+            }
+            mUser.AutoSellCheck = temp;
+        }
     }
 
     protected void CreateNewSaveData()
@@ -174,6 +189,9 @@ public class SaveDataController : MonoBehaviour
 
         mUser.MineArr = new int[Constants.MINE_COUNT];
         mUser.GetFromMine = new double[Constants.MINE_COUNT];
+
+        mUser.AutoSellCheck = new bool[Constants.MAX_fLOOR*5];
+        mUser.ScrollPinCheck = false;
     }
 
     protected void Save()

@@ -128,5 +128,8 @@ public class SaveData
     public int[] MineArr;
     public double[] GetFromMine;
 
+    public bool[] AutoSellCheck;
+    public bool ScrollPinCheck;
+
 
 }

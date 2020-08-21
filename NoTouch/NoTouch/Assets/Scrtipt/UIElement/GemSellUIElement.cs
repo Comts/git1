@@ -41,16 +41,13 @@ public class GemSellUIElement : MonoBehaviour
         });
         mToggle.onValueChanged.AddListener((bOn) =>
         {
-            bToggleOn= bOn;
+            GameController.Instance.CheckAutoSell[mID] = bOn;
         });
 
     }
-    private void Update()
+    public bool bToggleIsOn()
     {
-        if(bToggleOn)
-        {
-            GemSellController.Instance.SellGem(mID, mMaxSellAmount);
-        }
+        return bToggleOn;
     }
 
 
@@ -68,7 +65,10 @@ public class GemSellUIElement : MonoBehaviour
 
         mSlider.value = 1;
     }
-
+    public double GetMaxSellAmount()
+    {
+        return mMaxSellAmount;
+    }
     public void CalSellAmount()
     {
         int div;

@@ -4,6 +4,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameController : SaveDataController
 {
@@ -20,6 +21,8 @@ public class GameController : SaveDataController
     private float WorkIncrese = 1.2f;
     [SerializeField]
     private double GemCostIncrese = 1.3;
+    [SerializeField]
+    private Toggle mScrollToggle;
 #pragma warning restore 0649
     private float[] mFloorProgress, mFloorProgressCal;
     private double[] mFloorGemCost, mFloorGemCostCal;
@@ -114,6 +117,22 @@ public class GameController : SaveDataController
             mUser.PlayerPos = value;
         }
     }
+    public bool[] CheckAutoSell
+    {
+        get { return mUser.AutoSellCheck; }
+        set
+        {
+            mUser.AutoSellCheck = value;
+        }
+    }
+    public bool CheckScrollPin
+    {
+        get { return mUser.ScrollPinCheck; }
+        set
+        {
+            mUser.ScrollPinCheck = value;
+        }
+    }
     public double ManPower
     {
         get { return mManPower; }
@@ -192,7 +211,7 @@ public class GameController : SaveDataController
     // Start is called before the first frame update
     void Start()
     {
-        if(mUser.Stage<mUser.PlayerPos)
+        if (mUser.Stage<mUser.PlayerPos)
         {
             mUser.PlayerPos = mUser.Stage;
         }
@@ -223,6 +242,10 @@ public class GameController : SaveDataController
                 //Debug.Log((i) + "번째 층 원석가격" + mFloorGemCost[i]);
             }
         }
+        mScrollToggle.onValueChanged.AddListener((bOn) =>
+        {
+            CheckScrollPin = bOn;
+        });
 
     }
     public void ReStart()
