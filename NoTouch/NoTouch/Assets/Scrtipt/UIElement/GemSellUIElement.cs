@@ -19,7 +19,6 @@ public class GemSellUIElement : MonoBehaviour
     private double mMaxSellAmount;
     [SerializeField]
     private Toggle mToggle;
-    private bool bToggleOn;
 #pragma warning restore 0649
 
     private int mID;
@@ -45,9 +44,9 @@ public class GemSellUIElement : MonoBehaviour
         });
 
     }
-    public bool bToggleIsOn()
+    public void bToggleIsOn(bool f)
     {
-        return bToggleOn;
+        mToggle.SetIsOnWithoutNotify(f);
     }
 
 

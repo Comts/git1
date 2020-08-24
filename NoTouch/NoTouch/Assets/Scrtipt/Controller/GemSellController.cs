@@ -51,8 +51,8 @@ public class GemSellController : InformationLoader
         {
             if(GameController.Instance.CheckAutoSell[i])
             {
-
                 SellGem(i, mElementList[i].GetMaxSellAmount());
+                mElementList[i].bToggleIsOn(true);
             }
         }
     }

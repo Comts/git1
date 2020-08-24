@@ -72,6 +72,11 @@ public class StageController : MonoBehaviour
             mScrollArea.vertical = !bOn;
         });
 
+        if (GameController.Instance.CheckScrollPin)
+        {
+            mScrollArea.vertical = false;
+            mPinToggle.SetIsOnWithoutNotify(true);
+        }
 
 
     }
