@@ -139,7 +139,6 @@ public class CraftController : InformationLoader
                         mTextInfoArr[i].Title,
                         mTextInfoArr[i].ContentsFormat,
                         //string.Format("{0}EA", GameController.Instance.AddAmoutGem_A[i]),
-                        "1000EA",
                         StartCraft);
 
 

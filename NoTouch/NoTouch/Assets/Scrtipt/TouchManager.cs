@@ -70,6 +70,13 @@ public class TouchManager : MonoBehaviour
                 effect.transform.position = hit.point;
                 CraftController.Instance.Touch();
             }
+            if (Physics.Raycast(ray, out hit) && hit.collider.gameObject.CompareTag("Mole"))
+            {
+                Timer effect = mEffectPool.GetFromPool();
+                effect.transform.position = hit.point;
+                hit.collider.gameObject.SetActive(false);
+                MoleController.Instance.AddScore();
+            }
         }
         Vector3 pos;
         if (CheckTouch(out pos))

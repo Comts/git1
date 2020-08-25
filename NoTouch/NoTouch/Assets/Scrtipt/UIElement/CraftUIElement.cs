@@ -9,7 +9,7 @@ public class CraftUIElement : MonoBehaviour
     [SerializeField]
     private Image mIconImage;
     [SerializeField]
-    private Text mTitleText, mContentsText, mAmonutText, mConsumeText;
+    private Text mTitleText, mContentsText, mAmonutText;
     [SerializeField]
     private Button mCraftButton;
 #pragma warning restore 0649
@@ -18,14 +18,12 @@ public class CraftUIElement : MonoBehaviour
                      Sprite icon,
                      string title,
                      string contents,
-                     string cost,
                      Delegates.TwoIntInVoidCallback callback)
     {
         mID = id;
         mIconImage.sprite = icon;
         mTitleText.text = title;
         mContentsText.text = contents;
-        mConsumeText.text = cost;
 
         mCraftButton.onClick.AddListener(() =>
         {
@@ -36,7 +34,10 @@ public class CraftUIElement : MonoBehaviour
     }
     private void Update()
     {
-        mAmonutText.text = GameController.Instance.AddAmoutGem_O[mID].ToString();
+
+        mAmonutText.text = string.Format("{0} / {1}",
+                                        GameController.Instance.AddAmoutGem_O[mID].ToString(),
+                                        1000);
     }
 
     public void SetCraftButtonActive(bool isActive)

@@ -77,9 +77,17 @@ public class GemSellController : InformationLoader
         for(int i =0; i<mInfoArr.Length;i++)
         {
             mElementList[i].CalSellAmount();
+        }
+    }
+    public void ReSetSlider()
+    {
+        for (int i = 0; i < mInfoArr.Length; i++)
+        {
             mElementList[i].ReSetSlider();
         }
     }
+
+        
     public void SellGem(int id, double amount)
     {
         double cost = mInfoArr[id].Cost * amount;

@@ -102,7 +102,7 @@ public class GemSellUIElement : MonoBehaviour
         }
         mAmountText.text = mMaxSellAmount.ToString();
         mSellAmount = Math.Round( mSlider.value * mMaxSellAmount);
-        mSellAmountText.text = string.Format("-{0}", mSellAmount);
+        mSellAmountText.text = string.Format("{0}", mSellAmount);
     }
 
 }
