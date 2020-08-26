@@ -1,0 +1,28 @@
+인앱결제 IAP -지울시 대시보드에서 지우기
+구글 unity iap example검색
+https://learn.unity.com/tutorial/unity-iap
+본인계정으로 로그인
+
+///window-general-services        
+유니티 ads -별로 구글광고 소진시 활성화
+in app purchasing , analytics 둘만 킴 
+
+//결제 코드
+스크립트 새로 만들기 IAPHandler/IAPController 싱글톤만들기 붙여넣기 namespace제거
+ScoreManager.score += 100; 지우기
+
+consumable반복구매
+nonconsumable한번구매
+
+private string GooglePlay_Ruby100 = "ruby_100"; //구글플레이 대문자 안됨
+
+아이디,빌더에드,바이프로덕트,프로세스퍼체이스 4개수정
+
+
+인앱결제까지하고 구글/ios 용 브랜치 두개로 깃
+
+
+unity receipt validation검색
+https://docs.unity3d.com/kr/530/Manual/UnityIAPValidatingReceipts.html
+
+window-unityIAP-receipt validation         구글콘솔-개발도구-서비스 및 API-  RSA공개키복사후 붙여넣기 
