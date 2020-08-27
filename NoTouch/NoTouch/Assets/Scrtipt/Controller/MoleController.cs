@@ -11,9 +11,13 @@ public class MoleController : MonoBehaviour
     [SerializeField]
     private Text mTime,mScore;
     [SerializeField]
+    private MolePool mMolePool;
+    [SerializeField]
     private Transform mMoleWindow;
     [SerializeField]
     private float mPlayTime;
+    [SerializeField]
+    private int mMoleCount;
     private int Score;
     private float currentTime;
     private void Awake()
@@ -32,6 +36,10 @@ public class MoleController : MonoBehaviour
         if (mMoleWindow.gameObject.activeInHierarchy)
         {
             Showtime();
+            if (mMolePool.CountCheck() <= mMoleCount)
+            {
+                SpwanMole();
+            }
         }
     }
     public void Showtime()
@@ -68,4 +76,14 @@ public class MoleController : MonoBehaviour
         Score++;
         ShowScore();
     }
+    public void SpwanMole()
+    {
+        int Pos;
+        Mole mole = mMolePool.GetFromPool();
+        do
+        {
+            Pos = Random.Range(0, MoleHillArr.Length);
+        } while (!(MoleHillArr[Pos].gameObject.GetComponentInChildren(typeof(Mole), true)));
+        mole.transform.position = MoleHillArr[Pos].transform.position;
+    }   
 }

@@ -8,4 +8,8 @@ public class MolePool : ObjectPool<Mole>
     {
         PoolSetup();
     }
+    public int CountCheck()
+    {
+        return mPools.Length;
+    }
 }
