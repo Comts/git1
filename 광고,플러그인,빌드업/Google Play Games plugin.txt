@@ -1,0 +1,26 @@
+unity google play 검색 
+https://github.com/playgameservices/play-games-plugin-for-unity
+
+current-build// GooglePlayGamesPlugin-0.10.10.unitypackage-다운
+
+assets import package 한다.
+yes누른다 - auto/enable 
+All-add selected registry-apply
+
+===에러발생시
+Assets-External Dependency Manager-Android Resolver-Force Resolve
+----------------------
+
+sign in / achievement/leaderboard
+
+window-google play games- android settup
+google play console-게임분석 ,업적 등등 리소스 받기  복사후 Resources Deginition에 붙여넣기
+string name  한글안돼 변경해줘야됨
+
+자동으로GPGSids만들어짐
+
+Configuration & Initialization Play Game Services
+script 생성 googleHandler
+
+android SDK 문제
+문제시 Editor에서 plugin 2개지우고 prefercnce-externel tool- jdk등 껏다키기 후 Force Resolve

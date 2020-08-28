@@ -1,0 +1,16 @@
+구글 애드몹검색
+https://admob.google.com/intl/ko/home/       로그인 판매자계정
+
+앱- 앱추가
+
+차단관리 - 
+민감한 카테고리
+광고 콘텐츠 등급
+
+unity google admob 검색
+https://developers.google.com/admob/unity/start?hl=ko
+플러그인 다운 GoogleMobileAds-v5.3.0.unitypackage
+
+Assets-Google Mobile Ads -settings
+Enabled 체크
+앱 ID 를 복사해서 android에 붙여넣기
