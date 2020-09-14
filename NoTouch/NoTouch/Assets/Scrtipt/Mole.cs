@@ -16,5 +16,6 @@ public class Mole : MonoBehaviour
     {
         yield return new WaitForSeconds(mTime);
         gameObject.SetActive(false);
+        MoleController.Instance.MoleCount--;
     }
 }

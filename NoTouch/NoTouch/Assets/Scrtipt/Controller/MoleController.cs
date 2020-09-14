@@ -6,20 +6,29 @@ using UnityEngine.UI;
 public class MoleController : MonoBehaviour
 {
     public static MoleController Instance;
+#pragma warning disable 0649
     [SerializeField]
-    private Transform[] MoleHillArr;
+    private Mole[] MoleArr;
     [SerializeField]
     private Text mTime,mScore;
-    [SerializeField]
-    private MolePool mMolePool;
     [SerializeField]
     private Transform mMoleWindow;
     [SerializeField]
     private float mPlayTime;
     [SerializeField]
-    private int mMoleCount;
+    private int mSpwanMoleCount;
+#pragma warning restore 0649
     private int Score;
+    private int count;
     private float currentTime;
+    public int MoleCount
+    {
+        get { return count; }
+        set
+        {
+            count = value;
+        }
+    }
     private void Awake()
     {
         if (Instance == null)
@@ -31,16 +40,18 @@ public class MoleController : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    private void Update()
+    private void Start()
+    {
+        count = 0;
+    }
+    private void FixedUpdate()
     {
         if (mMoleWindow.gameObject.activeInHierarchy)
         {
             Showtime();
-            if (mMolePool.CountCheck() <= mMoleCount)
-            {
-                SpwanMole();
-            }
+            StartCoroutine (SpwanMole());
         }
+
     }
     public void Showtime()
     {
@@ -76,14 +87,19 @@ public class MoleController : MonoBehaviour
         Score++;
         ShowScore();
     }
-    public void SpwanMole()
+    private IEnumerator SpwanMole()
     {
-        int Pos;
-        Mole mole = mMolePool.GetFromPool();
-        do
+        if (count < mSpwanMoleCount)
         {
-            Pos = Random.Range(0, MoleHillArr.Length);
-        } while (!(MoleHillArr[Pos].gameObject.GetComponentInChildren(typeof(Mole), true)));
-        mole.transform.position = MoleHillArr[Pos].transform.position;
-    }   
+            int pos = Random.Range(0, MoleArr.Length);
+            while (MoleArr[pos].gameObject.activeInHierarchy)
+            {
+                pos = Random.Range(0, MoleArr.Length);
+            }
+            MoleArr[pos].gameObject.SetActive(true);
+            count++;
+        }
+        yield return new WaitForSeconds(2);
+    }
+
 }

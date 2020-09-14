@@ -57,6 +57,7 @@ public class TouchManager : MonoBehaviour
         {
             Ray ray = GenerateRay(Input.mousePosition);
             RaycastHit hit;
+            Debug.Log("hit");
             if (Physics.Raycast(ray, out hit) && hit.collider.gameObject.CompareTag("Touch"))
             {
                 Timer effect = mEffectPool.GetFromPool();
@@ -76,6 +77,7 @@ public class TouchManager : MonoBehaviour
                 effect.transform.position = hit.point;
                 hit.collider.gameObject.SetActive(false);
                 MoleController.Instance.AddScore();
+                MoleController.Instance.MoleCount--;
             }
         }
         Vector3 pos;
