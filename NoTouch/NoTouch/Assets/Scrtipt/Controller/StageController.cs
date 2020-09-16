@@ -12,7 +12,7 @@ public class StageController : MonoBehaviour
     private List<StageUIElement> mElementList;
 #pragma warning disable 0649
     [SerializeField]
-    private StageUIElement mElementPrefab;
+    private StageUIElement[] mElementPrefab;
     [SerializeField]
     private ScrollRect mScrollArea;
     [SerializeField]
@@ -47,7 +47,7 @@ public class StageController : MonoBehaviour
     {
         for (int i = 0; i <= GameController.Instance.Stage; i++)
         {
-            StageUIElement element = Instantiate(mElementPrefab, mElementArea);
+            StageUIElement element = Instantiate(mElementPrefab[i], mElementArea);
             element.Init(i, mAnimArr[i]);
             mElementList.Add(element);
             PlayerButtoninteractable(i);
@@ -76,6 +76,15 @@ public class StageController : MonoBehaviour
         {
             mScrollArea.vertical = false;
             mPinToggle.SetIsOnWithoutNotify(true);
+        }
+
+        if (GameController.Instance.Stage < Constants.MAX_fLOOR - 1)
+        {
+            mLastSibling.transform.SetAsLastSibling();
+        }
+        else
+        {
+            mLastSibling.gameObject.SetActive(false);
         }
 
 
@@ -123,15 +132,15 @@ public class StageController : MonoBehaviour
         if (mElementList.Count <= nextID)
         {
 
-            StageUIElement element = Instantiate(mElementPrefab, mElementArea);
-            element.Init(nextID, mAnimArr[nextID]);
+            StageUIElement element = Instantiate(mElementPrefab[id], mElementArea);
+            element.Init(id, mAnimArr[id]);
 
 
             mElementList.Add(element);
             PlayerButtoninteractable(id);
             mLastSibling.Refresh(mElementList.Count, UnitSetter.GetUnitStr(100000 * math.pow(2, id)));
         }
-        if (GameController.Instance.Stage < Constants.MAX_fLOOR)
+        if (GameController.Instance.Stage < Constants.MAX_fLOOR-1)
         {
             mLastSibling.transform.SetAsLastSibling();
         }

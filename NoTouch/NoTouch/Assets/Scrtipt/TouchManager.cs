@@ -61,7 +61,7 @@ public class TouchManager : MonoBehaviour
             if (Physics.Raycast(ray, out hit) && hit.collider.gameObject.CompareTag("Touch"))
             {
                 Timer effect = mEffectPool.GetFromPool();
-                effect.transform.position = hit.point;
+                effect.transform.position = hit.point + (Vector3.back * 3);
                 GameController.Instance.Touch();
                 GemSellController.Instance.RefreshGemData();
             }
@@ -74,7 +74,7 @@ public class TouchManager : MonoBehaviour
             if (Physics.Raycast(ray, out hit) && hit.collider.gameObject.CompareTag("Mole"))
             {
                 Timer effect = mEffectPool.GetFromPool();
-                effect.transform.position = hit.point;
+                effect.transform.position = hit.point + (Vector3.back * 3);
                 hit.collider.gameObject.SetActive(false);
                 MoleController.Instance.AddScore();
                 MoleController.Instance.MoleCount--;
