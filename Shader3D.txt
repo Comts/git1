@@ -1,0 +1,48 @@
+쉐이더 
+universal Render Pipeline -모바일에 잘안될수도
+
+unlit Graph, 
+PBR Graph-물리적용 이거사용
+
+
+PBR Master 결과물을 놓는것 
+
+
+쉐이더 그리는 단계 2단계
+
+1.vertex shader <- . 정점들.  	//표면잡아주는것
+2.fragment shader ( pixel shader) 	// 잡힌 표면에 픽셀들을 찍어내는 작업
+
+Fresnel Effect
+
+in은 하나에 하나  out은 여러개 출려가능
+
+쉐이더에서 우클릭해서 매터리얼 만들기.
+
+코드로 변경하기
+Maerial 변수추가
+GetComponent<Renderer>().Material 하기.
+
+------------
+simple Noise
+
+AlphaClipThreshold /알파가 몇 이하면 그리지 않는다.
+
+Camera
+Rendering - Post Processing 
+Global Volume-New-Bloom
+
+voronoi
+=====================
+packageManager-universal RP
+edit-projectsetting-Graphics 에 아래 에셋 넣기 
+
+Scenes folder- Pipeline asset생성
+rendering-universal -2Drenderer 생성
+asset에 2d랜더넣기
+
+shader- 2d - unlit 만들기 -desolve
+mat_Desesolve
+
+================
+particle System 

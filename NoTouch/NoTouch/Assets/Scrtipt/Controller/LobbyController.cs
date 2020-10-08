@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Rendering;
 
 public class LobbyController : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class LobbyController : MonoBehaviour
     private Button mStartButton;
     [SerializeField]
     private Text mStartText;
+    [SerializeField]
+    private Image BlockImage;
 #pragma warning restore 0649
     [SerializeField]
     private float mAlphaAnimPeriod = 2;
@@ -21,6 +24,17 @@ public class LobbyController : MonoBehaviour
         mStartButton.onClick.AddListener(() => { SceneManager.LoadScene(1); });
         mStartButton.interactable = false; //버튼은 켜져있는데 비활성화 
         ActivateGameStart();
+        BlockAnyInputDuringSplash();
+    }
+    
+    private IEnumerator BlockAnyInputDuringSplash()
+    {
+        WaitForFixedUpdate gap = new WaitForFixedUpdate();
+        while(!SplashScreen.isFinished)
+        {
+            yield return gap;
+        }
+        BlockImage.gameObject.SetActive(false);
     }
 
     public void ActivateGameStart()

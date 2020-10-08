@@ -1,0 +1,7 @@
+batches가 준다.
+스프라이트 아틀라스
+별도의 이미지들을 하나의 파일로 인식
+4096까지가능 
+Tight Packing 풀어야될때가있음
+RGBA Crunhed ETC2 가 효과가 좋다 
+objectectpacking-폴더검색
