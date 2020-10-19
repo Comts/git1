@@ -29,7 +29,7 @@ public class Gem : MonoBehaviour
     {
         mShiftGap = new double[Constants.GEM_RANK_COUNT];
         mGemCost = GameController.Instance.GetGemCost[id];
-        mGemProgress = GameController.Instance.GetRequireProgerss[id];
+        mGemProgress = GameController.Instance.GetRequireProgress[id];
         GapCal= mGemProgress * mGemCost * 1000 * 0.8;
         for (int i = 0; i < mShiftGap.Length; i++)
         {

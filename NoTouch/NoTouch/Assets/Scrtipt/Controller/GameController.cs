@@ -96,7 +96,7 @@ public class GameController : SaveDataController
     {
         get { return mFloorGemCost; }
     }
-    public float[] GetRequireProgerss
+    public float[] GetRequireProgress
     {
         get { return mFloorProgress; }
     }
