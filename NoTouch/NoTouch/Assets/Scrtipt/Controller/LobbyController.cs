@@ -23,8 +23,8 @@ public class LobbyController : MonoBehaviour
 
         mStartButton.onClick.AddListener(() => { SceneManager.LoadScene(1); });
         mStartButton.interactable = false; //버튼은 켜져있는데 비활성화 
+        StartCoroutine(BlockAnyInputDuringSplash());
         ActivateGameStart();
-        BlockAnyInputDuringSplash();
     }
     
     private IEnumerator BlockAnyInputDuringSplash()

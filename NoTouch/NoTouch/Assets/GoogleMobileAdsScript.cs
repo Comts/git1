@@ -38,12 +38,12 @@ public class GoogleMobileAdsScript : MonoBehaviour
         rewardBasedVideo.LoadAd(request, Test_UnitID);
     }
 
-    private void UserOptToWatchAd()
+    public void UserOptToWatchAd()
     {
         if (rewardBasedVideo.IsLoaded())
         {
             rewardBasedVideo.Show();
-            //TODO reward
+            MoleController.Instance.AddMoney(3);
         }
         RequestRewardBasedVideo();
     }
