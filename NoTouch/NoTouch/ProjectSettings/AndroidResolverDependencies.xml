@@ -55,6 +55,7 @@
     <setting name="bundleId" value="com.Comts.NoTouch" />
     <setting name="explodeAars" value="True" />
     <setting name="gradleBuildEnabled" value="True" />
+    <setting name="gradlePropertiesTemplateEnabled" value="False" />
     <setting name="gradleTemplateEnabled" value="False" />
     <setting name="installAndroidPackages" value="False" />
     <setting name="localMavenRepoDir" value="Assets/GeneratedLocalRepo" />

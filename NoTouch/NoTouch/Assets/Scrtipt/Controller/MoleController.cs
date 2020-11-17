@@ -77,10 +77,10 @@ public class MoleController : MonoBehaviour
             if(Score==0)
             {
                 mRandom = UnityEngine.Random.Range(1, 1.5f) * GameController.Instance.GetGemCost[GameController.Instance.Stage] * UnityEngine.Random.Range(mMinMulti, mMaxMulti) *(GameController.Instance.ManPower/ GameController.Instance.GetRequireProgress[GameController.Instance.Stage]);
-                Debug.Log("GetGemCost" + GameController.Instance.GetGemCost[GameController.Instance.Stage]);
-                Debug.Log("ManPower" + GameController.Instance.ManPower);
-                Debug.Log("Progerss" + GameController.Instance.GetRequireProgress[GameController.Instance.Stage]);
-                Debug.Log("ManPower/Progerss" + (GameController.Instance.ManPower / GameController.Instance.GetRequireProgress[GameController.Instance.Stage]));
+                //Debug.Log("GetGemCost" + GameController.Instance.GetGemCost[GameController.Instance.Stage]);
+                //Debug.Log("ManPower" + GameController.Instance.ManPower);
+                //Debug.Log("Progerss" + GameController.Instance.GetRequireProgress[GameController.Instance.Stage]);
+                //Debug.Log("ManPower/Progerss" + (GameController.Instance.ManPower / GameController.Instance.GetRequireProgress[GameController.Instance.Stage]));
             }
         }
         else
