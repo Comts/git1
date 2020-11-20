@@ -6,17 +6,15 @@ using System;
 
 public class GoogleMobileAdsScript : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject TextTest;
     private RewardBasedVideoAd rewardBasedVideo;
 
     private string Test_UnitID = "	ca-app-pub-3940256099942544/5224354917";
-    private string test_deviceID = "";
     public void Start()
     {
 
         rewardBasedVideo = RewardBasedVideoAd.Instance;
-
-        
-        
 
 
         RequestRewardBasedVideo();
@@ -33,7 +31,7 @@ public class GoogleMobileAdsScript : MonoBehaviour
 #endif
 
         // Create an empty ad request.
-        AdRequest request = new AdRequest.Builder().Build();
+        AdRequest request = new AdRequest.Builder().AddTestDevice("5919871F5E8EDA40").Build();
         // Load the rewarded video ad with the request.
         rewardBasedVideo.LoadAd(request, Test_UnitID);
     }
@@ -43,9 +41,20 @@ public class GoogleMobileAdsScript : MonoBehaviour
         if (rewardBasedVideo.IsLoaded())
         {
             rewardBasedVideo.Show();
-            MoleController.Instance.AddMoney(3);
+            rewardBasedVideo.OnAdRewarded += HandleRewardBasedVideoRewarded;
         }
         RequestRewardBasedVideo();
+    }
+    public void HandleRewardBasedVideoRewarded(object sender, Reward args)
+    {
+        string type = args.Type;
+        double amount = args.Amount;
+        MoleController.Instance.AddMoney(3);
+        TextTest.SetActive(true);
+        
+        MonoBehaviour.print(
+            "HandleRewardedAdRewarded event received for "
+                        + amount.ToString() + " " + type);
     }
 }
 
