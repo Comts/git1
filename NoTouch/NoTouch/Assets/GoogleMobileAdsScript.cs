@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using GoogleMobileAds.Api;
 using System;
+using UnityEngine.UI;
 
 public class GoogleMobileAdsScript : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject TextTest;
     private RewardBasedVideoAd rewardBasedVideo;
+    [SerializeField]
+    private GameObject MoleWindow,PopWindow;
 
-    private string Test_UnitID = "	ca-app-pub-3940256099942544/5224354917";
+    private string Test_UnitID = "ca-app-pub-3940256099942544/5224354917";
     public void Start()
     {
 
@@ -41,20 +42,16 @@ public class GoogleMobileAdsScript : MonoBehaviour
         if (rewardBasedVideo.IsLoaded())
         {
             rewardBasedVideo.Show();
-            rewardBasedVideo.OnAdRewarded += HandleRewardBasedVideoRewarded;
+            rewardBasedVideo.OnAdRewarded += HandleRewardBasedVideoRewarded; 
         }
         RequestRewardBasedVideo();
     }
     public void HandleRewardBasedVideoRewarded(object sender, Reward args)
     {
-        string type = args.Type;
-        double amount = args.Amount;
         MoleController.Instance.AddMoney(3);
-        TextTest.SetActive(true);
-        
-        MonoBehaviour.print(
-            "HandleRewardedAdRewarded event received for "
-                        + amount.ToString() + " " + type);
+        PopWindow.SetActive(false);
+        MoleWindow.SetActive(false);
+
     }
 }
 
