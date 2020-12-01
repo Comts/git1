@@ -284,6 +284,14 @@ public class GameController : SaveDataController
         Save();
     }
 
+    private void OnApplicationFocus(bool focusStatus)
+    {
+        Save();
+    }
+    private void OnApplicationPause(bool pauseStatus)
+    {
+        Save();
+    }
     public int[] GetPlayerLevelArr()
     {
         return mUser.PlayerLevelArr;
