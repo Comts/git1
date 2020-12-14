@@ -8,8 +8,10 @@ using UnityEngine.UI;
 public class GoogleMobileAdsScript : MonoBehaviour
 {
     private RewardBasedVideoAd rewardBasedVideo;
+#pragma warning disable 0649
     [SerializeField]
     private GameObject MoleWindow,PopWindow;
+#pragma warning restore 0649
 
     private string Test_UnitID = "ca-app-pub-3940256099942544/5224354917";
     public void Start()

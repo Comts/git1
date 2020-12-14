@@ -23,6 +23,7 @@ public class UIController : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
     public void Popwindow(int id)
     {
 

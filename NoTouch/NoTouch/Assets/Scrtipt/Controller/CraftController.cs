@@ -35,6 +35,8 @@ public class CraftController : InformationLoader
     private GemPool mGemPool;
     [SerializeField]
     private Image mButtonBlock;
+    [SerializeField]
+    private Text TimeText;
 #pragma warning restore 0649
     [SerializeField]
     private Gem mCurrentGem;
@@ -46,6 +48,8 @@ public class CraftController : InformationLoader
         {
             yield return frame;
             time -= Time.fixedDeltaTime;
+            int sec = (int)(time);
+            TimeText.text = sec.ToString();
         }
         CraftFinish();
     }

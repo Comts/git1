@@ -278,6 +278,12 @@ public class GameController : SaveDataController
 
         mUser.MineArr = new int[Constants.MINE_COUNT];
         mUser.GetFromMine = new double[Constants.MINE_COUNT];
+
+        GemSellController.Instance.ReStart();
+        PlayerUpgradeController.Instance.ReStart();
+        UIController.Instance.ShowMoney();
+        Save();
+        LoadGame();
     }
     private void OnApplicationQuit()
     {

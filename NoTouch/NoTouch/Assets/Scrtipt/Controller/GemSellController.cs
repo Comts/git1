@@ -45,6 +45,15 @@ public class GemSellController : InformationLoader
         mElementList = new List<GemSellUIElement>();
         Load();
     }
+    public void ReStart()
+    {
+
+        for (int i = 0; i < mElementList.Count; i++)
+        {
+            GameController.Instance.CheckAutoSell[i] = false;
+            mElementList[i].bToggleIsOn(false);
+        }
+    }
     private void Update()
     {
         for(int i =0;i< mElementList.Count;i++)

@@ -44,6 +44,11 @@ public class PlayerUpgradeController : InformationLoader
             Paths.LANGUAGE_TYPE_ARR[GameController.Instance.LanguageType]);
 
         mIconArr = Resources.LoadAll<Sprite>(Paths.PLAYER_ICON);
+        ReStart();
+
+    }
+    public void ReStart()
+    {
 
         mLevelArr = GameController.Instance.GetPlayerLevelArr();
         //mElementArr = new UIElement[Constants.PLAYER_STAT_COUNT];
@@ -51,11 +56,13 @@ public class PlayerUpgradeController : InformationLoader
         {
 
             mInfoArr[i].CurrentLevel = mLevelArr[i];
-            
+
             CalcData(i);
         }
         Load();
     }
+
+        
     private void Load()
     {
         for (int i = 0; i < mInfoArr.Length; i++)
