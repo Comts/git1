@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -4430174930264928189}
   - component: {fileID: 5136792264171062149}
   - component: {fileID: 8939491257716390517}
+  - component: {fileID: 2221942044987324696}
   m_Layer: 5
   m_Name: Mole
   m_TagString: Mole
@@ -89,7 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2db742404866cee4e8fe78a3da7b1d5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mTime: 4
+  mTime: 1
 --- !u!114 &5136792264171062149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,6 +116,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 250, y: 250, z: 5}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &2221942044987324696
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5504663183704508502}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6843f87af9442e8438b220bff6f831e5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5716940875901775668
 GameObject:
   m_ObjectHideFlags: 0
@@ -178,7 +198,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9320ebe18f3df0843bde1f9cebe91260, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fe0db0dad42e3844eb0801da7c845f5a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

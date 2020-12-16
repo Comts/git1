@@ -74,9 +74,9 @@ public class TouchManager : MonoBehaviour
             {
                 Timer effect = mEffectPool.GetFromPool();
                 effect.transform.position = hit.point + (Vector3.back * 3);
-                hit.collider.gameObject.SetActive(false);
-                MoleController.Instance.AddScore();
-                MoleController.Instance.MoleCount--;
+
+                hit.collider.gameObject.GetComponent<Mole>().Moledaed();
+
             }
         }
         Vector3 pos;
