@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GemSellController : InformationLoader
 {
@@ -16,9 +17,12 @@ public class GemSellController : InformationLoader
     [SerializeField]
     private GemSellUIElement mElementPrefab;
     [SerializeField]
+    private LayerButtonUIElement mLayerButtonPrefab;
+    [SerializeField]
     private Transform mElementArea;
 #pragma warning restore 0649
     private List<GemSellUIElement> mElementList;
+    private List<LayerButtonUIElement> mButtonElementList;
 
 
     private void Awake()
@@ -43,6 +47,7 @@ public class GemSellController : InformationLoader
         mOriginArr = Resources.LoadAll<Gem>(Paths.GEM_PREFAB);
         mIconArr = new Sprite[Constants.MINE_COUNT*5];
         mElementList = new List<GemSellUIElement>();
+        mButtonElementList = new List<LayerButtonUIElement>();
         Load();
     }
     public void ReStart()
@@ -52,6 +57,11 @@ public class GemSellController : InformationLoader
         {
             GameController.Instance.CheckAutoSell[i] = false;
             mElementList[i].bToggleIsOn(false);
+            mElementList[i].gameObject.SetActive(false);
+        }
+        for(int i = 0; i < mButtonElementList.Count;i++)
+        {
+            mButtonElementList[i].bToggleIsOn(false);
         }
     }
     private void Update()
@@ -69,6 +79,14 @@ public class GemSellController : InformationLoader
     {
         for (int i = 0; i < mInfoArr.Length; i++)
         {
+            if (i % 5 == 0)
+            {
+                LayerButtonUIElement Buttonelement = Instantiate(mLayerButtonPrefab, mElementArea);
+
+                Buttonelement.Init(i/5);
+                mButtonElementList.Add(Buttonelement);
+            }
+
             mIconArr[i] = mOriginArr[i/5].GetSprite(i%5);
 
             GemSellUIElement element = Instantiate(mElementPrefab, mElementArea);
@@ -79,6 +97,13 @@ public class GemSellController : InformationLoader
 
 
             mElementList.Add(element);
+
+            mElementList[i].gameObject.SetActive(false);
+            if (i % 5 == 4)
+            {
+                mButtonElementList[mButtonElementList.Count - 1].bToggleIsOn(false);
+                mButtonElementList[mButtonElementList.Count-1].setting( mElementList[i-4], mElementList[i-3], mElementList[i-2], mElementList[i-1], mElementList[i]);
+            }
         }
     }
     public void RefreshGemData()
