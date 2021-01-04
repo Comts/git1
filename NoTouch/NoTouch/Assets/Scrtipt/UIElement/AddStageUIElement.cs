@@ -22,6 +22,7 @@ public class AddStageUIElement : MonoBehaviour
 
         mAddButton.onClick.AddListener(() =>
         {
+            Debug.Log("mAddButton mID = " + mID);
             callback(mID, 1);
         });
     }

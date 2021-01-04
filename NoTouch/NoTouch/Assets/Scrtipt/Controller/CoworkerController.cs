@@ -40,6 +40,31 @@ public class CoworkerController : InformationLoader
             Destroy(gameObject);
         }
     }
+    // Start is called before the first frame update
+    void Start()
+    {
+        LoadJson(out mInfoArr, Paths.COWORKER_INFO_TABLE);
+        LoadJson(out mTextInfoArr,
+            Paths.COWORKER_TEXT_INFO_TABLE +
+            Paths.LANGUAGE_TYPE_ARR[GameController.Instance.LanguageType]);
+
+
+        mLevelArr = GameController.Instance.GetCoworkerLevelArr();
+        mElementList = new List<UIElement>();
+        Load();
+    }
+    public void ReStart()
+    {
+
+        mLevelArr = GameController.Instance.GetCoworkerLevelArr();
+        for (int i = 0; i < mElementList.Count; i++)
+        {
+            Destroy(mElementList[i].gameObject);
+        }
+
+        mElementList.Clear();
+        Load();
+    }
     private void Load()
     {
 
@@ -66,19 +91,6 @@ public class CoworkerController : InformationLoader
 
             mElementList.Add(element);
         }
-    }
-        // Start is called before the first frame update
-        void Start()
-    {
-        LoadJson(out mInfoArr, Paths.COWORKER_INFO_TABLE);
-        LoadJson(out mTextInfoArr,
-            Paths.COWORKER_TEXT_INFO_TABLE +
-            Paths.LANGUAGE_TYPE_ARR[GameController.Instance.LanguageType]);
-
-        mLevelArr = GameController.Instance.GetCoworkerLevelArr();
-
-        mElementList = new List<UIElement>();
-        Load();
     }
 
     public void JobFinish(int id)//TODO FX, Vector3 effectPos)

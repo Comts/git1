@@ -257,10 +257,10 @@ public class GameController : SaveDataController
         mUser.AmoutGem_SS = new double[Constants.MAX_fLOOR];
         mUser.AmoutGem_SSS = new double[Constants.MAX_fLOOR];
 
-
-        mUser.Stage = 0;
+        Stage = 0;
         mUser.PlayerPos = 0;
         mUser.Progress = 0;
+        mUser.ScrollPinCheck = false;
 
         mUser.PlayerLevelArr = new int[Constants.PLAYER_STAT_COUNT];
         mUser.ItemCooltimeArr = new float[Constants.USEITEM_AMOUT];
@@ -281,6 +281,8 @@ public class GameController : SaveDataController
 
         GemSellController.Instance.ReStart();
         PlayerUpgradeController.Instance.ReStart();
+        CoworkerController.Instance.ReStart();
+        StageController.Instance.ReStart();
         UIController.Instance.ShowMoney();
         Save();
         LoadGame();

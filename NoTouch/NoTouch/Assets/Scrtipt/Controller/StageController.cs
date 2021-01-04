@@ -42,7 +42,46 @@ public class StageController : MonoBehaviour
         mElementList = new List<StageUIElement>();
         Load();
     }
+    public void ReStart()
+    {
+        for(int i =0;i<mElementList.Count;i++)
+        {
+            PlayerButtoninteractableFalse(i);
+            Destroy(mElementList[i].gameObject);
+        }
+        mElementList.Clear();
+        ReLoad();
+    }
+    private void ReLoad()
+    {
+        for (int i = 0; i <= GameController.Instance.Stage; i++)
+        {
+            StageUIElement element = Instantiate(mElementPrefab[i], mElementArea);
+            element.Init(i, mAnimArr[i]);
+            mElementList.Add(element);
+            PlayerButtoninteractable(i);
 
+            if (GameController.Instance.GetCoworkerLevelArr()[i] > 0)
+            {
+                mElementList[i].CoworkerActive(true);
+            }
+        }
+        mLastSibling.Refresh(mElementList.Count, UnitSetter.GetUnitStr(100000 * math.pow(2, mElementList.Count - 1)));
+
+        mElementList[GameController.Instance.PlayerPos].PlayerActive(true);
+
+        mLastSibling.transform.SetAsLastSibling();
+
+        if (!GameController.Instance.CheckScrollPin)
+        {
+            mScrollArea.vertical = true;
+            mPinToggle.SetIsOnWithoutNotify(false);
+        }
+        
+
+
+
+    }
     private void Load()
     {
         for (int i = 0; i <= GameController.Instance.Stage; i++)
@@ -57,16 +96,10 @@ public class StageController : MonoBehaviour
                 mElementList[i].CoworkerActive(true);
             }
         }
-        mLastSibling.Init(mElementList.Count, UnitSetter.GetUnitStr(100000 * math.pow(2, mElementList.Count-1)), AddStage); 
-        if (GameController.Instance.Stage < Constants.MAX_fLOOR)
-        {
-            mLastSibling.transform.SetAsLastSibling();
-        }
-        else
-        {
-            mLastSibling.gameObject.SetActive(false);
-        }
+        mLastSibling.Init(mElementList.Count, UnitSetter.GetUnitStr(100000 * math.pow(2, mElementList.Count-1)), AddStage);
+
         mElementList[GameController.Instance.PlayerPos].PlayerActive(true);
+
         mPinToggle.onValueChanged.AddListener((bool bOn) =>
         {
             mScrollArea.vertical = !bOn;
@@ -101,6 +134,10 @@ public class StageController : MonoBehaviour
     {
         mPlayerPos[f].interactable = true;
     }
+    public void PlayerButtoninteractableFalse(int f)
+    {
+        mPlayerPos[f].interactable = false;
+    }
     public void PlayerActive(int f)
     {
         for(int i =0;i<= GameController.Instance.Stage;i++)
@@ -119,15 +156,12 @@ public class StageController : MonoBehaviour
 
         GameController.Instance.GoldCallback = callback;
         double cost = 100000*math.pow(2,id-1);
-        Debug.Log(cost);
         GameController.Instance.Gold -= cost;
     }
-    public void AddStageCallback(int id, int amoun)
+    public void AddStageCallback(int id, int amount)
     {
         GameController.Instance.Stage = id;
         int nextID = id + 1;
-        Debug.Log("mElementList" + mElementList.Count);
-        Debug.Log("nextID" + nextID);
 
         if (mElementList.Count <= nextID)
         {
