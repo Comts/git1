@@ -18,10 +18,14 @@ public class SoundController : MonoBehaviour
     private AudioMixer mMixer;
     [SerializeField] 
     private Image mMuteMaster,mMuteBGM, mMuteEffect;
+    [SerializeField]
+    private Slider mMasterSlider, mBGMSlider, mEffectSlider;
 #pragma warning restore 0649
     private float LoadMaster,LoadBGM,LoadFX;
+
     public float MasterVolume
     {
+        
         get
         {
             float vol;
@@ -47,11 +51,13 @@ public class SoundController : MonoBehaviour
         {
             MasterVolume = 0.00001f;
             mMuteMaster.gameObject.SetActive(true);
+            mMasterSlider.interactable = false;
         }
         else
         {
-            MasterVolume = LoadMaster;
             mMuteMaster.gameObject.SetActive(false);
+            MasterVolume = LoadMaster;
+            mMasterSlider.interactable = true;
         }
     }
 
@@ -82,11 +88,13 @@ public class SoundController : MonoBehaviour
         {
             BGMVolume = 0.00001f;
             mMuteBGM.gameObject.SetActive(true);
+            mBGMSlider.interactable = false;
         }
         else
         {
-            BGMVolume = LoadBGM;
             mMuteBGM.gameObject.SetActive(false);
+            BGMVolume = LoadBGM;
+            mBGMSlider.interactable = true;
         }
     }
 
@@ -117,11 +125,13 @@ public class SoundController : MonoBehaviour
         {
             EffectVolume = 0.00001f;
             mMuteEffect.gameObject.SetActive(true);
+            mEffectSlider.interactable = false;
         }
         else
         {
-            EffectVolume = LoadFX;
             mMuteEffect.gameObject.SetActive(false);
+            EffectVolume = LoadFX;
+            mEffectSlider.interactable = true;
         }
     }
 
