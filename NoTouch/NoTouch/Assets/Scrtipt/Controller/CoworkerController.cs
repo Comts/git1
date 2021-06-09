@@ -16,7 +16,7 @@ public class CoworkerController : InformationLoader
     //textdata class
 #pragma warning disable 0649
     [SerializeField]
-    private int mCoworkerWork=2;
+    private int mCoworkerWork;
     [SerializeField]
     private Sprite[] mIconArr;
 
@@ -84,6 +84,7 @@ public class CoworkerController : InformationLoader
                         mTextInfoArr[i].Title,
                         mInfoArr[i].CurrentLevel.ToString(),
                         string.Format(mTextInfoArr[i].ContentsFormat,
+                                    mInfoArr[i].PeriodCurrent,
                                     UnitSetter.GetUnitStr(mInfoArr[i].ValueCurrent)),
                         UnitSetter.GetUnitStr(mInfoArr[i].CostCurrent),
                         LevelUP);
@@ -95,7 +96,7 @@ public class CoworkerController : InformationLoader
 
     public void JobFinish(int id)//TODO FX, Vector3 effectPos)
     {
-        double AddAmount = mInfoArr[id].CurrentLevel * mCoworkerWork;
+        double AddAmount = mInfoArr[id].ValueCurrent;
         GameController.Instance.AddAmoutGem_O[id]+= (AddAmount * ItemUseController.Instance.GetGemMulti[1]);
         GemSellController.Instance.RefreshGemData();
         //TODO FX
@@ -138,6 +139,7 @@ public class CoworkerController : InformationLoader
                             mTextInfoArr[nextID].Title,
                             mInfoArr[nextID].CurrentLevel.ToString(),
                             string.Format(mTextInfoArr[nextID].ContentsFormat,
+                                    mInfoArr[nextID].PeriodCurrent,
                                         UnitSetter.GetUnitStr(mInfoArr[nextID].ValueCurrent)),
                             UnitSetter.GetUnitStr(mInfoArr[nextID].CostCurrent),
                             LevelUP);
@@ -153,6 +155,7 @@ public class CoworkerController : InformationLoader
 
         mElementList[id].Refresh(mInfoArr[id].CurrentLevel.ToString(),
                       string.Format(mTextInfoArr[id].ContentsFormat,
+                                    mInfoArr[id].PeriodCurrent,
                                     UnitSetter.GetUnitStr(mInfoArr[id].ValueCurrent)),
                       UnitSetter.GetUnitStr(mInfoArr[id].CostCurrent));
     }
@@ -177,8 +180,7 @@ public class CoworkerController : InformationLoader
         //Debug.Log(id + "번째 costbase" + mInfoArr[id].CostBase);
         //Debug.Log(id + "번째 costweight" + mInfoArr[id].CostWeight);
         //Debug.Log(id + "번째 CurrentLevel" + mInfoArr[id].CurrentLevel);
-        mInfoArr[id].ValueCurrent = mInfoArr[id].ValueBase *
-                            Math.Pow(mInfoArr[id].ValueWeight, mInfoArr[id].CurrentLevel);
+        mInfoArr[id].ValueCurrent = mInfoArr[id].CurrentLevel * mInfoArr[id].ValueWeight;
         float periodsSub = mInfoArr[id].PeriodUpgradeAmount *
                            (int)(mInfoArr[id].CurrentLevel / mInfoArr[id].PeriodLevelStep);
         if (mInfoArr[id].CurrentLevel > 0)

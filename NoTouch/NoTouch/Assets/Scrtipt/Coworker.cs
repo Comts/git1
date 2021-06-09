@@ -28,7 +28,7 @@ public class Coworker : MonoBehaviour
     {
         if (mWorkPeriod > 0)
         {
-            mCurrentTime += Time.deltaTime;
+            mCurrentTime += Time.deltaTime;;
             if (mCurrentTime >= mWorkPeriod)
             {
                 CoworkerController.Instance.JobFinish(mID);//TODO FX, mTextEffectPos.position);
