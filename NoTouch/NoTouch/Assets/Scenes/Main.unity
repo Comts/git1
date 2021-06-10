@@ -18822,6 +18822,7 @@ MonoBehaviour:
   mElementPrefab: {fileID: 1379399122265667899, guid: 4e2463fd2e682b146a973dd25c70648c,
     type: 3}
   mElementArea: {fileID: 1297741781}
+  url: www.naver.com
 --- !u!1 &1374881622
 GameObject:
   m_ObjectHideFlags: 0
