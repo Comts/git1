@@ -28,6 +28,7 @@ public class GameController : SaveDataController
     private double[] mFloorGemCost, mFloorGemCostCal;
     [SerializeField]
     private double mManPower;
+    private double mTimeLag;
     public Delegates.VoidCallback GoldCallback;
     public double Gold
     {
@@ -148,6 +149,21 @@ public class GameController : SaveDataController
             }
         }
     }
+    public double TimeLag
+    {
+        get { return mTimeLag; }
+        set
+        {
+            if (value >= 0)
+            {
+                mTimeLag = value;
+            }
+            else
+            {
+                Debug.LogError("Error on manpower update " + value);
+            }
+        }
+    }
     public int[] HaveMine
     {
         get { return mUser.MineArr; }
@@ -211,7 +227,7 @@ public class GameController : SaveDataController
     // Start is called before the first frame update
     void Start()
     {
-        if (mUser.Stage<mUser.PlayerPos)
+        if (mUser.Stage < mUser.PlayerPos)
         {
             mUser.PlayerPos = mUser.Stage;
         }
@@ -221,9 +237,9 @@ public class GameController : SaveDataController
         mFloorGemCost = new double[Constants.MAX_fLOOR];
         mFloorGemCostCal = new double[Constants.MAX_fLOOR];
         UIController.Instance.ShowMoney();
-        for (int i =0;i<Constants.MAX_fLOOR;i++)
+        for (int i = 0; i < Constants.MAX_fLOOR; i++)
         {
-            if(i==0)
+            if (i == 0)
             {
                 mFloorProgress[i] = 10;
                 mFloorProgressCal[i] = 10;
@@ -237,7 +253,7 @@ public class GameController : SaveDataController
                 mFloorProgressCal[i] = mFloorProgressCal[i - 1] * WorkIncrese;
                 mFloorProgress[i] = Mathf.Round(mFloorProgressCal[i]);
                 mFloorGemCostCal[i] = mFloorGemCost[i - 1] * GemCostIncrese;
-                mFloorGemCost[i] = Math.Round(mFloorGemCostCal[i],1);
+                mFloorGemCost[i] = Math.Round(mFloorGemCostCal[i], 1);
                 //Debug.Log((i) + "번째 층 노동력" + mFloorProgress[i]);
                 //Debug.Log((i) + "번째 층 원석가격" + mFloorGemCost[i]);
             }
@@ -246,6 +262,10 @@ public class GameController : SaveDataController
         {
             CheckScrollPin = bOn;
         });
+
+        GetStartTime();
+
+        InvokeRepeating("GetEndTime", 2f, 60f); 
 
     }
     public void ReStart()
@@ -289,6 +309,7 @@ public class GameController : SaveDataController
     }
     private void OnApplicationQuit()
     {
+        GetEndTime();
         Save();
     }
 

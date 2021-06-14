@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
 
 public class CoworkerController : InformationLoader
 {
@@ -29,7 +28,7 @@ public class CoworkerController : InformationLoader
     [SerializeField]
     private Transform mElementArea;
     [SerializeField]
-    private string url ="";
+    private int mTimePeriod;
 #pragma warning restore 0649
     private List<UIElement> mElementList;
     private void Awake()
@@ -55,32 +54,7 @@ public class CoworkerController : InformationLoader
         mLevelArr = GameController.Instance.GetCoworkerLevelArr();
         mElementList = new List<UIElement>();
         Load();
-        StartCoroutine(TimeChk());
     }
-    IEnumerator TimeChk()
-    {
-        UnityWebRequest request = new UnityWebRequest();
-
-        using(request = UnityWebRequest.Get(url))
-        {
-            yield return request.SendWebRequest(); 
-
-            if(request.isNetworkError)
-            {
-                Debug.Log(request.error);
-            }
-            else
-            {
-                string date = request.GetResponseHeader("date");
-
-                DateTime dateTime = DateTime.Parse(date).ToUniversalTime();
-                TimeSpan timestamp = dateTime - new DateTime(1970, 1, 1, 0, 0, 0);
-                Debug.Log(timestamp.TotalSeconds);
-
-            }
-        }
-    }
-
     public void ReStart()
     {
 
@@ -130,12 +104,18 @@ public class CoworkerController : InformationLoader
         //TODO FX
     }
 
-    public void OffJob(int id)//TODO FX, Vector3 effectPos)
+    public void OffJob()
     {
-        double AddAmount = mInfoArr[id].ValueCurrent;
-        GameController.Instance.AddAmoutGem_O[id] += (AddAmount * ItemUseController.Instance.GetGemMulti[1]);
-        GemSellController.Instance.RefreshGemData();
-        //TODO FX
+        for (int i = 0; i < mInfoArr.Length; i++)
+        {
+            if (mCoworkerArr[i].gameObject.activeInHierarchy)
+            {
+                double AddAmount = mInfoArr[i].ValueCurrent;
+                GameController.Instance.AddAmoutGem_O[i] += (int)(AddAmount * GameController.Instance.TimeLag / mInfoArr[i].PeriodCurrent / mTimePeriod);
+                GemSellController.Instance.RefreshGemData();
+
+            }
+        }
     }
 
 

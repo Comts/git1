@@ -13212,6 +13212,9 @@ MonoBehaviour:
     GetFromMine: []
     AutoSellCheck: 
     ScrollPinCheck: 0
+    StartTime: 0
+    EndTime: 0
+  url: www.naver.com
   mTextEffectPos: {fileID: 0}
   WorkIncrese: 1.2
   GemCostIncrese: 1.3
@@ -18822,7 +18825,7 @@ MonoBehaviour:
   mElementPrefab: {fileID: 1379399122265667899, guid: 4e2463fd2e682b146a973dd25c70648c,
     type: 3}
   mElementArea: {fileID: 1297741781}
-  url: www.naver.com
+  mTimePeriod: 10
 --- !u!1 &1374881622
 GameObject:
   m_ObjectHideFlags: 0

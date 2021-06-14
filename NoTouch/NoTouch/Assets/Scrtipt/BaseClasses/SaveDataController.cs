@@ -4,12 +4,77 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
+using UnityEngine.Networking;
 
 public class SaveDataController : MonoBehaviour
 {
     [SerializeField]
     protected SaveData mUser;
+    [SerializeField]
+    private string url = "";
+    
 
+    IEnumerator StartTimeChk()
+    {
+        double starttime=0;
+        UnityWebRequest request = new UnityWebRequest();
+        using (request = UnityWebRequest.Get(url))
+        {
+            yield return request.SendWebRequest();
+
+            if (request.isNetworkError)
+            {
+                Debug.Log(request.error);
+            }
+            else
+            {
+                string date = request.GetResponseHeader("date");
+
+                DateTime dateTime = DateTime.Parse(date).ToUniversalTime();
+                TimeSpan timestamp = dateTime - new DateTime(1970, 1, 1, 0, 0, 0);
+                starttime = timestamp.TotalSeconds;
+            }
+        }
+        mUser.StartTime = starttime;
+        GameController.Instance.TimeLag = Math.Abs( mUser.StartTime - mUser.EndTime);
+        CoworkerController.Instance.OffJob();
+        Debug.Log("시작시간 : " + mUser.StartTime);
+        Debug.Log("종료시간 : " + mUser.EndTime);
+        Debug.Log("시간차이 : " + GameController.Instance.TimeLag);
+
+    }
+    IEnumerator EndTimeChk()
+    {
+        double Endtime=0;
+        UnityWebRequest request = new UnityWebRequest();
+        using (request = UnityWebRequest.Get(url))
+        {
+            yield return request.SendWebRequest();
+
+            if (request.isNetworkError)
+            {
+                Debug.Log(request.error);
+            }
+            else
+            {
+                string date = request.GetResponseHeader("date");
+
+                DateTime dateTime = DateTime.Parse(date).ToUniversalTime();
+                TimeSpan timestamp = dateTime - new DateTime(1970, 1, 1, 0, 0, 0);
+                Endtime = timestamp.TotalSeconds;
+            }
+        }
+        mUser.EndTime = Endtime;
+        Debug.Log("종료시간 저장 : " + mUser.EndTime);
+    }
+    public void GetStartTime()
+    {
+        StartCoroutine(StartTimeChk());
+    }
+    public void GetEndTime()
+    {
+        StartCoroutine(EndTimeChk());
+    }
     protected void LoadGame()
     {
         string data = PlayerPrefs.GetString("SaveData");
@@ -24,6 +89,7 @@ public class SaveDataController : MonoBehaviour
             mUser = (SaveData)formatter.Deserialize(stream);
         }
         FixSaveData();
+
     }
 
     protected void FixSaveData()
@@ -196,6 +262,7 @@ public class SaveDataController : MonoBehaviour
 
     protected void Save()
     {
+        
         BinaryFormatter formatter = new BinaryFormatter();
         MemoryStream stream = new MemoryStream(); 
         

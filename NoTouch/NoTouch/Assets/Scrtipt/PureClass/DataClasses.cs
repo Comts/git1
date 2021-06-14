@@ -131,5 +131,8 @@ public class SaveData
     public bool[] AutoSellCheck;
     public bool ScrollPinCheck;
 
+    public double StartTime;
+    public double EndTime;
+
 
 }
