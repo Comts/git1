@@ -7,8 +7,11 @@ using UnityEngine.Audio;
 public class SoundController : MonoBehaviour
 {
     private const string MIXER_MASTER = "MixerMaster";
+    private const string MUTE_MIXER_MASTER = "MuteMixerMaster";
     private const string MIXER_BGM = "MixerBGM";
+    private const string MUTE_MIXER_BGM = "MuteMixerBGM";
     private const string MIXER_FX = "MixerEffect";
+    private const string MUTE_MIXER_FX = "MuteMixerEffect";
 #pragma warning disable 0649
     [SerializeField]
     private AudioSource mBGM, mEffect;
@@ -22,7 +25,42 @@ public class SoundController : MonoBehaviour
     private Slider mMasterSlider, mBGMSlider, mEffectSlider;
 #pragma warning restore 0649
     private float LoadMaster,LoadBGM,LoadFX;
+    private void Start()
+    {
+        if (PlayerPrefs.GetFloat(MIXER_MASTER, LoadMaster)!=0)
+        {
+            mMasterSlider.value = MasterVolume = PlayerPrefs.GetFloat(MIXER_MASTER, LoadMaster);
+        }
+        if (PlayerPrefs.GetInt(MUTE_MIXER_MASTER) == 1)
+        {
+            MasterVolume = 0.00001f;
+            mMuteMaster.gameObject.SetActive(true);
+            mMasterSlider.interactable = false;
+        }
 
+        if (PlayerPrefs.GetFloat(MIXER_BGM, LoadBGM)!=0)
+        {
+            mBGMSlider.value = BGMVolume = PlayerPrefs.GetFloat(MIXER_BGM, LoadBGM);
+        }
+        if (PlayerPrefs.GetInt(MUTE_MIXER_BGM) == 1)
+        {
+            BGMVolume = 0.00001f;
+            mMuteBGM.gameObject.SetActive(true);
+            mBGMSlider.interactable = false;
+        }
+
+        if(PlayerPrefs.GetFloat(MIXER_FX, LoadFX)!=0)
+        {
+            mEffectSlider.value = EffectVolume = PlayerPrefs.GetFloat(MIXER_FX, LoadFX);
+        }
+        if (PlayerPrefs.GetInt(MUTE_MIXER_FX) == 1)
+        {
+            EffectVolume = 0.00001f;
+            mMuteEffect.gameObject.SetActive(true);
+            mEffectSlider.interactable = false;
+        }
+
+    }
     public float MasterVolume
     {
         
@@ -38,6 +76,7 @@ public class SoundController : MonoBehaviour
             if(value != 0.00001f)
             {
                 LoadMaster = value;
+                PlayerPrefs.SetFloat(MIXER_MASTER, LoadMaster);
             }
             if(!mMuteMaster.gameObject.activeInHierarchy)
             {
@@ -52,12 +91,14 @@ public class SoundController : MonoBehaviour
             MasterVolume = 0.00001f;
             mMuteMaster.gameObject.SetActive(true);
             mMasterSlider.interactable = false;
+            PlayerPrefs.SetInt(MUTE_MIXER_MASTER, 1);
         }
         else
         {
             mMuteMaster.gameObject.SetActive(false);
             MasterVolume = LoadMaster;
             mMasterSlider.interactable = true;
+            PlayerPrefs.SetInt(MUTE_MIXER_MASTER, 0);
         }
     }
 
@@ -75,6 +116,7 @@ public class SoundController : MonoBehaviour
             if (value != 0.00001f)
             {
                 LoadBGM = value;
+                PlayerPrefs.SetFloat(MIXER_BGM, LoadBGM);
             }
             if (!mMuteBGM.gameObject.activeInHierarchy)
             {
@@ -89,12 +131,14 @@ public class SoundController : MonoBehaviour
             BGMVolume = 0.00001f;
             mMuteBGM.gameObject.SetActive(true);
             mBGMSlider.interactable = false;
+            PlayerPrefs.SetInt(MUTE_MIXER_BGM, 1);
         }
         else
         {
             mMuteBGM.gameObject.SetActive(false);
             BGMVolume = LoadBGM;
             mBGMSlider.interactable = true;
+            PlayerPrefs.SetInt(MUTE_MIXER_BGM, 0);
         }
     }
 
@@ -112,6 +156,7 @@ public class SoundController : MonoBehaviour
             if (value != 0.00001f)
             {
                 LoadFX = value;
+                PlayerPrefs.SetFloat(MIXER_FX, LoadFX);
             }
             if (!mMuteEffect.gameObject.activeInHierarchy)
             {
@@ -126,12 +171,14 @@ public class SoundController : MonoBehaviour
             EffectVolume = 0.00001f;
             mMuteEffect.gameObject.SetActive(true);
             mEffectSlider.interactable = false;
+            PlayerPrefs.SetInt(MUTE_MIXER_FX, 1);
         }
         else
         {
             mMuteEffect.gameObject.SetActive(false);
             EffectVolume = LoadFX;
             mEffectSlider.interactable = true;
+            PlayerPrefs.SetInt(MUTE_MIXER_FX, 0);
         }
     }
 

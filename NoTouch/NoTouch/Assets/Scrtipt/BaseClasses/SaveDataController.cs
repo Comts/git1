@@ -38,9 +38,9 @@ public class SaveDataController : MonoBehaviour
         mUser.StartTime = starttime;
         GameController.Instance.TimeLag = Math.Abs( mUser.StartTime - mUser.EndTime);
         CoworkerController.Instance.OffJob();
-        Debug.Log("시작시간 : " + mUser.StartTime);
-        Debug.Log("종료시간 : " + mUser.EndTime);
-        Debug.Log("시간차이 : " + GameController.Instance.TimeLag);
+        //Debug.Log("시작시간 : " + mUser.StartTime);
+        //Debug.Log("종료시간 : " + mUser.EndTime);
+        //Debug.Log("시간차이 : " + GameController.Instance.TimeLag);
 
     }
     IEnumerator EndTimeChk()
@@ -65,7 +65,7 @@ public class SaveDataController : MonoBehaviour
             }
         }
         mUser.EndTime = Endtime;
-        Debug.Log("종료시간 저장 : " + mUser.EndTime);
+        //Debug.Log("종료시간 저장 : " + mUser.EndTime);
     }
     public void GetStartTime()
     {
