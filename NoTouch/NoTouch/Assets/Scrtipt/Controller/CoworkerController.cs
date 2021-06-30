@@ -134,12 +134,27 @@ public class CoworkerController : InformationLoader
             mElementList[id].SetButtonActive(false);
         }
         mLevelArr[id] = mInfoArr[id].CurrentLevel;
-        if(mInfoArr[id].CurrentLevel == 1)
+        if (mInfoArr[id].CurrentLevel == 1)
         {
             mCoworkerArr[id].gameObject.SetActive(true);
             StageController.Instance.CoworkerActive(id);
         }
-        if (mInfoArr[id].CurrentLevel >= 10 && GameController.Instance.Stage > id && id<mInfoArr.Length)
+        AddCowerker(id);
+
+        CalcData(id);
+
+        mCoworkerArr[id].StartWork(id, mInfoArr[id].PeriodCurrent);
+
+        mElementList[id].Refresh(mInfoArr[id].CurrentLevel.ToString(),
+                      string.Format(mTextInfoArr[id].ContentsFormat,
+                                    mInfoArr[id].PeriodCurrent,
+                                    UnitSetter.GetUnitStr(mInfoArr[id].ValueCurrent)),
+                      UnitSetter.GetUnitStr(mInfoArr[id].CostCurrent));
+    }
+
+    public void AddCowerker(int id)
+    {
+        if (mInfoArr[id].CurrentLevel >= 10 && GameController.Instance.Stage > id && id < mInfoArr.Length)
         {
             int nextID = id + 1;
 
@@ -162,18 +177,8 @@ public class CoworkerController : InformationLoader
                 mElementList.Add(element);
             }
         }
-
-
-        CalcData(id);
-
-        mCoworkerArr[id].StartWork(id, mInfoArr[id].PeriodCurrent);
-
-        mElementList[id].Refresh(mInfoArr[id].CurrentLevel.ToString(),
-                      string.Format(mTextInfoArr[id].ContentsFormat,
-                                    mInfoArr[id].PeriodCurrent,
-                                    UnitSetter.GetUnitStr(mInfoArr[id].ValueCurrent)),
-                      UnitSetter.GetUnitStr(mInfoArr[id].CostCurrent));
     }
+
     private void CalcData(int id)
     {
         for(int i=0;i<=mInfoArr[id].CurrentLevel;i++)

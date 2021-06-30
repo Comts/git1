@@ -163,6 +163,8 @@ public class StageController : MonoBehaviour
         GameController.Instance.Stage = id;
         int nextID = id + 1;
 
+        CoworkerController.Instance.AddCowerker(id - 1);
+
         if (mElementList.Count <= nextID)
         {
 
@@ -174,6 +176,7 @@ public class StageController : MonoBehaviour
             PlayerButtoninteractable(id);
             mLastSibling.Refresh(mElementList.Count, UnitSetter.GetUnitStr(100000 * math.pow(2, id)));
         }
+
         if (GameController.Instance.Stage < Constants.MAX_fLOOR-1)
         {
             mLastSibling.transform.SetAsLastSibling();
