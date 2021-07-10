@@ -134,5 +134,7 @@ public class SaveData
     public double StartTime;
     public double EndTime;
 
+    public int PlayMoleCount;
+
 
 }

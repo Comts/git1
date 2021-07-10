@@ -24,18 +24,22 @@ public class MoleController : MonoBehaviour
     private Text mMoneyText;
     [SerializeField]
     private int mMinMulti,mMaxMulti;
+    [SerializeField]
+    private Button mMolebutton;
+    [SerializeField]
+    private Text mPlayCountText;
 #pragma warning restore 0649
     private int Score;
-    private int count;
+    private int Molecount;
     private double mGold;
     private double mRandom;
     private float currentTime;
     public int MoleCount
     {
-        get { return count; }
+        get { return Molecount; }
         set
         {
-            count = value;
+            Molecount = value;
         }
     }
     private void Awake()
@@ -51,9 +55,24 @@ public class MoleController : MonoBehaviour
     }
     private void Start()
     {
-        count = 0;
+        Molecount = 0;
         Score = 0;
+        CheckPlayButton();
     }
+
+    public void CheckPlayButton()
+    {
+        mPlayCountText.text = GameController.Instance.PlayMoleCount.ToString();
+        if (GameController.Instance.PlayMoleCount > 0)
+        {
+            mMolebutton.interactable = true;
+        }
+        else
+        {
+            mMolebutton.interactable = false;
+        }
+    }
+
     private void FixedUpdate()
     {
         if (mMoleWindow.gameObject.activeInHierarchy)
@@ -99,6 +118,8 @@ public class MoleController : MonoBehaviour
     {
         currentTime = mPlayTime; 
         ShowScore();
+        GameController.Instance.PlayMoleCount--;
+        CheckPlayButton(); ;
     }
     public void AddScore()
     {
@@ -117,7 +138,7 @@ public class MoleController : MonoBehaviour
     }
     private IEnumerator SpwanMole()
     {
-        if (count < mSpwanMoleCount)
+        if (Molecount < mSpwanMoleCount)
         {
             int pos = UnityEngine.Random.Range(0, MoleArr.Length);
             while (MoleArr[pos].gameObject.activeInHierarchy)
@@ -125,7 +146,7 @@ public class MoleController : MonoBehaviour
                 pos = UnityEngine.Random.Range(0, MoleArr.Length);
             }
             MoleArr[pos].gameObject.SetActive(true);
-            count++;
+            Molecount++;
         }
         yield return new WaitForSeconds(2);
     }

@@ -12,7 +12,8 @@ public class SaveDataController : MonoBehaviour
     protected SaveData mUser;
     [SerializeField]
     private string url = "";
-    
+
+    private double mTenMinCount;
 
     IEnumerator StartTimeChk()
     {
@@ -38,6 +39,15 @@ public class SaveDataController : MonoBehaviour
         mUser.StartTime = starttime;
         GameController.Instance.TimeLag = Math.Abs( mUser.StartTime - mUser.EndTime);
         CoworkerController.Instance.OffJob();
+
+        mTenMinCount = (int)(GameController.Instance.TimeLag / 600);
+        while (GameController.Instance.PlayMoleCount<3 && mTenMinCount>0)
+        {
+            GameController.Instance.PlayMoleCount++;
+            mTenMinCount--;
+            MoleController.Instance.CheckPlayButton();
+        }
+        mTenMinCount = 0;
         //Debug.Log("시작시간 : " + mUser.StartTime);
         //Debug.Log("종료시간 : " + mUser.EndTime);
         //Debug.Log("시간차이 : " + GameController.Instance.TimeLag);
@@ -65,6 +75,15 @@ public class SaveDataController : MonoBehaviour
             }
         }
         mUser.EndTime = Endtime;
+        if (GameController.Instance.PlayMoleCount < 3)
+        {
+            if((int)(Math.Abs(mUser.EndTime - mUser.StartTime) / 600)- mTenMinCount > 0)
+            {
+                GameController.Instance.PlayMoleCount++;
+                mTenMinCount++;
+                MoleController.Instance.CheckPlayButton();
+            }
+        }
         //Debug.Log("종료시간 저장 : " + mUser.EndTime);
     }
     public void GetStartTime()
@@ -258,6 +277,8 @@ public class SaveDataController : MonoBehaviour
 
         mUser.AutoSellCheck = new bool[Constants.MAX_fLOOR*5];
         mUser.ScrollPinCheck = false;
+
+        mUser.PlayMoleCount = 3;
     }
 
     protected void Save()

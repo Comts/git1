@@ -39,21 +39,36 @@ public class GoogleMobileAdsScript : MonoBehaviour
         rewardBasedVideo.LoadAd(request, Test_UnitID);
     }
 
-    public void UserOptToWatchAd()
+    public void UserOptToWatchAd_Mole()
     {
         if (rewardBasedVideo.IsLoaded())
         {
             rewardBasedVideo.Show();
-            rewardBasedVideo.OnAdRewarded += HandleRewardBasedVideoRewarded; 
+            rewardBasedVideo.OnAdRewarded += HandleRewardBasedVideoRewarded_Mole;
         }
         RequestRewardBasedVideo();
     }
-    public void HandleRewardBasedVideoRewarded(object sender, Reward args)
+
+    public void UserOptToWatchAd_Item()
+    {
+        if (rewardBasedVideo.IsLoaded())
+        {
+            rewardBasedVideo.Show();
+            rewardBasedVideo.OnAdRewarded += HandleRewardBasedVideoRewarded_Item;
+
+        }
+        RequestRewardBasedVideo();
+    }
+    public void HandleRewardBasedVideoRewarded_Mole(object sender, Reward args)
     {
         MoleController.Instance.AddMoney(3);
         PopWindow.SetActive(false);
         MoleWindow.SetActive(false);
+    }
+    public void HandleRewardBasedVideoRewarded_Item(object sender, Reward args)
+    {
 
+        GameController.Instance.HaveItem[0]++;
     }
 }
 

@@ -200,6 +200,15 @@ public class GameController : SaveDataController
         }
 
     }
+
+    public int PlayMoleCount
+    {
+        get { return mUser.PlayMoleCount; }
+        set
+        {
+            mUser.PlayMoleCount = value;
+        }
+    }
     private void Awake()
     {
         if(Instance == null)
@@ -304,6 +313,11 @@ public class GameController : SaveDataController
         CoworkerController.Instance.ReStart();
         StageController.Instance.ReStart();
         UIController.Instance.ShowMoney();
+        ItemUseController.Instance.ReStart();
+
+        mUser.PlayMoleCount = 3;
+        MoleController.Instance.CheckPlayButton();
+
         Save();
         LoadGame();
     }

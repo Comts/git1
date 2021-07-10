@@ -100,7 +100,7 @@ public class PlayerUpgradeController : InformationLoader
                       string.Format(mTextInfoArr[id].ContentsFormat,
                                     UnitSetter.GetUnitStr(mInfoArr[id].ValueCurrent),
                                     mInfoArr[id].Duration.ToString()),
-                      UnitSetter.GetUnitStr(mInfoArr[id].CostCurrent));
+                      UnitSetter.GetUnitStr(Math.Round(mInfoArr[id].CostCurrent)));
     }
     private void CalcData(int id)
     {

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 //using UnityEditor.Purchasing;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ItemUseController : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class ItemUseController : MonoBehaviour
 #pragma warning disable 0649
     [SerializeField]
     private ItemButton[] mItemButtonArr;
+    [SerializeField]
+    private Text Item1, Item2;
 #pragma warning restore 0649
     public double[] GetGemMulti { get; set; }
     public double SellGemMulti { get; set; }
@@ -31,13 +34,33 @@ public class ItemUseController : MonoBehaviour
     {
         GetGemMulti = new double[2];
         SellGemMulti = 1;
-        for (int i=0;i< GetGemMulti.Length;i++)
+        for (int i = 0; i < GetGemMulti.Length; i++)
         {
             GetGemMulti[i] = 1;
         }
         mItemCooltimeArr = GameController.Instance.GetItemCooltimeArr();
         mItemMaxCooltimeArr = GameController.Instance.GetItemMaxCooltimeArr();
         CheckItemButton();
+        ShowHaveItem();
+    }
+
+    public void ReStart()
+    {
+        SellGemMulti = 1;
+        for (int i = 0; i < GetGemMulti.Length; i++)
+        {
+            GetGemMulti[i] = 1;
+        }
+        mItemCooltimeArr = GameController.Instance.GetItemCooltimeArr();
+        mItemMaxCooltimeArr = GameController.Instance.GetItemMaxCooltimeArr();
+
+        CheckItemButton();
+        ShowHaveItem();
+    }
+    private void ShowHaveItem()
+    {
+        Item1.text = GameController.Instance.HaveItem[1].ToString();
+        Item2.text = GameController.Instance.HaveItem[0].ToString();
     }
 
     // Update is called once per frame
@@ -81,7 +104,7 @@ public class ItemUseController : MonoBehaviour
             {
                 GameController.Instance.HaveItem[1]--;
             }
-
+            ShowHaveItem();
         }
         mItemCooltimeArr[buttonID] = 10;
         StartCoroutine(CooltimeRoutine(buttonID, 10));
