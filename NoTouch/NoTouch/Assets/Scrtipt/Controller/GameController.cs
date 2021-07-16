@@ -363,13 +363,13 @@ public class GameController : SaveDataController
         //TODO Sound FX
         //TODO VFX +Text Effect
 
-        
         while (mUser.Progress >= mFloorProgress[mUser.PlayerPos])
         {
             mUser.Progress -= mFloorProgress[mUser.PlayerPos];
             gain++;
         }
         AddAmoutGem_O[mUser.PlayerPos] +=(gain * ItemUseController.Instance.GetGemMulti[0]);
+        GemSellController.Instance.RefreshGemData();
 
         //TextEffect effect = TextEffectPool.Instance.GetFromPool();
         //effect.SetText(gain.ToString());

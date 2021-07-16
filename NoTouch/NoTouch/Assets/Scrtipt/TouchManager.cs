@@ -38,11 +38,23 @@ public class TouchManager : MonoBehaviour
                     RaycastHit hit;
                     if(Physics.Raycast(ray,out hit))
                     {
-                        if(gameObject==hit.collider.gameObject)
+                        //if(gameObject==hit.collider.gameObject)
+                        // {
+                        if (hit.collider.gameObject.CompareTag("Touch"))
                         {
-                            vec = hit.point;
-                            return true;
+                            GameController.Instance.Touch();
                         }
+                        if (hit.collider.gameObject.CompareTag("Craft"))
+                        {
+                            CraftController.Instance.Touch();
+                        }
+                        if (hit.collider.gameObject.CompareTag("Mole"))
+                        {
+                            hit.collider.gameObject.GetComponent<Mole>().Moledaed();
+                        }
+                        vec = hit.point;
+                        return true;
+                        // }
                     }
                 }
             }
@@ -57,34 +69,29 @@ public class TouchManager : MonoBehaviour
         {
             Ray ray = GenerateRay(Input.mousePosition);
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit) && hit.collider.gameObject.CompareTag("Touch"))
+            if (Physics.Raycast(ray, out hit))
             {
-                Timer effect = mEffectPool.GetFromPool();
-                effect.transform.position = hit.point + (Vector3.back * 3);
-                GameController.Instance.Touch();
-                GemSellController.Instance.RefreshGemData();
+                if (hit.collider.gameObject.CompareTag("Touch"))
+                {
+                    GameController.Instance.Touch();
+                }
+                if (hit.collider.gameObject.CompareTag("Craft"))
+                {
+                    CraftController.Instance.Touch();
+                }
+                if (hit.collider.gameObject.CompareTag("Mole"))
+                {
+                    hit.collider.gameObject.GetComponent<Mole>().Moledaed();
+                }
             }
-            if (Physics.Raycast(ray, out hit) && hit.collider.gameObject.CompareTag("Craft"))
-            {
-                Timer effect = mEffectPool.GetFromPool();
-                effect.transform.position = hit.point;
-                CraftController.Instance.Touch();
-            }
-            if (Physics.Raycast(ray, out hit) && hit.collider.gameObject.CompareTag("Mole"))
-            {
-                Timer effect = mEffectPool.GetFromPool();
-                effect.transform.position = hit.point + (Vector3.back * 3);
-
-                hit.collider.gameObject.GetComponent<Mole>().Moledaed();
-
-            }
+            Timer effect = mEffectPool.GetFromPool();
+            effect.transform.position = hit.point;
         }
         Vector3 pos;
         if (CheckTouch(out pos))
         {
             Timer effect = mEffectPool.GetFromPool();
             effect.transform.position = pos;
-            GameController.Instance.Touch();
         }
     }
 }

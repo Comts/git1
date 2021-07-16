@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
@@ -11,6 +12,9 @@ public class IAPController : MonoBehaviour, IStoreListener
     public static IAPController Instance;
     private static IStoreController m_StoreController;          // The Unity Purchasing system.
     private static IExtensionProvider m_StoreExtensionProvider; // The store-specific Purchasing subsystems.
+
+
+    private Coroutine mCor_AutoClick1;
 
     [SerializeField] GameObject StarterPack1;
     [SerializeField] GameObject StarterPack2;
@@ -69,9 +73,18 @@ public class IAPController : MonoBehaviour, IStoreListener
     private string GooglePlay_Dazi_Silver_200 = "com.comts.notouch.dazi.silver.200";
     private string GooglePlay_Dazi_Silver_500 = "com.comts.notouch.dazi.silver.500";
 
-   // private string iOS_Ruby100 = "r100"; //ID규정을 확인후 따라야됨
-   // private string iOS_Starterpack = "s00";
+    // private string iOS_Ruby100 = "r100"; //ID규정을 확인후 따라야됨
+    // private string iOS_Starterpack = "s00";
 
+    private IEnumerator Cor_AutoClick(float time)
+    {
+        WaitForSeconds TouchSec = new WaitForSeconds(time);
+        while (true)
+        {
+            yield return TouchSec;
+            GameController.Instance.Touch();
+        }
+    }
     private void Awake()
     {
         if (Instance == null)
@@ -111,12 +124,16 @@ public class IAPController : MonoBehaviour, IStoreListener
             AutoClick1.SetActive(false);
             if (CheckHistory(Nonconsumable_AutoClick))
             {
-                //오토클릭1 실행
-                AutoClick2.SetActive(true);
                 if (CheckHistory(Nonconsumable_AutoClick2))
                 {
                     //오토클릭2 실행
-                    AutoClick2.SetActive(false);
+                    StartCoroutine(Cor_AutoClick(0.1f));
+                }
+                else
+                {
+                    //오토클릭1 실행
+                    mCor_AutoClick1 = StartCoroutine(Cor_AutoClick(0.2f));
+                    AutoClick2.SetActive(true);
                 }
 
             }
@@ -547,12 +564,18 @@ public class IAPController : MonoBehaviour, IStoreListener
                 //Autoclick1
                 AutoClick1.SetActive(false);
                 AutoClick2.SetActive(true);
+                mCor_AutoClick1 = StartCoroutine(Cor_AutoClick(0.2f));
             }
             else if (String.Equals(args.purchasedProduct.definition.id, Nonconsumable_AutoClick2, StringComparison.Ordinal))
             {
                 Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
                 //Autoclick2
                 AutoClick2.SetActive(false);
+                if (mCor_AutoClick1 != null)
+                {
+                    StopCoroutine(mCor_AutoClick1);
+                }
+                StartCoroutine(Cor_AutoClick(0.1f));
             }
             else
             {
