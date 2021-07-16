@@ -57,7 +57,7 @@ public class ItemUseController : MonoBehaviour
         CheckItemButton();
         ShowHaveItem();
     }
-    private void ShowHaveItem()
+    public void ShowHaveItem()
     {
         Item1.text = GameController.Instance.HaveItem[1].ToString();
         Item2.text = GameController.Instance.HaveItem[0].ToString();

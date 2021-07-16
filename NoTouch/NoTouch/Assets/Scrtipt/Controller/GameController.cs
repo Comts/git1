@@ -180,6 +180,7 @@ public class GameController : SaveDataController
         {
             mUser.HaveItmeArr = value;
         }
+        
 
     }
     public float[] GetItemCooltimeArr()

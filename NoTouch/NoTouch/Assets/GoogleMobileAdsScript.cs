@@ -69,6 +69,7 @@ public class GoogleMobileAdsScript : MonoBehaviour
     {
 
         GameController.Instance.HaveItem[0]++;
+        ItemUseController.Instance.ShowHaveItem();
     }
 }
 

@@ -12,6 +12,11 @@ public class IAPController : MonoBehaviour, IStoreListener
     private static IStoreController m_StoreController;          // The Unity Purchasing system.
     private static IExtensionProvider m_StoreExtensionProvider; // The store-specific Purchasing subsystems.
 
+    [SerializeField] GameObject StarterPack1;
+    [SerializeField] GameObject StarterPack2;
+    [SerializeField] GameObject AutoClick1;
+    [SerializeField] GameObject AutoClick2;
+
     // Product identifiers for all products capable of being purchased: 
     // "convenience" general identifiers for use with Purchasing, and their store-specific identifier 
     // counterparts for use with and outside of Unity Purchasing. Define store-specific identifiers 
@@ -33,14 +38,36 @@ public class IAPController : MonoBehaviour, IStoreListener
     //private static string kProductNameGooglePlaySubscription = "com.unity3d.subscription.original";
 
     private string Nonconsumable_StarterPack = "StarterPack";
+    private string Nonconsumable_StarterPack2 = "StarterPack2";
     private string Nonconsumable_AutoClick = "AutoClick";
+    private string Nonconsumable_AutoClick2 = "AutoClick2";
+
     private string Consumable_Dazi_Gold_10 = "Dazi_Gold_10"; //자유롭게
+    private string Consumable_Dazi_Gold_20 = "Dazi_Gold_20";
+    private string Consumable_Dazi_Gold_50 = "Dazi_Gold_50";
+    private string Consumable_Dazi_Gold_100 = "Dazi_Gold_100";
+
     private string Consumable_Dazi_Silver_50 = "Dazi_Silver_50";
+    private string Consumable_Dazi_Silver_100 = "Dazi_Silver_100";
+    private string Consumable_Dazi_Silver_200 = "Dazi_Silver_200";
+    private string Consumable_Dazi_Silver_500 = "Dazi_Silver_500";
+
+
 
     private string GooglePlay_StarterPack = "com.comts.notouch.starterpack";
+    private string GooglePlay_StarterPack2 = "com.comts.notouch.starterpack2";
     private string GooglePlay_AutoClick = "com.comts.notouch.autoclick";
+    private string GooglePlay_AutoClick2 = "com.comts.notouch.autoclick2";
+
     private string GooglePlay_Dazi_Gold_10 = "com.comts.notouch.dazi.gold.10"; //구글플레이 대문자 안됨. 스토어에 등록된대로입력
+    private string GooglePlay_Dazi_Gold_20 = "com.comts.notouch.dazi.gold.20";
+    private string GooglePlay_Dazi_Gold_50 = "com.comts.notouch.dazi.gold.50";
+    private string GooglePlay_Dazi_Gold_100 = "com.comts.notouch.dazi.gold.100";
+
     private string GooglePlay_Dazi_Silver_50 = "com.comts.notouch.dazi.silver.50";
+    private string GooglePlay_Dazi_Silver_100 = "com.comts.notouch.dazi.silver.100";
+    private string GooglePlay_Dazi_Silver_200 = "com.comts.notouch.dazi.silver.200";
+    private string GooglePlay_Dazi_Silver_500 = "com.comts.notouch.dazi.silver.500";
 
    // private string iOS_Ruby100 = "r100"; //ID규정을 확인후 따라야됨
    // private string iOS_Starterpack = "s00";
@@ -65,6 +92,35 @@ public class IAPController : MonoBehaviour, IStoreListener
             // Begin to configure our connection to Purchasing
             InitializePurchasing();
         }
+
+        if (CheckHistory(Nonconsumable_StarterPack))
+        {
+            StarterPack1.SetActive(false);
+            if (CheckHistory(Nonconsumable_StarterPack))
+            {
+                StarterPack2.SetActive(true);
+                if(CheckHistory(Nonconsumable_StarterPack2))
+                {
+                    StarterPack2.SetActive(false);
+                }
+            }
+        }
+
+        if (CheckHistory(Nonconsumable_AutoClick))
+        {
+            AutoClick1.SetActive(false);
+            if (CheckHistory(Nonconsumable_AutoClick))
+            {
+                //오토클릭1 실행
+                AutoClick2.SetActive(true);
+                if (CheckHistory(Nonconsumable_AutoClick2))
+                {
+                    //오토클릭2 실행
+                    AutoClick2.SetActive(false);
+                }
+
+            }
+        }
     }
     public void InitializePurchasing()
     {
@@ -81,17 +137,41 @@ public class IAPController : MonoBehaviour, IStoreListener
         builder.AddProduct(Consumable_Dazi_Gold_10, ProductType.Consumable, new IDs(){
             { GooglePlay_Dazi_Gold_10, GooglePlay.Name },
         });
+        builder.AddProduct(Consumable_Dazi_Gold_20, ProductType.Consumable, new IDs(){
+            { GooglePlay_Dazi_Gold_20, GooglePlay.Name },
+        });
+        builder.AddProduct(Consumable_Dazi_Gold_50, ProductType.Consumable, new IDs(){
+            { GooglePlay_Dazi_Gold_50, GooglePlay.Name },
+        });
+        builder.AddProduct(Consumable_Dazi_Gold_100, ProductType.Consumable, new IDs(){
+            { GooglePlay_Dazi_Gold_100, GooglePlay.Name },
+        });
 
         builder.AddProduct(Consumable_Dazi_Silver_50, ProductType.Consumable, new IDs(){
             { GooglePlay_Dazi_Silver_50, GooglePlay.Name },
+        });
+        builder.AddProduct(Consumable_Dazi_Silver_100, ProductType.Consumable, new IDs(){
+            { GooglePlay_Dazi_Silver_100, GooglePlay.Name },
+        });
+        builder.AddProduct(Consumable_Dazi_Silver_200, ProductType.Consumable, new IDs(){
+            { GooglePlay_Dazi_Silver_200, GooglePlay.Name },
+        });
+        builder.AddProduct(Consumable_Dazi_Silver_500, ProductType.Consumable, new IDs(){
+            { GooglePlay_Dazi_Silver_500, GooglePlay.Name },
         });
 
         builder.AddProduct(Nonconsumable_StarterPack, ProductType.NonConsumable, new IDs(){
             { GooglePlay_StarterPack, GooglePlay.Name },
         });
+        builder.AddProduct(Nonconsumable_StarterPack2, ProductType.NonConsumable, new IDs(){
+            { GooglePlay_StarterPack2, GooglePlay.Name },
+        });
 
         builder.AddProduct(Nonconsumable_AutoClick, ProductType.NonConsumable, new IDs(){
             { GooglePlay_AutoClick, GooglePlay.Name },
+        });
+        builder.AddProduct(Nonconsumable_AutoClick2, ProductType.NonConsumable, new IDs(){
+            { GooglePlay_AutoClick2, GooglePlay.Name },
         });
 
         //// Add a product to sell / restore by way of its identifier, associating the general identifier
@@ -159,9 +239,33 @@ public class IAPController : MonoBehaviour, IStoreListener
     {
         BuyProductID(Consumable_Dazi_Gold_10);
     }
+    public void BuyDaziGold20()
+    {
+        BuyProductID(Consumable_Dazi_Gold_20);
+    }
+    public void BuyDaziGold50()
+    {
+        BuyProductID(Consumable_Dazi_Gold_50);
+    }
+    public void BuyDaziGold100()
+    {
+        BuyProductID(Consumable_Dazi_Gold_100);
+    }
     public void BuyDaziSilver50()
     {
         BuyProductID(Consumable_Dazi_Silver_50);
+    }
+    public void BuyDaziSilver100()
+    {
+        BuyProductID(Consumable_Dazi_Silver_100);
+    }
+    public void BuyDaziSilver200()
+    {
+        BuyProductID(Consumable_Dazi_Silver_200);
+    }
+    public void BuyDaziSilver500()
+    {
+        BuyProductID(Consumable_Dazi_Silver_500);
     }
     public void BuyStarterPack()
     {
@@ -172,6 +276,18 @@ public class IAPController : MonoBehaviour, IStoreListener
         }
         BuyProductID(Nonconsumable_StarterPack);
     }
+    public void BuyStarterPack2()
+    {
+        if (CheckHistory(Nonconsumable_StarterPack))
+        {
+            if (CheckHistory(Nonconsumable_StarterPack2))
+            {
+                Debug.Log("이미 구매한 상품");
+                return;
+            }
+            BuyProductID(Nonconsumable_StarterPack2);
+        }
+    }
     public void BuyAutoClick()
     {
         if (CheckHistory(Nonconsumable_AutoClick))
@@ -180,6 +296,19 @@ public class IAPController : MonoBehaviour, IStoreListener
             return;
         }
         BuyProductID(Nonconsumable_AutoClick);
+    }
+    public void BuyAutoClick2()
+    {
+
+        if (CheckHistory(Nonconsumable_AutoClick))
+        {
+            if (CheckHistory(Nonconsumable_AutoClick2))
+            {
+                Debug.Log("이미 구매한 상품");
+                return;
+            }
+            BuyProductID(Nonconsumable_AutoClick2);
+        }
     }
 
     //public void BuyConsumable()
@@ -360,24 +489,77 @@ public class IAPController : MonoBehaviour, IStoreListener
                 Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
                 // The consumable item has been successfully purchased, add 100 coins to the player's in-game score.
                 //해당아이템 지급
+                GameController.Instance.HaveItem[1]+=10;
+            }
+            else if (String.Equals(args.purchasedProduct.definition.id, Consumable_Dazi_Gold_20, StringComparison.Ordinal))
+            {
+                Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
+                GameController.Instance.HaveItem[1] += 25;
+            }
+            else if (String.Equals(args.purchasedProduct.definition.id, Consumable_Dazi_Gold_50, StringComparison.Ordinal))
+            {
+                Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
+                GameController.Instance.HaveItem[1] += 75;
+            }
+            else if (String.Equals(args.purchasedProduct.definition.id, Consumable_Dazi_Gold_100, StringComparison.Ordinal))
+            {
+                Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
+                GameController.Instance.HaveItem[1] += 200;
             }
             else if (String.Equals(args.purchasedProduct.definition.id, Consumable_Dazi_Silver_50, StringComparison.Ordinal))
             {
                 Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
-                // The consumable item has been successfully purchased, add 100 coins to the player's in-game score.
-                //해당아이템 지급
+                GameController.Instance.HaveItem[0] += 50;
+            }
+            else if (String.Equals(args.purchasedProduct.definition.id, Consumable_Dazi_Silver_100, StringComparison.Ordinal))
+            {
+                Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
+                GameController.Instance.HaveItem[0] += 120;
+            }
+            else if (String.Equals(args.purchasedProduct.definition.id, Consumable_Dazi_Silver_200, StringComparison.Ordinal))
+            {
+                Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
+                GameController.Instance.HaveItem[0] += 250;
+            }
+            else if (String.Equals(args.purchasedProduct.definition.id, Consumable_Dazi_Silver_500, StringComparison.Ordinal))
+            {
+                Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
+                GameController.Instance.HaveItem[0] += 700;
             }
             else if (String.Equals(args.purchasedProduct.definition.id, Nonconsumable_StarterPack, StringComparison.Ordinal))
             {
                 Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
-                // The consumable item has been successfully purchased, add 100 coins to the player's in-game score.
-                //해당아이템 지급
+                GameController.Instance.HaveItem[0] += 100;
+                GameController.Instance.HaveItem[1] += 10;
+                StarterPack1.SetActive(false);
+                StarterPack2.SetActive(true);
+            }
+            else if (String.Equals(args.purchasedProduct.definition.id, Nonconsumable_StarterPack2, StringComparison.Ordinal))
+            {
+                Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
+                GameController.Instance.HaveItem[0] += 150;
+                GameController.Instance.HaveItem[1] += 15;
+                StarterPack2.SetActive(false);
+            }
+            else if (String.Equals(args.purchasedProduct.definition.id, Nonconsumable_AutoClick, StringComparison.Ordinal))
+            {
+                Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
+                //Autoclick1
+                AutoClick1.SetActive(false);
+                AutoClick2.SetActive(true);
+            }
+            else if (String.Equals(args.purchasedProduct.definition.id, Nonconsumable_AutoClick2, StringComparison.Ordinal))
+            {
+                Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
+                //Autoclick2
+                AutoClick2.SetActive(false);
             }
             else
             {
                 Debug.Log(string.Format("ProcessPurchase: FAIL. Unrecognized product: '{0}'", args.purchasedProduct.definition.id));
             }
 
+            ItemUseController.Instance.ShowHaveItem();
             // Return a flag indicating whether this product has completely been received, or if the application needs 
             // to be reminded of this purchase at next app launch. Use PurchaseProcessingResult.Pending when still 
             // saving purchased products to the cloud, and when that save is delayed. 
