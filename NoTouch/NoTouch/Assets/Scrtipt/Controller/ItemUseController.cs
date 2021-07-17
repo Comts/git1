@@ -40,7 +40,6 @@ public class ItemUseController : MonoBehaviour
         }
         mItemCooltimeArr = GameController.Instance.GetItemCooltimeArr();
         mItemMaxCooltimeArr = GameController.Instance.GetItemMaxCooltimeArr();
-        CheckItemButton();
         ShowHaveItem();
     }
 
@@ -54,13 +53,13 @@ public class ItemUseController : MonoBehaviour
         mItemCooltimeArr = GameController.Instance.GetItemCooltimeArr();
         mItemMaxCooltimeArr = GameController.Instance.GetItemMaxCooltimeArr();
 
-        CheckItemButton();
         ShowHaveItem();
     }
     public void ShowHaveItem()
     {
         Item1.text = GameController.Instance.HaveItem[1].ToString();
         Item2.text = GameController.Instance.HaveItem[0].ToString();
+        CheckItemButton();
     }
 
     // Update is called once per frame
@@ -104,11 +103,10 @@ public class ItemUseController : MonoBehaviour
             {
                 GameController.Instance.HaveItem[1]--;
             }
-            ShowHaveItem();
         }
         mItemCooltimeArr[buttonID] = 10;
         StartCoroutine(CooltimeRoutine(buttonID, 10));
-        CheckItemButton();
+        ShowHaveItem();
 
     }
     private Coroutine mSellGemMulti;

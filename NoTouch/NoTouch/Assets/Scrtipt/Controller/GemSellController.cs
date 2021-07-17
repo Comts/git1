@@ -71,17 +71,16 @@ public class GemSellController : InformationLoader
     {
         for(int i =0;i< mElementList.Count;i++)
         {
-            if(GameController.Instance.CheckAutoSell[i] || mAllSellToggle.isOn)
+            if(GameController.Instance.CheckAutoSell[i])
             {
                 SellGem(i, mElementList[i].GetMaxSellAmount());
                 mElementList[i].bToggleIsOn(true);
             }
-            if (!mAllSellToggle.isOn)
-            {
-                GameController.Instance.CheckAutoSell[i] = false;
-                mElementList[i].bToggleIsOn(false);
-            }
         }
+    }
+    public void ResetAllSellToggle()
+    {
+        mAllSellToggle.SetIsOnWithoutNotify(false);
     }
     private void Load()
     {
@@ -113,6 +112,27 @@ public class GemSellController : InformationLoader
                 mButtonElementList[mButtonElementList.Count-1].setting( mElementList[i-4], mElementList[i-3], mElementList[i-2], mElementList[i-1], mElementList[i]);
             }
         }
+
+        mAllSellToggle.onValueChanged.AddListener((bOn) =>
+        {
+            for (int i = 0; i < mElementList.Count; i++)
+            {
+                if (i%5==0)
+                {
+                    if (bOn)
+                    {
+                        GameController.Instance.CheckAutoSell[i] = bOn;
+                        SellGem(i, mElementList[i].GetMaxSellAmount());
+                        mElementList[i].bToggleIsOn(true);
+                    }
+                    else
+                    {
+                        GameController.Instance.CheckAutoSell[i] = false;
+                        mElementList[i].bToggleIsOn(false);
+                    }
+                }
+            }
+        });
     }
     public void RefreshGemData()
     {

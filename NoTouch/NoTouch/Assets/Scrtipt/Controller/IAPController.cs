@@ -16,10 +16,12 @@ public class IAPController : MonoBehaviour, IStoreListener
 
     private Coroutine mCor_AutoClick1;
 
+#pragma warning disable 0649
     [SerializeField] GameObject StarterPack1;
     [SerializeField] GameObject StarterPack2;
     [SerializeField] GameObject AutoClick1;
     [SerializeField] GameObject AutoClick2;
+#pragma warning restore 0649
 
     // Product identifiers for all products capable of being purchased: 
     // "convenience" general identifiers for use with Purchasing, and their store-specific identifier 
@@ -581,7 +583,6 @@ public class IAPController : MonoBehaviour, IStoreListener
             {
                 Debug.Log(string.Format("ProcessPurchase: FAIL. Unrecognized product: '{0}'", args.purchasedProduct.definition.id));
             }
-
             ItemUseController.Instance.ShowHaveItem();
             // Return a flag indicating whether this product has completely been received, or if the application needs 
             // to be reminded of this purchase at next app launch. Use PurchaseProcessingResult.Pending when still 

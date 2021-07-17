@@ -2,7 +2,7 @@
   {
     "ID": 0,
     "CurrentLevel": 0,
-    "MaxLevel": 500,
+    "MaxLevel": 1000,
     "CostBase": 10.0,
     "CostWeight": 1.05,
     "CostCurrent": 0.0,

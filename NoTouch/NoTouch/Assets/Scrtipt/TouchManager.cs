@@ -85,7 +85,7 @@ public class TouchManager : MonoBehaviour
                 }
             }
             Timer effect = mEffectPool.GetFromPool();
-            effect.transform.position = hit.point;
+            effect.transform.position = hit.point;// + (Vector3.back *3);
         }
         Vector3 pos;
         if (CheckTouch(out pos))
