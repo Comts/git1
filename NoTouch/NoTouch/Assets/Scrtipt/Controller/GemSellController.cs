@@ -20,6 +20,8 @@ public class GemSellController : InformationLoader
     private LayerButtonUIElement mLayerButtonPrefab;
     [SerializeField]
     private Transform mElementArea;
+    [SerializeField]
+    private Toggle mAllSellToggle;
 #pragma warning restore 0649
     private List<GemSellUIElement> mElementList;
     private List<LayerButtonUIElement> mButtonElementList;
@@ -63,15 +65,21 @@ public class GemSellController : InformationLoader
         {
             mButtonElementList[i].bToggleIsOn(false);
         }
+        mAllSellToggle.SetIsOnWithoutNotify(false);
     }
     private void Update()
     {
         for(int i =0;i< mElementList.Count;i++)
         {
-            if(GameController.Instance.CheckAutoSell[i])
+            if(GameController.Instance.CheckAutoSell[i] || mAllSellToggle.isOn)
             {
                 SellGem(i, mElementList[i].GetMaxSellAmount());
                 mElementList[i].bToggleIsOn(true);
+            }
+            if (!mAllSellToggle.isOn)
+            {
+                GameController.Instance.CheckAutoSell[i] = false;
+                mElementList[i].bToggleIsOn(false);
             }
         }
     }
