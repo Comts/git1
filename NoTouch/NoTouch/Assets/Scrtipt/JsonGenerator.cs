@@ -16,19 +16,19 @@ public class JsonGenerator : MonoBehaviour
 
     public void GeneratePlayerTextInfo()
     {
-        PlayerStatText[] infoArr = new PlayerStatText[Constants.PLAYER_STAT_COUNT];// PlayerUpgradeController.Instance.GetTextInfoArr();
-        infoArr[0] = new PlayerStatText();
-        infoArr[0].ID = 0;
-        infoArr[0].Title = "장인의손길";
-        string data = JsonConvert.SerializeObject(infoArr, Formatting.Indented);
+        //PlayerStatText info = new PlayerStatText[Constants.PLAYER_STAT_COUNT];// PlayerUpgradeController.Instance.GetTextInfoArr();
+        PlayerStatText info = new PlayerStatText();
+        info.ID = 0;
+        info.Title = "장인의손길";
+        string data = JsonConvert.SerializeObject(info, Formatting.Indented);
         WriteFile(data, "PlayerText.json");
     }
     public void GeneratePlayerInfo()
     {
-        PlayerStat[] infoArr = new PlayerStat[Constants.PLAYER_STAT_COUNT];//PlayerUpgradeController.Instance.GetInfoArr();
-        infoArr[0] = new PlayerStat();
-        infoArr[0].ID = 0;
-        string data = JsonConvert.SerializeObject(infoArr, Formatting.Indented);
+        //PlayerStat info = new PlayerStat[Constants.PLAYER_STAT_COUNT];//PlayerUpgradeController.Instance.GetInfoArr();
+        PlayerStat info = new PlayerStat();
+        info.ID = 0;
+        string data = JsonConvert.SerializeObject(info, Formatting.Indented);
         WriteFile(data, "Player.json");
     }
 

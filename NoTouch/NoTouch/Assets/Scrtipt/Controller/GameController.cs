@@ -210,6 +210,22 @@ public class GameController : SaveDataController
             mUser.PlayMoleCount = value;
         }
     }
+    public int GetPlayerLevel
+    {
+        get{ return mUser.PlayerLevel; }
+        set{
+            mUser.PlayerLevel = value;
+        }
+    }
+    public int Quest_PlayerLevel
+    {
+        get { return mUser.Quest_PlayerLevel; }
+        set
+        {
+            mUser.Quest_PlayerLevel = value;
+        }
+
+    }
     private void Awake()
     {
         if(Instance == null)
@@ -268,6 +284,9 @@ public class GameController : SaveDataController
                 //Debug.Log((i) + "번째 층 원석가격" + mFloorGemCost[i]);
             }
         }
+
+        
+
         mScrollToggle.onValueChanged.AddListener((bOn) =>
         {
             CheckScrollPin = bOn;
@@ -292,7 +311,7 @@ public class GameController : SaveDataController
         mUser.Progress = 0;
         mUser.ScrollPinCheck = false;
 
-        mUser.PlayerLevelArr = new int[Constants.PLAYER_STAT_COUNT];
+        mUser.PlayerLevel = Constants.PLAYER_STAT_COUNT;
         mUser.ItemCooltimeArr = new float[Constants.USEITEM_AMOUT];
         mUser.ItemMaxCooltimeArr = new float[Constants.USEITEM_AMOUT];
         mUser.HaveItmeArr = new int[Constants.ITEM_COUNT];
@@ -309,12 +328,15 @@ public class GameController : SaveDataController
         mUser.MineArr = new int[Constants.MINE_COUNT];
         mUser.GetFromMine = new double[Constants.MINE_COUNT];
 
+        mUser.Quest_PlayerLevel = 0;
+
         GemSellController.Instance.ReStart();
         PlayerUpgradeController.Instance.ReStart();
         CoworkerController.Instance.ReStart();
         StageController.Instance.ReStart();
         UIController.Instance.ShowMoney();
         ItemUseController.Instance.ReStart();
+        QuestController.Instance.ReStart();
 
         mUser.PlayMoleCount = 3;
         MoleController.Instance.CheckPlayButton();
@@ -335,10 +357,6 @@ public class GameController : SaveDataController
     private void OnApplicationPause(bool pauseStatus)
     {
         Save();
-    }
-    public int[] GetPlayerLevelArr()
-    {
-        return mUser.PlayerLevelArr;
     }
     public float[] GetSkillCooltimeArr()
     {

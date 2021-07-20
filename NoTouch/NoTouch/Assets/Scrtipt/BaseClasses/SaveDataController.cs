@@ -113,21 +113,6 @@ public class SaveDataController : MonoBehaviour
 
     protected void FixSaveData()
     {
-        if (mUser.PlayerLevelArr == null)
-        {
-            mUser.PlayerLevelArr = new int[Constants.PLAYER_STAT_COUNT];
-            mUser.PlayerLevelArr[0] = 1;
-        }
-        else if (mUser.PlayerLevelArr.Length != Constants.PLAYER_STAT_COUNT)
-        {
-            int[] temp = new int[Constants.PLAYER_STAT_COUNT];
-            int count = Mathf.Min(Constants.PLAYER_STAT_COUNT, mUser.PlayerLevelArr.Length);
-            for (int i = 0; i < count; i++)
-            {
-                temp[i] = mUser.PlayerLevelArr[i];
-            }
-            mUser.PlayerLevelArr = temp;
-        }
 
         if (mUser.ItemCooltimeArr == null)
         {
@@ -258,7 +243,7 @@ public class SaveDataController : MonoBehaviour
         mUser.PlayerPos = 0;
         mUser.Progress = 0;
 
-        mUser.PlayerLevelArr = new int[Constants.PLAYER_STAT_COUNT];
+        mUser.PlayerLevel = Constants.PLAYER_STAT_COUNT;
         mUser.ItemCooltimeArr = new float[Constants.USEITEM_AMOUT];
         mUser.ItemMaxCooltimeArr = new float[Constants.USEITEM_AMOUT];
         mUser.HaveItmeArr = new int[Constants.ITEM_COUNT];
@@ -279,6 +264,8 @@ public class SaveDataController : MonoBehaviour
         mUser.ScrollPinCheck = false;
 
         mUser.PlayMoleCount = 3;
+
+        mUser.Quest_PlayerLevel = 0;
     }
 
     protected void Save()

@@ -115,7 +115,7 @@ public class SaveData
     public double[] AmoutGem_SS;
     public double[] AmoutGem_SSS;
 
-    public int[] PlayerLevelArr;
+    public int PlayerLevel;
     public int[] CoworkerLevelArr;
     public float[] ItemCooltimeArr;
     public float[] ItemMaxCooltimeArr;
@@ -136,5 +136,6 @@ public class SaveData
 
     public int PlayMoleCount;
 
+    public int Quest_PlayerLevel;
 
 }

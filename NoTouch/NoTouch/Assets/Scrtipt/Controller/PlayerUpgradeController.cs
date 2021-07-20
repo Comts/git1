@@ -8,19 +8,19 @@ public class PlayerUpgradeController : InformationLoader
 {
     public static PlayerUpgradeController Instance;
 
-    private int[] mLevelArr;
     [SerializeField]
-    private PlayerStat[] mInfoArr;
+    private PlayerStat mInfo;
     [SerializeField]
-    private PlayerStatText[] mTextInfoArr;
-    private Sprite[] mIconArr;
+    private PlayerStatText mTextInfo;
+    [SerializeField]
+    private Sprite mIcon;
 #pragma warning disable 0649
     [SerializeField]
-    private UIElement[] mElementArr;
+    private UIElement mElement;
 #pragma warning restore 0649
-    public PlayerStatText[] GetTextInfoArr()
+    public PlayerStatText GetTextInfo()
     {
-        return mTextInfoArr;
+        return mTextInfo;
     }
     private void Awake()
     {
@@ -38,76 +38,71 @@ public class PlayerUpgradeController : InformationLoader
     // Start is called before the first frame update
     void Start()
     {
-        LoadJson(out mInfoArr, Paths.PLAYER_TABLE);
-        LoadJson(out mTextInfoArr,
+        LoadJson(out mInfo, Paths.PLAYER_TABLE);
+        LoadJson(out mTextInfo,
             Paths.PLAYER_TEXT_TABLE +
             Paths.LANGUAGE_TYPE_ARR[GameController.Instance.LanguageType]);
-
-        mIconArr = Resources.LoadAll<Sprite>(Paths.PLAYER_ICON);
         ReStart();
 
     }
     public void ReStart()
     {
 
-        mLevelArr = GameController.Instance.GetPlayerLevelArr();
         //mElementArr = new UIElement[Constants.PLAYER_STAT_COUNT];
-        for (int i = 0; i < mInfoArr.Length; i++)
+
+        mInfo.CurrentLevel = GameController.Instance.GetPlayerLevel;
+
+        if (mInfo.CurrentLevel < mInfo.MaxLevel)
         {
-
-            mInfoArr[i].CurrentLevel = mLevelArr[i];
-
-            CalcData(i);
+            mElement.SetButtonActive(true);
         }
+        CalcData();
         Load();
     }
 
         
     private void Load()
     {
-        for (int i = 0; i < mInfoArr.Length; i++)
-        {
-            mElementArr[i].Init(i, mIconArr[i],
-                      mTextInfoArr[i].Title,
-                      mInfoArr[i].CurrentLevel.ToString(),
-                      string.Format(mTextInfoArr[i].ContentsFormat,
-                                    UnitSetter.GetUnitStr(mInfoArr[i].ValueCurrent),
-                                    mInfoArr[i].Duration.ToString()),
-                      UnitSetter.GetUnitStr(Math.Round( mInfoArr[i].CostCurrent)),
+        mElement.Init(0, mIcon,
+                      mTextInfo.Title,
+                      mInfo.CurrentLevel.ToString(),
+                      string.Format(mTextInfo.ContentsFormat,
+                                    UnitSetter.GetUnitStr(mInfo.ValueCurrent),
+                                    mInfo.Duration.ToString()),
+                      UnitSetter.GetUnitStr(Math.Round( mInfo.CostCurrent)),
                       LevelUP);
-        }
     }
     public void LevelUP(int id, int amount)
     {
         Delegates.VoidCallback callback = () => { LevelUpCallback(id, amount); };
 
         GameController.Instance.GoldCallback = callback;
-        double cost = Math.Round(mInfoArr[id].CostCurrent);
+        double cost = Math.Round(mInfo.CostCurrent);
         GameController.Instance.Gold -= cost;
     }
     public void LevelUpCallback(int id, int level)
     {
 
-        mInfoArr[id].CurrentLevel += level;
-        if (mInfoArr[id].CurrentLevel == mInfoArr[id].MaxLevel)
+        mInfo.CurrentLevel += level;
+        if (mInfo.CurrentLevel == mInfo.MaxLevel)
         {
-            mElementArr[id].SetButtonActive(false);
+            mElement.SetButtonActive(false);
         }
-        mLevelArr[id] = mInfoArr[id].CurrentLevel;
-        CalcData(id);
+        GameController.Instance.GetPlayerLevel = mInfo.CurrentLevel;
+        CalcData();
 
-        mElementArr[id].Refresh(mInfoArr[id].CurrentLevel.ToString(),
-                      string.Format(mTextInfoArr[id].ContentsFormat,
-                                    UnitSetter.GetUnitStr(mInfoArr[id].ValueCurrent),
-                                    mInfoArr[id].Duration.ToString()),
-                      UnitSetter.GetUnitStr(Math.Round(mInfoArr[id].CostCurrent)));
+        mElement.Refresh(mInfo.CurrentLevel.ToString(),
+                      string.Format(mTextInfo.ContentsFormat,
+                                    UnitSetter.GetUnitStr(mInfo.ValueCurrent),
+                                    mInfo.Duration.ToString()),
+                      UnitSetter.GetUnitStr(Math.Round(mInfo.CostCurrent)));
     }
-    private void CalcData(int id)
+    private void CalcData()
     {
-        mInfoArr[id].CostCurrent = mInfoArr[id].CostBase *
-                                Math.Pow(mInfoArr[id].CostWeight, mInfoArr[id].CurrentLevel);
+        mInfo.CostCurrent = mInfo.CostBase *
+                                Math.Pow(mInfo.CostWeight, mInfo.CurrentLevel);
 
-        mInfoArr[id].ValueCurrent = mInfoArr[id].ValueBase + (mInfoArr[id].CurrentLevel + 1) * mInfoArr[id].CurrentLevel * mInfoArr[id].ValueWeight / 2;
-        GameController.Instance.ManPower = mInfoArr[id].ValueCurrent;
+        mInfo.ValueCurrent = mInfo.ValueBase + (mInfo.CurrentLevel + 1) * mInfo.CurrentLevel * mInfo.ValueWeight / 2;
+        GameController.Instance.ManPower = mInfo.ValueCurrent;
     }  
 }
