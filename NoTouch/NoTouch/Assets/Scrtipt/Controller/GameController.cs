@@ -359,7 +359,7 @@ public class GameController : SaveDataController
     public void Touch()
     {
         int gain = 0;
-        mUser.Progress += mManPower;
+        mUser.Progress += (mManPower * ItemUseController.Instance.GetGemMulti[0]);
         //TODO Sound FX
         //TODO VFX +Text Effect
 
@@ -368,7 +368,7 @@ public class GameController : SaveDataController
             mUser.Progress -= mFloorProgress[mUser.PlayerPos];
             gain++;
         }
-        AddAmoutGem_O[mUser.PlayerPos] +=(gain * ItemUseController.Instance.GetGemMulti[0]);
+        AddAmoutGem_O[mUser.PlayerPos] += gain ;
         GemSellController.Instance.RefreshGemData();
 
         //TextEffect effect = TextEffectPool.Instance.GetFromPool();

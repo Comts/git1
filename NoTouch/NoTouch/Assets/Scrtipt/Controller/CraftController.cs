@@ -59,7 +59,7 @@ public class CraftController : InformationLoader
         switch (GemGrade)
         {
             case 0:
-                GameController.Instance.AddAmoutGem_O[GemID]+=800;
+                GameController.Instance.AddAmoutGem_O[GemID]+=1000;
                 break;
             case 1:
                 GameController.Instance.AddAmoutGem_A[GemID]++;
@@ -182,7 +182,7 @@ public class CraftController : InformationLoader
         }
         else
         {
-            CurrentProgress += mTouchPower;
+            CurrentProgress += (mTouchPower * ItemUseController.Instance.GetGemMulti[0]);
             if (CurrentProgress > CraftLastProgress)
             {
                 CurrentProgress = CraftLastProgress;
