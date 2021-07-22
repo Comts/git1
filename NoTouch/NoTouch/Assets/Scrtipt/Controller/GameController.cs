@@ -126,6 +126,14 @@ public class GameController : SaveDataController
             mUser.AutoSellCheck = value;
         }
     }
+    public bool CheckAllSell
+    {
+        get { return mUser.AllSellCheck; }
+        set
+        {
+            mUser.AllSellCheck = value;
+        }
+    }
     public bool CheckScrollPin
     {
         get { return mUser.ScrollPinCheck; }
@@ -223,6 +231,15 @@ public class GameController : SaveDataController
         set
         {
             mUser.Quest_PlayerLevel = value;
+        }
+
+    }
+    public int Quest_CowerkerLevelSum
+    {
+        get { return mUser.Quest_CoworkerLevelSum; }
+        set
+        {
+            mUser.Quest_CoworkerLevelSum = value;
         }
 
     }
@@ -329,6 +346,7 @@ public class GameController : SaveDataController
         mUser.GetFromMine = new double[Constants.MINE_COUNT];
 
         mUser.Quest_PlayerLevel = 0;
+        mUser.Quest_CoworkerLevelSum = 0;
 
         GemSellController.Instance.ReStart();
         PlayerUpgradeController.Instance.ReStart();
@@ -337,6 +355,7 @@ public class GameController : SaveDataController
         UIController.Instance.ShowMoney();
         ItemUseController.Instance.ReStart();
         QuestController.Instance.ReStart();
+        IAPController.Instance.ReStart();
 
         mUser.PlayMoleCount = 3;
         MoleController.Instance.CheckPlayButton();
@@ -369,6 +388,18 @@ public class GameController : SaveDataController
     public int[] GetCoworkerLevelArr()
     {
         return mUser.CoworkerLevelArr;
+    }
+    public int GetCoworkerLevelSum()
+    {
+        int LevelSum = 0;
+        for (int i = 0; i < mUser.CoworkerLevelArr.Length; i++)
+        {
+            if(mUser.CoworkerLevelArr[i] >= 0)
+            {
+                LevelSum += mUser.CoworkerLevelArr[i];
+            }
+        }
+        return LevelSum;
     }
     //public void AddAmoutGem_A(int id,double amount)
     //{

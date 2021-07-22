@@ -93,6 +93,10 @@ public class CoworkerController : InformationLoader
 
 
             mElementList.Add(element);
+            if (mInfoArr[i].CurrentLevel >= mInfoArr[i].MaxLevel)
+            {
+                mElementList[i].SetButtonActive(false);
+            }
         }
     }
 
@@ -203,7 +207,7 @@ public class CoworkerController : InformationLoader
         mInfoArr[id].ValueCurrent = mInfoArr[id].CurrentLevel * mInfoArr[id].ValueWeight;
         float periodsSub = mInfoArr[id].PeriodUpgradeAmount *
                            (int)(mInfoArr[id].CurrentLevel / mInfoArr[id].PeriodLevelStep);
-        if (mInfoArr[id].CurrentLevel > 0)
+        if (mInfoArr[id].CurrentLevel >= 0)
         {
             mInfoArr[id].PeriodCurrent = mInfoArr[id].PeriodBase - periodsSub;
         }

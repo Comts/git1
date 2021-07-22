@@ -66,6 +66,7 @@ public class GemSellController : InformationLoader
             mButtonElementList[i].bToggleIsOn(false);
         }
         mAllSellToggle.SetIsOnWithoutNotify(false);
+        GameController.Instance.CheckAllSell = false;
     }
     private void Update()
     {
@@ -78,9 +79,10 @@ public class GemSellController : InformationLoader
             }
         }
     }
-    public void ResetAllSellToggle()
+    public void SetAllSellToggle(bool bOn)
     {
-        mAllSellToggle.SetIsOnWithoutNotify(false);
+        mAllSellToggle.SetIsOnWithoutNotify(bOn);
+        GameController.Instance.CheckAllSell = bOn;
     }
     private void Load()
     {
@@ -115,6 +117,7 @@ public class GemSellController : InformationLoader
 
         mAllSellToggle.onValueChanged.AddListener((bOn) =>
         {
+            GameController.Instance.CheckAllSell = bOn;
             for (int i = 0; i < mElementList.Count; i++)
             {
                 if (i%5==0)
@@ -133,6 +136,9 @@ public class GemSellController : InformationLoader
                 }
             }
         });
+
+        SetAllSellToggle(GameController.Instance.CheckAllSell);
+
     }
     public void RefreshGemData()
     {

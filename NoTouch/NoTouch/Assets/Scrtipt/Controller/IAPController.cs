@@ -141,6 +141,20 @@ public class IAPController : MonoBehaviour, IStoreListener
             }
         }
     }
+    public void ReStart()
+    {
+        if (CheckHistory(Nonconsumable_StarterPack))
+        {
+            GameController.Instance.HaveItem[0] += 100;
+            GameController.Instance.HaveItem[1] += 10;
+        }
+        if (CheckHistory(Nonconsumable_StarterPack2))
+        {
+            GameController.Instance.HaveItem[0] += 150;
+            GameController.Instance.HaveItem[1] += 15;
+        }
+
+    }
     public void InitializePurchasing()
     {
         // If we have already connected to Purchasing ...

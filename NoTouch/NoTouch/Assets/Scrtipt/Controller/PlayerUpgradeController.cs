@@ -43,6 +43,7 @@ public class PlayerUpgradeController : InformationLoader
             Paths.PLAYER_TEXT_TABLE +
             Paths.LANGUAGE_TYPE_ARR[GameController.Instance.LanguageType]);
         ReStart();
+        Load();
 
     }
     public void ReStart()
@@ -56,8 +57,11 @@ public class PlayerUpgradeController : InformationLoader
         {
             mElement.SetButtonActive(true);
         }
-        CalcData();
-        Load();
+        else
+        {
+            mElement.SetButtonActive(false);
+        }
+        Refresh();
     }
 
         
@@ -84,11 +88,16 @@ public class PlayerUpgradeController : InformationLoader
     {
 
         mInfo.CurrentLevel += level;
+        Debug.Log("레벨업");
         if (mInfo.CurrentLevel == mInfo.MaxLevel)
         {
             mElement.SetButtonActive(false);
         }
         GameController.Instance.GetPlayerLevel = mInfo.CurrentLevel;
+        Refresh();
+    }
+    private void Refresh()
+    {
         CalcData();
 
         mElement.Refresh(mInfo.CurrentLevel.ToString(),

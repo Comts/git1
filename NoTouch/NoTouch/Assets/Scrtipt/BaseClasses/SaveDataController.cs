@@ -266,6 +266,7 @@ public class SaveDataController : MonoBehaviour
         mUser.PlayMoleCount = 3;
 
         mUser.Quest_PlayerLevel = 0;
+        mUser.Quest_CoworkerLevelSum = 0;
     }
 
     protected void Save()

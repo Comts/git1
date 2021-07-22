@@ -17,7 +17,7 @@ public static class UnitSetter
             while (baseGold >= 10000)
             {
                 BackGold = (int)(baseGold % 10000);
-                baseGold = Math.Round(baseGold / 10000);
+                baseGold = baseGold / 10000;
                 FrontGold = (int)baseGold;
                 calcount++;
             }

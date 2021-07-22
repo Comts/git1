@@ -22,6 +22,9 @@
     public const string SELLGEM_INFO_TABLE = JSON_FILE_LOCATION + "SellGemInfo";
     public const string SELLGEM_TEXT_INFO_TABLE = JSON_FILE_LOCATION + "SellGemInfoText";
 
+    public const string Q_PLAYERLEVEL_INFO_TABLE = JSON_FILE_LOCATION + "Quest_PlayerLevel_Text";
+    public const string Q_COWORKERLEVELSUM_INFO_TABLE = JSON_FILE_LOCATION + "Quest_CoworkerLevelSum_Text";
+
     public const string COWORKER_ANIMATOR = "CoworkerAnimator";
 }
 

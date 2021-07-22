@@ -10,42 +10,56 @@ public class QuestUIElement : MonoBehaviour
     [SerializeField]
     private GaugeBar mGaugeBar;
     [SerializeField]
-    private int mRequire;
-    int mPlayerlevel;
+    private Text mTitleText, mContentsText;
     // Start is called before the first frame update
-    void Start()
-    {
-    }
 
     // Update is called once per frame
-    void Update()
-    {
-        ShowGaugeBar(GameController.Instance.GetPlayerLevel, mRequire);
-        if(GameController.Instance.GetPlayerLevel >= mRequire)
-        {
-            ClearQuest();
-        }
-    }
-    private int mID, mItemNum,NextID;
-    public void Init(int id , int ItemNum)
+    private int mID, mItemNum,NextID, mRequire, mAmount;
+    public void Init(   int id , 
+                        int ItemNum,
+                        int Itemamount,
+                        int Require,
+                        string title,
+                        string contents,
+                        Delegates.VoidCallback callback)
     {
         mID = id;
         mItemNum = ItemNum;
+        mAmount = Itemamount;
         NextID = mID + 1;
+        mRequire = Require;
+        mTitleText.text = title;
+        mContentsText.text = contents;
+
+        mButton.onClick.AddListener(() =>
+        {
+            callback();
+        });
     }
-    public void GetAward(int amount)
+    public int GetRequire()
     {
-        GameController.Instance.HaveItem[mItemNum] += amount;
-        GameController.Instance.Quest_PlayerLevel= NextID;
+        return mRequire;
+    }
+    public int GetAward()
+    {
+        GameController.Instance.HaveItem[mItemNum] += mAmount;
         ItemUseController.Instance.ShowHaveItem();
+        return NextID;
     }
     public void ClearQuest()
     {
         mGaugeBar.gameObject.SetActive(false);
         mButton.gameObject.SetActive(true);
     }
+    public void AllClearQuest()
+    {
+        gameObject.SetActive(true);
+        mGaugeBar.gameObject.SetActive(false);
+        mButton.gameObject.SetActive(false);
+    }
     public void ShowGaugeBar(double current, double max)
     {
+        mGaugeBar.gameObject.SetActive(true);
         string progressStr = string.Format("{0} / {1}",
                                             current,
                                             max);

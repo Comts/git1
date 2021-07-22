@@ -72,6 +72,13 @@ public class MineTextInfo
     public string ContentsFormat;
 
 }
+public class QuestTextInfo
+{
+    public int ID;
+    public string Title;
+    public string ContentsFormat;
+
+}
 
 [Serializable]
 public class CraftInfo
@@ -129,6 +136,7 @@ public class SaveData
     public double[] GetFromMine;
 
     public bool[] AutoSellCheck;
+    public bool AllSellCheck;
     public bool ScrollPinCheck;
 
     public double StartTime;
@@ -137,5 +145,6 @@ public class SaveData
     public int PlayMoleCount;
 
     public int Quest_PlayerLevel;
+    public int Quest_CoworkerLevelSum;
 
 }

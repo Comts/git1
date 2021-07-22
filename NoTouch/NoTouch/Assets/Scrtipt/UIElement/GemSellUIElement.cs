@@ -43,7 +43,7 @@ public class GemSellUIElement : MonoBehaviour
             GameController.Instance.CheckAutoSell[mID] = bOn;
             if (!bOn)
             {
-                GemSellController.Instance.ResetAllSellToggle();
+                GemSellController.Instance.SetAllSellToggle(bOn);
             }
         });
 

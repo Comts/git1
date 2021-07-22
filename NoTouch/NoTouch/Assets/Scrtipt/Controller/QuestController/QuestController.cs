@@ -19,7 +19,6 @@ public class QuestController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Quest_PlayerLevel.Instance.ShowQuest(GameController.Instance.Quest_PlayerLevel);
     }
 
     // Update is called once per frame
@@ -30,5 +29,6 @@ public class QuestController : MonoBehaviour
     public void ReStart()
     {
         Quest_PlayerLevel.Instance.ShowQuest(GameController.Instance.Quest_PlayerLevel);
+        Quest_CowerkorLevelSum.Instance.ShowQuest(GameController.Instance.Quest_CowerkerLevelSum);
     }
 }
