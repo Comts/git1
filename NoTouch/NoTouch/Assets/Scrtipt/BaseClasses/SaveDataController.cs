@@ -267,6 +267,7 @@ public class SaveDataController : MonoBehaviour
 
         mUser.Quest_PlayerLevel = 0;
         mUser.Quest_CoworkerLevelSum = 0;
+        mUser.Quest_DigCount = 0;
     }
 
     protected void Save()

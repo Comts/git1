@@ -16308,6 +16308,7 @@ MonoBehaviour:
     PlayMoleCount: 0
     Quest_PlayerLevel: 0
     Quest_CoworkerLevelSum: 0
+    Quest_DigCount: 0
   url: www.naver.com
   mTextEffectPos: {fileID: 0}
   WorkIncrese: 1.2
@@ -30852,6 +30853,7 @@ Transform:
   m_Children:
   - {fileID: 863110328}
   - {fileID: 1947525306}
+  - {fileID: 2118788519}
   m_Father: {fileID: 556682815}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -35695,6 +35697,53 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -60}
   m_SizeDelta: {x: 940, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &2118788518
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2118788519}
+  - component: {fileID: 2118788520}
+  m_Layer: 0
+  m_Name: Quest_DigCount
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2118788519
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2118788518}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1815615849}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2118788520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2118788518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b1449008c13ef347803c201867a5bca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ItemNum: 0
+  mElementPrefab: {fileID: 6942078133832035213, guid: 24de86ce10e17c94b8afc75030c3e21b,
+    type: 3}
+  mElementArea: {fileID: 1630108796}
 --- !u!1001 &2127177942
 PrefabInstance:
   m_ObjectHideFlags: 0

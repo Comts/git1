@@ -243,6 +243,15 @@ public class GameController : SaveDataController
         }
 
     }
+    public int Quest_DigCount
+    {
+        get { return mUser.Quest_DigCount; }
+        set
+        {
+            mUser.Quest_DigCount = value;
+        }
+
+    }
     private void Awake()
     {
         if(Instance == null)
@@ -347,6 +356,7 @@ public class GameController : SaveDataController
 
         mUser.Quest_PlayerLevel = 0;
         mUser.Quest_CoworkerLevelSum = 0;
+        mUser.Quest_DigCount = 0;
 
         GemSellController.Instance.ReStart();
         PlayerUpgradeController.Instance.ReStart();

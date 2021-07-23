@@ -30,5 +30,6 @@ public class QuestController : MonoBehaviour
     {
         Quest_PlayerLevel.Instance.ShowQuest(GameController.Instance.Quest_PlayerLevel);
         Quest_CowerkorLevelSum.Instance.ShowQuest(GameController.Instance.Quest_CowerkerLevelSum);
+        Quest_DigCount.Instance.ShowQuest(GameController.Instance.Quest_DigCount);
     }
 }
