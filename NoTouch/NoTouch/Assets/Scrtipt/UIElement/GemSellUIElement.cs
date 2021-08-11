@@ -75,23 +75,20 @@ public class GemSellUIElement : MonoBehaviour
     public void CalSellAmount()
     {
         int div;
-        div = mID % 5;
+        div = mID % 4;
         switch(div)
         {
             case 0:
-                mMaxSellAmount = GameController.Instance.AddAmoutGem_O[mID / 5];
+                mMaxSellAmount = GameController.Instance.AddAmoutGem_O[mID / 4];
                 break;
             case 1:
-                mMaxSellAmount = GameController.Instance.AddAmoutGem_A[mID / 5];
+                mMaxSellAmount = GameController.Instance.AddAmoutGem_B[mID / 4];
                 break;
             case 2:
-                mMaxSellAmount = GameController.Instance.AddAmoutGem_S[mID / 5];
+                mMaxSellAmount = GameController.Instance.AddAmoutGem_A[mID / 4];
                 break;
             case 3:
-                mMaxSellAmount = GameController.Instance.AddAmoutGem_SS[mID / 5];
-                break;
-            case 4:
-                mMaxSellAmount = GameController.Instance.AddAmoutGem_SSS[mID / 5];
+                mMaxSellAmount = GameController.Instance.AddAmoutGem_S[mID / 4];
                 break;
         }
         if (mMaxSellAmount > 0)

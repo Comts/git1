@@ -62,16 +62,13 @@ public class CraftController : InformationLoader
                 GameController.Instance.AddAmoutGem_O[GemID]+=1000;
                 break;
             case 1:
-                GameController.Instance.AddAmoutGem_A[GemID]++;
+                GameController.Instance.AddAmoutGem_B[GemID]++;
                 break;
             case 2:
-                GameController.Instance.AddAmoutGem_S[GemID]++;
+                GameController.Instance.AddAmoutGem_A[GemID]++;
                 break;
             case 3:
-                GameController.Instance.AddAmoutGem_SS[GemID]++;
-                break;
-            case 4:
-                GameController.Instance.AddAmoutGem_SSS[GemID]++;
+                GameController.Instance.AddAmoutGem_S[GemID]++;
                 break;
             default:
                 Debug.LogError("GemGrade Error " + GemGrade);

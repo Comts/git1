@@ -60,6 +60,14 @@ public class GameController : SaveDataController
             mUser.AmoutGem_O = value;
         }
     }
+    public double[] AddAmoutGem_B
+    {
+        get { return mUser.AmoutGem_B; }
+        set
+        {
+            mUser.AmoutGem_B = value;
+        }
+    }
     public double[] AddAmoutGem_A
     {
         get { return mUser.AmoutGem_A; }
@@ -74,22 +82,6 @@ public class GameController : SaveDataController
         set
         {
             mUser.AmoutGem_S = value;
-        }
-    }
-    public double[] AddAmoutGem_SS
-    {
-        get { return mUser.AmoutGem_SS; }
-        set
-        {
-            mUser.AmoutGem_SS = value;
-        }
-    }
-    public double[] AddAmoutGem_SSS
-    {
-        get { return mUser.AmoutGem_SSS; }
-        set
-        {
-            mUser.AmoutGem_SSS = value;
         }
     }
     #endregion
@@ -327,10 +319,9 @@ public class GameController : SaveDataController
     {
         mUser.Gold = 0;
         mUser.AmoutGem_O = new double[Constants.MAX_fLOOR];
+        mUser.AmoutGem_B = new double[Constants.MAX_fLOOR];
         mUser.AmoutGem_A = new double[Constants.MAX_fLOOR];
         mUser.AmoutGem_S = new double[Constants.MAX_fLOOR];
-        mUser.AmoutGem_SS = new double[Constants.MAX_fLOOR];
-        mUser.AmoutGem_SSS = new double[Constants.MAX_fLOOR];
 
         Stage = 0;
         mUser.PlayerPos = 0;

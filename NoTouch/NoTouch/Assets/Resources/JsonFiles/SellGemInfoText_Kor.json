@@ -6,27 +6,27 @@
   },
   {
     "ID": 1,
-    "Title": "A급 에메랄드",
+    "Title": "B급 에메랄드",
     "ContentsFormat": "잘못만들었다 다음에는 더 잘 만들어보자"
   },
   {
     "ID": 2,
-    "Title": "S급 에메랄드",
+    "Title": "A급 에메랄드",
     "ContentsFormat": "나쁘진않지만 아직 부족하다"
   },
   {
     "ID": 3,
-    "Title": "SS급 에메랄드",
+    "Title": "S급 에메랄드",
     "ContentsFormat": "아쉽다.다음에는 더 잘 만들어보자"
   },
   {
     "ID": 4,
-    "Title": "SSS급 에메랄드",
+    "Title": "루비원석",
     "ContentsFormat": "훌륭하다 비싸게 잘 팔리겠다"
   },
   {
     "ID": 5,
-    "Title": "루비원석",
+    "Title": "B급 루비",
     "ContentsFormat": "잘못만들었다 다음에는 더 잘 만들어보자"
   },
   {
@@ -41,37 +41,302 @@
   },
   {
     "ID": 8,
-    "Title": "SS급 루비",
-    "ContentsFormat": "아쉽다.다음에는 더 잘 만들어보자"
+    "Title": "에멜랄드원석",
+    "ContentsFormat": "원석을 가공해보자"
   },
   {
     "ID": 9,
-    "Title": "SSS급 루비",
-    "ContentsFormat": "훌륭하다 비싸게 잘 팔리겠다"
+    "Title": "B급 에메랄드",
+    "ContentsFormat": "잘못만들었다 다음에는 더 잘 만들어보자"
   },
   {
     "ID": 10,
-    "Title": "토파즈원석",
-    "ContentsFormat": "잘못만들었다 다음에는 더 잘 만들어보자"
-  },
-  {
-    "ID": 11,
-    "Title": "A급 토파즈",
-    "ContentsFormat": "잘못만들었다 다음에는 더 잘 만들어보자"
-  },
-  {
-    "ID": 12,
-    "Title": "S급 토파즈",
+    "Title": "A급 에메랄드",
     "ContentsFormat": "나쁘진않지만 아직 부족하다"
   },
   {
-    "ID": 13,
-    "Title": "SS급 토파즈",
+    "ID": 11,
+    "Title": "S급 에메랄드",
     "ContentsFormat": "아쉽다.다음에는 더 잘 만들어보자"
   },
   {
-    "ID": 14,
-    "Title": "SSS급 토파즈",
+    "ID": 12,
+    "Title": "루비원석",
     "ContentsFormat": "훌륭하다 비싸게 잘 팔리겠다"
+  },
+  {
+    "ID": 13,
+    "Title": "B급 루비",
+    "ContentsFormat": "잘못만들었다 다음에는 더 잘 만들어보자"
+  },
+  {
+    "ID": 14,
+    "Title": "A급 루비",
+    "ContentsFormat": "잘못만들었다 다음에는 더 잘 만들어보자"
+  },
+  {
+    "ID": 15,
+    "Title": "S급 루비",
+    "ContentsFormat": "나쁘진않지만 아직 부족하다"
+  },
+  {
+    "ID": 16,
+    "Title": "에멜랄드원석",
+    "ContentsFormat": "원석을 가공해보자"
+  },
+  {
+    "ID": 17,
+    "Title": "B급 에메랄드",
+    "ContentsFormat": "잘못만들었다 다음에는 더 잘 만들어보자"
+  },
+  {
+    "ID": 18,
+    "Title": "A급 에메랄드",
+    "ContentsFormat": "나쁘진않지만 아직 부족하다"
+  },
+  {
+    "ID": 19,
+    "Title": "S급 에메랄드",
+    "ContentsFormat": "아쉽다.다음에는 더 잘 만들어보자"
+  },
+  {
+    "ID": 20,
+    "Title": "루비원석",
+    "ContentsFormat": "훌륭하다 비싸게 잘 팔리겠다"
+  },
+  {
+    "ID": 21,
+    "Title": "B급 루비",
+    "ContentsFormat": "잘못만들었다 다음에는 더 잘 만들어보자"
+  },
+  {
+    "ID": 22,
+    "Title": "A급 루비",
+    "ContentsFormat": "잘못만들었다 다음에는 더 잘 만들어보자"
+  },
+  {
+    "ID": 23,
+    "Title": "S급 루비",
+    "ContentsFormat": "나쁘진않지만 아직 부족하다"
+  },
+  {
+    "ID": 24,
+    "Title": "에멜랄드원석",
+    "ContentsFormat": "원석을 가공해보자"
+  },
+  {
+    "ID": 25,
+    "Title": "B급 에메랄드",
+    "ContentsFormat": "잘못만들었다 다음에는 더 잘 만들어보자"
+  },
+  {
+    "ID": 26,
+    "Title": "A급 에메랄드",
+    "ContentsFormat": "나쁘진않지만 아직 부족하다"
+  },
+  {
+    "ID": 27,
+    "Title": "S급 에메랄드",
+    "ContentsFormat": "아쉽다.다음에는 더 잘 만들어보자"
+  },
+  {
+    "ID": 28,
+    "Title": "루비원석",
+    "ContentsFormat": "훌륭하다 비싸게 잘 팔리겠다"
+  },
+  {
+    "ID": 29,
+    "Title": "B급 루비",
+    "ContentsFormat": "잘못만들었다 다음에는 더 잘 만들어보자"
+  },
+  {
+    "ID": 30,
+    "Title": "A급 루비",
+    "ContentsFormat": "잘못만들었다 다음에는 더 잘 만들어보자"
+  },
+  {
+    "ID": 31,
+    "Title": "S급 루비",
+    "ContentsFormat": "나쁘진않지만 아직 부족하다"
+  },
+  {
+    "ID": 32,
+    "Title": "에멜랄드원석",
+    "ContentsFormat": "원석을 가공해보자"
+  },
+  {
+    "ID": 33,
+    "Title": "B급 에메랄드",
+    "ContentsFormat": "잘못만들었다 다음에는 더 잘 만들어보자"
+  },
+  {
+    "ID": 34,
+    "Title": "A급 에메랄드",
+    "ContentsFormat": "나쁘진않지만 아직 부족하다"
+  },
+  {
+    "ID": 35,
+    "Title": "S급 에메랄드",
+    "ContentsFormat": "아쉽다.다음에는 더 잘 만들어보자"
+  },
+  {
+    "ID": 36,
+    "Title": "루비원석",
+    "ContentsFormat": "훌륭하다 비싸게 잘 팔리겠다"
+  },
+  {
+    "ID": 37,
+    "Title": "B급 루비",
+    "ContentsFormat": "잘못만들었다 다음에는 더 잘 만들어보자"
+  },
+  {
+    "ID": 38,
+    "Title": "A급 루비",
+    "ContentsFormat": "잘못만들었다 다음에는 더 잘 만들어보자"
+  },
+  {
+    "ID": 39,
+    "Title": "S급 루비",
+    "ContentsFormat": "나쁘진않지만 아직 부족하다"
+  },
+  {
+    "ID": 40,
+    "Title": "에멜랄드원석",
+    "ContentsFormat": "원석을 가공해보자"
+  },
+  {
+    "ID": 41,
+    "Title": "B급 에메랄드",
+    "ContentsFormat": "잘못만들었다 다음에는 더 잘 만들어보자"
+  },
+  {
+    "ID": 42,
+    "Title": "A급 에메랄드",
+    "ContentsFormat": "나쁘진않지만 아직 부족하다"
+  },
+  {
+    "ID": 43,
+    "Title": "S급 에메랄드",
+    "ContentsFormat": "아쉽다.다음에는 더 잘 만들어보자"
+  },
+  {
+    "ID": 44,
+    "Title": "루비원석",
+    "ContentsFormat": "훌륭하다 비싸게 잘 팔리겠다"
+  },
+  {
+    "ID": 45,
+    "Title": "B급 루비",
+    "ContentsFormat": "잘못만들었다 다음에는 더 잘 만들어보자"
+  },
+  {
+    "ID": 46,
+    "Title": "A급 루비",
+    "ContentsFormat": "잘못만들었다 다음에는 더 잘 만들어보자"
+  },
+  {
+    "ID": 47,
+    "Title": "S급 루비",
+    "ContentsFormat": "나쁘진않지만 아직 부족하다"
+  },
+  {
+    "ID": 48,
+    "Title": "에멜랄드원석",
+    "ContentsFormat": "원석을 가공해보자"
+  },
+  {
+    "ID": 49,
+    "Title": "B급 에메랄드",
+    "ContentsFormat": "잘못만들었다 다음에는 더 잘 만들어보자"
+  },
+  {
+    "ID": 50,
+    "Title": "A급 에메랄드",
+    "ContentsFormat": "나쁘진않지만 아직 부족하다"
+  },
+  {
+    "ID": 51,
+    "Title": "S급 에메랄드",
+    "ContentsFormat": "아쉽다.다음에는 더 잘 만들어보자"
+  },
+  {
+    "ID": 52,
+    "Title": "루비원석",
+    "ContentsFormat": "훌륭하다 비싸게 잘 팔리겠다"
+  },
+  {
+    "ID": 53,
+    "Title": "B급 루비",
+    "ContentsFormat": "잘못만들었다 다음에는 더 잘 만들어보자"
+  },
+  {
+    "ID": 54,
+    "Title": "A급 루비",
+    "ContentsFormat": "잘못만들었다 다음에는 더 잘 만들어보자"
+  },
+  {
+    "ID": 55,
+    "Title": "S급 루비",
+    "ContentsFormat": "나쁘진않지만 아직 부족하다"
+  },
+  {
+    "ID": 56,
+    "Title": "에멜랄드원석",
+    "ContentsFormat": "원석을 가공해보자"
+  },
+  {
+    "ID": 57,
+    "Title": "B급 에메랄드",
+    "ContentsFormat": "잘못만들었다 다음에는 더 잘 만들어보자"
+  },
+  {
+    "ID": 58,
+    "Title": "A급 에메랄드",
+    "ContentsFormat": "나쁘진않지만 아직 부족하다"
+  },
+  {
+    "ID": 59,
+    "Title": "S급 에메랄드",
+    "ContentsFormat": "아쉽다.다음에는 더 잘 만들어보자"
+  },
+  {
+    "ID": 60,
+    "Title": "루비원석",
+    "ContentsFormat": "훌륭하다 비싸게 잘 팔리겠다"
+  },
+  {
+    "ID": 61,
+    "Title": "B급 루비",
+    "ContentsFormat": "잘못만들었다 다음에는 더 잘 만들어보자"
+  },
+  {
+    "ID": 62,
+    "Title": "A급 루비",
+    "ContentsFormat": "잘못만들었다 다음에는 더 잘 만들어보자"
+  },
+  {
+    "ID": 63,
+    "Title": "S급 루비",
+    "ContentsFormat": "나쁘진않지만 아직 부족하다"
+  },
+  {
+    "ID": 64,
+    "Title": "루비원석",
+    "ContentsFormat": "훌륭하다 비싸게 잘 팔리겠다"
+  },
+  {
+    "ID": 65,
+    "Title": "B급 루비",
+    "ContentsFormat": "잘못만들었다 다음에는 더 잘 만들어보자"
+  },
+  {
+    "ID": 66,
+    "Title": "A급 루비",
+    "ContentsFormat": "잘못만들었다 다음에는 더 잘 만들어보자"
+  },
+  {
+    "ID": 67,
+    "Title": "S급 루비",
+    "ContentsFormat": "나쁘진않지만 아직 부족하다"
   }
 ]

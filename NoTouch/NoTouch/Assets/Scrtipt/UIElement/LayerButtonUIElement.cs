@@ -14,10 +14,10 @@ public class LayerButtonUIElement : MonoBehaviour
     private int mID;
     public void Init(int id)
     {
-        mTitleText.text = string.Format("B{0}",id+1); 
-
+        mTitleText.text = string.Format("B{0}",id+1);
+        mID = id;
     }
-    public void setting (GemSellUIElement GemSellUIElement1, GemSellUIElement GemSellUIElement2, GemSellUIElement GemSellUIElement3, GemSellUIElement GemSellUIElement4, GemSellUIElement GemSellUIElement5)
+    public void setting (GemSellUIElement GemSellUIElement1, GemSellUIElement GemSellUIElement2, GemSellUIElement GemSellUIElement3, GemSellUIElement GemSellUIElement4)
     {
         mToggle.onValueChanged.AddListener((bOn) =>
         {
@@ -25,7 +25,7 @@ public class LayerButtonUIElement : MonoBehaviour
             GemSellUIElement2.gameObject.SetActive(bOn);
             GemSellUIElement3.gameObject.SetActive(bOn);
             GemSellUIElement4.gameObject.SetActive(bOn);
-            GemSellUIElement5.gameObject.SetActive(bOn);
+            
         });
     }
     public void bToggleIsOn(bool f)

@@ -47,7 +47,7 @@ public class GemSellController : InformationLoader
             Paths.LANGUAGE_TYPE_ARR[GameController.Instance.LanguageType]);
 
         mOriginArr = Resources.LoadAll<Gem>(Paths.GEM_PREFAB);
-        mIconArr = new Sprite[Constants.MINE_COUNT*5];
+        mIconArr = new Sprite[Constants.MAX_fLOOR * 4];
         mElementList = new List<GemSellUIElement>();
         mButtonElementList = new List<LayerButtonUIElement>();
         Load();
@@ -88,15 +88,14 @@ public class GemSellController : InformationLoader
     {
         for (int i = 0; i < mInfoArr.Length; i++)
         {
-            if (i % 5 == 0)
+            if (i % 4 == 0)
             {
                 LayerButtonUIElement Buttonelement = Instantiate(mLayerButtonPrefab, mElementArea);
-
-                Buttonelement.Init(i/5);
+                Buttonelement.Init(i/4);
                 mButtonElementList.Add(Buttonelement);
             }
 
-            mIconArr[i] = mOriginArr[i/5].GetSprite(i%5);
+            mIconArr[i] = mOriginArr[i/4].GetSprite(i%4);
 
             GemSellUIElement element = Instantiate(mElementPrefab, mElementArea);
             element.Init(i, mIconArr[i],
@@ -108,10 +107,10 @@ public class GemSellController : InformationLoader
             mElementList.Add(element);
 
             mElementList[i].gameObject.SetActive(false);
-            if (i % 5 == 4)
+            if (i % 4 == 3)
             {
                 mButtonElementList[mButtonElementList.Count - 1].bToggleIsOn(false);
-                mButtonElementList[mButtonElementList.Count-1].setting( mElementList[i-4], mElementList[i-3], mElementList[i-2], mElementList[i-1], mElementList[i]);
+                mButtonElementList[mButtonElementList.Count-1].setting(mElementList[i-3], mElementList[i-2], mElementList[i-1], mElementList[i]);
             }
         }
 
@@ -120,7 +119,7 @@ public class GemSellController : InformationLoader
             GameController.Instance.CheckAllSell = bOn;
             for (int i = 0; i < mElementList.Count; i++)
             {
-                if (i%5==0)
+                if (i%4==0)
                 {
                     if (bOn)
                     {
@@ -161,23 +160,20 @@ public class GemSellController : InformationLoader
         double cost = mInfoArr[id].Cost * amount;
 
         int div;
-        div = id % 5;
+        div = id % 4;
         switch (div)
         {
             case 0:
-                GameController.Instance.AddAmoutGem_O[id / 5]-=amount;
+                GameController.Instance.AddAmoutGem_O[id / 4]-=amount;
                 break;
             case 1:
-                GameController.Instance.AddAmoutGem_A[id / 5] -= amount;
+                GameController.Instance.AddAmoutGem_B[id / 4] -= amount;
                 break;
             case 2:
-                GameController.Instance.AddAmoutGem_S[id / 5] -= amount;
+                GameController.Instance.AddAmoutGem_A[id / 4] -= amount;
                 break;
             case 3:
-                GameController.Instance.AddAmoutGem_SS[id / 5] -= amount;
-                break;
-            case 4:
-                GameController.Instance.AddAmoutGem_SSS[id / 5] -= amount;
+                GameController.Instance.AddAmoutGem_S[id / 4] -= amount;
                 break;
         }
         GameController.Instance.Gold += cost;
