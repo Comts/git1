@@ -1,17 +1,87 @@
 [
   {
     "ID": 0,
-    "Title": "에멜랄드",
-    "ContentsFormat": "에메랄드를 가공"
+    "Title": "석탄",
+    "ContentsFormat": "연탄은 따듯해"
   },
   {
     "ID": 1,
-    "Title": "루비",
-    "ContentsFormat": "루비루비루"
+    "Title": "구리",
+    "ContentsFormat": "10원 동전보다 비싼 구리"
   },
   {
     "ID": 2,
+    "Title": "투르말린",
+    "ContentsFormat": "진짜로 말린 전기석"
+  },
+  {
+    "ID": 3,
+    "Title": "라피스라줄리",
+    "ContentsFormat": "청금석"
+  },
+  {
+    "ID": 4,
+    "Title": "터키석",
+    "ContentsFormat": "형제의 돌"
+  },
+  {
+    "ID": 5,
+    "Title": "자수정",
+    "ContentsFormat": "찜질방에 많이 사용"
+  },
+  {
+    "ID": 6,
+    "Title": "가넷",
+    "ContentsFormat": "똑똑한 준비물"
+  },
+  {
+    "ID": 7,
+    "Title": "은",
+    "ContentsFormat": "은근히 비쌈"
+  },
+  {
+    "ID": 8,
     "Title": "토파즈",
-    "ContentsFormat": "토오즈"
+    "ContentsFormat": "파란색도 있네?"
+  },
+  {
+    "ID": 9,
+    "Title": "아쿠아마린",
+    "ContentsFormat": "물마린"
+  },
+  {
+    "ID": 10,
+    "Title": "오팔",
+    "ContentsFormat": "58"
+  },
+  {
+    "ID": 11,
+    "Title": "루비",
+    "ContentsFormat": "비싼 루비똥"
+  },
+  {
+    "ID": 12,
+    "Title": "사파이어",
+    "ContentsFormat": "벰파이어"
+  },
+  {
+    "ID": 13,
+    "Title": "에메랄드",
+    "ContentsFormat": "에메랄드 바닷가 좋지"
+  },
+  {
+    "ID": 14,
+    "Title": "금",
+    "ContentsFormat": "금을 사야 돼"
+  },
+  {
+    "ID": 15,
+    "Title": "다이아몬드",
+    "ContentsFormat": "결혼반지는 다이아몬드"
+  },
+  {
+    "ID": 16,
+    "Title": "븨브라늄",
+    "ContentsFormat": "방패"
   }
 ]

@@ -61,6 +61,7 @@ public class CoworkerController : InformationLoader
         mLevelArr = GameController.Instance.GetCoworkerLevelArr();
         for (int i = 0; i < mElementList.Count; i++)
         {
+            mCoworkerArr[i].StopWork();
             Destroy(mElementList[i].gameObject);
         }
 

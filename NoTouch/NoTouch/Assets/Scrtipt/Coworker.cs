@@ -22,6 +22,11 @@ public class Coworker : MonoBehaviour
         mWorkPeriod = period;
         mCurrentTime = 0;
     }
+    public void StopWork()
+    {
+        mWorkPeriod = 0;
+        mCurrentTime = 0;
+    }
 
     // Update is called once per frame
     void Update()
