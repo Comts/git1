@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2626408427304656199}
   - component: {fileID: 8590041274007797933}
   m_Layer: 5
-  m_Name: StageUIElement 1
+  m_Name: StageUIElement 00
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 72244a32b00c73d40ba4f30c77f7abe1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0e135a7bff88c424da838413d48cde7c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

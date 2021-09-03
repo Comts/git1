@@ -36,15 +36,12 @@ public class Gem : MonoBehaviour
             switch(i)
             {
                 case 0:
-                    mShiftGap[i] = GapCal * 0.2;
-                    break;
-                case 1:
                     mShiftGap[i] = GapCal * 0.5;
                     break;
-                case 2:
+                case 1:
                     mShiftGap[i] = GapCal * 1;
                     break;
-                case 3:
+                case 2:
                     mShiftGap[i] = GapCal * 2;
                     break;
                 default:
@@ -53,7 +50,7 @@ public class Gem : MonoBehaviour
             }
             
         }
-        return mShiftGap[3];
+        return mShiftGap[2];
     }
 
     public int SetProgress(double progress)

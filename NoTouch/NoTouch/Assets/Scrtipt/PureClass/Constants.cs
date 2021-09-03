@@ -1,6 +1,6 @@
 ﻿public static class Constants
 {
-    public const int GEM_RANK_COUNT = 4;
+    public const int GEM_RANK_COUNT = 3;
     public const int CRAFT_TIME = 60;
 
     public const int USEITEM_AMOUT = 6;
