@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5040179837044978638}
   - component: {fileID: 2626408427304656199}
   - component: {fileID: 8590041274007797933}
+  - component: {fileID: -8224361928981031006}
   m_Layer: 5
   m_Name: StageUIElement 01
   m_TagString: Untagged
@@ -61,7 +62,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -91,6 +92,25 @@ MonoBehaviour:
   PlayerAnim: {fileID: 2247018166299865386}
   CoworkerAnim: {fileID: 0}
   CoworkerPos: {fileID: 9204266294699243512}
+--- !u!95 &-8224361928981031006
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 523157646865243398}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c1c6c03bc6acbbc429c8376becdf544e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3494721395502465026
 GameObject:
   m_ObjectHideFlags: 0

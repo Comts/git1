@@ -59,6 +59,7 @@ public class StageController : MonoBehaviour
             StageUIElement element = Instantiate(mElementPrefab[i], mElementArea);
             element.Init(i, mAnimArr[i]);
             mElementList.Add(element);
+            mElementList[i].HaveStage();
             PlayerButtoninteractable(i);
 
             if (GameController.Instance.GetCoworkerLevelArr()[i] > 0)
@@ -89,6 +90,7 @@ public class StageController : MonoBehaviour
             StageUIElement element = Instantiate(mElementPrefab[i], mElementArea);
             element.Init(i, mAnimArr[i]);
             mElementList.Add(element);
+            mElementList[i].HaveStage();
             PlayerButtoninteractable(i);
 
             if (GameController.Instance.GetCoworkerLevelArr()[i]>0)
@@ -170,9 +172,8 @@ public class StageController : MonoBehaviour
 
             StageUIElement element = Instantiate(mElementPrefab[id], mElementArea);
             element.Init(id, mAnimArr[id]);
-
-
             mElementList.Add(element);
+            mElementList[id].ShowStage();
             PlayerButtoninteractable(id);
             mLastSibling.Refresh(mElementList.Count, UnitSetter.GetUnitStr(100000 * math.pow(2, id)));
         }
