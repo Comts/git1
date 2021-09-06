@@ -100,7 +100,6 @@ public class GemSellController : InformationLoader
             GemSellUIElement element = Instantiate(mElementPrefab, mElementArea);
             element.Init(i, mIconArr[i],
                         mTextInfoArr[i].Title,
-                        mTextInfoArr[i].ContentsFormat,
                         SellGem);
 
 

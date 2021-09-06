@@ -1,227 +1,227 @@
 [
   {
     "ID": 0,
-    "Title": "에멜랄드원석",
-    "ContentsFormat": "원석을 가공해보자"
+    "Title": "석탄 원석",
+    "ContentsFormat": "석탄을 만들어보자"
   },
   {
     "ID": 1,
-    "Title": "B급 에메랄드",
-    "ContentsFormat": "잘못만들었다 다음에는 더 잘 만들어보자"
+    "Title": "B급 석탄",
+    "ContentsFormat": "잘못만들었다..."
   },
   {
     "ID": 2,
-    "Title": "A급 에메랄드",
+    "Title": "A급 석탄",
     "ContentsFormat": "나쁘진않지만 아직 부족하다"
   },
   {
     "ID": 3,
-    "Title": "S급 에메랄드",
-    "ContentsFormat": "아쉽다.다음에는 더 잘 만들어보자"
+    "Title": "S급 석탄",
+    "ContentsFormat": "올겨울 따듯하게 지낼수있겠다"
   },
   {
     "ID": 4,
-    "Title": "루비원석",
-    "ContentsFormat": "훌륭하다 비싸게 잘 팔리겠다"
+    "Title": "구리 원석",
+    "ContentsFormat": "가공해서 비싸게 잘 팔리겠다"
   },
   {
     "ID": 5,
-    "Title": "B급 루비",
+    "Title": "B급 구리",
     "ContentsFormat": "잘못만들었다 다음에는 더 잘 만들어보자"
   },
   {
     "ID": 6,
-    "Title": "A급 루비",
+    "Title": "A급 구리",
     "ContentsFormat": "잘못만들었다 다음에는 더 잘 만들어보자"
   },
   {
     "ID": 7,
-    "Title": "S급 루비",
+    "Title": "S급 구리",
     "ContentsFormat": "나쁘진않지만 아직 부족하다"
   },
   {
     "ID": 8,
-    "Title": "에멜랄드원석",
+    "Title": "투르말린 원석",
     "ContentsFormat": "원석을 가공해보자"
   },
   {
     "ID": 9,
-    "Title": "B급 에메랄드",
+    "Title": "B급 투르말린",
     "ContentsFormat": "잘못만들었다 다음에는 더 잘 만들어보자"
   },
   {
     "ID": 10,
-    "Title": "A급 에메랄드",
+    "Title": "A급 투르말린",
     "ContentsFormat": "나쁘진않지만 아직 부족하다"
   },
   {
     "ID": 11,
-    "Title": "S급 에메랄드",
+    "Title": "S급 투르말린",
     "ContentsFormat": "아쉽다.다음에는 더 잘 만들어보자"
   },
   {
     "ID": 12,
-    "Title": "루비원석",
+    "Title": "라피스라줄리 원석",
     "ContentsFormat": "훌륭하다 비싸게 잘 팔리겠다"
   },
   {
     "ID": 13,
-    "Title": "B급 루비",
+    "Title": "B급 라피스라줄리",
     "ContentsFormat": "잘못만들었다 다음에는 더 잘 만들어보자"
   },
   {
     "ID": 14,
-    "Title": "A급 루비",
+    "Title": "A급 라피스라줄리",
     "ContentsFormat": "잘못만들었다 다음에는 더 잘 만들어보자"
   },
   {
     "ID": 15,
-    "Title": "S급 루비",
+    "Title": "S급 라피스라줄리",
     "ContentsFormat": "나쁘진않지만 아직 부족하다"
   },
   {
     "ID": 16,
-    "Title": "에멜랄드원석",
+    "Title": "터키석 원석",
     "ContentsFormat": "원석을 가공해보자"
   },
   {
     "ID": 17,
-    "Title": "B급 에메랄드",
+    "Title": "B급 터키석",
     "ContentsFormat": "잘못만들었다 다음에는 더 잘 만들어보자"
   },
   {
     "ID": 18,
-    "Title": "A급 에메랄드",
+    "Title": "A급 터키석",
     "ContentsFormat": "나쁘진않지만 아직 부족하다"
   },
   {
     "ID": 19,
-    "Title": "S급 에메랄드",
+    "Title": "S급 터키석",
     "ContentsFormat": "아쉽다.다음에는 더 잘 만들어보자"
   },
   {
     "ID": 20,
-    "Title": "루비원석",
+    "Title": "자수정 원석",
     "ContentsFormat": "훌륭하다 비싸게 잘 팔리겠다"
   },
   {
     "ID": 21,
-    "Title": "B급 루비",
+    "Title": "B급 자수정",
     "ContentsFormat": "잘못만들었다 다음에는 더 잘 만들어보자"
   },
   {
     "ID": 22,
-    "Title": "A급 루비",
+    "Title": "A급 자수정",
     "ContentsFormat": "잘못만들었다 다음에는 더 잘 만들어보자"
   },
   {
     "ID": 23,
-    "Title": "S급 루비",
+    "Title": "S급 자수정",
     "ContentsFormat": "나쁘진않지만 아직 부족하다"
   },
   {
     "ID": 24,
-    "Title": "에멜랄드원석",
+    "Title": "가넷 원석",
     "ContentsFormat": "원석을 가공해보자"
   },
   {
     "ID": 25,
-    "Title": "B급 에메랄드",
+    "Title": "B급 가넷",
     "ContentsFormat": "잘못만들었다 다음에는 더 잘 만들어보자"
   },
   {
     "ID": 26,
-    "Title": "A급 에메랄드",
+    "Title": "A급 가넷",
     "ContentsFormat": "나쁘진않지만 아직 부족하다"
   },
   {
     "ID": 27,
-    "Title": "S급 에메랄드",
+    "Title": "S급 가넷",
     "ContentsFormat": "아쉽다.다음에는 더 잘 만들어보자"
   },
   {
     "ID": 28,
-    "Title": "루비원석",
+    "Title": "은 원석",
     "ContentsFormat": "훌륭하다 비싸게 잘 팔리겠다"
   },
   {
     "ID": 29,
-    "Title": "B급 루비",
+    "Title": "B급 은",
     "ContentsFormat": "잘못만들었다 다음에는 더 잘 만들어보자"
   },
   {
     "ID": 30,
-    "Title": "A급 루비",
+    "Title": "A급 은",
     "ContentsFormat": "잘못만들었다 다음에는 더 잘 만들어보자"
   },
   {
     "ID": 31,
-    "Title": "S급 루비",
+    "Title": "S급 은",
     "ContentsFormat": "나쁘진않지만 아직 부족하다"
   },
   {
     "ID": 32,
-    "Title": "에멜랄드원석",
+    "Title": "토파즈 원석",
     "ContentsFormat": "원석을 가공해보자"
   },
   {
     "ID": 33,
-    "Title": "B급 에메랄드",
+    "Title": "B급 토파즈",
     "ContentsFormat": "잘못만들었다 다음에는 더 잘 만들어보자"
   },
   {
     "ID": 34,
-    "Title": "A급 에메랄드",
+    "Title": "A급 토파즈",
     "ContentsFormat": "나쁘진않지만 아직 부족하다"
   },
   {
     "ID": 35,
-    "Title": "S급 에메랄드",
+    "Title": "S급 토파즈",
     "ContentsFormat": "아쉽다.다음에는 더 잘 만들어보자"
   },
   {
     "ID": 36,
-    "Title": "루비원석",
+    "Title": "아쿠아마린 원석",
     "ContentsFormat": "훌륭하다 비싸게 잘 팔리겠다"
   },
   {
     "ID": 37,
-    "Title": "B급 루비",
+    "Title": "B급 아쿠아마린",
     "ContentsFormat": "잘못만들었다 다음에는 더 잘 만들어보자"
   },
   {
     "ID": 38,
-    "Title": "A급 루비",
+    "Title": "A급 아쿠아마린",
     "ContentsFormat": "잘못만들었다 다음에는 더 잘 만들어보자"
   },
   {
     "ID": 39,
-    "Title": "S급 루비",
+    "Title": "S급 아쿠아마린",
     "ContentsFormat": "나쁘진않지만 아직 부족하다"
   },
   {
     "ID": 40,
-    "Title": "에멜랄드원석",
+    "Title": "오팔 원석",
     "ContentsFormat": "원석을 가공해보자"
   },
   {
     "ID": 41,
-    "Title": "B급 에메랄드",
+    "Title": "B급 오팔",
     "ContentsFormat": "잘못만들었다 다음에는 더 잘 만들어보자"
   },
   {
     "ID": 42,
-    "Title": "A급 에메랄드",
+    "Title": "A급 오팔",
     "ContentsFormat": "나쁘진않지만 아직 부족하다"
   },
   {
     "ID": 43,
-    "Title": "S급 에메랄드",
+    "Title": "S급 오팔",
     "ContentsFormat": "아쉽다.다음에는 더 잘 만들어보자"
   },
   {
     "ID": 44,
-    "Title": "루비원석",
+    "Title": "루비 원석",
     "ContentsFormat": "훌륭하다 비싸게 잘 팔리겠다"
   },
   {
@@ -241,102 +241,102 @@
   },
   {
     "ID": 48,
-    "Title": "에멜랄드원석",
+    "Title": "사파이어 원석",
     "ContentsFormat": "원석을 가공해보자"
   },
   {
     "ID": 49,
-    "Title": "B급 에메랄드",
+    "Title": "B급 사파이어",
     "ContentsFormat": "잘못만들었다 다음에는 더 잘 만들어보자"
   },
   {
     "ID": 50,
-    "Title": "A급 에메랄드",
+    "Title": "A급 사파이어",
     "ContentsFormat": "나쁘진않지만 아직 부족하다"
   },
   {
     "ID": 51,
-    "Title": "S급 에메랄드",
+    "Title": "S급 사파이어",
     "ContentsFormat": "아쉽다.다음에는 더 잘 만들어보자"
   },
   {
     "ID": 52,
-    "Title": "루비원석",
+    "Title": "에메랄드 원석",
     "ContentsFormat": "훌륭하다 비싸게 잘 팔리겠다"
   },
   {
     "ID": 53,
-    "Title": "B급 루비",
-    "ContentsFormat": "잘못만들었다 다음에는 더 잘 만들어보자"
-  },
-  {
-    "ID": 54,
-    "Title": "A급 루비",
-    "ContentsFormat": "잘못만들었다 다음에는 더 잘 만들어보자"
-  },
-  {
-    "ID": 55,
-    "Title": "S급 루비",
-    "ContentsFormat": "나쁘진않지만 아직 부족하다"
-  },
-  {
-    "ID": 56,
-    "Title": "에멜랄드원석",
-    "ContentsFormat": "원석을 가공해보자"
-  },
-  {
-    "ID": 57,
     "Title": "B급 에메랄드",
     "ContentsFormat": "잘못만들었다 다음에는 더 잘 만들어보자"
   },
   {
-    "ID": 58,
+    "ID": 54,
     "Title": "A급 에메랄드",
+    "ContentsFormat": "잘못만들었다 다음에는 더 잘 만들어보자"
+  },
+  {
+    "ID": 55,
+    "Title": "S급 에메랄드",
+    "ContentsFormat": "나쁘진않지만 아직 부족하다"
+  },
+  {
+    "ID": 56,
+    "Title": "금 원석",
+    "ContentsFormat": "원석을 가공해보자"
+  },
+  {
+    "ID": 57,
+    "Title": "B급 금",
+    "ContentsFormat": "잘못만들었다 다음에는 더 잘 만들어보자"
+  },
+  {
+    "ID": 58,
+    "Title": "A급 금",
     "ContentsFormat": "나쁘진않지만 아직 부족하다"
   },
   {
     "ID": 59,
-    "Title": "S급 에메랄드",
+    "Title": "S급 금",
     "ContentsFormat": "아쉽다.다음에는 더 잘 만들어보자"
   },
   {
     "ID": 60,
-    "Title": "루비원석",
+    "Title": "다이아몬드 원석",
     "ContentsFormat": "훌륭하다 비싸게 잘 팔리겠다"
   },
   {
     "ID": 61,
-    "Title": "B급 루비",
+    "Title": "B급 다이아몬드",
     "ContentsFormat": "잘못만들었다 다음에는 더 잘 만들어보자"
   },
   {
     "ID": 62,
-    "Title": "A급 루비",
+    "Title": "A급 다이아몬드",
     "ContentsFormat": "잘못만들었다 다음에는 더 잘 만들어보자"
   },
   {
     "ID": 63,
-    "Title": "S급 루비",
+    "Title": "S급 다이아몬드",
     "ContentsFormat": "나쁘진않지만 아직 부족하다"
   },
   {
     "ID": 64,
-    "Title": "루비원석",
+    "Title": "븨브라늄 원석",
     "ContentsFormat": "훌륭하다 비싸게 잘 팔리겠다"
   },
   {
     "ID": 65,
-    "Title": "B급 루비",
+    "Title": "B급 븨브라늄",
     "ContentsFormat": "잘못만들었다 다음에는 더 잘 만들어보자"
   },
   {
     "ID": 66,
-    "Title": "A급 루비",
+    "Title": "A급 븨브라늄",
     "ContentsFormat": "잘못만들었다 다음에는 더 잘 만들어보자"
   },
   {
     "ID": 67,
-    "Title": "S급 루비",
+    "Title": "S급 븨브라늄",
     "ContentsFormat": "나쁘진않지만 아직 부족하다"
   }
 ]

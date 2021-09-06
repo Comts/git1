@@ -10,7 +10,7 @@ public class GemSellUIElement : MonoBehaviour
     [SerializeField]
     private Image mIconImage;
     [SerializeField]
-    private Text mTitleText, mAmountText, mContentsText, mSellAmountText;
+    private Text mTitleText, mAmountText, mSellAmountText;
     [SerializeField]
     private Button mButton;
     [SerializeField]
@@ -25,13 +25,11 @@ public class GemSellUIElement : MonoBehaviour
     public void Init(int id,
                      Sprite icon,
                      string title,
-                     string contents,
                      Delegates.IntDoubleInVoidCallback callback)
     {
         mID = id;
         mIconImage.sprite = icon;
         mTitleText.text = title;
-        mContentsText.text = contents;
         CalSellAmount();
 
         mButton.onClick.AddListener(() =>
