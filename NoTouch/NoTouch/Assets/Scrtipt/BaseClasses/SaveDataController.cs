@@ -204,7 +204,7 @@ public class SaveDataController : MonoBehaviour
         else if (mUser.GetFromMine.Length != Constants.MINE_COUNT)
         {
             double[] temp = new double[Constants.MINE_COUNT];
-            int count = Mathf.Min(Constants.MINE_COUNT, mUser.MineArr.Length);
+            int count = Mathf.Min(Constants.MINE_COUNT, mUser.GetFromMine.Length);
             for (int i = 0; i < count; i++)
             {
                 temp[i] = mUser.GetFromMine[i];
@@ -219,7 +219,7 @@ public class SaveDataController : MonoBehaviour
         else if (mUser.AutoSellCheck.Length != (Constants.MAX_fLOOR * 5))
         {
             bool[] temp = new bool[Constants.MAX_fLOOR * 5];
-            int count = Mathf.Min((Constants.MAX_fLOOR * 5), mUser.MineArr.Length);
+            int count = Mathf.Min((Constants.MAX_fLOOR * 5), mUser.AutoSellCheck.Length);
             for (int i = 0; i < count; i++)
             {
                 temp[i] = mUser.AutoSellCheck[i];

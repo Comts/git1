@@ -14,7 +14,7 @@ public class ItemUseController : MonoBehaviour
     [SerializeField]
     private ItemButton[] mItemButtonArr;
     [SerializeField]
-    private Text Item1, Item2;
+    private Text Item1, Item2, Item1_IAP, Item2_IAP;
 #pragma warning restore 0649
     public double[] GetGemMulti { get; set; }
     public double SellGemMulti { get; set; }
@@ -58,7 +58,9 @@ public class ItemUseController : MonoBehaviour
     public void ShowHaveItem()
     {
         Item1.text = GameController.Instance.HaveItem[1].ToString();
+        Item1_IAP.text = Item1.text;
         Item2.text = GameController.Instance.HaveItem[0].ToString();
+        Item2_IAP.text = Item2.text;
         CheckItemButton();
     }
 
