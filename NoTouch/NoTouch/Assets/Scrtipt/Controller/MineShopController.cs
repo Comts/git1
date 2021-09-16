@@ -10,6 +10,7 @@ public class MineShopController : InformationLoader
     [SerializeField]
     private MineTextInfo[] mTextInfoArr;
     private Sprite[] mIconArr;
+    private float mCurrentTime;
 
     private List<MineUIElement> mElementList;
 #pragma warning disable 0649
@@ -18,7 +19,9 @@ public class MineShopController : InformationLoader
     [SerializeField]
     private Transform mElementArea;
     [SerializeField]
-    private float mCurrentTime;
+    private float mTime;
+    [SerializeField]
+    private double mAddGem;
 
 #pragma warning restore 0649
 
@@ -49,13 +52,14 @@ public class MineShopController : InformationLoader
     private void Update()
     {
         mCurrentTime += Time.deltaTime;
-        if (mCurrentTime >= 5)
+        if (mCurrentTime >= mTime)
         {
             for (int i = 0; i < Constants.MINE_COUNT; i++)
             {
                 if(GameController.Instance.HaveMine[i] > 0)
                 {
-                    GameController.Instance.AddFromMine[i]++;
+                    GameController.Instance.AddFromMine[i] += mAddGem;
+                    mElementList[i].ShowAmount(GameController.Instance.AddFromMine[i]);
                 }
             }
             mCurrentTime = 0;
@@ -66,13 +70,10 @@ public class MineShopController : InformationLoader
     {
         for (int i = 0; i < mInfoArr.Length; i++)
         {
-
-
-
             MineUIElement element = Instantiate(mElementPrefab, mElementArea);
             element.Init(i, mIconArr[i],
                         mTextInfoArr[i].Title,
-                        mTextInfoArr[i].ContentsFormat,
+                        string.Format(mTextInfoArr[i].ContentsFormat, mTime, mAddGem),
                         UnitSetter.GetUnitStr(mInfoArr[i].Cost),
                         BuyMine, SellMine);
 
@@ -82,7 +83,24 @@ public class MineShopController : InformationLoader
             {
                 mElementList[i].SetBuyButtonActive(false);
             }
+            if (i<=GameController.Instance.Stage)
+            {
+                mElementList[i].gameObject.SetActive(true);
+            }
         }
+    }
+    public void ReStart()
+    {
+
+        for (int i = 0; i < mInfoArr.Length; i++)
+        {
+            mElementList[i].gameObject.SetActive(false);
+        }
+        mElementList[0].gameObject.SetActive(true);
+    }
+    public void SetMine(int num)
+    {
+        mElementList[num].gameObject.SetActive(true);
     }
     public void BuyMine(int id, int amount)
     {
@@ -108,9 +126,10 @@ public class MineShopController : InformationLoader
         GameController.Instance.Gold += cost;
         GameController.Instance.AddAmoutGem_O[id] += GameController.Instance.AddFromMine[id];
         GameController.Instance.AddFromMine[id] = 0;
+        mElementList[id].ShowAmount(0);
         GameController.Instance.HaveMine[id] = 0;
         mElementList[id].SetBuyButtonActive(true);
-        mElementList[id].Refresh(mTextInfoArr[id].ContentsFormat, UnitSetter.GetUnitStr(mInfoArr[id].Cost));
+        mElementList[id].Refresh(string.Format(mTextInfoArr[id].ContentsFormat, mTime, mAddGem), UnitSetter.GetUnitStr(mInfoArr[id].Cost));
 
     }
 }

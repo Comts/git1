@@ -1,87 +1,88 @@
 [
   {
     "ID": 0,
-    "Title": "아오지",
-    "ContentsFormat": "석탄 획득"
+    "Title": "아오G 탄광",
+    "ContentsFormat": "{0}초당 석탄 원석{1}개 적립 후 광산 판매 시 획득"
   },
   {
     "ID": 1,
-    "Title": "금광",
-    "ContentsFormat": "작업 진행 보조"
+    "Title": "구리G 광산",
+    "ContentsFormat": "{0}초당 구리 원석{1}개 적립 후 광산 판매 시 획득"
   },
   {
     "ID": 2,
-    "Title": "흐아",
-    "ContentsFormat": "보조"
+    "Title": "진실의 광산",
+    "ContentsFormat": "{0}초당 투르말린 원석{1}개 적립 후 광산 판매 시 획득"
   },
   {
     "ID": 3,
-    "Title": "금광",
-    "ContentsFormat": "작업 진행 보조"
+    "Title": "청금석 광산",
+    "ContentsFormat": "{0}초당 라피스라줄리 원석{1}개 적립 후 광산 판매 시 획득"
   },
   {
     "ID": 4,
-    "Title": "흐아",
-    "ContentsFormat": "보조"
+    "Title": "형제의 광산",
+    "ContentsFormat": "{0}초당 터키석 원석{1}개 적립 후 광산 판매 시 획득"
   },
   {
     "ID": 5,
-    "Title": "금광",
-    "ContentsFormat": "작업 진행 보조"
+    "Title": "천연 찜질방",
+    "ContentsFormat": "{0}초당 자수정 원석{1}개 적립 후 광산 판매 시 획득"
   },
   {
     "ID": 6,
-    "Title": "흐아",
-    "ContentsFormat": "보조"
+    "Title": "오넷 광산",
+    "ContentsFormat": "{0}초당 가넷 원석{1}개 적립 후 광산 판매 시 획득"
   },
   {
     "ID": 7,
-    "Title": "금광",
-    "ContentsFormat": "작업 진행 보조"
+    "Title": "실버타운",
+    "ContentsFormat": "{0}초당 은 원석{1}개 적립 후 광산 판매 시 획득"
   },
   {
     "ID": 8,
-    "Title": "흐아",
-    "ContentsFormat": "보조"
+    "Title": "일파즈 광산",
+    "ContentsFormat": "{0}초당 토파즈 원석{1}개 적립 후 광산 판매 시 획득"
   },
   {
     "ID": 9,
-    "Title": "금광",
-    "ContentsFormat": "작업 진행 보조"
+    "Title": "아쿠아리움",
+    "ContentsFormat": "{0}초당 아쿠아마린 원석{1}개 적립 후 광산 판매 시 획득"
   },
   {
     "ID": 10,
-    "Title": "흐아",
-    "ContentsFormat": "보조"
+    "Title": "육팔 광산",
+    "ContentsFormat": "{0}초당 오팔 원석{1}개 적립 후 광산 판매 시 획득"
   },
   {
     "ID": 11,
-    "Title": "금광",
-    "ContentsFormat": "작업 진행 보조"
+    "Title": "오루비스 광산",
+    "ContentsFormat": "{0}초당 루비 원석{1}개  적립 후 광산 판매 시 획득"
   },
   {
     "ID": 12,
-    "Title": "흐아",
-    "ContentsFormat": "보조"
+    "Title": "사워터 광산",
+    "ContentsFormat": "{0}초당 사파이어 원석{1}개 적립 후 광산 판매 시 획득"
   },
   {
     "ID": 13,
-    "Title": "금광",
-    "ContentsFormat": "작업 진행 보조"
+    "Title": "에메한 섬",
+    "ContentsFormat": "{0}초당 에메랄드 원석{1}개 적립 후 광산 판매 시 획득"
   },
   {
     "ID": 14,
-    "Title": "흐아",
-    "ContentsFormat": "보조"
+    "Title": "금강산",
+    "ContentsFormat": "{0}초당 금 원석{1}개 적립 후 광산 판매 시 획득"
   },
   {
     "ID": 15,
-    "Title": "금광",
-    "ContentsFormat": "작업 진행 보조"
+    "Title": "다이토피넛 광산",
+    "ContentsFormat": "{0}초당 다이아몬드 원석{1}개 적립 후 광산 판매 시 획득"
   },
   {
     "ID": 16,
-    "Title": "흐아",
-    "ContentsFormat": "보조"
+    "Title": "와컨다포에버",
+    "ContentsFormat": "{0}초당 븨브라늄 원석{1}개 적립 후 광산 판매 시 획득"
   }
+
 ]

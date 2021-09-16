@@ -148,7 +148,24 @@ public class CraftController : InformationLoader
             {
                 mElementList[i].SetCraftButtonActive(false);
             }
+            if (i <= GameController.Instance.Stage)
+            {
+                mElementList[i].gameObject.SetActive(true);
+            }
         }
+    }
+    public void ReStart()
+    {
+
+        for (int i = 0; i < mInfoArr.Length; i++)
+        {
+            mElementList[i].gameObject.SetActive(false);
+        }
+        mElementList[0].gameObject.SetActive(true);
+    }
+    public void SetCraft(int num)
+    {
+        mElementList[num].gameObject.SetActive(true);
     }
     public void StartCraft(int id, int amount)
     {

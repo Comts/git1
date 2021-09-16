@@ -51,6 +51,7 @@ public class StageController : MonoBehaviour
         }
         mElementList.Clear();
         ReLoad();
+        mLastSibling.gameObject.SetActive(true);
     }
     private void ReLoad()
     {
@@ -78,10 +79,6 @@ public class StageController : MonoBehaviour
             mScrollArea.vertical = true;
             mPinToggle.SetIsOnWithoutNotify(false);
         }
-        
-
-
-
     }
     private void Load()
     {
@@ -166,6 +163,9 @@ public class StageController : MonoBehaviour
         int nextID = id + 1;
 
         CoworkerController.Instance.AddCowerker(id - 1);
+        MineShopController.Instance.SetMine(id);
+        CraftController.Instance.SetCraft(id);
+        GemSellController.Instance.SetSellUI(id);
 
         if (mElementList.Count <= nextID)
         {

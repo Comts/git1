@@ -9,7 +9,7 @@ public class MineUIElement : MonoBehaviour
     [SerializeField]
     private Image mIconImage;
     [SerializeField]
-    private Text mTitleText, mContentsText, mCostText;
+    private Text mTitleText, mContentsText, mCostText, mAmountText;
     [SerializeField]
     private Button mBuyButton, mSellButton;
 #pragma warning restore 0649
@@ -43,6 +43,10 @@ public class MineUIElement : MonoBehaviour
     {
         mContentsText.text = contents;
         mCostText.text = cost;
+    }
+    public void ShowAmount(double amount)
+    {
+        mAmountText.text = string.Format("{0}", amount);
     }
 
     public void SetBuyButtonActive(bool isActive)

@@ -64,7 +64,10 @@ public class GemSellController : InformationLoader
         for(int i = 0; i < mButtonElementList.Count;i++)
         {
             mButtonElementList[i].bToggleIsOn(false);
+            mButtonElementList[i].gameObject.SetActive(false);
         }
+        mButtonElementList[0].gameObject.SetActive(true);
+
         mAllSellToggle.SetIsOnWithoutNotify(false);
         GameController.Instance.CheckAllSell = false;
     }
@@ -111,6 +114,10 @@ public class GemSellController : InformationLoader
                 mButtonElementList[mButtonElementList.Count - 1].bToggleIsOn(false);
                 mButtonElementList[mButtonElementList.Count-1].setting(mElementList[i-3], mElementList[i-2], mElementList[i-1], mElementList[i]);
             }
+            if (i / 4 <= GameController.Instance.Stage)
+            {
+                mButtonElementList[i / 4].gameObject.SetActive(true);
+            }
         }
 
         mAllSellToggle.onValueChanged.AddListener((bOn) =>
@@ -137,6 +144,10 @@ public class GemSellController : InformationLoader
 
         SetAllSellToggle(GameController.Instance.CheckAllSell);
 
+    }
+    public void SetSellUI(int num)
+    {
+        mButtonElementList[num].gameObject.SetActive(true);
     }
     public void RefreshGemData()
     {

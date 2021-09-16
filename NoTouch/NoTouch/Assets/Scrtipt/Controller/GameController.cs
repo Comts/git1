@@ -357,6 +357,8 @@ public class GameController : SaveDataController
         ItemUseController.Instance.ReStart();
         QuestController.Instance.ReStart();
         IAPController.Instance.ReStart();
+        MineShopController.Instance.ReStart();
+        CraftController.Instance.ReStart();
 
         mUser.PlayMoleCount = 3;
         MoleController.Instance.CheckPlayButton();
