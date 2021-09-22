@@ -87,6 +87,8 @@ public class CraftController : InformationLoader
         }
         mCraftCountDown = null;
         mButtonBlock.gameObject.SetActive(false);
+
+        Quest_CraftGem.Instance.CheckQuest();
     }
 
     private void Awake()

@@ -46,6 +46,11 @@ public class QuestUIElement : MonoBehaviour
         ItemUseController.Instance.ShowHaveItem();
         return NextID;
     }
+    public void Reset_Button()
+    {
+        mGaugeBar.gameObject.SetActive(true);
+        mButton.gameObject.SetActive(false);
+    }
     public void ClearQuest()
     {
         mGaugeBar.gameObject.SetActive(false);

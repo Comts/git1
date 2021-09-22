@@ -244,6 +244,15 @@ public class GameController : SaveDataController
         }
 
     }
+    public int Quest_CraftGem
+    {
+        get { return mUser.Quest_CraftGem; }
+        set
+        {
+            mUser.Quest_CraftGem = value;
+        }
+
+    }
     private void Awake()
     {
         if(Instance == null)
@@ -348,6 +357,7 @@ public class GameController : SaveDataController
         mUser.Quest_PlayerLevel = 0;
         mUser.Quest_CoworkerLevelSum = 0;
         mUser.Quest_DigCount = 0;
+        mUser.Quest_CraftGem = 0;
 
         GemSellController.Instance.ReStart();
         PlayerUpgradeController.Instance.ReStart();

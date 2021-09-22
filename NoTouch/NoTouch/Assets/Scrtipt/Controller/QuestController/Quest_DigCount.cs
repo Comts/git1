@@ -77,6 +77,7 @@ public class Quest_DigCount : InformationLoader
         if (mElementList.Count > id)
         {
             mElementList[id].gameObject.SetActive(true);
+            mElementList[id].Reset_Button();
             for (int i = 0; i < mElementList.Count; i++)
             {
                 if (i == id)

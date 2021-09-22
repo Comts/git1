@@ -146,5 +146,6 @@ public class SaveData
     public int Quest_PlayerLevel;
     public int Quest_CoworkerLevelSum;
     public int Quest_DigCount;
+    public int Quest_CraftGem;
 
 }

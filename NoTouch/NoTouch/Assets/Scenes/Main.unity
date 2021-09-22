@@ -5463,6 +5463,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 194700488}
   m_CullTransparentMesh: 0
+--- !u!1 &196768570
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 196768571}
+  - component: {fileID: 196768572}
+  m_Layer: 0
+  m_Name: Quest_CraftGem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &196768571
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 196768570}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1815615849}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &196768572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 196768570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53f5b8ad6fe53294dbccf676e842f547, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ItemNum: 0
+  mElementPrefab: {fileID: 6942078133832035213, guid: 24de86ce10e17c94b8afc75030c3e21b,
+    type: 3}
+  mElementArea: {fileID: 1630108796}
 --- !u!1 &204246693
 GameObject:
   m_ObjectHideFlags: 0
@@ -20737,6 +20784,7 @@ MonoBehaviour:
     Quest_PlayerLevel: 0
     Quest_CoworkerLevelSum: 0
     Quest_DigCount: 0
+    Quest_CraftGem: 0
   url: www.naver.com
   mTextEffectPos: {fileID: 0}
   WorkIncrese: 1.2
@@ -38945,6 +38993,7 @@ Transform:
   - {fileID: 863110328}
   - {fileID: 1947525306}
   - {fileID: 2118788519}
+  - {fileID: 196768571}
   m_Father: {fileID: 556682815}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
