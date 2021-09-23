@@ -133,8 +133,10 @@ public class MoleController : MonoBehaviour
     }   
     public void AddMoney(int mutiply)
     {
+        GameController.Instance.WhackCount += Score;
         GameController.Instance.Gold+=(mGold* mutiply);
         Score = 0;
+        Quest_MoleCount.Instance.CheckQuest();
     }
     private IEnumerator SpwanMole()
     {

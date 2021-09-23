@@ -264,11 +264,13 @@ public class SaveDataController : MonoBehaviour
         mUser.ScrollPinCheck = false;
 
         mUser.PlayMoleCount = 3;
+        mUser.WhackCount = 0;
 
         mUser.Quest_PlayerLevel = 0;
         mUser.Quest_CoworkerLevelSum = 0;
         mUser.Quest_DigCount = 0;
         mUser.Quest_CraftGem = 0;
+        mUser.Quest_MoleCount = 0;
     }
 
     protected void Save()

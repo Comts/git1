@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Mole : MonoBehaviour
 {
     private Animator mAnim;
+    private BoxCollider mCollider;
 #pragma warning disable 0649
     [SerializeField]
     float mTime;
@@ -13,6 +14,8 @@ public class Mole : MonoBehaviour
     private void OnEnable()
     {
         mAnim = GetComponent<Animator>();
+        mCollider = GetComponent<BoxCollider>();
+        mCollider.enabled = true;
         StartCoroutine(TimeOut());
     }
     private IEnumerator TimeOut()
@@ -28,6 +31,7 @@ public class Mole : MonoBehaviour
     }
     public void Moledaed()
     {
+        mCollider.enabled=false;
         mAnim.SetBool(AnimHash.Dead, true);
         MoleController.Instance.AddScore();
         Invoke("SetactiveFalse",0.5f);

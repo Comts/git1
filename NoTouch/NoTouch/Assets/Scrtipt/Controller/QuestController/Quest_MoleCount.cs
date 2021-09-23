@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Quest_DigCount : InformationLoader
+public class Quest_MoleCount : InformationLoader
 {
-    public static Quest_DigCount Instance;
+    public static Quest_MoleCount Instance;
     [SerializeField]
     private QuestTextInfo[] mTextInfoArr;
 
@@ -19,6 +19,7 @@ public class Quest_DigCount : InformationLoader
     private Transform mElementArea;
 
 #pragma warning restore 0649
+
     private void Awake()
     {
         if (Instance == null)
@@ -30,11 +31,10 @@ public class Quest_DigCount : InformationLoader
             Destroy(gameObject);
         }
     }
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         LoadJson(out mTextInfoArr,
-            Paths.Q_DigCount_INFO_TABLE +
+            Paths.Q_MoleCount_INFO_TABLE +
             Paths.LANGUAGE_TYPE_ARR[GameController.Instance.LanguageType]);
 
         mElementList = new List<QuestUIElement>();
@@ -45,32 +45,32 @@ public class Quest_DigCount : InformationLoader
         for (int i = 0; i < mTextInfoArr.Length; i++)
         {
             QuestUIElement element = Instantiate(mElementPrefab, mElementArea);
-            element.Init(i, ItemNum, 1, 4 * (i + 1),
-                                    string.Format(mTextInfoArr[i].Title, 4 * (i + 1)),
+            element.Init(i, ItemNum, 1, 500 * (i + 1),
+                                    string.Format(mTextInfoArr[i].Title, 500 * (i + 1)),
                                     string.Format(mTextInfoArr[i].ContentsFormat, 1),
                                     RequireAward);
 
             mElementList.Add(element);
         }
-        ShowQuest(GameController.Instance.Quest_DigCount);
+        ShowQuest(GameController.Instance.Quest_MoleCount);
     }
     public void CheckQuest()
     {
-        if (GameController.Instance.Quest_DigCount < mElementList.Count)
+        if (GameController.Instance.Quest_MoleCount < mElementList.Count)
         {
-            mElementList[GameController.Instance.Quest_DigCount].ShowGaugeBar(GameController.Instance.Stage, mElementList[GameController.Instance.Quest_DigCount].GetRequire());
+            mElementList[GameController.Instance.Quest_MoleCount].ShowGaugeBar(GameController.Instance.WhackCount, mElementList[GameController.Instance.Quest_MoleCount].GetRequire());
 
-            if (GameController.Instance.Stage >= mElementList[GameController.Instance.Quest_DigCount].GetRequire())
+            if (GameController.Instance.WhackCount >= mElementList[GameController.Instance.Quest_MoleCount].GetRequire())
             {
-                mElementList[GameController.Instance.Quest_DigCount].ClearQuest();
+                mElementList[GameController.Instance.Quest_MoleCount].ClearQuest();
             }
         }
     }
     public void RequireAward()
     {
-        GameController.Instance.Quest_DigCount = mElementList[GameController.Instance.Quest_DigCount].GetAward();
+        GameController.Instance.Quest_MoleCount = mElementList[GameController.Instance.Quest_MoleCount].GetAward();
         ItemUseController.Instance.ShowHaveItem();
-        ShowQuest(GameController.Instance.Quest_DigCount);
+        ShowQuest(GameController.Instance.Quest_MoleCount);
     }
     public void ShowQuest(int id)
     {
@@ -93,7 +93,5 @@ public class Quest_DigCount : InformationLoader
 
         }
         CheckQuest();
-
     }
-
 }

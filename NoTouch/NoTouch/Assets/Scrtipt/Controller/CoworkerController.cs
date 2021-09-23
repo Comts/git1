@@ -155,6 +155,7 @@ public class CoworkerController : InformationLoader
                                     mInfoArr[id].PeriodCurrent,
                                     UnitSetter.GetUnitStr(mInfoArr[id].ValueCurrent)),
                       UnitSetter.GetUnitStr(mInfoArr[id].CostCurrent));
+        Quest_CowerkorLevelSum.Instance.CheckQuest();
     }
 
     public void AddCowerker(int id)

@@ -54,9 +54,9 @@ public class Quest_PlayerLevel : InformationLoader
         }
         ShowQuest(GameController.Instance.Quest_PlayerLevel);
     }
-    void Update()
+    public void CheckQuest()
     {
-        if(GameController.Instance.Quest_PlayerLevel< mElementList.Count)
+        if (GameController.Instance.Quest_PlayerLevel< mElementList.Count)
         {
             mElementList[GameController.Instance.Quest_PlayerLevel].ShowGaugeBar(GameController.Instance.GetPlayerLevel, mElementList[GameController.Instance.Quest_PlayerLevel].GetRequire());
             
@@ -92,6 +92,6 @@ public class Quest_PlayerLevel : InformationLoader
             mElementList[mElementList.Count - 1].AllClearQuest();
 
         }
-
+        CheckQuest();
     }
 }

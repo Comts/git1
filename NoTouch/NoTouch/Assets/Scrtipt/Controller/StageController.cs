@@ -186,5 +186,6 @@ public class StageController : MonoBehaviour
         {
             mLastSibling.gameObject.SetActive(false);
         }
+        Quest_DigCount.Instance.CheckQuest();
     }
 }

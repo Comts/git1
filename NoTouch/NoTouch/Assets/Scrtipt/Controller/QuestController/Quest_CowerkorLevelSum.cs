@@ -53,7 +53,7 @@ public class Quest_CowerkorLevelSum : InformationLoader
         }
         ShowQuest(GameController.Instance.Quest_CowerkerLevelSum);
     }
-    void Update()
+    public void CheckQuest()
     {
         if (GameController.Instance.Quest_CowerkerLevelSum < mElementList.Count)
         {
@@ -91,6 +91,7 @@ public class Quest_CowerkorLevelSum : InformationLoader
             mElementList[mElementList.Count - 1].AllClearQuest();
 
         }
+        CheckQuest();
 
     }
 }

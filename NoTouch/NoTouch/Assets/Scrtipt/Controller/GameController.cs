@@ -210,6 +210,14 @@ public class GameController : SaveDataController
             mUser.PlayMoleCount = value;
         }
     }
+    public int WhackCount
+    {
+        get { return mUser.WhackCount; }
+        set
+        {
+            mUser.WhackCount = value;
+        }
+    }
     public int GetPlayerLevel
     {
         get{ return mUser.PlayerLevel; }
@@ -250,6 +258,15 @@ public class GameController : SaveDataController
         set
         {
             mUser.Quest_CraftGem = value;
+        }
+
+    }
+    public int Quest_MoleCount
+    {
+        get { return mUser.Quest_MoleCount; }
+        set
+        {
+            mUser.Quest_MoleCount = value;
         }
 
     }
@@ -358,6 +375,7 @@ public class GameController : SaveDataController
         mUser.Quest_CoworkerLevelSum = 0;
         mUser.Quest_DigCount = 0;
         mUser.Quest_CraftGem = 0;
+        mUser.Quest_MoleCount = 0;
 
         GemSellController.Instance.ReStart();
         PlayerUpgradeController.Instance.ReStart();
@@ -371,6 +389,7 @@ public class GameController : SaveDataController
         CraftController.Instance.ReStart();
 
         mUser.PlayMoleCount = 3;
+        mUser.WhackCount = 0;
         MoleController.Instance.CheckPlayButton();
 
         Save();

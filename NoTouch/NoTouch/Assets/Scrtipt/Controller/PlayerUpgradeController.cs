@@ -88,13 +88,13 @@ public class PlayerUpgradeController : InformationLoader
     {
 
         mInfo.CurrentLevel += level;
-        Debug.Log("레벨업");
         if (mInfo.CurrentLevel == mInfo.MaxLevel)
         {
             mElement.SetButtonActive(false);
         }
         GameController.Instance.GetPlayerLevel = mInfo.CurrentLevel;
         Refresh();
+        Quest_PlayerLevel.Instance.CheckQuest();
     }
     private void Refresh()
     {
