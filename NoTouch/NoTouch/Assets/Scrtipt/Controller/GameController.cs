@@ -218,6 +218,14 @@ public class GameController : SaveDataController
             mUser.WhackCount = value;
         }
     }
+    public int MineCount
+    {
+        get { return mUser.MineCount; }
+        set
+        {
+            mUser.MineCount = value;
+        }
+    }
     public int GetPlayerLevel
     {
         get{ return mUser.PlayerLevel; }
@@ -267,6 +275,33 @@ public class GameController : SaveDataController
         set
         {
             mUser.Quest_MoleCount = value;
+        }
+
+    }
+    public int Quest_MineCount
+    {
+        get { return mUser.Quest_MineCount; }
+        set
+        {
+            mUser.Quest_MineCount = value;
+        }
+
+    }
+    public int Quest_SilverDazi
+    {
+        get { return mUser.Quest_SilverDazi; }
+        set
+        {
+            mUser.Quest_SilverDazi = value;
+        }
+
+    }
+    public int Quest_GoldDazi
+    {
+        get { return mUser.Quest_GoldDazi; }
+        set
+        {
+            mUser.Quest_GoldDazi = value;
         }
 
     }
@@ -376,6 +411,12 @@ public class GameController : SaveDataController
         mUser.Quest_DigCount = 0;
         mUser.Quest_CraftGem = 0;
         mUser.Quest_MoleCount = 0;
+        mUser.Quest_MineCount = 0;
+        mUser.Quest_SilverDazi = 0;
+        mUser.Quest_GoldDazi = 0;
+
+        mUser.WhackCount = 0;
+        mUser.MineCount = 0;
 
         GemSellController.Instance.ReStart();
         PlayerUpgradeController.Instance.ReStart();
@@ -389,7 +430,6 @@ public class GameController : SaveDataController
         CraftController.Instance.ReStart();
 
         mUser.PlayMoleCount = 3;
-        mUser.WhackCount = 0;
         MoleController.Instance.CheckPlayButton();
 
         Save();

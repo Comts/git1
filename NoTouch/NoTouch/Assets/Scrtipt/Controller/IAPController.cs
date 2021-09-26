@@ -153,6 +153,7 @@ public class IAPController : MonoBehaviour, IStoreListener
             GameController.Instance.HaveItem[0] += 150;
             GameController.Instance.HaveItem[1] += 15;
         }
+        ItemUseController.Instance.ShowHaveItem();
 
     }
     public void InitializePurchasing()
@@ -236,36 +237,9 @@ public class IAPController : MonoBehaviour, IStoreListener
 
     public bool CheckHistory(string productID)
     {
-        bool validPurchase = false; // Presume valid for platforms with no R.V.
-
-        // Unity IAP's validation logic is only included on these platforms.
-#if UNITY_EDITOR
         Product product = m_StoreController.products.WithID(productID);
+        Debug.Log("hasReceipt "+ product.hasReceipt);
         return product.hasReceipt;
-#elif UNITY_ANDROID || UNITY_IOS || UNITY_STANDALONE_OSX
-    Product product = m_StoreController.products.WithID(productID);
-    // Prepare the validator with the secrets we prepared in the Editor
-    // obfuscation window.
-    var validator = new CrossPlatformValidator(GooglePlayTangle.Data(),
-        AppleTangle.Data(), Application.Identifier);
-
-    try {
-        // On Google Play, result will have a single product Id.
-        // On Apple stores receipts contain multiple products.
-        var result = validator.Validate(product.receipt);
-        // For informational purposes, we list the receipt(s)
-        Debug.Log("Receipt is valid. Contents:");
-        foreach (IPurchaseReceipt productReceipt in result) {
-            Debug.Log(productReceipt.productID);
-            Debug.Log(productReceipt.purchaseDate);
-            Debug.Log(productReceipt.transactionID);
-        }
-    } catch (IAPSecurityException) {
-        Debug.Log("Invalid receipt, not unlocking content");
-        validPurchase = false;
-    }
-#endif
-        return validPurchase;
     }
 
     public void BuyDaziGold10()

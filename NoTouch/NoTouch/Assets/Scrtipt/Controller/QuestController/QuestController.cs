@@ -33,5 +33,7 @@ public class QuestController : MonoBehaviour
         Quest_DigCount.Instance.ShowQuest(GameController.Instance.Quest_DigCount);
         Quest_CraftGem.Instance.ShowQuest(GameController.Instance.Quest_CraftGem);
         Quest_MoleCount.Instance.ShowQuest(GameController.Instance.Quest_MoleCount);
+        Quest_MineCount.Instance.ShowQuest(GameController.Instance.Quest_MineCount);
+        Quest_SilverDazi.Instance.ShowQuest(GameController.Instance.Quest_SilverDazi);
     }
 }

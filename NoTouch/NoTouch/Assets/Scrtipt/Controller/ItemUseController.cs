@@ -61,6 +61,7 @@ public class ItemUseController : MonoBehaviour
         Item1_IAP.text = Item1.text;
         Item2.text = GameController.Instance.HaveItem[0].ToString();
         Item2_IAP.text = Item2.text;
+        Quest_SilverDazi.Instance.CheckQuest();
         CheckItemButton();
     }
 

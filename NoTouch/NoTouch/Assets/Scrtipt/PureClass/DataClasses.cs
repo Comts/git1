@@ -143,11 +143,15 @@ public class SaveData
 
     public int PlayMoleCount;
     public int WhackCount;
+    public int MineCount;
 
     public int Quest_PlayerLevel;
     public int Quest_CoworkerLevelSum;
     public int Quest_DigCount;
     public int Quest_CraftGem;
     public int Quest_MoleCount;
+    public int Quest_MineCount;
+    public int Quest_SilverDazi;
+    public int Quest_GoldDazi;
 
 }

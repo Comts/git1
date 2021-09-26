@@ -68,6 +68,7 @@ public class MineShopController : InformationLoader
 
     private void Load()
     {
+        GameController.Instance.MineCount = 0;
         for (int i = 0; i < mInfoArr.Length; i++)
         {
             MineUIElement element = Instantiate(mElementPrefab, mElementArea);
@@ -82,6 +83,7 @@ public class MineShopController : InformationLoader
             if (GameController.Instance.HaveMine[i] != 0)
             {
                 mElementList[i].SetBuyButtonActive(false);
+                GameController.Instance.MineCount += 1;
             }
             if (i<=GameController.Instance.Stage)
             {
@@ -91,9 +93,10 @@ public class MineShopController : InformationLoader
     }
     public void ReStart()
     {
-
         for (int i = 0; i < mInfoArr.Length; i++)
         {
+            mElementList[i].ShowAmount(GameController.Instance.AddFromMine[i]);
+            mElementList[i].SetBuyButtonActive(true);
             mElementList[i].gameObject.SetActive(false);
         }
         mElementList[0].gameObject.SetActive(true);
@@ -117,7 +120,9 @@ public class MineShopController : InformationLoader
         if (GameController.Instance.HaveMine[id]!=0)
         {
             mElementList[id].SetBuyButtonActive(false);
+            GameController.Instance.MineCount += 1;
         }
+        Quest_MineCount.Instance.CheckQuest();
 
     }
     public void SellMine(int id, int amount)
@@ -128,8 +133,10 @@ public class MineShopController : InformationLoader
         GameController.Instance.AddFromMine[id] = 0;
         mElementList[id].ShowAmount(0);
         GameController.Instance.HaveMine[id] = 0;
+        GameController.Instance.MineCount -= 1;
         mElementList[id].SetBuyButtonActive(true);
         mElementList[id].Refresh(string.Format(mTextInfoArr[id].ContentsFormat, mTime, mAddGem), UnitSetter.GetUnitStr(mInfoArr[id].Cost));
+        Quest_MineCount.Instance.CheckQuest();
 
     }
 }

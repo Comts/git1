@@ -27,6 +27,8 @@
     public const string Q_DigCount_INFO_TABLE = JSON_FILE_LOCATION + "Quest_DigCount_Text";
     public const string Q_CraftGem_INFO_TABLE = JSON_FILE_LOCATION + "Quest_CraftGem_Text";
     public const string Q_MoleCount_INFO_TABLE = JSON_FILE_LOCATION + "Quest_MoleCount_Text";
+    public const string Q_MineCount_INFO_TABLE = JSON_FILE_LOCATION + "Quest_MineCount_Text";
+    public const string Q_SilverDazi_INFO_TABLE = JSON_FILE_LOCATION + "Quest_SilverDazi_Text";
 
     public const string COWORKER_ANIMATOR = "CoworkerAnimator";
 }
