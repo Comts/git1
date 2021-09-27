@@ -89,6 +89,7 @@ public class CraftController : InformationLoader
         mButtonBlock.gameObject.SetActive(false);
 
         Quest_CraftGem.Instance.CheckQuest();
+        GemSellController.Instance.RefreshGemData();
     }
 
     private void Awake()
@@ -116,7 +117,7 @@ public class CraftController : InformationLoader
         mCraftTime = Constants.CRAFT_TIME;
         Load();
     }
-    private void Update()
+    public void CheckCraftButton()
     {
         for (int i = 0; i < mInfoArr.Length; i++) 
         { 
@@ -155,6 +156,7 @@ public class CraftController : InformationLoader
                 mElementList[i].gameObject.SetActive(true);
             }
         }
+        CheckCraftButton();
     }
     public void ReStart()
     {
@@ -164,6 +166,7 @@ public class CraftController : InformationLoader
             mElementList[i].gameObject.SetActive(false);
         }
         mElementList[0].gameObject.SetActive(true);
+        CheckCraftButton();
     }
     public void SetCraft(int num)
     {

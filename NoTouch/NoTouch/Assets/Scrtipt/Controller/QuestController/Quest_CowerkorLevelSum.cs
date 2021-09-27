@@ -12,6 +12,8 @@ public class Quest_CowerkorLevelSum : InformationLoader
 
     [SerializeField]
     private int ItemNum;
+    [SerializeField]
+    private Sprite image;
 #pragma warning disable 0649
     [SerializeField]
     private QuestUIElement mElementPrefab;
@@ -44,7 +46,7 @@ public class Quest_CowerkorLevelSum : InformationLoader
         for (int i = 0; i < mTextInfoArr.Length; i++)
         {
             QuestUIElement element = Instantiate(mElementPrefab, mElementArea);
-            element.Init(i, ItemNum, 1, 50 * (i + 1),
+            element.Init(i, image, ItemNum, 1, 50 * (i + 1),
                                     string.Format(mTextInfoArr[i].Title, 50 * (i + 1)),
                                     string.Format(mTextInfoArr[i].ContentsFormat, 1),
                                     RequireAward);
@@ -73,18 +75,15 @@ public class Quest_CowerkorLevelSum : InformationLoader
     }
     public void ShowQuest(int id)
     {
+        for (int i = 0; i < mElementList.Count; i++)
+        {
+            mElementList[i].gameObject.SetActive(false);
+        }
+
         if (mElementList.Count > id)
         {
             mElementList[id].gameObject.SetActive(true);
             mElementList[id].Reset_Button();
-            for (int i = 0; i < mElementList.Count; i++)
-            {
-                if (i == id)
-                {
-                    continue;
-                }
-                mElementList[i].gameObject.SetActive(false);
-            }
         }
         else
         {

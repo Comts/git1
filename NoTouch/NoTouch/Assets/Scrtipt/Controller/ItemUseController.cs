@@ -40,7 +40,7 @@ public class ItemUseController : MonoBehaviour
         }
         mItemCooltimeArr = GameController.Instance.GetItemCooltimeArr();
         mItemMaxCooltimeArr = GameController.Instance.GetItemMaxCooltimeArr();
-        ShowHaveItem();
+        ShowHaveItem_start();
     }
 
     public void ReStart()
@@ -62,6 +62,15 @@ public class ItemUseController : MonoBehaviour
         Item2.text = GameController.Instance.HaveItem[0].ToString();
         Item2_IAP.text = Item2.text;
         Quest_SilverDazi.Instance.CheckQuest();
+        Quest_GoldDazi.Instance.CheckQuest();
+        CheckItemButton();
+    }
+    public void ShowHaveItem_start()
+    {
+        Item1.text = GameController.Instance.HaveItem[1].ToString();
+        Item1_IAP.text = Item1.text;
+        Item2.text = GameController.Instance.HaveItem[0].ToString();
+        Item2_IAP.text = Item2.text;
         CheckItemButton();
     }
 

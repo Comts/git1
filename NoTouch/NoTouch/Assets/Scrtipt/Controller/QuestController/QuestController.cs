@@ -5,6 +5,11 @@ using UnityEngine;
 public class QuestController : MonoBehaviour
 {
     public static QuestController Instance;
+
+
+    [SerializeField]
+    private Transform[] QuestList;
+
     private void Awake()
     {
         if (Instance == null)
@@ -19,6 +24,10 @@ public class QuestController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        for(int i = 0; i < QuestList.Length; i++)
+        {
+            QuestList[i].gameObject.SetActive(true);
+        }
     }
 
     // Update is called once per frame
@@ -35,5 +44,6 @@ public class QuestController : MonoBehaviour
         Quest_MoleCount.Instance.ShowQuest(GameController.Instance.Quest_MoleCount);
         Quest_MineCount.Instance.ShowQuest(GameController.Instance.Quest_MineCount);
         Quest_SilverDazi.Instance.ShowQuest(GameController.Instance.Quest_SilverDazi);
+        Quest_GoldDazi.Instance.ShowQuest(GameController.Instance.Quest_GoldDazi);
     }
 }

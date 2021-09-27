@@ -23,6 +23,11 @@ public class StageController : MonoBehaviour
     private AddStageUIElement mLastSibling;
     [SerializeField]
     private Toggle[] mPlayerPos;
+    [SerializeField]
+    private Button mDigButton;
+    private double mDigCost;
+
+
 #pragma warning restore 0649
     private void Awake()
     {
@@ -41,6 +46,17 @@ public class StageController : MonoBehaviour
         mAnimArr = Resources.LoadAll<Animator>("Coworker");
         mElementList = new List<StageUIElement>();
         Load();
+    }
+    public void CheckDigButton()
+    {
+        if (GameController.Instance.Gold >= mDigCost)
+        {
+            mDigButton.interactable = true;
+        }
+        else
+        {
+            mDigButton.interactable = false;
+        }
     }
     public void ReStart()
     {
@@ -69,6 +85,8 @@ public class StageController : MonoBehaviour
             }
         }
         mLastSibling.Refresh(mElementList.Count, UnitSetter.GetUnitStr(100000 * math.pow(2, mElementList.Count - 1)));
+        mDigCost = 100000 * math.pow(2, mElementList.Count - 1);
+        CheckDigButton();
 
         mElementList[GameController.Instance.PlayerPos].PlayerActive(true);
 
@@ -96,6 +114,8 @@ public class StageController : MonoBehaviour
             }
         }
         mLastSibling.Init(mElementList.Count, UnitSetter.GetUnitStr(100000 * math.pow(2, mElementList.Count-1)), AddStage);
+        mDigCost = 100000 * math.pow(2, mElementList.Count - 1);
+        CheckDigButton();
 
         mElementList[GameController.Instance.PlayerPos].PlayerActive(true);
 
@@ -176,6 +196,8 @@ public class StageController : MonoBehaviour
             mElementList[id].ShowStage();
             PlayerButtoninteractable(id);
             mLastSibling.Refresh(mElementList.Count, UnitSetter.GetUnitStr(100000 * math.pow(2, id)));
+            mDigCost = 100000 * math.pow(2, mElementList.Count - 1);
+            CheckDigButton();
         }
 
         if (GameController.Instance.Stage < Constants.MAX_fLOOR-1)

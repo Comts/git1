@@ -10,12 +10,17 @@ public class QuestUIElement : MonoBehaviour
     [SerializeField]
     private GaugeBar mGaugeBar;
     [SerializeField]
-    private Text mTitleText, mContentsText;
+    private Text mTitleText, mContentsText,mButtonText;
+    [SerializeField]
+    private Sprite GoldDazi, SilverDazi;
+    [SerializeField]
+    private Image mButtonImage, mQuestImage;
     // Start is called before the first frame update
 
     // Update is called once per frame
     private int mID, mItemNum,NextID, mRequire, mAmount;
     public void Init(   int id , 
+                        Sprite Q_image,
                         int ItemNum,
                         int Itemamount,
                         int Require,
@@ -24,12 +29,22 @@ public class QuestUIElement : MonoBehaviour
                         Delegates.VoidCallback callback)
     {
         mID = id;
+        mQuestImage.sprite = Q_image;
         mItemNum = ItemNum;
         mAmount = Itemamount;
         NextID = mID + 1;
         mRequire = Require;
         mTitleText.text = title;
         mContentsText.text = contents;
+        mButtonText.text = string.Format("{0} 개 받기", mAmount);
+        if (mItemNum == 0)
+        {
+            mButtonImage.sprite = SilverDazi;
+        }
+        else
+        {
+            mButtonImage.sprite = GoldDazi;
+        }
 
         mButton.onClick.AddListener(() =>
         {

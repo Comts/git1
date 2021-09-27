@@ -49,6 +49,7 @@ public class GameController : SaveDataController
             }
             GoldCallback = null;
             UIController.Instance.ShowMoney();
+            StageController.Instance.CheckDigButton();
         }
     }
     #region Gem Count

@@ -10,6 +10,7 @@ public class Quest_CraftGem : InformationLoader
 
     private List<QuestUIElement> mElementList;
 
+    private Sprite[] mIconArr;
     [SerializeField]
     private int ItemNum;
 #pragma warning disable 0649
@@ -38,6 +39,7 @@ public class Quest_CraftGem : InformationLoader
             Paths.LANGUAGE_TYPE_ARR[GameController.Instance.LanguageType]);
 
         mElementList = new List<QuestUIElement>();
+        mIconArr = Resources.LoadAll<Sprite>(Paths.Q_CRAFT_ICON);
         Load();
     }
     private void Load()
@@ -45,7 +47,7 @@ public class Quest_CraftGem : InformationLoader
         for (int i = 0; i < mTextInfoArr.Length; i++)
         {
             QuestUIElement element = Instantiate(mElementPrefab, mElementArea);
-            element.Init(i, ItemNum,1, 10, 
+            element.Init(i, mIconArr[i], ItemNum,1, 10, 
                                     string.Format(mTextInfoArr[i].Title, 10),
                                     string.Format(mTextInfoArr[i].ContentsFormat, 1),
                                     RequireAward);
@@ -101,18 +103,15 @@ public class Quest_CraftGem : InformationLoader
     }
     public void ShowQuest(int id)
     {
+        for (int i = 0; i < mElementList.Count; i++)
+        {
+            mElementList[i].gameObject.SetActive(false);
+        }
+
         if (mElementList.Count > id)
         {
             mElementList[id].gameObject.SetActive(true);
             mElementList[id].Reset_Button();
-            for (int i = 0; i < mElementList.Count; i++)
-            {
-                if (i == id)
-                {
-                    continue;
-                }
-                mElementList[i].gameObject.SetActive(false);
-            }
         }
         else
         {

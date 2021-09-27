@@ -103,6 +103,7 @@ public class GemSellController : InformationLoader
             GemSellUIElement element = Instantiate(mElementPrefab, mElementArea);
             element.Init(i, mIconArr[i],
                         mTextInfoArr[i].Title,
+                        mTextInfoArr[i].ContentsFormat,
                         SellGem);
 
 
@@ -155,6 +156,7 @@ public class GemSellController : InformationLoader
         {
             mElementList[i].CalSellAmount();
         }
+        CraftController.Instance.CheckCraftButton();
     }
     public void ReSetSlider()
     {

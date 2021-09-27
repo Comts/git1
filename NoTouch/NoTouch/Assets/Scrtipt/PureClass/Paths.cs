@@ -18,6 +18,7 @@
     public const string CRAFT_INFO_TABLE = JSON_FILE_LOCATION + "CraftInfo";
     public const string CRAFT_TEXT_INFO_TABLE = JSON_FILE_LOCATION + "CraftInfoText";
     public const string CRAFT_ICON = "CraftIcon";
+    public const string Q_CRAFT_ICON = "Quest_CraftGem";
 
     public const string SELLGEM_INFO_TABLE = JSON_FILE_LOCATION + "SellGemInfo";
     public const string SELLGEM_TEXT_INFO_TABLE = JSON_FILE_LOCATION + "SellGemInfoText";
@@ -29,6 +30,7 @@
     public const string Q_MoleCount_INFO_TABLE = JSON_FILE_LOCATION + "Quest_MoleCount_Text";
     public const string Q_MineCount_INFO_TABLE = JSON_FILE_LOCATION + "Quest_MineCount_Text";
     public const string Q_SilverDazi_INFO_TABLE = JSON_FILE_LOCATION + "Quest_SilverDazi_Text";
+    public const string Q_GoldDazi_INFO_TABLE = JSON_FILE_LOCATION + "Quest_GoldDazi_Text";
 
     public const string COWORKER_ANIMATOR = "CoworkerAnimator";
 }

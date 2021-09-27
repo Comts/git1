@@ -238,7 +238,6 @@ public class IAPController : MonoBehaviour, IStoreListener
     public bool CheckHistory(string productID)
     {
         Product product = m_StoreController.products.WithID(productID);
-        Debug.Log("hasReceipt "+ product.hasReceipt);
         return product.hasReceipt;
     }
 
