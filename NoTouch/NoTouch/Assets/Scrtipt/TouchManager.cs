@@ -52,6 +52,10 @@ public class TouchManager : MonoBehaviour
                         {
                             hit.collider.gameObject.GetComponent<Mole>().Moledaed();
                         }
+                        if (hit.collider.gameObject.CompareTag("Earth"))
+                        {
+                            EarthController.Instance.Touch();
+                        }
                         vec = hit.point;
                         return true;
                         // }
@@ -82,6 +86,10 @@ public class TouchManager : MonoBehaviour
                 if (hit.collider.gameObject.CompareTag("Mole"))
                 {
                     hit.collider.gameObject.GetComponent<Mole>().Moledaed();
+                }
+                if (hit.collider.gameObject.CompareTag("Earth"))
+                {
+                    EarthController.Instance.Touch();
                 }
             }
             Timer effect = mEffectPool.GetFromPool();

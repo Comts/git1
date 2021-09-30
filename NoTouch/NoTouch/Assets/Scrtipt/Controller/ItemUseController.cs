@@ -14,7 +14,7 @@ public class ItemUseController : MonoBehaviour
     [SerializeField]
     private ItemButton[] mItemButtonArr;
     [SerializeField]
-    private Text Item1, Item2, Item1_IAP, Item2_IAP;
+    private Text Item1, Item2, Item1_IAP, Item2_IAP, Item1_S, Item2_S;
 #pragma warning restore 0649
     public double[] GetGemMulti { get; set; }
     public double SellGemMulti { get; set; }
@@ -77,8 +77,10 @@ public class ItemUseController : MonoBehaviour
     {
         Item1.text = GameController.Instance.HaveItem[1].ToString();
         Item1_IAP.text = Item1.text;
+        Item1_S.text = Item1.text;
         Item2.text = GameController.Instance.HaveItem[0].ToString();
         Item2_IAP.text = Item2.text;
+        Item2_S.text = Item2.text;
         Quest_SilverDazi.Instance.CheckQuest();
         Quest_GoldDazi.Instance.CheckQuest();
         CheckItemButton();
@@ -87,8 +89,10 @@ public class ItemUseController : MonoBehaviour
     {
         Item1.text = GameController.Instance.HaveItem[1].ToString();
         Item1_IAP.text = Item1.text;
+        Item1_S.text = Item1.text;
         Item2.text = GameController.Instance.HaveItem[0].ToString();
         Item2_IAP.text = Item2.text;
+        Item2_S.text = Item2.text;
         CheckItemButton();
     }
 
@@ -191,6 +195,8 @@ public class ItemUseController : MonoBehaviour
             mItemCooltimeArr[buttonID] -= Time.fixedDeltaTime;
             mItemButtonArr[buttonID].ShowCooltime(mItemCooltimeArr[buttonID],
                                                    cooltime);
+            mItemButtonArr[buttonID+6].ShowCooltime(mItemCooltimeArr[buttonID],
+                                                   cooltime);
         }
     }
     public void CheckItemButton()
@@ -204,14 +210,17 @@ public class ItemUseController : MonoBehaviour
             if (mSellGemMulti != null)
             {
                 mItemButtonArr[0].SetButtonActive(false);
+                mItemButtonArr[6].SetButtonActive(false);
             }
             if(mGetGemMultiPlayer != null)
             {
                 mItemButtonArr[1].SetButtonActive(false);
+                mItemButtonArr[7].SetButtonActive(false);
             }
             if(mGetGemMultiCoworker != null)
             {
                 mItemButtonArr[2].SetButtonActive(false);
+                mItemButtonArr[8].SetButtonActive(false);
             }
         }
         else
@@ -219,6 +228,9 @@ public class ItemUseController : MonoBehaviour
             mItemButtonArr[0].SetButtonActive(false);
             mItemButtonArr[1].SetButtonActive(false);
             mItemButtonArr[2].SetButtonActive(false);
+            mItemButtonArr[6].SetButtonActive(false);
+            mItemButtonArr[7].SetButtonActive(false);
+            mItemButtonArr[8].SetButtonActive(false);
         }
 
         if (GameController.Instance.HaveItem[1] > 0)
@@ -226,14 +238,17 @@ public class ItemUseController : MonoBehaviour
             if (mSellGemMulti != null)
             {
                 mItemButtonArr[3].SetButtonActive(false);
+                mItemButtonArr[9].SetButtonActive(false);
             }
             if (mGetGemMultiPlayer != null)
             {
                 mItemButtonArr[4].SetButtonActive(false);
+                mItemButtonArr[10].SetButtonActive(false);
             }
             if (mGetGemMultiCoworker != null)
             {
                 mItemButtonArr[5].SetButtonActive(false);
+                mItemButtonArr[11].SetButtonActive(false);
             }
         }
         else
@@ -241,6 +256,9 @@ public class ItemUseController : MonoBehaviour
             mItemButtonArr[3].SetButtonActive(false);
             mItemButtonArr[4].SetButtonActive(false);
             mItemButtonArr[5].SetButtonActive(false);
+            mItemButtonArr[9].SetButtonActive(false);
+            mItemButtonArr[10].SetButtonActive(false);
+            mItemButtonArr[11].SetButtonActive(false);
         }
     }
 }

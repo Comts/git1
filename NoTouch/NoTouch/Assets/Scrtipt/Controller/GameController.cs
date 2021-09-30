@@ -424,6 +424,15 @@ public class GameController : SaveDataController
         }
 
     }
+    public int Achive_Earth
+    {
+        get { return mUser.Achive_Earth; }
+        set
+        {
+            mUser.Achive_Earth = value;
+        }
+
+    }
     private void Awake()
     {
         if(Instance == null)
@@ -551,6 +560,7 @@ public class GameController : SaveDataController
 
         mUser.UseSilverAmount = 0;
         mUser.Achive_Silver = 0;
+        mUser.Achive_Earth = 0;
 
         mUser.WhackCount = 0;
         mUser.MineCount = 0;

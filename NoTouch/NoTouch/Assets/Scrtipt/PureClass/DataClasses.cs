@@ -112,6 +112,13 @@ public class GemSellTextInfo
 
 }
 [Serializable]
+public class EarthInfo
+{
+    public int ID;
+    public double MaxProgress;
+
+}
+[Serializable]
 public class SaveData
 {
     public double Gold;
@@ -171,5 +178,7 @@ public class SaveData
 
     public int UseSilverAmount;
     public int Achive_Silver;
+
+    public int Achive_Earth;
 
 }

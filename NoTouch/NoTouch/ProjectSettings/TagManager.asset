@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Touch
   - Craft
+  - Mole
+  - Earth
   layers:
   - Default
   - TransparentFX

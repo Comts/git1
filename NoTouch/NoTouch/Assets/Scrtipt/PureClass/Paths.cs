@@ -33,5 +33,7 @@
     public const string Q_GoldDazi_INFO_TABLE = JSON_FILE_LOCATION + "Quest_GoldDazi_Text";
 
     public const string COWORKER_ANIMATOR = "CoworkerAnimator";
+
+    public const string Earth_INFO_TABLE = JSON_FILE_LOCATION + "EarthInfo";
 }
 

@@ -293,6 +293,7 @@ public class SaveDataController : MonoBehaviour
 
         mUser.UseSilverAmount = 0;
         mUser.Achive_Silver = 0;
+        mUser.Achive_Earth = 0;
     }
 
     protected void Save()
