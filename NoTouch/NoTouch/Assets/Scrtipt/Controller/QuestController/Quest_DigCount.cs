@@ -10,11 +10,11 @@ public class Quest_DigCount : InformationLoader
 
     private List<QuestUIElement> mElementList;
 
+#pragma warning disable 0649
     [SerializeField]
     private int ItemNum;
     [SerializeField]
     private Sprite image;
-#pragma warning disable 0649
     [SerializeField]
     private QuestUIElement mElementPrefab;
     [SerializeField]

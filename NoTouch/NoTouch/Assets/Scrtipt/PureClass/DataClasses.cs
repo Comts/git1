@@ -154,4 +154,22 @@ public class SaveData
     public int Quest_SilverDazi;
     public int Quest_GoldDazi;
 
+    public int ClickAmount;
+    public int Achieve_Click;
+
+    public int Achive_Mole;
+    public int Achive_AutoClick;
+    public int Achive_Norini;
+    public int Achive_Coal;
+    public int Achive_Ame;
+    public int Achive_Gold;
+    public int Achive_Dia;
+    public int Achive_Vib;
+
+    public int EatAmount;
+    public int Achive_Dosirak;
+
+    public int UseSilverAmount;
+    public int Achive_Silver;
+
 }

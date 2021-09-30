@@ -63,12 +63,34 @@ public class CraftController : InformationLoader
                 break;
             case 1:
                 GameController.Instance.AddAmoutGem_B[GemID]++;
+
+                if (GameController.Instance.Achive_Ame == 0)
+                {
+                    QuestController.Instance.Achive_Ame();
+                }
                 break;
             case 2:
                 GameController.Instance.AddAmoutGem_A[GemID]++;
                 break;
             case 3:
                 GameController.Instance.AddAmoutGem_S[GemID]++;
+                
+                if (GameController.Instance.Achive_Coal == 0)
+                {
+                    QuestController.Instance.Achive_Coal();
+                }
+                if (GameController.Instance.Achive_Gold == 0)
+                {
+                    QuestController.Instance.Achive_Gold();
+                }
+                if (GameController.Instance.Achive_Dia == 0)
+                {
+                    QuestController.Instance.Achive_Dia();
+                }
+                if (GameController.Instance.Achive_Vib == 0)
+                {
+                    QuestController.Instance.Achive_Vib();
+                }
                 break;
             default:
                 Debug.LogError("GemGrade Error " + GemGrade);

@@ -11,9 +11,9 @@ public class Quest_CraftGem : InformationLoader
     private List<QuestUIElement> mElementList;
 
     private Sprite[] mIconArr;
+#pragma warning disable 0649
     [SerializeField]
     private int ItemNum;
-#pragma warning disable 0649
     [SerializeField]
     private QuestUIElement mElementPrefab;
     [SerializeField]

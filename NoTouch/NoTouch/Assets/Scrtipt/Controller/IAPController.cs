@@ -129,6 +129,11 @@ public class IAPController : MonoBehaviour, IStoreListener
                 if (CheckHistory(Nonconsumable_AutoClick2))
                 {
                     //오토클릭2 실행
+                    if (mCor_AutoClick1 != null)
+                    {
+                        StopCoroutine(mCor_AutoClick1);
+                    }
+                    GameController.Instance.Achive_AutoClick = 1;
                     StartCoroutine(Cor_AutoClick(0.1f));
                 }
                 else
@@ -281,6 +286,7 @@ public class IAPController : MonoBehaviour, IStoreListener
             return;
         }
         BuyProductID(Nonconsumable_StarterPack);
+        QuestController.Instance.Achive_Norini();
     }
     public void BuyStarterPack2()
     {
@@ -314,6 +320,7 @@ public class IAPController : MonoBehaviour, IStoreListener
                 return;
             }
             BuyProductID(Nonconsumable_AutoClick2);
+            QuestController.Instance.Achive_AutoClick();
         }
     }
 

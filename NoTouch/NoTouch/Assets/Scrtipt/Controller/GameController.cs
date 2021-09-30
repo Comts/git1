@@ -29,6 +29,7 @@ public class GameController : SaveDataController
     [SerializeField]
     private double mManPower;
     private double mTimeLag;
+    private int mCheckClickAmount;
     public Delegates.VoidCallback GoldCallback;
     public double Gold
     {
@@ -306,6 +307,123 @@ public class GameController : SaveDataController
         }
 
     }
+    public int Achieve_Click
+    {
+        get { return mUser.Achieve_Click; }
+        set
+        {
+            mUser.Achieve_Click = value;
+        }
+
+    }
+    public int Achive_Mole
+    {
+        get { return mUser.Achive_Mole; }
+        set
+        {
+            mUser.Achive_Mole = value;
+        }
+
+    }
+    public int Achive_AutoClick
+    {
+        get { return mUser.Achive_AutoClick; }
+        set
+        {
+            mUser.Achive_AutoClick = value;
+        }
+
+    }
+    public int Achive_Norini
+    {
+        get { return mUser.Achive_Norini; }
+        set
+        {
+            mUser.Achive_Norini = value;
+        }
+
+    }
+    public int Achive_Coal
+    {
+        get { return mUser.Achive_Coal; }
+        set
+        {
+            mUser.Achive_Coal = value;
+        }
+
+    }
+    public int Achive_Ame
+    {
+        get { return mUser.Achive_Ame; }
+        set
+        {
+            mUser.Achive_Ame = value;
+        }
+
+    }
+    public int Achive_Gold
+    {
+        get { return mUser.Achive_Gold; }
+        set
+        {
+            mUser.Achive_Gold = value;
+        }
+
+    }
+    public int Achive_Dia
+    {
+        get { return mUser.Achive_Dia; }
+        set
+        {
+            mUser.Achive_Dia = value;
+        }
+
+    }
+    public int Achive_Vib
+    {
+        get { return mUser.Achive_Vib; }
+        set
+        {
+            mUser.Achive_Vib = value;
+        }
+
+    }
+    public int Achive_Dosirak
+    {
+        get { return mUser.Achive_Dosirak; }
+        set
+        {
+            mUser.Achive_Dosirak = value;
+        }
+
+    }
+    public int EatAmount
+    {
+        get { return mUser.EatAmount; }
+        set
+        {
+            mUser.EatAmount = value;
+        }
+
+    }
+    public int Achive_Silver
+    {
+        get { return mUser.Achive_Silver; }
+        set
+        {
+            mUser.Achive_Silver = value;
+        }
+
+    }
+    public int UseSilverAmount
+    {
+        get { return mUser.UseSilverAmount; }
+        set
+        {
+            mUser.UseSilverAmount = value;
+        }
+
+    }
     private void Awake()
     {
         if(Instance == null)
@@ -416,6 +534,24 @@ public class GameController : SaveDataController
         mUser.Quest_SilverDazi = 0;
         mUser.Quest_GoldDazi = 0;
 
+        mUser.ClickAmount = 0;
+        mUser.Achieve_Click = 0;
+
+        mUser.Achive_Mole = 0;
+        //mUser.Achive_AutoClick = 0;
+        //mUser.Achive_Norini = 0;
+        mUser.Achive_Coal = 0;
+        mUser.Achive_Ame = 0;
+        mUser.Achive_Gold = 0;
+        mUser.Achive_Dia = 0;
+        mUser.Achive_Vib = 0;
+
+        mUser.EatAmount = 0;
+        mUser.Achive_Dosirak = 0;
+
+        mUser.UseSilverAmount = 0;
+        mUser.Achive_Silver = 0;
+
         mUser.WhackCount = 0;
         mUser.MineCount = 0;
 
@@ -492,7 +628,14 @@ public class GameController : SaveDataController
         }
         AddAmoutGem_O[mUser.PlayerPos] += gain ;
         GemSellController.Instance.RefreshGemData();
-
+        if (Achieve_Click == 0)
+        {
+            mUser.ClickAmount++;
+            if (mUser.ClickAmount >= 100000000)
+            {
+                QuestController.Instance.Achive_Click();
+            }
+        }
         //TextEffect effect = TextEffectPool.Instance.GetFromPool();
         //effect.SetText(gain.ToString());
         ////TODO Icon 변경 effect.SetIcon();

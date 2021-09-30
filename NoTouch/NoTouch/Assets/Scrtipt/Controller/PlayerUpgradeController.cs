@@ -12,9 +12,9 @@ public class PlayerUpgradeController : InformationLoader
     private PlayerStat mInfo;
     [SerializeField]
     private PlayerStatText mTextInfo;
+#pragma warning disable 0649
     [SerializeField]
     private Sprite mIcon;
-#pragma warning disable 0649
     [SerializeField]
     private UIElement mElement;
 #pragma warning restore 0649

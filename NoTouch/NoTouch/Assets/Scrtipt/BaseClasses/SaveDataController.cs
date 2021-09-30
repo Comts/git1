@@ -275,6 +275,24 @@ public class SaveDataController : MonoBehaviour
         mUser.Quest_MineCount = 0;
         mUser.Quest_SilverDazi = 0;
         mUser.Quest_GoldDazi = 0;
+
+        mUser.ClickAmount = 0;
+        mUser.Achieve_Click = 0;
+
+        mUser.Achive_Mole = 0;
+        mUser.Achive_AutoClick = 0;
+        mUser.Achive_Norini = 0;
+        mUser.Achive_Coal = 0;
+        mUser.Achive_Ame = 0;
+        mUser.Achive_Gold = 0;
+        mUser.Achive_Dia = 0;
+        mUser.Achive_Vib = 0;
+
+        mUser.EatAmount = 0;
+        mUser.Achive_Dosirak = 0;
+
+        mUser.UseSilverAmount = 0;
+        mUser.Achive_Silver = 0;
     }
 
     protected void Save()

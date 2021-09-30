@@ -133,7 +133,14 @@ public class MoleController : MonoBehaviour
     }   
     public void AddMoney(int mutiply)
     {
-        GameController.Instance.WhackCount += Score;
+        if(GameController.Instance.Achive_Mole == 0)
+        {
+            GameController.Instance.WhackCount += Score;
+            if (GameController.Instance.WhackCount >= 10000)
+            {
+                QuestController.Instance.Achive_Mole();
+            }
+        }
         GameController.Instance.Gold+=(mGold* mutiply);
         Score = 0;
         Quest_MoleCount.Instance.CheckQuest();

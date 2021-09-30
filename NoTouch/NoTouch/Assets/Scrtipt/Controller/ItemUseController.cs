@@ -53,6 +53,24 @@ public class ItemUseController : MonoBehaviour
         mItemCooltimeArr = GameController.Instance.GetItemCooltimeArr();
         mItemMaxCooltimeArr = GameController.Instance.GetItemMaxCooltimeArr();
 
+        if (mSellGemMulti != null)
+        {
+            StopCoroutine(mSellGemMulti);
+        }
+        mSellGemMulti = null;
+
+        if (mGetGemMultiPlayer != null)
+        {
+            StopCoroutine(mGetGemMultiPlayer);
+        }
+        mGetGemMultiPlayer = null;
+
+        if (mGetGemMultiCoworker != null)
+        {
+            StopCoroutine(mGetGemMultiCoworker);
+        }
+        mGetGemMultiCoworker = null;
+
         ShowHaveItem();
     }
     public void ShowHaveItem()
@@ -110,6 +128,14 @@ public class ItemUseController : MonoBehaviour
             if (buttonID < 3)
             {
                 GameController.Instance.HaveItem[0]--;
+                if (GameController.Instance.Achive_Silver == 0)
+                {
+                    GameController.Instance.UseSilverAmount++;
+                    if (GameController.Instance.UseSilverAmount >= 100)
+                    {
+                        QuestController.Instance.Achive_Silver();
+                    }
+                }
             }
             else if (buttonID <6)
             {
@@ -139,6 +165,14 @@ public class ItemUseController : MonoBehaviour
         GetGemMulti[id] = 1;
         if (id == 0)
         {
+            if (GameController.Instance.Achive_Dosirak == 0)
+            {
+                GameController.Instance.EatAmount++;
+                if (GameController.Instance.EatAmount >= 100)
+                {
+                    QuestController.Instance.Achive_Dosirak();
+                }
+            }
             mGetGemMultiPlayer = null;
         }
         else if( id == 1)

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class QuestUIElement : MonoBehaviour
 {
+#pragma warning disable 0649
     [SerializeField]
     private Button mButton;
     [SerializeField]
@@ -15,6 +16,7 @@ public class QuestUIElement : MonoBehaviour
     private Sprite GoldDazi, SilverDazi;
     [SerializeField]
     private Image mButtonImage, mQuestImage;
+#pragma warning restore 0649
     // Start is called before the first frame update
 
     // Update is called once per frame
