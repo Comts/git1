@@ -197,6 +197,32 @@ public class ItemUseController : MonoBehaviour
                                                    cooltime);
             mItemButtonArr[buttonID+6].ShowCooltime(mItemCooltimeArr[buttonID],
                                                    cooltime);
+            if (buttonID == 1)
+            {
+                mItemButtonArr[12].ShowCooltime(mItemCooltimeArr[buttonID],
+                                                       cooltime);
+                mItemButtonArr[14].ShowCooltime(mItemCooltimeArr[buttonID],
+                                                       cooltime);
+                mItemButtonArr[16].ShowCooltime(mItemCooltimeArr[buttonID],
+                                                       cooltime);
+                mItemButtonArr[18].ShowCooltime(mItemCooltimeArr[buttonID],
+                                                       cooltime);
+                mItemButtonArr[20].ShowCooltime(mItemCooltimeArr[buttonID],
+                                                       cooltime);
+            }
+            if (buttonID == 4)
+            {
+                mItemButtonArr[13].ShowCooltime(mItemCooltimeArr[buttonID],
+                                                       cooltime);
+                mItemButtonArr[15].ShowCooltime(mItemCooltimeArr[buttonID],
+                                                       cooltime);
+                mItemButtonArr[17].ShowCooltime(mItemCooltimeArr[buttonID],
+                                                       cooltime);
+                mItemButtonArr[19].ShowCooltime(mItemCooltimeArr[buttonID],
+                                                       cooltime);
+                mItemButtonArr[21].ShowCooltime(mItemCooltimeArr[buttonID],
+                                                       cooltime);
+            }
         }
     }
     public void CheckItemButton()
@@ -216,6 +242,11 @@ public class ItemUseController : MonoBehaviour
             {
                 mItemButtonArr[1].SetButtonActive(false);
                 mItemButtonArr[7].SetButtonActive(false);
+                mItemButtonArr[12].SetButtonActive(false);
+                mItemButtonArr[14].SetButtonActive(false);
+                mItemButtonArr[16].SetButtonActive(false);
+                mItemButtonArr[18].SetButtonActive(false);
+                mItemButtonArr[20].SetButtonActive(false);
             }
             if(mGetGemMultiCoworker != null)
             {
@@ -231,6 +262,11 @@ public class ItemUseController : MonoBehaviour
             mItemButtonArr[6].SetButtonActive(false);
             mItemButtonArr[7].SetButtonActive(false);
             mItemButtonArr[8].SetButtonActive(false);
+            mItemButtonArr[12].SetButtonActive(false);
+            mItemButtonArr[14].SetButtonActive(false);
+            mItemButtonArr[16].SetButtonActive(false);
+            mItemButtonArr[18].SetButtonActive(false);
+            mItemButtonArr[20].SetButtonActive(false);
         }
 
         if (GameController.Instance.HaveItem[1] > 0)
@@ -244,6 +280,11 @@ public class ItemUseController : MonoBehaviour
             {
                 mItemButtonArr[4].SetButtonActive(false);
                 mItemButtonArr[10].SetButtonActive(false);
+                mItemButtonArr[13].SetButtonActive(false);
+                mItemButtonArr[15].SetButtonActive(false);
+                mItemButtonArr[17].SetButtonActive(false);
+                mItemButtonArr[19].SetButtonActive(false);
+                mItemButtonArr[21].SetButtonActive(false);
             }
             if (mGetGemMultiCoworker != null)
             {
@@ -259,6 +300,11 @@ public class ItemUseController : MonoBehaviour
             mItemButtonArr[9].SetButtonActive(false);
             mItemButtonArr[10].SetButtonActive(false);
             mItemButtonArr[11].SetButtonActive(false);
+            mItemButtonArr[13].SetButtonActive(false);
+            mItemButtonArr[15].SetButtonActive(false);
+            mItemButtonArr[17].SetButtonActive(false);
+            mItemButtonArr[19].SetButtonActive(false);
+            mItemButtonArr[21].SetButtonActive(false);
         }
     }
 }

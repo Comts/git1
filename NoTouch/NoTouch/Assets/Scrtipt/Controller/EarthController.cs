@@ -42,7 +42,8 @@ public class EarthController : InformationLoader
     {
         CurrentProgress = GameController.Instance.EarthCurrentProgress;
         double Progress = mInfoArr[GameController.Instance.Achive_Earth].MaxProgress;
-        EarthLastProgress = Progress * 1000 * 1100 * 10; // 1Km =1000m, 1m = 100cm, 1cm = 10mm 
+        double Add = Mathf.Pow(10, GameController.Instance.Achive_Earth);
+        EarthLastProgress = Progress * 1000 * 100 * 10 * Add; // 1Km =1000m, 1m = 100cm, 1cm =10mm  // 0:1 1:10 2:100 3:1000 4:10000
         mTouchPower = GameController.Instance.ManPower;
         Earth_Window[GameController.Instance.Achive_Earth].ShowGaugeBar(CurrentProgress, EarthLastProgress);
 
@@ -51,9 +52,9 @@ public class EarthController : InformationLoader
     {
         if (CurrentProgress >= EarthLastProgress)
         {
+            GameController.Instance.EarthCurrentProgress = 0;
             Earth_Window[GameController.Instance.Achive_Earth].Complete();
             GameController.Instance.Achive_Earth++;
-            GameController.Instance.EarthCurrentProgress = 0;
             //TODO 지구업적
 
         }
@@ -64,9 +65,9 @@ public class EarthController : InformationLoader
             {
                 CurrentProgress = EarthLastProgress;
             }
-        }
-        GameController.Instance.EarthCurrentProgress = CurrentProgress;
+            GameController.Instance.EarthCurrentProgress = CurrentProgress;
 
-        Earth_Window[GameController.Instance.Achive_Earth].ShowGaugeBar(CurrentProgress, EarthLastProgress);
+            Earth_Window[GameController.Instance.Achive_Earth].ShowGaugeBar(CurrentProgress, EarthLastProgress);
+        }
     }
 }
