@@ -433,6 +433,15 @@ public class GameController : SaveDataController
         }
 
     }
+    public double EarthCurrentProgress
+    {
+        get { return mUser.EarthCurrentProgress; }
+        set
+        {
+            mUser.EarthCurrentProgress = value;
+        }
+
+    }
     private void Awake()
     {
         if(Instance == null)
@@ -561,6 +570,7 @@ public class GameController : SaveDataController
         mUser.UseSilverAmount = 0;
         mUser.Achive_Silver = 0;
         mUser.Achive_Earth = 0;
+        mUser.EarthCurrentProgress = 0;
 
         mUser.WhackCount = 0;
         mUser.MineCount = 0;

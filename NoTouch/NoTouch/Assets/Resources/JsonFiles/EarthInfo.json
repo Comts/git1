@@ -1,34 +1,34 @@
 [
   {
     "ID": 0,
-    "Progress": 35
+    "MaxProgress": 35
   },
   {
     "ID": 1,
-    "Progress": 2865
+    "MaxProgress": 2865
   },
   {
     "ID": 2,
-    "Progress": 2200
+    "MaxProgress": 2200
   },
   {
     "ID": 3,
-    "Progress": 1300
+    "MaxProgress": 1300
   },
   {
     "ID": 4,
-    "Progress": 1300
+    "MaxProgress": 1300
   },
   {
     "ID": 5,
-    "Progress": 2200
+    "MaxProgress": 2200
   },
   {
     "ID": 6,
-    "Progress": 2865
+    "MaxProgress": 2865
   },
   {
     "ID": 7,
-    "Progress": 35
+    "MaxProgress": 35
   }
 ]

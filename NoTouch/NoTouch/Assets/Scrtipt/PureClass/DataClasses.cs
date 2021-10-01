@@ -180,5 +180,6 @@ public class SaveData
     public int Achive_Silver;
 
     public int Achive_Earth;
+    public double EarthCurrentProgress;
 
 }
