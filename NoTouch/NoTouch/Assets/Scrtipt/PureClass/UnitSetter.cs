@@ -22,10 +22,20 @@ public static class UnitSetter
                 calcount++;
             }
             BackGold /= 100;
-            return string.Format("{0}.{1} {2}",
-                           FrontGold,
-                           BackGold, 
-                           UnitArr[calcount]);
+            if (BackGold >= 10)
+            {
+                return string.Format("{0}.{1} {2}",
+                               FrontGold,
+                               BackGold,
+                               UnitArr[calcount]);
+            }
+            else
+            {
+                return string.Format("{0}.{1} {2}",
+                               FrontGold,
+                               string.Format("0{0}",BackGold),
+                               UnitArr[calcount]);
+            }
         }
         else
         {

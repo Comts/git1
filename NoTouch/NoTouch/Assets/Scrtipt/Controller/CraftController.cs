@@ -37,6 +37,10 @@ public class CraftController : InformationLoader
     private Image mButtonBlock;
     [SerializeField]
     private Text TimeText;
+    [SerializeField]
+    private Image CraftFinishWindow;
+    [SerializeField]
+    private Text CraftFinishText, CraftFinishText2;
 #pragma warning restore 0649
     [SerializeField]
     private Gem mCurrentGem;
@@ -53,8 +57,40 @@ public class CraftController : InformationLoader
         }
         CraftFinish();
     }
-
     public void CraftFinish()
+    {
+        CheckCraft();
+        CraftFinishWindow.gameObject.SetActive(true);
+    }
+    public void CheckCraft()
+    {
+        switch (GemGrade)
+        {
+            case 0:
+                CraftFinishText.text = "원석 1000개";
+                CraftFinishText2.text = "원석 1000개";
+                break;
+            case 1:
+                CraftFinishText.text = "B급 광물 1개";
+                CraftFinishText2.text = "B급 광물 1개";
+                break;
+            case 2:
+                CraftFinishText.text = "A급 광물 1개";
+                CraftFinishText2.text = "A급 광물 1개";
+                break;
+            case 3:
+                CraftFinishText.text = "S급 광물 1개";
+                CraftFinishText2.text = "S급 광물 1개";
+                break;
+            default:
+                Debug.LogError("GemGrade Error " + GemGrade);
+                break;
+        }
+    }
+
+
+        
+    public void GetCraftFinish()
     {
         switch (GemGrade)
         {
