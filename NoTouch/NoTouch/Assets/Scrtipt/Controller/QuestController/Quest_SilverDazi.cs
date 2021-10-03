@@ -53,6 +53,8 @@ public class Quest_SilverDazi : InformationLoader
                                     RequireAward);
 
             mElementList.Add(element);
+
+            QuestController.Instance.QuestMax++;
         }
         ShowQuest(GameController.Instance.Quest_SilverDazi);
     }
@@ -72,6 +74,7 @@ public class Quest_SilverDazi : InformationLoader
     {
         GameController.Instance.Quest_SilverDazi = mElementList[GameController.Instance.Quest_SilverDazi].GetAward();
         ItemUseController.Instance.ShowHaveItem();
+        QuestController.Instance.QuestProgress++;
         ShowQuest(GameController.Instance.Quest_SilverDazi);
     }
     public void ShowQuest(int id)
@@ -91,6 +94,7 @@ public class Quest_SilverDazi : InformationLoader
             mElementList[mElementList.Count - 1].AllClearQuest();
 
         }
+        QuestController.Instance.ShowQuestProgress();
         CheckQuest();
 
     }

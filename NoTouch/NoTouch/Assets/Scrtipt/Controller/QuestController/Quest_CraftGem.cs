@@ -53,8 +53,10 @@ public class Quest_CraftGem : InformationLoader
                                     RequireAward);
 
             mElementList.Add(element);
+
+            QuestController.Instance.QuestMax++;
         }
-        ShowQuest(GameController.Instance.Quest_CraftGem); 
+        ShowQuest(GameController.Instance.Quest_CraftGem);
     }
     public void CheckQuest()
     {
@@ -99,6 +101,7 @@ public class Quest_CraftGem : InformationLoader
     {
         GameController.Instance.Quest_CraftGem = mElementList[GameController.Instance.Quest_CraftGem].GetAward();
         ItemUseController.Instance.ShowHaveItem();
+        QuestController.Instance.QuestProgress++;
         ShowQuest(GameController.Instance.Quest_CraftGem);
     }
     public void ShowQuest(int id)
@@ -118,6 +121,7 @@ public class Quest_CraftGem : InformationLoader
             mElementList[mElementList.Count - 1].AllClearQuest();
 
         }
+        QuestController.Instance.ShowQuestProgress();
         CheckQuest();
 
     }

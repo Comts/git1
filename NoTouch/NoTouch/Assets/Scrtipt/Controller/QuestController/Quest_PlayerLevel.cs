@@ -53,6 +53,8 @@ public class Quest_PlayerLevel : InformationLoader
                                     RequireAward);
 
             mElementList.Add(element);
+
+            QuestController.Instance.QuestMax++;
         }
         ShowQuest(GameController.Instance.Quest_PlayerLevel);
     }
@@ -72,6 +74,7 @@ public class Quest_PlayerLevel : InformationLoader
     {
         GameController.Instance.Quest_PlayerLevel = mElementList[GameController.Instance.Quest_PlayerLevel].GetAward();
         ItemUseController.Instance.ShowHaveItem();
+        QuestController.Instance.QuestProgress++;
         ShowQuest(GameController.Instance.Quest_PlayerLevel);
     }
     public void ShowQuest(int id)
@@ -91,6 +94,7 @@ public class Quest_PlayerLevel : InformationLoader
             mElementList[mElementList.Count - 1].AllClearQuest();
 
         }
+        QuestController.Instance.ShowQuestProgress();
         CheckQuest();
 
     }

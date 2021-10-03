@@ -53,6 +53,8 @@ public class Quest_MoleCount : InformationLoader
                                     RequireAward);
 
             mElementList.Add(element);
+
+            QuestController.Instance.QuestMax++;
         }
         ShowQuest(GameController.Instance.Quest_MoleCount);
     }
@@ -72,6 +74,7 @@ public class Quest_MoleCount : InformationLoader
     {
         GameController.Instance.Quest_MoleCount = mElementList[GameController.Instance.Quest_MoleCount].GetAward();
         ItemUseController.Instance.ShowHaveItem();
+        QuestController.Instance.QuestProgress++;
         ShowQuest(GameController.Instance.Quest_MoleCount);
     }
     public void ShowQuest(int id)
@@ -91,6 +94,7 @@ public class Quest_MoleCount : InformationLoader
             mElementList[mElementList.Count - 1].AllClearQuest();
 
         }
+        QuestController.Instance.ShowQuestProgress();
         CheckQuest();
 
     }

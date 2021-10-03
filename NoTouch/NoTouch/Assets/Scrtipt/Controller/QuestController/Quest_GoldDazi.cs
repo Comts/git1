@@ -53,6 +53,8 @@ public class Quest_GoldDazi : InformationLoader
                                     RequireAward);
 
             mElementList.Add(element);
+
+            QuestController.Instance.QuestMax++;
         }
         ShowQuest(GameController.Instance.Quest_GoldDazi);
     }
@@ -72,6 +74,7 @@ public class Quest_GoldDazi : InformationLoader
     {
         GameController.Instance.Quest_GoldDazi = mElementList[GameController.Instance.Quest_GoldDazi].GetAward();
         ItemUseController.Instance.ShowHaveItem();
+        QuestController.Instance.QuestProgress++;
         ShowQuest(GameController.Instance.Quest_GoldDazi);
     }
     public void ShowQuest(int id)
@@ -91,6 +94,7 @@ public class Quest_GoldDazi : InformationLoader
             mElementList[mElementList.Count - 1].AllClearQuest();
 
         }
+        QuestController.Instance.ShowQuestProgress();
         CheckQuest();
 
     }

@@ -53,6 +53,8 @@ public class Quest_DigCount : InformationLoader
                                     RequireAward);
 
             mElementList.Add(element);
+
+            QuestController.Instance.QuestMax++;
         }
         ShowQuest(GameController.Instance.Quest_DigCount);
     }
@@ -72,6 +74,7 @@ public class Quest_DigCount : InformationLoader
     {
         GameController.Instance.Quest_DigCount = mElementList[GameController.Instance.Quest_DigCount].GetAward();
         ItemUseController.Instance.ShowHaveItem();
+        QuestController.Instance.QuestProgress++;
         ShowQuest(GameController.Instance.Quest_DigCount);
     }
     public void ShowQuest(int id)
@@ -91,6 +94,7 @@ public class Quest_DigCount : InformationLoader
             mElementList[mElementList.Count - 1].AllClearQuest();
 
         }
+        QuestController.Instance.ShowQuestProgress();
         CheckQuest();
 
     }

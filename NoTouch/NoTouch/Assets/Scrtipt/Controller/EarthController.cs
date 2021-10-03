@@ -14,6 +14,8 @@ public class EarthController : InformationLoader
 #pragma warning disable 0649
     [SerializeField]
     private Earth[] Earth_Window;
+    [SerializeField]
+    private Image Earth_Window_END;
 
 #pragma warning restore 0649
     private void Awake()
@@ -35,8 +37,15 @@ public class EarthController : InformationLoader
     }
     public void Open_Earth_Window()
     {
-        Earth_Window[GameController.Instance.Achive_Earth].gameObject.SetActive(true);
-        Start_Earth_Dig();
+        if (GameController.Instance.Achive_Earth < Earth_Window.Length)
+        {
+            Earth_Window[GameController.Instance.Achive_Earth].gameObject.SetActive(true);
+            Start_Earth_Dig();
+        }
+        else
+        {
+            Earth_Window_END.gameObject.SetActive(true);
+        }
     }
     public void Start_Earth_Dig()
     {
@@ -54,8 +63,7 @@ public class EarthController : InformationLoader
         {
             GameController.Instance.EarthCurrentProgress = 0;
             Earth_Window[GameController.Instance.Achive_Earth].Complete();
-            GameController.Instance.Achive_Earth++;
-            //TODO 지구업적
+            QuestController.Instance.Achive_Earth();
 
         }
         else

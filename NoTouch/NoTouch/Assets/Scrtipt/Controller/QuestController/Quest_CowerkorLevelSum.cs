@@ -52,6 +52,8 @@ public class Quest_CowerkorLevelSum : InformationLoader
                                     RequireAward);
 
             mElementList.Add(element);
+
+            QuestController.Instance.QuestMax++;
         }
         ShowQuest(GameController.Instance.Quest_CowerkerLevelSum);
     }
@@ -71,6 +73,7 @@ public class Quest_CowerkorLevelSum : InformationLoader
     {
         GameController.Instance.Quest_CowerkerLevelSum = mElementList[GameController.Instance.Quest_CowerkerLevelSum].GetAward();
         ItemUseController.Instance.ShowHaveItem();
+        QuestController.Instance.QuestProgress++;
         ShowQuest(GameController.Instance.Quest_CowerkerLevelSum);
     }
     public void ShowQuest(int id)
@@ -90,6 +93,7 @@ public class Quest_CowerkorLevelSum : InformationLoader
             mElementList[mElementList.Count - 1].AllClearQuest();
 
         }
+        QuestController.Instance.ShowQuestProgress();
         CheckQuest();
 
     }
