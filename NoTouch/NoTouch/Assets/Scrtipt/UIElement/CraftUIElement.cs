@@ -36,7 +36,7 @@ public class CraftUIElement : MonoBehaviour
     {
 
         mAmonutText.text = string.Format("{0} / {1}",
-                                        GameController.Instance.AddAmoutGem_O[mID].ToString(),
+                                        UnitSetter.GetUnitStr(GameController.Instance.AddAmoutGem_O[mID]).ToString(),
                                         1000);
     }
 

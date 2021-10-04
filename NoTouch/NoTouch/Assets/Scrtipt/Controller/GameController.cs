@@ -27,7 +27,7 @@ public class GameController : SaveDataController
     private float[] mFloorProgress, mFloorProgressCal;
     private double[] mFloorGemCost, mFloorGemCostCal;
     [SerializeField]
-    private double mManPower;
+    private double mManPower,mMaxManPower,mBuffAchieve,mBuffCoworker,mBuffCoworker_Double;
     private double mTimeLag;
     private int mCheckClickAmount;
     public Delegates.VoidCallback GoldCallback;
@@ -151,6 +151,66 @@ public class GameController : SaveDataController
             }
         }
     }
+    public double MaxManPower
+    {
+        get { return mMaxManPower; }
+        set
+        {
+            if(value>=0)
+            {
+                mMaxManPower = value;
+            }
+            else
+            {
+                Debug.LogError("Error on mMaxManPower update " + value);
+            }
+        }
+    }
+    public double Buff_Achieve
+    {
+        get { return mBuffAchieve; }
+        set
+        {
+            if(value>=0)
+            {
+                mBuffAchieve = value;
+            }
+            else
+            {
+                Debug.LogError("Error on mBuffAchieve update " + value);
+            }
+        }
+    }
+    public double Buff_Coworker
+    {
+        get { return mBuffCoworker; }
+        set
+        {
+            if(value>=0)
+            {
+                mBuffCoworker = value;
+            }
+            else
+            {
+                Debug.LogError("Error on mBuffCoworker update " + value);
+            }
+        }
+    }
+    public double BuffCoworker_Double
+    {
+        get { return mBuffCoworker_Double; }
+        set
+        {
+            if(value>=0)
+            {
+                mBuffCoworker_Double = value;
+            }
+            else
+            {
+                Debug.LogError("Error on mBuffCoworker_Double update " + value);
+            }
+        }
+    }
     public double TimeLag
     {
         get { return mTimeLag; }
@@ -235,6 +295,7 @@ public class GameController : SaveDataController
             mUser.PlayerLevel = value;
         }
     }
+    #region Quest
     public int Quest_PlayerLevel
     {
         get { return mUser.Quest_PlayerLevel; }
@@ -307,6 +368,8 @@ public class GameController : SaveDataController
         }
 
     }
+    #endregion 
+    #region Achieve
     public int Achieve_Click
     {
         get { return mUser.Achieve_Click; }
@@ -433,6 +496,7 @@ public class GameController : SaveDataController
         }
 
     }
+    #endregion 
     public double EarthCurrentProgress
     {
         get { return mUser.EarthCurrentProgress; }
@@ -661,5 +725,9 @@ public class GameController : SaveDataController
         ////TODO Icon 변경 effect.SetIcon();
         //effect.transform.position = mTextEffectPos.position;
 
+    }
+    public double CalBuffManPower()
+    {
+        return MaxManPower * (1 + Buff_Achieve + Buff_Coworker*(1+ BuffCoworker_Double));
     }
 }

@@ -47,6 +47,8 @@ public class CoworkerInfo
     public double ValueBase;
     public double ValueWeight;
     public double ValueCurrent;
+
+    public double BuffAmount;
 }
 
 [Serializable]

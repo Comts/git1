@@ -92,6 +92,7 @@ public class SaveDataController : MonoBehaviour
     }
     public void GetEndTime()
     {
+        Save();
         StartCoroutine(EndTimeChk());
     }
     protected void LoadGame()

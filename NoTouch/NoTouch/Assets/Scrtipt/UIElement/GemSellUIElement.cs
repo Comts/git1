@@ -101,9 +101,9 @@ public class GemSellUIElement : MonoBehaviour
             SetButtonActive(false);
             SetSliderActive(false);
         }
-        mAmountText.text = mMaxSellAmount.ToString();
+        mAmountText.text = UnitSetter.GetUnitStr(mMaxSellAmount).ToString();
         mSellAmount = Math.Round( mSlider.value * mMaxSellAmount);
-        mSellAmountText.text = string.Format("{0}", mSellAmount);
+        mSellAmountText.text = UnitSetter.GetUnitStr(mSellAmount).ToString();
     }
 
 }

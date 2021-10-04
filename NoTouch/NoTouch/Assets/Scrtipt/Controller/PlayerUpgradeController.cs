@@ -17,6 +17,10 @@ public class PlayerUpgradeController : InformationLoader
     private Sprite mIcon;
     [SerializeField]
     private UIElement mElement;
+    [SerializeField]
+    private Slider mSlider;
+    [SerializeField]
+    private Text mPowerAmountText,mPowerText;
 #pragma warning restore 0649
     public PlayerStatText GetTextInfo()
     {
@@ -64,7 +68,7 @@ public class PlayerUpgradeController : InformationLoader
         Refresh();
     }
 
-        
+
     private void Load()
     {
         mElement.Init(0, mIcon,
@@ -73,7 +77,7 @@ public class PlayerUpgradeController : InformationLoader
                       string.Format(mTextInfo.ContentsFormat,
                                     UnitSetter.GetUnitStr(mInfo.ValueCurrent),
                                     mInfo.Duration.ToString()),
-                      UnitSetter.GetUnitStr(Math.Round( mInfo.CostCurrent)),
+                      UnitSetter.GetUnitStr(Math.Round(mInfo.CostCurrent)),
                       LevelUP);
     }
     public void LevelUP(int id, int amount)
@@ -112,6 +116,28 @@ public class PlayerUpgradeController : InformationLoader
                                 Math.Pow(mInfo.CostWeight, mInfo.CurrentLevel);
 
         mInfo.ValueCurrent = mInfo.ValueBase + (mInfo.CurrentLevel + 1) * mInfo.CurrentLevel * mInfo.ValueWeight / 2;
-        GameController.Instance.ManPower = mInfo.ValueCurrent;
-    }  
+        GameController.Instance.MaxManPower = mInfo.ValueCurrent;
+        GameController.Instance.ManPower = GameController.Instance.CalBuffManPower();
+        ReSetSlider();
+    }
+    public void ReSetSlider()
+    {
+
+        mSlider.value = 1;
+        mPowerAmountText.text = string.Format("현재 노동력 : {0}", UnitSetter.GetUnitStr(GameController.Instance.ManPower)); 
+    }
+    public  float  PowerVolume
+    {
+
+        get
+        {
+            return PowerVolume;
+        }
+        set
+        {
+            GameController.Instance.ManPower = Math.Round(value * GameController.Instance.CalBuffManPower(), 2);
+            mPowerText.text = string.Format("{0}%", Math.Round(value * 100));
+            mPowerAmountText.text = string.Format("현재 노동력 : {0}", UnitSetter.GetUnitStr(GameController.Instance.ManPower));
+        }
+    }
 }

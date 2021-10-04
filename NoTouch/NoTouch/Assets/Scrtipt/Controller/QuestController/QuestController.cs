@@ -36,7 +36,7 @@ public class QuestController : MonoBehaviour
     [SerializeField]
     private Image[] Achieve_Earth_Window, Achieve_Earth_Image;
     [SerializeField]
-    private Text mAchieveText,mQuestText;
+    private Text mAchieveText,mQuestText,BuffText;
 #pragma warning restore 0649
     private int AchieveProgress;
     public int QuestMax,QuestProgress;
@@ -73,7 +73,6 @@ public class QuestController : MonoBehaviour
     }
     public void CheckProgress()
     {
-
         AchieveProgress = 0;
 
         if (GameController.Instance.Achieve_Click == 1)
@@ -144,6 +143,13 @@ public class QuestController : MonoBehaviour
     }
     public void ShowAchieveProgress()
     {
+        GameController.Instance.Buff_Achieve = AchieveProgress; 
+        GameController.Instance.ManPower = GameController.Instance.CalBuffManPower(); 
+        PlayerUpgradeController.Instance.ReSetSlider();
+        string BuffStr = string.Format("+ {0} %", AchieveProgress * 100);
+
+        BuffText.text = BuffStr;
+
         string progressStr = string.Format("{0} / {1}",
                                             AchieveProgress,
                                             16);

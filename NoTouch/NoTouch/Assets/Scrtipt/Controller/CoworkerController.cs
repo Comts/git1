@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CoworkerController : InformationLoader
 {
@@ -29,6 +30,16 @@ public class CoworkerController : InformationLoader
     private Transform mElementArea;
     [SerializeField]
     private int mTimePeriod;
+    [SerializeField]
+    private int mCoworkerBuffLevel;
+    [SerializeField]
+    private Text BuffText;
+    [SerializeField]
+    private BuffUIElement[] mBuffUIElement;
+    [SerializeField]
+    private BuffUIElement mDoubleBuffUIElement;
+    [SerializeField]
+    private Sprite mBlockIcon,mDoubleBuffIcon;
 #pragma warning restore 0649
     private List<UIElement> mElementList;
     private void Awake()
@@ -66,13 +77,17 @@ public class CoworkerController : InformationLoader
         }
 
         mElementList.Clear();
+
         Load();
     }
     private void Load()
     {
-
+        GameController.Instance.Buff_Coworker = 0;
+        GameController.Instance.BuffCoworker_Double = 0;
+        mDoubleBuffUIElement.Init(mBlockIcon, "A to Z", "버프 2배");
         for (int i = 0; i < mInfoArr.Length; i++)
         {
+            mBuffUIElement[i].Init(mBlockIcon, mTextInfoArr[i].Title, string.Format(100 * mInfoArr[i].BuffAmount + "%"));
             if (mLevelArr[i] < 0)
             { continue; }
             mInfoArr[i].CurrentLevel = mLevelArr[i];
@@ -81,6 +96,17 @@ public class CoworkerController : InformationLoader
             {
                 mCoworkerArr[i].gameObject.SetActive(true);
                 mCoworkerArr[i].StartWork(i, mInfoArr[i].PeriodCurrent);
+
+                if (i == mInfoArr.Length-1)
+                {
+                    GameController.Instance.BuffCoworker_Double = 1;
+                    mDoubleBuffUIElement.ShowBuff(mDoubleBuffIcon);
+                }
+                if (mInfoArr[i].CurrentLevel >= mCoworkerBuffLevel)
+                {
+                    GameController.Instance.Buff_Coworker += mInfoArr[i].BuffAmount;
+                    mBuffUIElement[i].ShowBuff(mIconArr[i]);
+                }
             }
             UIElement element = Instantiate(mElementPrefab, mElementArea);
             element.Init(i, mIconArr[i],
@@ -99,6 +125,15 @@ public class CoworkerController : InformationLoader
                 mElementList[i].SetButtonActive(false);
             }
         }
+        ShowCoworkerBuff();
+    }
+
+    public void ShowCoworkerBuff()
+    {
+        GameController.Instance.ManPower = GameController.Instance.CalBuffManPower();
+        string BuffStr = string.Format("+ {0} %", GameController.Instance.Buff_Coworker * 100 * (1+GameController.Instance.BuffCoworker_Double));
+
+        BuffText.text = BuffStr;
     }
 
     public void JobFinish(int id)//TODO FX, Vector3 effectPos)
@@ -139,10 +174,26 @@ public class CoworkerController : InformationLoader
             mElementList[id].SetButtonActive(false);
         }
         mLevelArr[id] = mInfoArr[id].CurrentLevel;
+
         if (mInfoArr[id].CurrentLevel == 1)
         {
             mCoworkerArr[id].gameObject.SetActive(true);
             StageController.Instance.CoworkerActive(id);
+            if (id == mInfoArr.Length-1)
+            {
+                GameController.Instance.BuffCoworker_Double = 1;
+                mDoubleBuffUIElement.ShowBuff(mDoubleBuffIcon);
+                ShowCoworkerBuff();
+                PlayerUpgradeController.Instance.ReSetSlider();
+            }
+        }
+
+        if (mInfoArr[id].CurrentLevel == mCoworkerBuffLevel)
+        {
+            GameController.Instance.Buff_Coworker += mInfoArr[id].BuffAmount;
+            mBuffUIElement[id].ShowBuff(mIconArr[id]);
+            ShowCoworkerBuff();
+            PlayerUpgradeController.Instance.ReSetSlider();
         }
         AddCowerker(id);
 
