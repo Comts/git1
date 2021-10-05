@@ -18,6 +18,7 @@ public class SaveDataController : MonoBehaviour
     IEnumerator StartTimeChk()
     {
         double starttime=0;
+        double CheckDay = 0;
         UnityWebRequest request = new UnityWebRequest();
         using (request = UnityWebRequest.Get(url))
         {
@@ -34,6 +35,19 @@ public class SaveDataController : MonoBehaviour
                 DateTime dateTime = DateTime.Parse(date).ToUniversalTime();
                 TimeSpan timestamp = dateTime - new DateTime(1970, 1, 1, 0, 0, 0);
                 starttime = timestamp.TotalSeconds;
+                CheckDay = timestamp.Days;
+                Debug.Log("mUser.CheckDay :" + mUser.CheckDay);
+                Debug.Log("mUser.Check_Attend_Reward :" + mUser.Check_Attend_Reward);
+                if (CheckDay - mUser.CheckDay >= 1)
+                {
+                    mUser.CheckDay = CheckDay;
+                    if(mUser.Check_Attend_Reward == 0)
+                    {
+                        GameController.Instance.Attend_Reward++;
+                        mUser.Check_Attend_Reward = 1;
+                    }
+                    QuestController.Instance.ShowAttendWindow();
+                }
             }
         }
         mUser.StartTime = starttime;
@@ -296,6 +310,10 @@ public class SaveDataController : MonoBehaviour
         mUser.Achive_Silver = 0;
         mUser.Achive_Earth = 0;
         mUser.EarthCurrentProgress = 0;
+
+        mUser.Attend_Reward = -1;
+        mUser.Check_Attend_Reward = 0;
+        mUser.CheckDay = 0;
     }
 
     protected void Save()

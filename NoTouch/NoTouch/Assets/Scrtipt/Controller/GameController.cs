@@ -506,6 +506,24 @@ public class GameController : SaveDataController
         }
 
     }
+    public int Attend_Reward
+    {
+        get { return mUser.Attend_Reward; }
+        set
+        {
+            mUser.Attend_Reward = value;
+        }
+
+    }
+    public int Check_Attend_Reward
+    {
+        get { return mUser.Check_Attend_Reward; }
+        set
+        {
+            mUser.Check_Attend_Reward = value;
+        }
+
+    }
     private void Awake()
     {
         if(Instance == null)
@@ -635,6 +653,10 @@ public class GameController : SaveDataController
         mUser.Achive_Silver = 0;
         mUser.Achive_Earth = 0;
         mUser.EarthCurrentProgress = 0;
+
+        mUser.Attend_Reward = -1;
+        mUser.Check_Attend_Reward = 0;
+        mUser.CheckDay = 0;
 
         mUser.WhackCount = 0;
         mUser.MineCount = 0;

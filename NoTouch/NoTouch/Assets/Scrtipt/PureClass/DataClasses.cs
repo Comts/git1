@@ -149,6 +149,7 @@ public class SaveData
 
     public double StartTime;
     public double EndTime;
+    public double CheckDay;
 
     public int PlayMoleCount;
     public int WhackCount;
@@ -183,5 +184,8 @@ public class SaveData
 
     public int Achive_Earth;
     public double EarthCurrentProgress;
+
+    public int Attend_Reward;
+    public int Check_Attend_Reward;
 
 }

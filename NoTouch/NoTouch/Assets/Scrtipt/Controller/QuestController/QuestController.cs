@@ -37,6 +37,13 @@ public class QuestController : MonoBehaviour
     private Image[] Achieve_Earth_Window, Achieve_Earth_Image;
     [SerializeField]
     private Text mAchieveText,mQuestText,BuffText;
+
+    [SerializeField]
+    private Image Attend_Reward_Window;
+    [SerializeField]
+    private Button[] Attend_Reward_Button;
+    [SerializeField]
+    private Image[] Attend_Block_Image;
 #pragma warning restore 0649
     private int AchieveProgress;
     public int QuestMax,QuestProgress;
@@ -69,8 +76,104 @@ public class QuestController : MonoBehaviour
             QuestList[i].gameObject.SetActive(true);
         }
         CheckProgress();
-        ShowQuestProgress();
+        ShowQuestProgress(); 
+        CheckAttendRewardButton();
     }
+    public void ShowAttendWindow()
+    {
+        CheckAttendRewardButton();
+        Attend_Reward_Window.gameObject.SetActive(true);
+    }
+    public void GetAttendReward(int num)
+    {
+
+        switch (num)
+        {
+            case 0:
+                GameController.Instance.HaveItem[0] += 5;
+                Attend_Block_Image[num].gameObject.SetActive(true);
+                break;
+
+            case 1:
+                GameController.Instance.HaveItem[0] += 5;
+                Attend_Block_Image[num].gameObject.SetActive(true);
+                break;
+
+            case 2:
+                GameController.Instance.HaveItem[1] += 1;
+                Attend_Block_Image[num].gameObject.SetActive(true);
+                break;
+
+            case 3:
+                GameController.Instance.HaveItem[0] += 5;
+                Attend_Block_Image[num].gameObject.SetActive(true);
+                break;
+
+            case 4:
+                GameController.Instance.HaveItem[0] += 5;
+                Attend_Block_Image[num].gameObject.SetActive(true);
+                break;
+
+            case 5:
+                GameController.Instance.HaveItem[1] += 1;
+                Attend_Block_Image[num].gameObject.SetActive(true);
+                break;
+
+            case 6:
+                GameController.Instance.HaveItem[0] += 10;
+                GameController.Instance.HaveItem[1] += 2;
+                ResetAttendReward();
+                break;
+
+            default:
+                Debug.LogError("GetAttendReward Error " + num);
+                break;
+        }
+        ItemUseController.Instance.ShowHaveItem();
+        GameController.Instance.Check_Attend_Reward = 0;
+        if (GameController.Instance.Attend_Reward >= 6)
+        {
+            GameController.Instance.Attend_Reward = -1;
+        }
+        CheckAttendRewardButton();
+    }
+    public void CheckAttendRewardButton()
+    {
+        for(int i=0;i<= GameController.Instance.Attend_Reward; i++)
+        {
+            if (i < GameController.Instance.Attend_Reward)
+            {
+                Attend_Block_Image[i].gameObject.SetActive(true);
+            }
+            if (i == GameController.Instance.Attend_Reward)
+            {
+                if(GameController.Instance.Check_Attend_Reward == 1)
+                {
+                    Attend_Reward_Button[i].interactable = true;
+                }
+                else
+                {
+                    Attend_Block_Image[i].gameObject.SetActive(true);
+                }
+            }
+            else
+            {
+                Attend_Reward_Button[i].interactable = false;
+            }
+        }
+    }
+    public void ResetAttendReward()
+    {
+        for (int i = 0; i < Attend_Block_Image.Length; i++)
+        {
+            Attend_Block_Image[i].gameObject.SetActive(false);
+        }
+        for (int i = 0; i < Attend_Reward_Button.Length; i++)
+        {
+            Attend_Reward_Button[i].interactable = false;
+        }
+
+    } 
     public void CheckProgress()
     {
         AchieveProgress = 0;
@@ -197,6 +300,7 @@ public class QuestController : MonoBehaviour
         CheckProgress();
         QuestProgress = 0;
         ShowQuestProgress();
+        ResetAttendReward();
     }
     public void Achive_Click()
     {
