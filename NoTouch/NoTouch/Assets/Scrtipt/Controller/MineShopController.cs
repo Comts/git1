@@ -13,15 +13,20 @@ public class MineShopController : InformationLoader
     private float mCurrentTime;
 
     private List<MineUIElement> mElementList;
+    private List<SleepUIElement> mSleepElementList;
 #pragma warning disable 0649
     [SerializeField]
     private MineUIElement mElementPrefab;
     [SerializeField]
-    private Transform mElementArea;
+    private SleepUIElement mSleepElementPrefab;
+    [SerializeField]
+    private Transform mElementArea, mSleepElementArea;
     [SerializeField]
     private float mTime;
     [SerializeField]
     private double mAddGem;
+    [SerializeField]
+    private int mTimePeriod;
 
 #pragma warning restore 0649
 
@@ -47,6 +52,7 @@ public class MineShopController : InformationLoader
         mIconArr = Resources.LoadAll<Sprite>(Paths.MINE_ICON);
 
         mElementList = new List<MineUIElement>();
+        mSleepElementList = new List<SleepUIElement>();
         Load();
     }
     private void Update()
@@ -63,6 +69,23 @@ public class MineShopController : InformationLoader
                 }
             }
             mCurrentTime = 0;
+        }
+    }
+    public void SleepWork(int num)
+    {
+        for (int i = 0; i < Constants.MINE_COUNT; i++)
+        {
+            if (GameController.Instance.HaveMine[i] > 0)
+            {
+                GameController.Instance.AddFromMine[i] += (mAddGem* (int)(GameController.Instance.TimeLag / (mTime* mTimePeriod))* num);
+                mElementList[i].ShowAmount(GameController.Instance.AddFromMine[i]);
+
+                SleepUIElement Sleepelement = Instantiate(mSleepElementPrefab, mSleepElementArea);
+                Sleepelement.Init(mIconArr[i], UnitSetter.GetUnitStr((mAddGem * (int)(GameController.Instance.TimeLag / (mTime * mTimePeriod)) * num)));
+
+
+                mSleepElementList.Add(Sleepelement);
+            }
         }
     }
 

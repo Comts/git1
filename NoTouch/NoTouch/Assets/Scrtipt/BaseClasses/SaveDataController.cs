@@ -12,6 +12,8 @@ public class SaveDataController : MonoBehaviour
     protected SaveData mUser;
     [SerializeField]
     private string url = "";
+    [SerializeField]
+    private Transform SleepWindow;
 
     private double mTenMinCount;
 
@@ -36,8 +38,7 @@ public class SaveDataController : MonoBehaviour
                 TimeSpan timestamp = dateTime - new DateTime(1970, 1, 1, 0, 0, 0);
                 starttime = timestamp.TotalSeconds;
                 CheckDay = timestamp.Days;
-                Debug.Log("mUser.CheckDay :" + mUser.CheckDay);
-                Debug.Log("mUser.Check_Attend_Reward :" + mUser.Check_Attend_Reward);
+
                 if (CheckDay - mUser.CheckDay >= 1)
                 {
                     mUser.CheckDay = CheckDay;
@@ -52,7 +53,7 @@ public class SaveDataController : MonoBehaviour
         }
         mUser.StartTime = starttime;
         GameController.Instance.TimeLag = Math.Abs( mUser.StartTime - mUser.EndTime);
-        CoworkerController.Instance.OffJob();
+        SleepWindow.gameObject.SetActive(true);
 
         mTenMinCount = (int)(GameController.Instance.TimeLag / 600);
         while (GameController.Instance.PlayMoleCount<3 && mTenMinCount>0)

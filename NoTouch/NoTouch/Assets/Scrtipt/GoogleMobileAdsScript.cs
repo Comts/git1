@@ -11,6 +11,8 @@ public class GoogleMobileAdsScript : MonoBehaviour
 #pragma warning disable 0649
     [SerializeField]
     private GameObject MoleWindow,PopWindow;
+    [SerializeField]
+    private GameObject SleepWindow,SleepWorkWindow;
 #pragma warning restore 0649
 
     private string Test_UnitID = "ca-app-pub-3940256099942544/5224354917";
@@ -59,11 +61,28 @@ public class GoogleMobileAdsScript : MonoBehaviour
         }
         RequestRewardBasedVideo();
     }
+    public void UserOptToWatchAd_Sleep()
+    {
+        if (rewardBasedVideo.IsLoaded())
+        {
+            rewardBasedVideo.Show();
+            rewardBasedVideo.OnAdRewarded += HandleRewardBasedVideoRewarded_Sleep;
+
+        }
+        RequestRewardBasedVideo();
+    }
     public void HandleRewardBasedVideoRewarded_Mole(object sender, Reward args)
     {
         MoleController.Instance.AddMoney(3);
         PopWindow.SetActive(false);
         MoleWindow.SetActive(false);
+    }
+    public void HandleRewardBasedVideoRewarded_Sleep(object sender, Reward args)
+    {
+        CoworkerController.Instance.SleepJob(3);
+        MineShopController.Instance.SleepWork(3);
+        SleepWindow.SetActive(false);
+        SleepWorkWindow.SetActive(true);
     }
     public void HandleRewardBasedVideoRewarded_Item(object sender, Reward args)
     {

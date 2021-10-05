@@ -27,7 +27,9 @@ public class CoworkerController : InformationLoader
     [SerializeField]
     private UIElement mElementPrefab;
     [SerializeField]
-    private Transform mElementArea;
+    private SleepUIElement mSleepElementPrefab;
+    [SerializeField]
+    private Transform mElementArea,mSleepElementArea;
     [SerializeField]
     private int mTimePeriod;
     [SerializeField]
@@ -42,6 +44,7 @@ public class CoworkerController : InformationLoader
     private Sprite mBlockIcon,mDoubleBuffIcon;
 #pragma warning restore 0649
     private List<UIElement> mElementList;
+    private List<SleepUIElement> mSleepElementList;
     private void Awake()
     {
         if (Instance == null)
@@ -64,6 +67,7 @@ public class CoworkerController : InformationLoader
 
         mLevelArr = GameController.Instance.GetCoworkerLevelArr();
         mElementList = new List<UIElement>();
+        mSleepElementList = new List<SleepUIElement>();
         Load();
     }
     public void ReStart()
@@ -144,16 +148,21 @@ public class CoworkerController : InformationLoader
         //TODO FX
     }
 
-    public void OffJob()
+    public void SleepJob(int num)
     {
         for (int i = 0; i < mInfoArr.Length; i++)
         {
             if (mCoworkerArr[i].gameObject.activeInHierarchy)
             {
                 double AddAmount = mInfoArr[i].ValueCurrent;
-                GameController.Instance.AddAmoutGem_O[i] += (int)(AddAmount * GameController.Instance.TimeLag / mInfoArr[i].PeriodCurrent / mTimePeriod);
+                GameController.Instance.AddAmoutGem_O[i] += AddAmount * (int)((GameController.Instance.TimeLag / (mInfoArr[i].PeriodCurrent * mTimePeriod)))* num;
                 GemSellController.Instance.RefreshGemData();
 
+                SleepUIElement Sleepelement = Instantiate(mSleepElementPrefab, mSleepElementArea);
+                Sleepelement.Init(mIconArr[i], UnitSetter.GetUnitStr(AddAmount * (int)((GameController.Instance.TimeLag / (mInfoArr[i].PeriodCurrent * mTimePeriod))) * num));
+
+
+                mSleepElementList.Add(Sleepelement);
             }
         }
     }
