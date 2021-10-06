@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -49,7 +50,7 @@ public class EarthController : InformationLoader
     }
     public void Start_Earth_Dig()
     {
-        CurrentProgress = GameController.Instance.EarthCurrentProgress;
+        CurrentProgress = Math.Round(GameController.Instance.EarthCurrentProgress,2);
         double Progress = mInfoArr[GameController.Instance.Achive_Earth].MaxProgress;
         double Add = Mathf.Pow(10, GameController.Instance.Achive_Earth);
         EarthLastProgress = Progress * 1000 * 100 * 10 * Add; // 1Km =1000m, 1m = 100cm, 1cm =10mm  // 0:1 1:10 2:100 3:1000 4:10000
@@ -68,7 +69,7 @@ public class EarthController : InformationLoader
         }
         else
         {
-            CurrentProgress += (mTouchPower * ItemUseController.Instance.GetGemMulti[0]);
+            CurrentProgress = Math.Round(CurrentProgress + (mTouchPower * ItemUseController.Instance.GetGemMulti[0]),2);
             if (CurrentProgress > EarthLastProgress)
             {
                 CurrentProgress = EarthLastProgress;

@@ -52,8 +52,14 @@ public class SaveDataController : MonoBehaviour
             }
         }
         mUser.StartTime = starttime;
-        GameController.Instance.TimeLag = Math.Abs( mUser.StartTime - mUser.EndTime);
-        SleepWindow.gameObject.SetActive(true);
+        if(mUser.StartTime * mUser.EndTime !=0)
+        {
+            GameController.Instance.TimeLag = Math.Abs(mUser.StartTime - mUser.EndTime);
+        }
+        if (MineShopController.Instance.CheckSleepWork() || CoworkerController.Instance.CheckSleepJob())
+        {
+            SleepWindow.gameObject.SetActive(true);
+        }
 
         mTenMinCount = (int)(GameController.Instance.TimeLag / 600);
         while (GameController.Instance.PlayMoleCount<3 && mTenMinCount>0)

@@ -81,12 +81,27 @@ public class MineShopController : InformationLoader
                 mElementList[i].ShowAmount(GameController.Instance.AddFromMine[i]);
 
                 SleepUIElement Sleepelement = Instantiate(mSleepElementPrefab, mSleepElementArea);
-                Sleepelement.Init(mIconArr[i], UnitSetter.GetUnitStr((mAddGem * (int)(GameController.Instance.TimeLag / (mTime * mTimePeriod)) * num)));
+                Sleepelement.Init(mIconArr[i], mTextInfoArr[i].Title, mTextInfoArr[i].GemName, UnitSetter.GetUnitStr((mAddGem * (int)(GameController.Instance.TimeLag / (mTime * mTimePeriod)) * num)));
 
 
                 mSleepElementList.Add(Sleepelement);
             }
         }
+    }
+    public bool CheckSleepWork()
+    {
+        bool check = false;
+        for (int i = 0; i < Constants.MINE_COUNT; i++)
+        {
+            if (GameController.Instance.HaveMine[i] > 0)
+            {
+                if((int)(GameController.Instance.TimeLag / (mTime* mTimePeriod)) >= 1)
+                {
+                    check = true;
+                }
+            }
+        }
+        return check;
     }
 
     private void Load()

@@ -24,7 +24,7 @@ public class GameController : SaveDataController
     [SerializeField]
     private Toggle mScrollToggle;
 #pragma warning restore 0649
-    private float[] mFloorProgress, mFloorProgressCal;
+    private double[] mFloorProgress, mFloorProgressCal;
     private double[] mFloorGemCost, mFloorGemCostCal;
     [SerializeField]
     private double mManPower,mMaxManPower,mBuffAchieve,mBuffCoworker,mBuffCoworker_Double;
@@ -91,7 +91,7 @@ public class GameController : SaveDataController
     {
         get { return mFloorGemCost; }
     }
-    public float[] GetRequireProgress
+    public double[] GetRequireProgress
     {
         get { return mFloorProgress; }
     }
@@ -556,8 +556,8 @@ public class GameController : SaveDataController
             mUser.PlayerPos = mUser.Stage;
         }
         //CalManPower();
-        mFloorProgress = new float[Constants.MAX_fLOOR];
-        mFloorProgressCal = new float[Constants.MAX_fLOOR];
+        mFloorProgress = new double[Constants.MAX_fLOOR];
+        mFloorProgressCal = new double[Constants.MAX_fLOOR];
         mFloorGemCost = new double[Constants.MAX_fLOOR];
         mFloorGemCostCal = new double[Constants.MAX_fLOOR];
         UIController.Instance.ShowMoney();
@@ -575,7 +575,7 @@ public class GameController : SaveDataController
             else
             {
                 mFloorProgressCal[i] = mFloorProgressCal[i - 1] * WorkIncrese;
-                mFloorProgress[i] = Mathf.Round(mFloorProgressCal[i]);
+                mFloorProgress[i] = Math.Round(mFloorProgressCal[i],2);
                 mFloorGemCostCal[i] = mFloorGemCost[i - 1] * GemCostIncrese;
                 mFloorGemCost[i] = Math.Round(mFloorGemCostCal[i], 1);
                 //Debug.Log((i) + "번째 층 노동력" + mFloorProgress[i]);
@@ -723,13 +723,13 @@ public class GameController : SaveDataController
     public void Touch()
     {
         int gain = 0;
-        mUser.Progress += (mManPower * ItemUseController.Instance.GetGemMulti[0]);
+        mUser.Progress += Math.Round((mManPower * ItemUseController.Instance.GetGemMulti[0]),2);
         //TODO Sound FX
         //TODO VFX +Text Effect
 
         while (mUser.Progress >= mFloorProgress[mUser.PlayerPos])
         {
-            mUser.Progress -= mFloorProgress[mUser.PlayerPos];
+            mUser.Progress = Math.Round((mUser.Progress - mFloorProgress[mUser.PlayerPos]),2);
             gain++;
         }
         AddAmoutGem_O[mUser.PlayerPos] += gain ;

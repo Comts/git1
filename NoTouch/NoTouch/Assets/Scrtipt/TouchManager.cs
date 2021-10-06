@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -43,18 +44,22 @@ public class TouchManager : MonoBehaviour
                         if (hit.collider.gameObject.CompareTag("Touch"))
                         {
                             GameController.Instance.Touch();
+                            SoundController.Instance.FXSound(UnityEngine.Random.Range(0, 2));
                         }
                         if (hit.collider.gameObject.CompareTag("Craft"))
                         {
                             CraftController.Instance.Touch();
+                            SoundController.Instance.FXSound(UnityEngine.Random.Range(5, 7));
                         }
                         if (hit.collider.gameObject.CompareTag("Mole"))
                         {
                             hit.collider.gameObject.GetComponent<Mole>().Moledaed();
+                            SoundController.Instance.FXSound(UnityEngine.Random.Range(2, 5));
                         }
                         if (hit.collider.gameObject.CompareTag("Earth"))
                         {
                             EarthController.Instance.Touch();
+                            SoundController.Instance.FXSound(7);
                         }
                         vec = hit.point;
                         return true;
@@ -65,6 +70,11 @@ public class TouchManager : MonoBehaviour
         }
         vec = Vector3.zero;
         return false;
+    }
+
+    private int Random(int v1, int v2)
+    {
+        throw new NotImplementedException();
     }
 
     private void Update()
@@ -78,18 +88,22 @@ public class TouchManager : MonoBehaviour
                 if (hit.collider.gameObject.CompareTag("Touch"))
                 {
                     GameController.Instance.Touch();
+                    SoundController.Instance.FXSound(UnityEngine.Random.Range(0, 2));
                 }
                 if (hit.collider.gameObject.CompareTag("Craft"))
                 {
                     CraftController.Instance.Touch();
+                    SoundController.Instance.FXSound(UnityEngine.Random.Range(5, 7));
                 }
                 if (hit.collider.gameObject.CompareTag("Mole"))
                 {
                     hit.collider.gameObject.GetComponent<Mole>().Moledaed();
+                    SoundController.Instance.FXSound(UnityEngine.Random.Range(2, 5));
                 }
                 if (hit.collider.gameObject.CompareTag("Earth"))
                 {
                     EarthController.Instance.Touch();
+                    SoundController.Instance.FXSound(7);
                 }
             }
             Timer effect = mEffectPool.GetFromPool();

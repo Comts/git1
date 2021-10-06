@@ -179,6 +179,7 @@ public class StageController : MonoBehaviour
     }
     public void AddStageCallback(int id, int amount)
     {
+        SoundController.Instance.FXSound(8);
         GameController.Instance.Stage = id;
         int nextID = id + 1;
 

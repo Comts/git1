@@ -57,6 +57,7 @@ public class CoworkerTextInfo
     public int ID;
     public string Title;
     public string ContentsFormat;
+    public string GemName;
 
 }
 [Serializable]
@@ -72,6 +73,7 @@ public class MineTextInfo
     public int ID;
     public string Title;
     public string ContentsFormat;
+    public string GemName;
 
 }
 public class QuestTextInfo

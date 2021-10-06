@@ -6142,6 +6142,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 865781191}
+        m_MethodName: ChangeBGM
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1191997879}
         m_MethodName: SetActive
         m_Mode: 6
@@ -6695,6 +6706,17 @@ MonoBehaviour:
       - m_Target: {fileID: 309161681}
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 865781191}
+        m_MethodName: ChangeBGM
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -7492,6 +7514,17 @@ MonoBehaviour:
       - m_Target: {fileID: 437523223}
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 865781191}
+        m_MethodName: ChangeBGM
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -10365,6 +10398,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 865781191}
+        m_MethodName: ChangeBGM
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &228119450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11627,6 +11671,17 @@ MonoBehaviour:
       - m_Target: {fileID: 746814422}
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 865781191}
+        m_MethodName: ChangeBGM
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -16137,6 +16192,17 @@ MonoBehaviour:
       - m_Target: {fileID: 388984420}
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 865781191}
+        m_MethodName: ChangeBGM
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -21140,7 +21206,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -6749608102062401781, guid: 73ef2f4946631454a91df09d34982d00,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 40a9d9dcba82a12469b9b1d82efcdfc5, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 5ae38d40f23a2bc41a54b8f8e71fe43f, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -28532,7 +28598,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: "1\uC778 \uAC1C\uBC1C \uC791\uD488\uC785\uB2C8\uB2E4. \uBBF8\uD761\uD558\uC9C0\uB9CC
     \uC798 \uBD80\uD0C1\uB4DC\uB9BD\uB2C8\uB2E4.\n\n\uAC1C\uBC1C\uC790\uC758 \uC720\uD29C\uBE0C
-    \uCC44\uB110  : \uD0DC\uC0DDTV\n\nBGM \uC81C\uACF5 : HAMU\n                                                                    "
+    \uCC44\uB110  : \uD0DC\uC0DDTV\n\n\uC624\uB514\uC624 \uAC10\uB3C5 : HAMU\n                                                                    "
 --- !u!222 &621310909
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -30228,6 +30294,17 @@ MonoBehaviour:
       - m_Target: {fileID: 2073642964}
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 865781191}
+        m_MethodName: ChangeBGM
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -37264,6 +37341,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 865781191}
+        m_MethodName: ChangeBGM
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &858535735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37549,9 +37637,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mBGM: {fileID: 452030833}
   mEffect: {fileID: 734823384}
-  mBGMArr: []
+  mBGMArr:
+  - {fileID: 8300000, guid: 5ae38d40f23a2bc41a54b8f8e71fe43f, type: 3}
+  - {fileID: 8300000, guid: 6b4fd33ab71d316439138fd96189e03d, type: 3}
+  - {fileID: 8300000, guid: 32abf02b05fc7324a9aa02eab598138c, type: 3}
+  - {fileID: 8300000, guid: 16d6593e2fe44c249b49a648e86c22b3, type: 3}
   mEffectArr:
-  - {fileID: 8300000, guid: 1be4472894949437694aead55c6da60f, type: 3}
+  - {fileID: 8300000, guid: d5d0e6b15bde3aa46bfa75817245afd8, type: 3}
+  - {fileID: 8300000, guid: 0d0f7a712e130b84187fd2e2d9d8ecec, type: 3}
+  - {fileID: 8300000, guid: 9961d43c7f7adea499e7409d5a957e14, type: 3}
+  - {fileID: 8300000, guid: 43101c5dfa79ead49ae4e8ef96c4799e, type: 3}
+  - {fileID: 8300000, guid: 04db356c0f049ea4fa124aa4fcac12f1, type: 3}
+  - {fileID: 8300000, guid: 6106214cbd7ae0e4097938ffc500a621, type: 3}
+  - {fileID: 8300000, guid: 9a317b8c941d9cc4c9e1dcb685cd1403, type: 3}
+  - {fileID: 8300000, guid: f542cf35b7a443a4f854c3e92ce0fab4, type: 3}
+  - {fileID: 8300000, guid: f670e15b402bb124db3c8c0e8483d35e, type: 3}
   mMixer: {fileID: 24100000, guid: 73ef2f4946631454a91df09d34982d00, type: 2}
   mMuteMaster: {fileID: 1575423399}
   mMuteBGM: {fileID: 607033015}
@@ -41552,6 +41652,17 @@ MonoBehaviour:
       - m_Target: {fileID: 746814422}
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 865781191}
+        m_MethodName: ChangeBGM
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -47683,7 +47794,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8f7d34aa5cd21e8408a943d39ac724a4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c0ab3089efa4f4641af22435c9c377cc, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -48079,6 +48190,17 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 865781191}
+        m_MethodName: ChangeBGM
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -48620,6 +48742,17 @@ MonoBehaviour:
       - m_Target: {fileID: 437523223}
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 865781191}
+        m_MethodName: ChangeBGM
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -55139,6 +55272,17 @@ MonoBehaviour:
       - m_Target: {fileID: 309161681}
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 865781191}
+        m_MethodName: ChangeBGM
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -68466,6 +68610,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 865781191}
+        m_MethodName: ChangeBGM
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1620532392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77314,6 +77469,17 @@ MonoBehaviour:
       - m_Target: {fileID: 2073642964}
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 865781191}
+        m_MethodName: ChangeBGM
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

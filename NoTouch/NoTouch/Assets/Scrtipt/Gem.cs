@@ -14,7 +14,7 @@ public class Gem : MonoBehaviour
 
     private double[] mShiftGap;
     private double mGemCost;
-    private float mGemProgress;
+    private double mGemProgress;
     private int mCurrentImageIndex;
     private double GapCal;
 

@@ -144,6 +144,7 @@ public class MoleController : MonoBehaviour
         GameController.Instance.Gold+=(mGold* mutiply);
         Score = 0;
         Quest_MoleCount.Instance.CheckQuest();
+        SoundController.Instance.ChangeBGM(0);
     }
     private IEnumerator SpwanMole()
     {

@@ -159,12 +159,27 @@ public class CoworkerController : InformationLoader
                 GemSellController.Instance.RefreshGemData();
 
                 SleepUIElement Sleepelement = Instantiate(mSleepElementPrefab, mSleepElementArea);
-                Sleepelement.Init(mIconArr[i], UnitSetter.GetUnitStr(AddAmount * (int)((GameController.Instance.TimeLag / (mInfoArr[i].PeriodCurrent * mTimePeriod))) * num));
+                Sleepelement.Init(mIconArr[i], mTextInfoArr[i].Title, mTextInfoArr[i].GemName, UnitSetter.GetUnitStr(AddAmount * (int)((GameController.Instance.TimeLag / (mInfoArr[i].PeriodCurrent * mTimePeriod))) * num));
 
 
                 mSleepElementList.Add(Sleepelement);
             }
         }
+    }
+    public bool CheckSleepJob()
+    {
+        bool check = false;
+        for (int i = 0; i < mInfoArr.Length; i++)
+        {
+            if (mCoworkerArr[i].gameObject.activeInHierarchy)
+            {
+                if ((int)((GameController.Instance.TimeLag / (mInfoArr[i].PeriodCurrent * mTimePeriod))) >= 1)
+                {
+                    check = true;
+                }
+            }
+        }
+        return check;
     }
 
 

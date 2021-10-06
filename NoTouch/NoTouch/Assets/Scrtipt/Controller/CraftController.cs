@@ -148,6 +148,7 @@ public class CraftController : InformationLoader
 
         Quest_CraftGem.Instance.CheckQuest();
         GemSellController.Instance.RefreshGemData();
+        SoundController.Instance.ChangeBGM(0);
     }
 
     private void Awake()
@@ -233,6 +234,7 @@ public class CraftController : InformationLoader
     public void StartCraft(int id, int amount)
     {
         GameController.Instance.AddAmoutGem_O[id] -= amount;
+        SoundController.Instance.ChangeBGM(3);
         CurrentProgress = 0;
         mCraftCountDown = StartCoroutine(CraftCountDown(mCraftTime));
         GemID = id;

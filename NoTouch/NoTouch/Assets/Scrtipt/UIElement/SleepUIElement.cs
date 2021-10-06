@@ -9,13 +9,15 @@ public class SleepUIElement : MonoBehaviour
     [SerializeField]
     private Image mIconImage;
     [SerializeField]
-    private Text mAmountText;
+    private Text mTitleText, mGemNameText,mAmountText;
 #pragma warning restore 0649
 
-    public void Init(Sprite icon, string Text)
+    public void Init(Sprite icon, string Title, string GemName, string Amount)
     {
         mIconImage.sprite = icon;
-        mAmountText.text = Text;
+        mTitleText.text = Title;
+        mGemNameText.text = GemName;
+        mAmountText.text = string.Format("{0} 개", Amount);
        
     }
     

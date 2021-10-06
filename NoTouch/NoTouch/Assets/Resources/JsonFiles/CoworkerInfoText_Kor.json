@@ -2,86 +2,103 @@
   {
     "ID": 0,
     "Title": "에아",
-    "ContentsFormat": "{0}초당 석탄 원석{1}개 획득"
+    "ContentsFormat": "{0}초당 석탄 원석{1}개 획득",
+    "GemName": "석탄"
   },
   {
     "ID": 1,
     "Title": "비",
-    "ContentsFormat": "{0}초당 구리 원석{1}개 획득"
+    "ContentsFormat": "{0}초당 구리 원석{1}개 획득",
+    "GemName": "구리"
   },
   {
     "ID": 2,
     "Title": "씨오",
-    "ContentsFormat": "{0}초당 투르말린 원석{1}개 획득"
+    "ContentsFormat": "{0}초당 투르말린 원석{1}개 획득",
+    "GemName": "투르말린"
   },
   {
     "ID": 3,
     "Title": "디아",
-    "ContentsFormat": "{0}초당 라피스라줄리 원석{1}개 획득"
+    "ContentsFormat": "{0}초당 라피스라줄리 원석{1}개 획득",
+    "GemName": "라피스라줄리"
   },
   {
     "ID": 4,
     "Title": "이에프",
-    "ContentsFormat": "{0}초당 터키석 원석{1}개 획득"
+    "ContentsFormat": "{0}초당 터키석 원석{1}개 획득",
+    "GemName": "터키석"
   },
   {
     "ID": 5,
     "Title": "지우",
-    "ContentsFormat": "{0}초당 자수정 원석{1}개 획득"
+    "ContentsFormat": "{0}초당 자수정 원석{1}개 획득",
+    "GemName": "자수정"
   },
   {
     "ID": 6,
     "Title": "에이치",
-    "ContentsFormat": "{0}초당 가넷 원석{1}개 획득"
+    "ContentsFormat": "{0}초당 가넷 원석{1}개 획득",
+    "GemName": "가넷"
   },
   {
     "ID": 7,
     "Title": "아이",
-    "ContentsFormat": "{0}초당 은 원석{1}개 획득"
+    "ContentsFormat": "{0}초당 은 원석{1}개 획득",
+    "GemName": "은"
   },
   {
     "ID": 8,
     "Title": "제이케이",
-    "ContentsFormat": "{0}초당 토파즈 원석{1}개 획득"
+    "ContentsFormat": "{0}초당 토파즈 원석{1}개 획득",
+    "GemName": "토파즈"
   },
   {
     "ID": 9,
     "Title": "엘",
-    "ContentsFormat": "{0}초당 아쿠아마린 원석{1}개 획득"
+    "ContentsFormat": "{0}초당 아쿠아마린 원석{1}개 획득",
+    "GemName": "아쿠아마린"
   },
   {
     "ID": 10,
     "Title": "엠엔오",
-    "ContentsFormat": "{0}초당 오팔 원석{1}개 획득"
+    "ContentsFormat": "{0}초당 오팔 원석{1}개 획득",
+    "GemName": "오팔"
   },
   {
     "ID": 11,
     "Title": "피큐",
-    "ContentsFormat": "{0}초당 루비 원석{1}개 획득"
+    "ContentsFormat": "{0}초당 루비 원석{1}개 획득",
+    "GemName": "루비"
   },
   {
     "ID": 12,
     "Title": "알",
-    "ContentsFormat": "{0}초당 사파이어 원석{1}개 획득"
+    "ContentsFormat": "{0}초당 사파이어 원석{1}개 획득",
+    "GemName": "사파이어"
   },
   {
     "ID": 13,
     "Title": "에스티",
-    "ContentsFormat": "{0}초당 에메랄드 원석{1}개 획득"
+    "ContentsFormat": "{0}초당 에메랄드 원석{1}개 획득",
+    "GemName": "에메랄드"
   },
   {
     "ID": 14,
     "Title": "류",
-    "ContentsFormat": "{0}초당 금 원석{1}개 획득"
+    "ContentsFormat": "{0}초당 금 원석{1}개 획득",
+    "GemName": "금"
   },
   {
     "ID": 15,
     "Title": "비떠",
-    "ContentsFormat": "{0}초당 다이아몬드 원석{1}개 획득"
+    "ContentsFormat": "{0}초당 다이아몬드 원석{1}개 획득",
+    "GemName": "다이아몬드"
   },
   {
     "ID": 16,
     "Title": "에와제",
-    "ContentsFormat": "{0}초당 븨브라늄 원석{1}개 획득"
+    "ContentsFormat": "{0}초당 븨브라늄 원석{1}개 획득",
+    "GemName": "븨브라늄"
   }
 ]

@@ -6,6 +6,8 @@ using UnityEngine.Audio;
 
 public class SoundController : MonoBehaviour
 {
+    public static SoundController Instance;
+
     private const string MIXER_MASTER = "MixerMaster";
     private const string MUTE_MIXER_MASTER = "MuteMixerMaster";
     private const string MIXER_BGM = "MixerBGM";
@@ -25,6 +27,17 @@ public class SoundController : MonoBehaviour
     private Slider mMasterSlider, mBGMSlider, mEffectSlider;
 #pragma warning restore 0649
     private float LoadMaster,LoadBGM,LoadFX;
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     private void Start()
     {
         if (PlayerPrefs.GetFloat(MIXER_MASTER, LoadMaster)!=0)
@@ -60,6 +73,22 @@ public class SoundController : MonoBehaviour
             mEffectSlider.interactable = false;
         }
 
+    }
+    public void ChangeBGM(int num)
+    {
+        mBGM.clip = mBGMArr[num];
+        if (num == 1)
+        {
+            mBGM.PlayOneShot(mBGMArr[num]);
+        }
+        else
+        {
+            mBGM.Play();
+        }
+    }
+    public void FXSound(int num)
+    {
+        mEffect.PlayOneShot(mEffectArr[num]);
     }
     public float MasterVolume
     {
@@ -182,8 +211,4 @@ public class SoundController : MonoBehaviour
         }
     }
 
-    public void FXSound(int num)
-    {
-        mEffect.PlayOneShot(mEffectArr[num]);
-    }
 }
