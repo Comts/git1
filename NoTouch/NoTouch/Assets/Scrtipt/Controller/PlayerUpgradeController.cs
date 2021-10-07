@@ -82,6 +82,11 @@ public class PlayerUpgradeController : InformationLoader
                                     mInfo.Duration.ToString()),
                       UnitSetter.GetUnitStr(Math.Round(mInfo.CostCurrent)),
                       LevelUP);
+        CustomController.Instance.CheckName();
+    }
+    public void ChageName(string Title)
+    {
+        mElement.ChangeTitle(Title);
     }
     public void LevelUP(int id, int amount)
     {

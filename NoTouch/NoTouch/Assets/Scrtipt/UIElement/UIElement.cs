@@ -34,7 +34,10 @@ public class UIElement : MonoBehaviour
         });
        
     }
-
+    public void ChangeTitle(string title)
+    {
+        mTitleText.text = title;
+    }
     public void Refresh(string level, string contents, string cost)
     {
         mLevelText.text = level;
