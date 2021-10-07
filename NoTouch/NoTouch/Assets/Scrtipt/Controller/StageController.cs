@@ -84,8 +84,8 @@ public class StageController : MonoBehaviour
                 mElementList[i].CoworkerActive(true);
             }
         }
-        mLastSibling.Refresh(mElementList.Count, UnitSetter.GetUnitStr(100000 * math.pow(2, mElementList.Count - 1)));
-        mDigCost = 100000 * math.pow(2, mElementList.Count - 1);
+        mLastSibling.Refresh(mElementList.Count, UnitSetter.GetUnitStr(100000 * math.pow(2.1, mElementList.Count - 1)));
+        mDigCost = 100000 * math.pow(2.1, mElementList.Count - 1);
         CheckDigButton();
 
         mElementList[GameController.Instance.PlayerPos].PlayerActive(true);
@@ -113,8 +113,8 @@ public class StageController : MonoBehaviour
                 mElementList[i].CoworkerActive(true);
             }
         }
-        mLastSibling.Init(mElementList.Count, UnitSetter.GetUnitStr(100000 * math.pow(2, mElementList.Count-1)), AddStage);
-        mDigCost = 100000 * math.pow(2, mElementList.Count - 1);
+        mLastSibling.Init(mElementList.Count, UnitSetter.GetUnitStr(100000 * math.pow(2.1, mElementList.Count-1)), AddStage);
+        mDigCost = 100000 * math.pow(2.1, mElementList.Count - 1);
         CheckDigButton();
 
         mElementList[GameController.Instance.PlayerPos].PlayerActive(true);
@@ -174,7 +174,7 @@ public class StageController : MonoBehaviour
         Delegates.VoidCallback callback = () => { AddStageCallback(id, amount); };
 
         GameController.Instance.GoldCallback = callback;
-        double cost = 100000*math.pow(2,id-1);
+        double cost = 100000*math.pow(2.1,id-1);
         GameController.Instance.Gold -= cost;
     }
     public void AddStageCallback(int id, int amount)
@@ -196,8 +196,8 @@ public class StageController : MonoBehaviour
             mElementList.Add(element);
             mElementList[id].ShowStage();
             PlayerButtoninteractable(id);
-            mLastSibling.Refresh(mElementList.Count, UnitSetter.GetUnitStr(100000 * math.pow(2, id)));
-            mDigCost = 100000 * math.pow(2, mElementList.Count - 1);
+            mLastSibling.Refresh(mElementList.Count, UnitSetter.GetUnitStr(100000 * math.pow(2.1, id)));
+            mDigCost = 100000 * math.pow(2.1, mElementList.Count - 1);
             CheckDigButton();
         }
 

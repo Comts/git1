@@ -67,8 +67,8 @@ public class CraftController : InformationLoader
         switch (GemGrade)
         {
             case 0:
-                CraftFinishText.text = "원석 1000개";
-                CraftFinishText2.text = "원석 1000개";
+                CraftFinishText.text = "원석 1만 개";
+                CraftFinishText2.text = "원석 1만 개";
                 break;
             case 1:
                 CraftFinishText.text = "B급 광물 1개";
@@ -95,7 +95,7 @@ public class CraftController : InformationLoader
         switch (GemGrade)
         {
             case 0:
-                GameController.Instance.AddAmoutGem_O[GemID]+=1000;
+                GameController.Instance.AddAmoutGem_O[GemID]+=10000;
                 break;
             case 1:
                 GameController.Instance.AddAmoutGem_B[GemID]++;
@@ -180,7 +180,7 @@ public class CraftController : InformationLoader
     {
         for (int i = 0; i < mInfoArr.Length; i++) 
         { 
-            if (GameController.Instance.AddAmoutGem_O[i] < 1000)
+            if (GameController.Instance.AddAmoutGem_O[i] < 10000)
             {
                 mElementList[i].SetCraftButtonActive(false);
             }
@@ -206,7 +206,7 @@ public class CraftController : InformationLoader
 
 
             mElementList.Add(element);
-            if (GameController.Instance.AddAmoutGem_O[i] < 1000)
+            if (GameController.Instance.AddAmoutGem_O[i] < 10000)
             {
                 mElementList[i].SetCraftButtonActive(false);
             }

@@ -27,7 +27,7 @@ public class CraftUIElement : MonoBehaviour
 
         mCraftButton.onClick.AddListener(() =>
         {
-            callback(mID, 1000);
+            callback(mID, 10000);
             UIController.Instance.Popwindow(4);
         });
 
@@ -35,9 +35,7 @@ public class CraftUIElement : MonoBehaviour
     private void Update()
     {
 
-        mAmonutText.text = string.Format("{0} / {1}",
-                                        UnitSetter.GetUnitStr(GameController.Instance.AddAmoutGem_O[mID]).ToString(),
-                                        1000);
+        mAmonutText.text = string.Format("{0} / 1만",UnitSetter.GetUnitStr(GameController.Instance.AddAmoutGem_O[mID]).ToString());
     }
 
     public void SetCraftButtonActive(bool isActive)

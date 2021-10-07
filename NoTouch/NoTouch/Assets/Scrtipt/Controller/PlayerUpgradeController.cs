@@ -73,7 +73,7 @@ public class PlayerUpgradeController : InformationLoader
     {
         mElement.Init(0, mIcon,
                       mTextInfo.Title,
-                      mInfo.CurrentLevel.ToString(),
+                      string.Format("레벨 : {0}",mInfo.CurrentLevel.ToString()),
                       string.Format(mTextInfo.ContentsFormat,
                                     UnitSetter.GetUnitStr(mInfo.ValueCurrent),
                                     mInfo.Duration.ToString()),
@@ -104,7 +104,7 @@ public class PlayerUpgradeController : InformationLoader
     {
         CalcData();
 
-        mElement.Refresh(mInfo.CurrentLevel.ToString(),
+        mElement.Refresh(string.Format("레벨 : {0}", mInfo.CurrentLevel.ToString()),
                       string.Format(mTextInfo.ContentsFormat,
                                     UnitSetter.GetUnitStr(mInfo.ValueCurrent),
                                     mInfo.Duration.ToString()),

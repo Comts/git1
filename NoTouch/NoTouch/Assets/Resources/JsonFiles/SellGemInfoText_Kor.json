@@ -1,342 +1,274 @@
 [
   {
     "ID": 0,
-    "Title": "석탄 원석",
-    "ContentsFormat": "가격 : 1 원"
+    "Title": "석탄 원석"
   },
   {
     "ID": 1,
-    "Title": "B급 석탄",
-    "ContentsFormat": "가격 : 1 만 원"
+    "Title": "B급 석탄"
   },
   {
     "ID": 2,
-    "Title": "A급 석탄",
-    "ContentsFormat": "가격 : 10 만 원"
+    "Title": "A급 석탄"
   },
   {
     "ID": 3,
-    "Title": "S급 석탄",
-    "ContentsFormat": "가격 : 100 만 원"
+    "Title": "S급 석탄"
   },
   {
     "ID": 4,
-    "Title": "구리 원석",
-    "ContentsFormat": "가격 : 100 만 원"
+    "Title": "구리 원석"
   },
   {
     "ID": 5,
-    "Title": "B급 구리",
-    "ContentsFormat": "가격 : 100 만 원"
+    "Title": "B급 구리"
   },
   {
     "ID": 6,
-    "Title": "A급 구리",
-    "ContentsFormat": "가격 : 100 만 원"
+    "Title": "A급 구리"
   },
   {
     "ID": 7,
-    "Title": "S급 구리",
-    "ContentsFormat": "가격 : 100 만 원"
+    "Title": "S급 구리"
   },
   {
     "ID": 8,
-    "Title": "투르말린 원석",
-    "ContentsFormat": "가격 : 100 만 원"
+    "Title": "투르말린 원석"
   },
   {
     "ID": 9,
-    "Title": "B급 투르말린",
-    "ContentsFormat": "가격 : 100 만 원"
+    "Title": "B급 투르말린"
   },
   {
     "ID": 10,
-    "Title": "A급 투르말린",
-    "ContentsFormat": "가격 : 100 만 원"
+    "Title": "A급 투르말린"
   },
   {
     "ID": 11,
-    "Title": "S급 투르말린",
-    "ContentsFormat": "가격 : 100 만 원"
+    "Title": "S급 투르말린"
   },
   {
     "ID": 12,
-    "Title": "라피스라줄리 원석",
-    "ContentsFormat": "가격 : 100 만 원"
+    "Title": "라피스라줄리 원석"
   },
   {
     "ID": 13,
-    "Title": "B급 라피스라줄리",
-    "ContentsFormat": "가격 : 100 만 원"
+    "Title": "B급 라피스라줄리"
   },
   {
     "ID": 14,
-    "Title": "A급 라피스라줄리",
-    "ContentsFormat": "가격 : 100 만 원"
+    "Title": "A급 라피스라줄리"
   },
   {
     "ID": 15,
-    "Title": "S급 라피스라줄리",
-    "ContentsFormat": "가격 : 100 만 원"
+    "Title": "S급 라피스라줄리"
   },
   {
     "ID": 16,
-    "Title": "터키석 원석",
-    "ContentsFormat": "가격 : 100 만 원"
+    "Title": "터키석 원석"
   },
   {
     "ID": 17,
-    "Title": "B급 터키석",
-    "ContentsFormat": "가격 : 100 만 원"
+    "Title": "B급 터키석"
   },
   {
     "ID": 18,
-    "Title": "A급 터키석",
-    "ContentsFormat": "가격 : 100 만 원"
+    "Title": "A급 터키석"
   },
   {
     "ID": 19,
-    "Title": "S급 터키석",
-    "ContentsFormat": "가격 : 100 만 원"
+    "Title": "S급 터키석"
   },
   {
     "ID": 20,
-    "Title": "자수정 원석",
-    "ContentsFormat": "가격 : 100 만 원"
+    "Title": "자수정 원석"
   },
   {
     "ID": 21,
-    "Title": "B급 자수정",
-    "ContentsFormat": "가격 : 100 만 원"
+    "Title": "B급 자수정"
   },
   {
     "ID": 22,
-    "Title": "A급 자수정",
-    "ContentsFormat": "가격 : 100 만 원"
+    "Title": "A급 자수정"
   },
   {
     "ID": 23,
-    "Title": "S급 자수정",
-    "ContentsFormat": "가격 : 100 만 원"
+    "Title": "S급 자수정"
   },
   {
     "ID": 24,
-    "Title": "가넷 원석",
-    "ContentsFormat": "가격 : 100 만 원"
+    "Title": "가넷 원석"
   },
   {
     "ID": 25,
-    "Title": "B급 가넷",
-    "ContentsFormat": "가격 : 100 만 원"
+    "Title": "B급 가넷"
   },
   {
     "ID": 26,
-    "Title": "A급 가넷",
-    "ContentsFormat": "가격 : 100 만 원"
+    "Title": "A급 가넷"
   },
   {
     "ID": 27,
-    "Title": "S급 가넷",
-    "ContentsFormat": "가격 : 100 만 원"
+    "Title": "S급 가넷"
   },
   {
     "ID": 28,
-    "Title": "은 원석",
-    "ContentsFormat": "가격 : 100 만 원"
+    "Title": "은 원석"
   },
   {
     "ID": 29,
-    "Title": "B급 은",
-    "ContentsFormat": "가격 : 100 만 원"
+    "Title": "B급 은"
   },
   {
     "ID": 30,
-    "Title": "A급 은",
-    "ContentsFormat": "가격 : 100 만 원"
+    "Title": "A급 은"
   },
   {
     "ID": 31,
-    "Title": "S급 은",
-    "ContentsFormat": "가격 : 100 만 원"
+    "Title": "S급 은"
   },
   {
     "ID": 32,
-    "Title": "토파즈 원석",
-    "ContentsFormat": "가격 : 100 만 원"
+    "Title": "토파즈 원석"
   },
   {
     "ID": 33,
-    "Title": "B급 토파즈",
-    "ContentsFormat": "가격 : 100 만 원"
+    "Title": "B급 토파즈"
   },
   {
     "ID": 34,
-    "Title": "A급 토파즈",
-    "ContentsFormat": "가격 : 100 만 원"
+    "Title": "A급 토파즈"
   },
   {
     "ID": 35,
-    "Title": "S급 토파즈",
-    "ContentsFormat": "가격 : 100 만 원"
+    "Title": "S급 토파즈"
   },
   {
     "ID": 36,
-    "Title": "아쿠아마린 원석",
-    "ContentsFormat": "가격 : 100 만 원"
+    "Title": "아쿠아마린 원석"
   },
   {
     "ID": 37,
-    "Title": "B급 아쿠아마린",
-    "ContentsFormat": "가격 : 100 만 원"
+    "Title": "B급 아쿠아마린"
   },
   {
     "ID": 38,
-    "Title": "A급 아쿠아마린",
-    "ContentsFormat": "가격 : 100 만 원"
+    "Title": "A급 아쿠아마린"
   },
   {
     "ID": 39,
-    "Title": "S급 아쿠아마린",
-    "ContentsFormat": "가격 : 100 만 원"
+    "Title": "S급 아쿠아마린"
   },
   {
     "ID": 40,
-    "Title": "오팔 원석",
-    "ContentsFormat": "가격 : 100 만 원"
+    "Title": "오팔 원석"
   },
   {
     "ID": 41,
-    "Title": "B급 오팔",
-    "ContentsFormat": "가격 : 100 만 원"
+    "Title": "B급 오팔"
   },
   {
     "ID": 42,
-    "Title": "A급 오팔",
-    "ContentsFormat": "가격 : 100 만 원"
+    "Title": "A급 오팔"
   },
   {
     "ID": 43,
-    "Title": "S급 오팔",
-    "ContentsFormat": "가격 : 100 만 원"
+    "Title": "S급 오팔"
   },
   {
     "ID": 44,
-    "Title": "루비 원석",
-    "ContentsFormat": "가격 : 100 만 원"
+    "Title": "루비 원석"
   },
   {
     "ID": 45,
-    "Title": "B급 루비",
-    "ContentsFormat": "가격 : 100 만 원"
+    "Title": "B급 루비"
   },
   {
     "ID": 46,
-    "Title": "A급 루비",
-    "ContentsFormat": "가격 : 100 만 원"
+    "Title": "A급 루비"
   },
   {
     "ID": 47,
-    "Title": "S급 루비",
-    "ContentsFormat": "가격 : 100 만 원"
+    "Title": "S급 루비"
   },
   {
     "ID": 48,
-    "Title": "사파이어 원석",
-    "ContentsFormat": "가격 : 100 만 원"
+    "Title": "사파이어 원석"
   },
   {
     "ID": 49,
-    "Title": "B급 사파이어",
-    "ContentsFormat": "가격 : 100 만 원"
+    "Title": "B급 사파이어"
   },
   {
     "ID": 50,
-    "Title": "A급 사파이어",
-    "ContentsFormat": "가격 : 100 만 원"
+    "Title": "A급 사파이어"
   },
   {
     "ID": 51,
-    "Title": "S급 사파이어",
-    "ContentsFormat": "가격 : 100 만 원"
+    "Title": "S급 사파이어"
   },
   {
     "ID": 52,
-    "Title": "에메랄드 원석",
-    "ContentsFormat": "가격 : 100 만 원"
+    "Title": "에메랄드 원석"
   },
   {
     "ID": 53,
-    "Title": "B급 에메랄드",
-    "ContentsFormat": "가격 : 100 만 원"
+    "Title": "B급 에메랄드"
   },
   {
     "ID": 54,
-    "Title": "A급 에메랄드",
-    "ContentsFormat": "가격 : 100 만 원"
+    "Title": "A급 에메랄드"
   },
   {
     "ID": 55,
-    "Title": "S급 에메랄드",
-    "ContentsFormat": "가격 : 100 만 원"
+    "Title": "S급 에메랄드"
   },
   {
     "ID": 56,
-    "Title": "금 원석",
-    "ContentsFormat": "가격 : 100 만 원"
+    "Title": "금 원석"
   },
   {
     "ID": 57,
-    "Title": "B급 금",
-    "ContentsFormat": "가격 : 100 만 원"
+    "Title": "B급 금"
   },
   {
     "ID": 58,
-    "Title": "A급 금",
-    "ContentsFormat": "가격 : 100 만 원"
+    "Title": "A급 금"
   },
   {
     "ID": 59,
-    "Title": "S급 금",
-    "ContentsFormat": "가격 : 100 만 원"
+    "Title": "S급 금"
   },
   {
     "ID": 60,
-    "Title": "다이아몬드 원석",
-    "ContentsFormat": "가격 : 100 만 원"
+    "Title": "다이아몬드 원석"
   },
   {
     "ID": 61,
-    "Title": "B급 다이아몬드",
-    "ContentsFormat": "가격 : 100 만 원"
+    "Title": "B급 다이아몬드"
   },
   {
     "ID": 62,
-    "Title": "A급 다이아몬드",
-    "ContentsFormat": "가격 : 100 만 원"
+    "Title": "A급 다이아몬드"
   },
   {
     "ID": 63,
-    "Title": "S급 다이아몬드",
-    "ContentsFormat": "가격 : 100 만 원"
+    "Title": "S급 다이아몬드"
   },
   {
     "ID": 64,
-    "Title": "븨브라늄 원석",
-    "ContentsFormat": "가격 : 100 만 원"
+    "Title": "븨브라늄 원석"
   },
   {
     "ID": 65,
-    "Title": "B급 븨브라늄",
-    "ContentsFormat": "가격 : 100 만 원"
+    "Title": "B급 븨브라늄"
   },
   {
     "ID": 66,
-    "Title": "A급 븨브라늄",
-    "ContentsFormat": "가격 : 100 만 원"
+    "Title": "A급 븨브라늄"
   },
   {
     "ID": 67,
-    "Title": "S급 븨브라늄",
-    "ContentsFormat": "가격 : 100 만 원"
+    "Title": "S급 븨브라늄"
   }
 ]

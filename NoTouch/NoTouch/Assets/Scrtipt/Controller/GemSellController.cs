@@ -103,7 +103,7 @@ public class GemSellController : InformationLoader
             GemSellUIElement element = Instantiate(mElementPrefab, mElementArea);
             element.Init(i, mIconArr[i],
                         mTextInfoArr[i].Title,
-                        mTextInfoArr[i].ContentsFormat,
+                        string.Format("가격 : {0} 원", UnitSetter.GetUnitStr(mInfoArr[i].Cost)),
                         SellGem);
 
 
