@@ -14,7 +14,7 @@ public class PlayerUpgradeController : InformationLoader
     private PlayerStatText mTextInfo;
 #pragma warning disable 0649
     [SerializeField]
-    private Sprite mIcon;
+    private Image mIcon;
     [SerializeField]
     private UIElement mElement;
     [SerializeField]
@@ -22,6 +22,7 @@ public class PlayerUpgradeController : InformationLoader
     [SerializeField]
     private Text mPowerAmountText,mPowerText;
 #pragma warning restore 0649
+    private Sprite[] mSpriteArr;
     public PlayerStatText GetTextInfo()
     {
         return mTextInfo;
@@ -46,6 +47,8 @@ public class PlayerUpgradeController : InformationLoader
         LoadJson(out mTextInfo,
             Paths.PLAYER_TEXT_TABLE +
             Paths.LANGUAGE_TYPE_ARR[GameController.Instance.LanguageType]);
+        mSpriteArr = Resources.LoadAll<Sprite>(Paths.PLAYER);
+        mIcon.sprite = mSpriteArr[0];
         ReStart();
         Load();
 
@@ -71,7 +74,7 @@ public class PlayerUpgradeController : InformationLoader
 
     private void Load()
     {
-        mElement.Init(0, mIcon,
+        mElement.Init(0, mIcon.sprite,
                       mTextInfo.Title,
                       string.Format("레벨 : {0}",mInfo.CurrentLevel.ToString()),
                       string.Format(mTextInfo.ContentsFormat,

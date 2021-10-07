@@ -5,15 +5,43 @@ using UnityEngine;
 
 public class TouchManager : MonoBehaviour
 {
+    public static TouchManager Instance;
     private Camera mMainCamera;
 #pragma warning disable 0649
     [SerializeField]
     private EffectPool mEffectPool;
 #pragma warning restore 0649
+    [SerializeField]
+    private int mChangeCount;
+    private int mTouchCount;
+    private int mTouchImage;
+    private int mCurrentImage;
+    public int TouchImage
+    {
+        get { return mCurrentImage; }
+        set
+        {
+            mCurrentImage = value;
+        }
+    }
     // Start is called before the first frame update
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     void Start()
     {
         mMainCamera = Camera.main;
+        mTouchCount = 0;
+        mTouchImage = 1;
+        mCurrentImage = 0;
     }
     
     private Ray GenerateRay(Vector3 screenPos)
@@ -30,7 +58,8 @@ public class TouchManager : MonoBehaviour
     {
         if(Input.touchCount>0)
         {
-            for(int i=0;i<Input.touchCount;i++)
+            mTouchCount++;
+            for (int i=0;i<Input.touchCount;i++)
             {
                 Touch touch = Input.GetTouch(i);
                 if(touch.phase==TouchPhase.Began)
@@ -43,8 +72,22 @@ public class TouchManager : MonoBehaviour
                         // {
                         if (hit.collider.gameObject.CompareTag("Touch"))
                         {
+                            mTouchCount++;
                             GameController.Instance.Touch();
                             SoundController.Instance.FXSound(UnityEngine.Random.Range(0, 2));
+
+                            if(mTouchCount>= mChangeCount)
+                            {
+                                StageController.Instance.ChangePlayerImage(mTouchImage);
+                                mCurrentImage = mTouchImage;
+                                mTouchImage++;
+                                if (mTouchImage > 3)
+                                {
+                                    mTouchImage = 0;
+                                }
+                                mTouchCount = 0;
+                            }
+
                         }
                         if (hit.collider.gameObject.CompareTag("Craft"))
                         {
@@ -87,8 +130,20 @@ public class TouchManager : MonoBehaviour
             {
                 if (hit.collider.gameObject.CompareTag("Touch"))
                 {
+                    mTouchCount++;
                     GameController.Instance.Touch();
                     SoundController.Instance.FXSound(UnityEngine.Random.Range(0, 2));
+                    if (mTouchCount >= mChangeCount)
+                    {
+                        StageController.Instance.ChangePlayerImage(mTouchImage);
+                        mCurrentImage = mTouchImage;
+                        mTouchImage++;
+                        if (mTouchImage > 3)
+                        {
+                            mTouchImage = 0;
+                        }
+                        mTouchCount = 0;
+                    }
                 }
                 if (hit.collider.gameObject.CompareTag("Craft"))
                 {

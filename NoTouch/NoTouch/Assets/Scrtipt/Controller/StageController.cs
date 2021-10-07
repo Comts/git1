@@ -145,6 +145,10 @@ public class StageController : MonoBehaviour
     {
         mPlayerPos[GameController.Instance.PlayerPos].SetIsOnWithoutNotify(true);
     }
+    public void ChangePlayerImage(int i)
+    {
+        mElementList[GameController.Instance.PlayerPos].ChangePlayerImage(i);
+    }
     public void CoworkerActive(int f)
     {
         mElementList[f].CoworkerActive(true);
@@ -166,6 +170,7 @@ public class StageController : MonoBehaviour
             {
                 mElementList[f].PlayerActive(true);
                 GameController.Instance.PlayerPos = f;
+                mElementList[GameController.Instance.PlayerPos].ChangePlayerImage(TouchManager.Instance.TouchImage);
             }
         }
     }
