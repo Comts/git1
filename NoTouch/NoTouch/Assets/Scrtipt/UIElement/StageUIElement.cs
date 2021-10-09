@@ -7,40 +7,34 @@ public class StageUIElement : MonoBehaviour
 {
 #pragma warning disable 0649
     [SerializeField]
-    private Image BodyImage,HeadImage;
+    private Animator PlayerAnim;
+    [SerializeField]
+    private Image PlayerImage;
     [SerializeField]
     private Animator CoworkerAnim;
     [SerializeField]
-    private Transform CoworkerPos;  
+    private Transform CoworkerPos;
 #pragma warning restore 0649
     private Transform Coworker;
-    private Sprite[] mBodyIconArr;
-    private Sprite[] mHeadIconArr;
+    private Sprite[] mIconArr;
     private Image mImage;
     private float mAlphaAnimPeriod = 2;
     // Start is called before the first frame update
     private void Awake()
     {
 
-        mBodyIconArr = Resources.LoadAll<Sprite>(Paths.PLAYER_BODY);
-        mHeadIconArr = Resources.LoadAll<Sprite>(Paths.PROFILE);
-        BodyImage.sprite = mBodyIconArr[0];
-        ChangePlayerHead();
+        mIconArr = Resources.LoadAll<Sprite>(Paths.PLAYER);
+        PlayerImage.sprite = mIconArr[0];
     }
-
-    public void ChangePlayerHead()
-    {
-        HeadImage.sprite = mHeadIconArr[GameController.Instance.PlayerProfile];
-    }
-
     public void ChangePlayerImage(int i)
     {
 
-        BodyImage.sprite = mBodyIconArr[i];
+        PlayerImage.sprite = mIconArr[i];
     }
     public void PlayerActive(bool b)
     {
-        BodyImage.gameObject.SetActive(b);
+        //PlayerAnim.gameObject.SetActive(b);
+        PlayerImage.gameObject.SetActive(b);
     }
     public void CoworkerActive(bool b)
     {

@@ -190,6 +190,4 @@ public class SaveData
     public int Attend_Reward;
     public int Check_Attend_Reward;
 
-    public int PlayerProfile;
-
 }

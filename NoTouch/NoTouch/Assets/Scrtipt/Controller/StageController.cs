@@ -149,13 +149,6 @@ public class StageController : MonoBehaviour
     {
         mElementList[GameController.Instance.PlayerPos].ChangePlayerImage(i);
     }
-    public void ChangePlayerHeadImage()
-    {
-        for(int i = 0; i < GameController.Instance.Stage; i++)
-        {
-            mElementList[i].ChangePlayerHead();
-        }
-    }
     public void CoworkerActive(int f)
     {
         mElementList[f].CoworkerActive(true);

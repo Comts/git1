@@ -74,14 +74,11 @@ public class TouchManager : MonoBehaviour
                         {
                             mTouchCount++;
                             GameController.Instance.Touch();
+                            SoundController.Instance.FXSound(UnityEngine.Random.Range(0, 2));
 
                             if(mTouchCount>= mChangeCount)
                             {
                                 StageController.Instance.ChangePlayerImage(mTouchImage);
-                                if (mTouchImage == 0)
-                                {
-                                    SoundController.Instance.FXSound(UnityEngine.Random.Range(0, 2));
-                                }
                                 mCurrentImage = mTouchImage;
                                 mTouchImage++;
                                 if (mTouchImage > 3)
@@ -135,13 +132,10 @@ public class TouchManager : MonoBehaviour
                 {
                     mTouchCount++;
                     GameController.Instance.Touch();
+                    SoundController.Instance.FXSound(UnityEngine.Random.Range(0, 2));
                     if (mTouchCount >= mChangeCount)
                     {
                         StageController.Instance.ChangePlayerImage(mTouchImage);
-                        if (mTouchImage == 0)
-                        {
-                            SoundController.Instance.FXSound(UnityEngine.Random.Range(0, 2));
-                        }
                         mCurrentImage = mTouchImage;
                         mTouchImage++;
                         if (mTouchImage > 3)

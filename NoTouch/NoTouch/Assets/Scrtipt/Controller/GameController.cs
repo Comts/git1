@@ -524,14 +524,6 @@ public class GameController : SaveDataController
         }
 
     }
-    public int PlayerProfile
-    {
-        get { return mUser.PlayerProfile; }
-        set
-        {
-            mUser.PlayerProfile = value;
-        }
-    }
     private void Awake()
     {
         if(Instance == null)
@@ -668,7 +660,6 @@ public class GameController : SaveDataController
 
         mUser.WhackCount = 0;
         mUser.MineCount = 0;
-        mUser.PlayMoleCount = 3;
 
         GemSellController.Instance.ReStart();
         PlayerUpgradeController.Instance.ReStart();
@@ -681,6 +672,7 @@ public class GameController : SaveDataController
         MineShopController.Instance.ReStart();
         CraftController.Instance.ReStart();
 
+        mUser.PlayMoleCount = 3;
         MoleController.Instance.CheckPlayButton();
 
         Save();

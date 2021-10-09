@@ -321,8 +321,6 @@ public class SaveDataController : MonoBehaviour
         mUser.Attend_Reward = -1;
         mUser.Check_Attend_Reward = 0;
         mUser.CheckDay = 0;
-
-        mUser.PlayerProfile = 0;
     }
 
     protected void Save()
