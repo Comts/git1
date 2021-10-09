@@ -7,6 +7,10 @@ public class CustomController : MonoBehaviour
 {
     public static CustomController Instance;
     private string mInputName;
+    private Sprite[] mSpriteArr;
+    [SerializeField]
+    private Image mProfile;
+    private int mCurrentProfile, mPreviousProfile, mNextProfile;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -21,6 +25,9 @@ public class CustomController : MonoBehaviour
     }
     void Start()
     {
+        mSpriteArr = Resources.LoadAll<Sprite>(Paths.PROFILE);
+        ShowSettingImage();
+        mCurrentProfile = GameController.Instance.PlayerProfile;
     }
     public void CheckName()
     {
@@ -40,5 +47,38 @@ public class CustomController : MonoBehaviour
     {
         PlayerPrefs.SetString("Name", name);
         PlayerUpgradeController.Instance.ChageName(name);
+    }
+    public void ShowNextImage()
+    {
+        mNextProfile = mCurrentProfile+1;
+        if(mNextProfile >= mSpriteArr.Length)
+        {
+            mNextProfile = 0;
+        }
+        ShowImage(mNextProfile);
+    }
+    public void ShowPreviousImage()
+    {
+        mPreviousProfile = mCurrentProfile-1;
+        if(mPreviousProfile < 0)
+        {
+            mPreviousProfile = mSpriteArr.Length-1;
+        }
+        ShowImage(mPreviousProfile);
+    }
+    public void ShowImage(int i)
+    {
+        mProfile.sprite = mSpriteArr[i];
+        mCurrentProfile = i;
+    }
+    public void ShowSettingImage()
+    {
+        mProfile.sprite = mSpriteArr[GameController.Instance.PlayerProfile];
+    }
+    public void SelectImage()
+    {
+        GameController.Instance.PlayerProfile = mCurrentProfile;
+        PlayerUpgradeController.Instance.ChangeProfile();
+        StageController.Instance.ChangePlayerHeadImage();
     }
 }

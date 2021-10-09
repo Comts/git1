@@ -47,8 +47,8 @@ public class PlayerUpgradeController : InformationLoader
         LoadJson(out mTextInfo,
             Paths.PLAYER_TEXT_TABLE +
             Paths.LANGUAGE_TYPE_ARR[GameController.Instance.LanguageType]);
-        mSpriteArr = Resources.LoadAll<Sprite>(Paths.PLAYER);
-        mIcon.sprite = mSpriteArr[0];
+        mSpriteArr = Resources.LoadAll<Sprite>(Paths.PROFILE);
+        mIcon.sprite = mSpriteArr[GameController.Instance.PlayerProfile];
         ReStart();
         Load();
 
@@ -87,6 +87,10 @@ public class PlayerUpgradeController : InformationLoader
     public void ChageName(string Title)
     {
         mElement.ChangeTitle(Title);
+    }
+    public void ChangeProfile()
+    {
+        mIcon.sprite = mSpriteArr[GameController.Instance.PlayerProfile];
     }
     public void LevelUP(int id, int amount)
     {

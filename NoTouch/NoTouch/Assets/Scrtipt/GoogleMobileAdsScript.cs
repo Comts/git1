@@ -36,7 +36,7 @@ public class GoogleMobileAdsScript : MonoBehaviour
 #endif
 
         // Create an empty ad request.
-        AdRequest request = new AdRequest.Builder().AddTestDevice("444645ECF785CF73").Build();
+        AdRequest request = new AdRequest.Builder().AddTestDevice("5919871F5E8EDA40").Build();
         // Load the rewarded video ad with the request.
         rewardBasedVideo.LoadAd(request, Test_UnitID);
     }
