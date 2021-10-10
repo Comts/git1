@@ -61,6 +61,7 @@ public class TouchManager : MonoBehaviour
             mTouchCount++;
             for (int i=0;i<Input.touchCount;i++)
             {
+                Debug.Log("hit2");
                 Touch touch = Input.GetTouch(i);
                 if(touch.phase==TouchPhase.Began)
                 {
@@ -106,6 +107,11 @@ public class TouchManager : MonoBehaviour
                         {
                             EarthController.Instance.Touch();
                             SoundController.Instance.FXSound(7);
+                        }
+                        if (hit.collider.gameObject.CompareTag("Dot"))
+                        {
+                            Vector2 touchPos = new Vector2(hit.point.x , hit.point.y);
+                            CustomImage.Instance.Draw(touchPos);
                         }
                         vec = hit.point;
                         return true;
@@ -165,6 +171,12 @@ public class TouchManager : MonoBehaviour
                 {
                     EarthController.Instance.Touch();
                     SoundController.Instance.FXSound(7);
+                }
+                if (hit.collider.gameObject.CompareTag("Dot"))
+                {
+                    Vector2 touchPos = new Vector2(hit.point.x, hit.point.y);
+                    //Debug.Log("Dot Pos: "+ touchPos);
+                    CustomImage.Instance.Draw(touchPos);
                 }
             }
             Timer effect = mEffectPool.GetFromPool();

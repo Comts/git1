@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: beae878d9bd36734697890a1bfa7b04d, type: 3}
+  m_Name: Profile_CustomUPAImage
+  m_EditorClassIdentifier: 
+  width: 0
+  height: 0
+  finalImg: {fileID: 0}
+  _gridSpacing: 20
+  gridOffsetY: 0
+  gridOffsetX: 0
+  selectedColor: {r: 0, g: 0, b: 0, a: 1}
+  tool: 0
+  gridBGIndex: 0
+  dirty: 0

@@ -25,9 +25,21 @@ public class CustomController : MonoBehaviour
     }
     void Start()
     {
-        mSpriteArr = Resources.LoadAll<Sprite>(Paths.PROFILE);
-        ShowSettingImage();
+        LoadProfile();
         mCurrentProfile = GameController.Instance.PlayerProfile;
+    }
+    public void LoadProfile()
+    {
+        if (mSpriteArr == null)
+        {
+            mSpriteArr = Resources.LoadAll<Sprite>(Paths.PROFILE);
+        }
+        else
+        {
+            mSpriteArr = null;
+            mSpriteArr = Resources.LoadAll<Sprite>(Paths.PROFILE);
+        }
+        ShowSettingImage();
     }
     public void CheckName()
     {
