@@ -10,7 +10,7 @@ public class CustomController : MonoBehaviour
     private Sprite[] mSpriteArr;
 #pragma warning disable 0649
     [SerializeField]
-    private Image mProfile,BuyCustomApply;
+    private Image mProfile,BuyCustomApply,ChangeSucces;
 #pragma warning restore 0649
     private int mCurrentProfile, mPreviousProfile, mNextProfile;
     // Start is called before the first frame update
@@ -96,6 +96,7 @@ public class CustomController : MonoBehaviour
             GameController.Instance.PlayerProfile = mCurrentProfile;
             PlayerUpgradeController.Instance.ChangeProfile();
             StageController.Instance.ChangePlayerHeadImage();
+            ChangeSucces.gameObject.SetActive(true);
         }
         else
         {

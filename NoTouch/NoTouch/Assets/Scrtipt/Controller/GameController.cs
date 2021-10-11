@@ -23,6 +23,8 @@ public class GameController : SaveDataController
     private double GemCostIncrese = 1.3;
     [SerializeField]
     private Toggle mScrollToggle;
+    [SerializeField]
+    private Image ExplainWindow;
 #pragma warning restore 0649
     private double[] mFloorProgress, mFloorProgressCal;
     private double[] mFloorGemCost, mFloorGemCostCal;
@@ -565,6 +567,10 @@ public class GameController : SaveDataController
         {
             mUser.PlayerPos = mUser.Stage;
         }
+        if (mUser.FirstTry == 0)
+        {
+            ExplainWindow.gameObject.SetActive(true);
+        }
         //CalManPower();
         mFloorProgress = new double[Constants.MAX_fLOOR];
         mFloorProgressCal = new double[Constants.MAX_fLOOR];
@@ -761,5 +767,9 @@ public class GameController : SaveDataController
     public double CalBuffManPower()
     {
         return MaxManPower * (1 + Buff_Achieve + Buff_Coworker*(1+ BuffCoworker_Double));
+    }
+    public void FirstTry()
+    {
+        mUser.FirstTry =1;
     }
 }

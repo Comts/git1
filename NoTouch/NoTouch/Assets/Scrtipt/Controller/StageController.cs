@@ -151,7 +151,7 @@ public class StageController : MonoBehaviour
     }
     public void ChangePlayerHeadImage()
     {
-        for(int i = 0; i < GameController.Instance.Stage; i++)
+        for(int i = 0; i <= GameController.Instance.Stage; i++)
         {
             mElementList[i].ChangePlayerHead();
         }

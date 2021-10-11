@@ -371,6 +371,7 @@ public class SaveDataController : MonoBehaviour
         mUser.CheckDay = 0;
 
         mUser.PlayerProfile = 0;
+        mUser.FirstTry = 0;
     }
 
     protected void Save()

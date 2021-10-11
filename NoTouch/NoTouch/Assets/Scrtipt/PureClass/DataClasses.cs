@@ -191,5 +191,6 @@ public class SaveData
     public int Check_Attend_Reward;
 
     public int PlayerProfile;
+    public int FirstTry;
 
 }
