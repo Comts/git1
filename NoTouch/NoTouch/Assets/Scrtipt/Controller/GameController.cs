@@ -559,6 +559,8 @@ public class GameController : SaveDataController
     // Start is called before the first frame update
     void Start()
     {
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
+
         if (mUser.Stage < mUser.PlayerPos)
         {
             mUser.PlayerPos = mUser.Stage;

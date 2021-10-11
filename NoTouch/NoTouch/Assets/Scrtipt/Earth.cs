@@ -6,9 +6,9 @@ using UnityEngine.UI;
 public class Earth : MonoBehaviour
 {
     public static Earth Instance;
+#pragma warning disable 0649
     [SerializeField]
     private Slider mSlider;
-#pragma warning disable 0649
     [SerializeField]
     private Image Earth_Complete_Window;
     [SerializeField]

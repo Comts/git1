@@ -21,7 +21,9 @@ public class IAPController : MonoBehaviour, IStoreListener
     [SerializeField] GameObject StarterPack2;
     [SerializeField] GameObject AutoClick1;
     [SerializeField] GameObject AutoClick2;
+    [SerializeField] GameObject CustomApplyWindow;
 #pragma warning restore 0649
+    public bool CustomApply;
 
     // Product identifiers for all products capable of being purchased: 
     // "convenience" general identifiers for use with Purchasing, and their store-specific identifier 
@@ -47,6 +49,7 @@ public class IAPController : MonoBehaviour, IStoreListener
     private string Nonconsumable_StarterPack2 = "StarterPack2";
     private string Nonconsumable_AutoClick = "AutoClick";
     private string Nonconsumable_AutoClick2 = "AutoClick2";
+    private string Nonconsumable_CustomApply = "CustomApply";
 
     private string Consumable_Dazi_Gold_10 = "Dazi_Gold_10"; //자유롭게
     private string Consumable_Dazi_Gold_20 = "Dazi_Gold_20";
@@ -64,6 +67,7 @@ public class IAPController : MonoBehaviour, IStoreListener
     private string GooglePlay_StarterPack2 = "com.comts.notouch.starterpack2";
     private string GooglePlay_AutoClick = "com.comts.notouch.autoclick";
     private string GooglePlay_AutoClick2 = "com.comts.notouch.autoclick2";
+    private string GooglePlay_CustomApply = "com.comts.notouch.customapply";
 
     private string GooglePlay_Dazi_Gold_10 = "com.comts.notouch.dazi.gold.10"; //구글플레이 대문자 안됨. 스토어에 등록된대로입력
     private string GooglePlay_Dazi_Gold_20 = "com.comts.notouch.dazi.gold.20";
@@ -101,6 +105,7 @@ public class IAPController : MonoBehaviour, IStoreListener
     }
     void Start()
     {
+        CustomApply = false;
         // If we haven't set up the Unity Purchasing reference
         if (m_StoreController == null)
         {
@@ -144,6 +149,12 @@ public class IAPController : MonoBehaviour, IStoreListener
                 }
 
             }
+        }
+
+        if (CheckHistory(Nonconsumable_CustomApply))
+        {
+            CustomApplyWindow.SetActive(false);
+            CustomApply = true;
         }
     }
     public void ReStart()
@@ -211,6 +222,10 @@ public class IAPController : MonoBehaviour, IStoreListener
         });
         builder.AddProduct(Nonconsumable_AutoClick2, ProductType.NonConsumable, new IDs(){
             { GooglePlay_AutoClick2, GooglePlay.Name },
+        });
+
+        builder.AddProduct(Nonconsumable_CustomApply, ProductType.NonConsumable, new IDs(){
+            { GooglePlay_CustomApply, GooglePlay.Name },
         });
 
         //// Add a product to sell / restore by way of its identifier, associating the general identifier
@@ -323,6 +338,15 @@ public class IAPController : MonoBehaviour, IStoreListener
             QuestController.Instance.Achive_AutoClick();
         }
     }
+    public void BuyCustomApply()
+    {
+        if (CheckHistory(Nonconsumable_CustomApply))
+        {
+            Debug.Log("이미 구매한 상품");
+            return;
+        }
+        BuyProductID(Nonconsumable_CustomApply);
+    }
 
     //public void BuyConsumable()
     //{
@@ -349,7 +373,7 @@ public class IAPController : MonoBehaviour, IStoreListener
     //    BuyProductID(kProductIDSubscription);
     //}
 
-     
+
     void BuyProductID(string productId)
     {
         // If Purchasing has been initialized ...
@@ -572,6 +596,13 @@ public class IAPController : MonoBehaviour, IStoreListener
                     StopCoroutine(mCor_AutoClick1);
                 }
                 StartCoroutine(Cor_AutoClick(0.1f));
+            }
+            else if (String.Equals(args.purchasedProduct.definition.id, Nonconsumable_CustomApply, StringComparison.Ordinal))
+            {
+                Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
+                CustomApplyWindow.SetActive(false);
+                CustomApply = true;
+
             }
             else
             {

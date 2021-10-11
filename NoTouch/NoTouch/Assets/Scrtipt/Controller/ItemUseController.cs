@@ -106,21 +106,27 @@ public class ItemUseController : MonoBehaviour
         switch(buttonID)
         {
             case 0://광물가격상승
+                SoundController.Instance.FXSound(9);
                 mSellGemMulti = StartCoroutine(SellGemMultiRoutine(10, 2));
                 break;
             case 1://광부의 도시락
+                SoundController.Instance.FXSound(10);
                 mGetGemMultiPlayer = StartCoroutine(GetGemMultiRoutine(0, 10, 10));
                 break;
             case 2://알바들의 도시락
+                SoundController.Instance.FXSound(10);
                 mGetGemMultiCoworker = StartCoroutine(GetGemMultiRoutine(1, 10, 10));
                 break;
             case 3:
+                SoundController.Instance.FXSound(9);
                 mSellGemMulti = StartCoroutine(SellGemMultiRoutine(10, 20));
                 break;
             case 4:
+                SoundController.Instance.FXSound(10);
                 mGetGemMultiPlayer = StartCoroutine(GetGemMultiRoutine(0, 10, 100));
                 break;
             case 5:
+                SoundController.Instance.FXSound(10);
                 mGetGemMultiCoworker = StartCoroutine(GetGemMultiRoutine(1, 10, 100));
                 break;
             default:

@@ -8,8 +8,10 @@ public class CustomController : MonoBehaviour
     public static CustomController Instance;
     private string mInputName;
     private Sprite[] mSpriteArr;
+#pragma warning disable 0649
     [SerializeField]
-    private Image mProfile;
+    private Image mProfile,BuyCustomApply;
+#pragma warning restore 0649
     private int mCurrentProfile, mPreviousProfile, mNextProfile;
     // Start is called before the first frame update
     private void Awake()
@@ -89,8 +91,15 @@ public class CustomController : MonoBehaviour
     }
     public void SelectImage()
     {
-        GameController.Instance.PlayerProfile = mCurrentProfile;
-        PlayerUpgradeController.Instance.ChangeProfile();
-        StageController.Instance.ChangePlayerHeadImage();
+        if (IAPController.Instance.CustomApply)
+        {
+            GameController.Instance.PlayerProfile = mCurrentProfile;
+            PlayerUpgradeController.Instance.ChangeProfile();
+            StageController.Instance.ChangePlayerHeadImage();
+        }
+        else
+        {
+            BuyCustomApply.gameObject.SetActive(true);
+        }
     }
 }

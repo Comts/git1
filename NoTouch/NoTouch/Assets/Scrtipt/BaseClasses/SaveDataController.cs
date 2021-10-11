@@ -12,10 +12,14 @@ public class SaveDataController : MonoBehaviour
     protected SaveData mUser;
     [SerializeField]
     private string url = "";
+#pragma warning disable 0649
     [SerializeField]
     private Transform SleepWindow;
+#pragma warning restore 0649
 
     private double mTenMinCount;
+    private double mPlayMoletime;
+    private double mStartMoletime;
 
     IEnumerator StartTimeChk()
     {
@@ -96,16 +100,52 @@ public class SaveDataController : MonoBehaviour
             }
         }
         mUser.EndTime = Endtime;
-        if (GameController.Instance.PlayMoleCount < 3)
+    }
+    IEnumerator MoleTimeChk()
+    {
+        double MoleChecktime=0;
+        UnityWebRequest request = new UnityWebRequest();
+        using (request = UnityWebRequest.Get(url))
         {
-            if((int)(Math.Abs(mUser.EndTime - mUser.StartTime) / 600)- mTenMinCount > 0)
+            yield return request.SendWebRequest();
+
+            if (request.isNetworkError)
             {
-                GameController.Instance.PlayMoleCount++;
-                mTenMinCount++;
-                MoleController.Instance.CheckPlayButton();
+                Debug.Log(request.error);
+            }
+            else
+            {
+                string date = request.GetResponseHeader("date");
+
+                DateTime dateTime = DateTime.Parse(date).ToUniversalTime();
+                TimeSpan timestamp = dateTime - new DateTime(1970, 1, 1, 0, 0, 0);
+                MoleChecktime = timestamp.TotalSeconds;
             }
         }
-        //Debug.Log("종료시간 저장 : " + mUser.EndTime);
+        if (mStartMoletime == 0)
+        {
+            mStartMoletime = MoleChecktime;
+        }
+        else
+        {
+            mPlayMoletime = MoleChecktime;
+        }
+
+        if (mStartMoletime* mPlayMoletime != 0)
+        {
+            if ((mPlayMoletime - mStartMoletime) >= 600)
+            {
+                GameController.Instance.PlayMoleCount++;
+                mStartMoletime = mPlayMoletime;
+                mPlayMoletime = 0;
+                MoleController.Instance.CheckPlayButton();
+                if (GameController.Instance.PlayMoleCount >= 3)
+                {
+                    mStartMoletime = 0;
+                }
+            }
+
+        }
     }
     public void GetStartTime()
     {
@@ -115,6 +155,14 @@ public class SaveDataController : MonoBehaviour
     {
         Save();
         StartCoroutine(EndTimeChk());
+        GetChargeMoleTime();
+    }
+    public void GetChargeMoleTime()
+    {
+        if (GameController.Instance.PlayMoleCount < 3)
+        {
+            StartCoroutine(MoleTimeChk());
+        }
     }
     protected void LoadGame()
     {

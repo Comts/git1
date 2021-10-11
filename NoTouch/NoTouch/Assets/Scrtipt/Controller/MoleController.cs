@@ -119,7 +119,8 @@ public class MoleController : MonoBehaviour
         currentTime = mPlayTime; 
         ShowScore();
         GameController.Instance.PlayMoleCount--;
-        CheckPlayButton(); ;
+        CheckPlayButton();
+        GameController.Instance.GetChargeMoleTime();
     }
     public void AddScore()
     {

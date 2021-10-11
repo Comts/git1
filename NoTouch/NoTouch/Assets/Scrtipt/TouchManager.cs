@@ -10,9 +10,9 @@ public class TouchManager : MonoBehaviour
 #pragma warning disable 0649
     [SerializeField]
     private EffectPool mEffectPool;
-#pragma warning restore 0649
     [SerializeField]
     private int mChangeCount;
+#pragma warning restore 0649
     private int mTouchCount;
     private int mTouchImage;
     private int mCurrentImage;
@@ -112,6 +112,7 @@ public class TouchManager : MonoBehaviour
                         {
                             Vector2 touchPos = new Vector2(hit.point.x , hit.point.y);
                             CustomImage.Instance.Draw(touchPos);
+                            SoundController.Instance.FXSound(UnityEngine.Random.Range(0, 2));
                         }
                         vec = hit.point;
                         return true;
@@ -177,6 +178,7 @@ public class TouchManager : MonoBehaviour
                     Vector2 touchPos = new Vector2(hit.point.x, hit.point.y);
                     //Debug.Log("Dot Pos: "+ touchPos);
                     CustomImage.Instance.Draw(touchPos);
+                    SoundController.Instance.FXSound(UnityEngine.Random.Range(0, 2));
                 }
             }
             Timer effect = mEffectPool.GetFromPool();
