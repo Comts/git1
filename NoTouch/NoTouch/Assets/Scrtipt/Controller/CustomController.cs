@@ -7,7 +7,7 @@ public class CustomController : MonoBehaviour
 {
     public static CustomController Instance;
     private string mInputName;
-    private Sprite[] mSpriteArr;
+    public Sprite[] mSpriteArr;
 #pragma warning disable 0649
     [SerializeField]
     private Image mProfile,BuyCustomApply,ChangeSucces;
@@ -27,29 +27,29 @@ public class CustomController : MonoBehaviour
     }
     void Start()
     {
-        LoadProfile();
         mCurrentProfile = GameController.Instance.PlayerProfile;
+        mSpriteArr = Resources.LoadAll<Sprite>(Paths.PROFILE);
     }
     public void LoadProfile()
     {
-        if (mSpriteArr == null)
+        Sprite spr = CustomImage.Instance.CheckCustompath();
+        if (spr != null)
         {
-            mSpriteArr = Resources.LoadAll<Sprite>(Paths.PROFILE);
+            mSpriteArr[mSpriteArr.Length - 1] = spr;
         }
-        else
-        {
-            mSpriteArr = null;
-            mSpriteArr = Resources.LoadAll<Sprite>(Paths.PROFILE);
-        }
-        ShowSettingImage();
+        mProfile.sprite = mSpriteArr[GameController.Instance.PlayerProfile];
     }
     public void CheckName()
     {
         mInputName = PlayerPrefs.GetString("Name");
-        if (mInputName != null)
+        if (GameController.Instance.ChangeName==1)
         {
             PlayerUpgradeController.Instance.ChageName(mInputName);
         }
+    }
+    public void ChangeCustomImage(Sprite spr)
+    {
+        mSpriteArr[mSpriteArr.Length-1] = spr;
     }
 
     // Update is called once per frame
@@ -59,8 +59,12 @@ public class CustomController : MonoBehaviour
     }
     public void ReadStringName(string name)
     {
-        PlayerPrefs.SetString("Name", name);
-        PlayerUpgradeController.Instance.ChageName(name);
+        if(name.Length > 0)
+        {
+            PlayerPrefs.SetString("Name", name);
+            PlayerUpgradeController.Instance.ChageName(name);
+            GameController.Instance.ChangeName = 1;
+        }
     }
     public void ShowNextImage()
     {
@@ -84,10 +88,6 @@ public class CustomController : MonoBehaviour
     {
         mProfile.sprite = mSpriteArr[i];
         mCurrentProfile = i;
-    }
-    public void ShowSettingImage()
-    {
-        mProfile.sprite = mSpriteArr[GameController.Instance.PlayerProfile];
     }
     public void SelectImage()
     {

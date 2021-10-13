@@ -156,6 +156,11 @@ public class IAPController : MonoBehaviour, IStoreListener
             CustomApplyWindow.SetActive(false);
             CustomApply = true;
         }
+
+        if (!CustomApply)
+        {
+            GameController.Instance.PlayerProfile = 0;
+        }
     }
     public void ReStart()
     {

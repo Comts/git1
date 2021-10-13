@@ -534,6 +534,14 @@ public class GameController : SaveDataController
             mUser.PlayerProfile = value;
         }
     }
+    public int ChangeName
+    {
+        get { return mUser.ChangeName; }
+        set
+        {
+            mUser.ChangeName = value;
+        }
+    }
     private void Awake()
     {
         if(Instance == null)

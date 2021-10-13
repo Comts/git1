@@ -25,12 +25,22 @@ public class StageUIElement : MonoBehaviour
         mBodyIconArr = Resources.LoadAll<Sprite>(Paths.PLAYER_BODY);
         mHeadIconArr = Resources.LoadAll<Sprite>(Paths.PROFILE);
         BodyImage.sprite = mBodyIconArr[0];
+        Sprite spr = CustomImage.Instance.CheckCustompath();
+        if (spr != null)
+        {
+            mHeadIconArr[mHeadIconArr.Length - 1] = spr;
+        }
         ChangePlayerHead();
     }
 
     public void ChangePlayerHead()
     {
         HeadImage.sprite = mHeadIconArr[GameController.Instance.PlayerProfile];
+    }
+    public void ChangeCustomImage(Sprite spr)
+    {
+        mHeadIconArr[mHeadIconArr.Length - 1] = spr;
+        ChangePlayerHead();
     }
 
     public void ChangePlayerImage(int i)

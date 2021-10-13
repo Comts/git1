@@ -372,6 +372,7 @@ public class SaveDataController : MonoBehaviour
 
         mUser.PlayerProfile = 0;
         mUser.FirstTry = 0;
+        mUser.ChangeName = 0;
     }
 
     protected void Save()

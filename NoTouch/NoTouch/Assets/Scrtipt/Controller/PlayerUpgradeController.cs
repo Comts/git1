@@ -83,6 +83,12 @@ public class PlayerUpgradeController : InformationLoader
                       UnitSetter.GetUnitStr(Math.Round(mInfo.CostCurrent)),
                       LevelUP);
         CustomController.Instance.CheckName();
+        Sprite spr = CustomImage.Instance.CheckCustompath();
+        if (spr != null)
+        {
+            mSpriteArr[mSpriteArr.Length - 1] = spr;
+        }
+        mIcon.sprite = mSpriteArr[GameController.Instance.PlayerProfile];
     }
     public void ChageName(string Title)
     {
@@ -91,6 +97,15 @@ public class PlayerUpgradeController : InformationLoader
     public void ChangeProfile()
     {
         mIcon.sprite = mSpriteArr[GameController.Instance.PlayerProfile];
+    }
+    public void ChangeCustomImage(Sprite spr)
+    {
+        mSpriteArr[mSpriteArr.Length - 1] = spr;
+        ChangeProfile();
+    }
+    public Sprite GetmIcon()
+    {
+        return mIcon.sprite;
     }
     public void LevelUP(int id, int amount)
     {

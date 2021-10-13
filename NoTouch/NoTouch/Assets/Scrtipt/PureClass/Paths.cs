@@ -20,9 +20,9 @@
     public const string CRAFT_ICON = "CraftIcon";
     public const string PLAYER_BODY = "Player_Body";
     public const string PROFILE = "Profile";
-    public const string PROFILE_CUSTOM = "/Resources/Profile/Profile_Custom.png";
-    public const string PROFILE_RESET = "/Resources/Profile_Base/Profile_Base.png";
-    public const string PROFILE_ASSET = "/Resources/Profile_Custom";
+    public const string PROFILE_CUSTOM = "Profile/Profile_Custom";
+    public const string PROFILE_RESET = "Profile_Base/Profile_Base";
+    public const string PROFILE_ASSET = "Profile_Custom";
     public const string Q_CRAFT_ICON = "Quest_CraftGem";
 
     public const string SELLGEM_INFO_TABLE = JSON_FILE_LOCATION + "SellGemInfo";

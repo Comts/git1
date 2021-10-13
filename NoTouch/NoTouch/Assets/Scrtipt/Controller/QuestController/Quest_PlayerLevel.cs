@@ -14,13 +14,12 @@ public class Quest_PlayerLevel : InformationLoader
     [SerializeField]
     private int ItemNum;
     [SerializeField]
-    private Sprite image;
-    [SerializeField]
     private QuestUIElement mElementPrefab;
     [SerializeField]
     private Transform mElementArea;
 
 #pragma warning restore 0649
+    private Sprite image;
 
     private void Awake()
     {
@@ -40,6 +39,7 @@ public class Quest_PlayerLevel : InformationLoader
             Paths.LANGUAGE_TYPE_ARR[GameController.Instance.LanguageType]);
 
         mElementList = new List<QuestUIElement>();
+        image = PlayerUpgradeController.Instance.GetmIcon();
         Load();
     }
     private void Load()

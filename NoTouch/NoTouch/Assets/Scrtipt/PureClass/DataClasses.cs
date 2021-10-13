@@ -192,5 +192,6 @@ public class SaveData
 
     public int PlayerProfile;
     public int FirstTry;
+    public int ChangeName;
 
 }

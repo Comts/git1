@@ -156,6 +156,14 @@ public class StageController : MonoBehaviour
             mElementList[i].ChangePlayerHead();
         }
     }
+    public void ChangeCustomImage(Sprite spr)
+    {
+        for(int i = 0; i <= GameController.Instance.Stage; i++)
+        {
+            mElementList[i].ChangeCustomImage(spr);
+
+        }
+    }
     public void CoworkerActive(int f)
     {
         mElementList[f].CoworkerActive(true);
