@@ -95,7 +95,7 @@ public class MoleController : MonoBehaviour
                                       msec.ToString("D2"));
             if(Score==0)
             {
-                mRandom = UnityEngine.Random.Range(1, 1.5f) * GameController.Instance.GetGemCost[GameController.Instance.Stage] * UnityEngine.Random.Range(mMinMulti, mMaxMulti) *(GameController.Instance.MaxManPower / GameController.Instance.GetRequireProgress[GameController.Instance.Stage]);
+                mRandom = UnityEngine.Random.Range(1, 1.5f) * GameController.Instance.GetGemCost[GameController.Instance.Stage] * UnityEngine.Random.Range(mMinMulti, mMaxMulti) *(GameController.Instance.CalBuffManPower() / GameController.Instance.GetRequireProgress[GameController.Instance.Stage]);
                 //Debug.Log("GetGemCost" + GameController.Instance.GetGemCost[GameController.Instance.Stage]);
                 //Debug.Log("ManPower" + GameController.Instance.ManPower);
                 //Debug.Log("Progerss" + GameController.Instance.GetRequireProgress[GameController.Instance.Stage]);
@@ -110,8 +110,8 @@ public class MoleController : MonoBehaviour
     }
     public void ShowScore()
     {
-        mScore.text = string.Format("점수 : {0}",
-                                      Score.ToString("D2"));
+        mScore.text = string.Format("점수: {0}",
+                                      Score.ToString("D3"));
     }
      
     public void WhackaMole()

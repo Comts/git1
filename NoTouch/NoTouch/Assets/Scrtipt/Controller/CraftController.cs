@@ -179,14 +179,21 @@ public class CraftController : InformationLoader
     public void CheckCraftButton()
     {
         for (int i = 0; i < mInfoArr.Length; i++) 
-        { 
-            if (GameController.Instance.AddAmoutGem_O[i] < 10000)
+        {
+            if (GemSellController.Instance.CheckGemSellTogle(i))
             {
                 mElementList[i].SetCraftButtonActive(false);
             }
             else
             {
-                mElementList[i].SetCraftButtonActive(true);
+                if (GameController.Instance.AddAmoutGem_O[i] < 10000)
+                {
+                    mElementList[i].SetCraftButtonActive(false);
+                }
+                else
+                {
+                    mElementList[i].SetCraftButtonActive(true);
+                }
             }
         }
     }

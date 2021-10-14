@@ -347,7 +347,7 @@ public class QuestController : MonoBehaviour
     }
     public void Achive_Ame()
     {
-        if (GameController.Instance.AddAmoutGem_B[5]>=1000)
+        if (GameController.Instance.AddAmoutGem_B[5]>=100)
         {
             GameController.Instance.Achive_Ame = 1;
             Achieve_Ame_Window.gameObject.SetActive(true);
@@ -358,7 +358,7 @@ public class QuestController : MonoBehaviour
     }
     public void Achive_Gold()
     {
-        if (GameController.Instance.AddAmoutGem_S[14]>=1000)
+        if (GameController.Instance.AddAmoutGem_S[14]>=500)
         {
             GameController.Instance.Achive_Gold = 1;
             Achieve_Gold_Window.gameObject.SetActive(true);
@@ -369,7 +369,7 @@ public class QuestController : MonoBehaviour
     }
     public void Achive_Dia()
     {
-        if (GameController.Instance.AddAmoutGem_S[15]>=1000)
+        if (GameController.Instance.AddAmoutGem_S[15]>=500)
         {
             GameController.Instance.Achive_Dia = 1;
             Achieve_Dia_Window.gameObject.SetActive(true);
@@ -380,7 +380,7 @@ public class QuestController : MonoBehaviour
     }
     public void Achive_Vib()
     {
-        if (GameController.Instance.AddAmoutGem_S[16]>=1000)
+        if (GameController.Instance.AddAmoutGem_S[16]>=500)
         {
             GameController.Instance.Achive_Vib = 1;
             Achieve_Vib_Window.gameObject.SetActive(true);

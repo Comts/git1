@@ -52,6 +52,10 @@ public class GemSellUIElement : MonoBehaviour
     {
         mToggle.SetIsOnWithoutNotify(f);
     }
+    public bool bToggleState()
+    {
+        return mToggle.isOn;
+    }
 
 
     public void SetButtonActive(bool isActive)

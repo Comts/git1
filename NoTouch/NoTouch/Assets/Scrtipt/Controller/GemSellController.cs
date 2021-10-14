@@ -165,7 +165,11 @@ public class GemSellController : InformationLoader
             mElementList[i].ReSetSlider();
         }
     }
-
+    public bool CheckGemSellTogle(int num)
+    {
+        return mElementList[num].bToggleState();
+         
+    }
         
     public void SellGem(int id, double amount)
     {

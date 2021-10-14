@@ -69,6 +69,14 @@ public class TouchManager : MonoBehaviour
                     RaycastHit hit;
                     if(Physics.Raycast(ray,out hit))
                     {
+                        if (GameController.Instance.Achieve_Click == 0)
+                        {
+                            GameController.Instance.ClickAmount++;
+                            if (GameController.Instance.ClickAmount >= 100000000)
+                            {
+                                QuestController.Instance.Achive_Click();
+                            }
+                        }
                         //if(gameObject==hit.collider.gameObject)
                         // {
                         if (hit.collider.gameObject.CompareTag("Touch"))
@@ -138,6 +146,15 @@ public class TouchManager : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
+                if (GameController.Instance.Achieve_Click == 0)
+                {
+                    GameController.Instance.ClickAmount++;
+                    if (GameController.Instance.ClickAmount >= 100000000)
+                    {
+                        QuestController.Instance.Achive_Click();
+                    }
+                }
+
                 if (hit.collider.gameObject.CompareTag("Touch"))
                 {
                     mTouchCount++;

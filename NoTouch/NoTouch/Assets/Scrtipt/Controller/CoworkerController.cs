@@ -115,7 +115,7 @@ public class CoworkerController : InformationLoader
             UIElement element = Instantiate(mElementPrefab, mElementArea);
             element.Init(i, mIconArr[i],
                         mTextInfoArr[i].Title,
-                        mInfoArr[i].CurrentLevel.ToString(),
+                        string.Format("레벨 : {0}", mInfoArr[i].CurrentLevel.ToString()),
                         string.Format(mTextInfoArr[i].ContentsFormat,
                                     mInfoArr[i].PeriodCurrent,
                                     UnitSetter.GetUnitStr(mInfoArr[i].ValueCurrent)),
@@ -225,8 +225,9 @@ public class CoworkerController : InformationLoader
 
         mCoworkerArr[id].StartWork(id, mInfoArr[id].PeriodCurrent);
 
-        mElementList[id].Refresh(mInfoArr[id].CurrentLevel.ToString(),
-                      string.Format(mTextInfoArr[id].ContentsFormat,
+        mElementList[id].Refresh(
+                                    string.Format("레벨 : {0}", mInfoArr[id].CurrentLevel.ToString()),
+                                    string.Format(mTextInfoArr[id].ContentsFormat,
                                     mInfoArr[id].PeriodCurrent,
                                     UnitSetter.GetUnitStr(mInfoArr[id].ValueCurrent)),
                       UnitSetter.GetUnitStr(mInfoArr[id].CostCurrent));
@@ -248,7 +249,7 @@ public class CoworkerController : InformationLoader
 
                 element.Init(nextID, mIconArr[nextID],
                             mTextInfoArr[nextID].Title,
-                            mInfoArr[nextID].CurrentLevel.ToString(),
+                            string.Format("레벨 : {0}", mInfoArr[nextID].CurrentLevel.ToString()),
                             string.Format(mTextInfoArr[nextID].ContentsFormat,
                                     mInfoArr[nextID].PeriodCurrent,
                                         UnitSetter.GetUnitStr(mInfoArr[nextID].ValueCurrent)),

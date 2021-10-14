@@ -297,6 +297,15 @@ public class GameController : SaveDataController
             mUser.PlayerLevel = value;
         }
     }
+    public int ClickAmount
+    {
+        get { return mUser.ClickAmount; }
+        set
+        {
+            mUser.ClickAmount = value;
+        }
+
+    }
     #region Quest
     public int Quest_PlayerLevel
     {
@@ -746,26 +755,21 @@ public class GameController : SaveDataController
     //}
     public void Touch()
     {
-        int gain = 0;
+        double gain = 0;
         mUser.Progress += Math.Round((mManPower * ItemUseController.Instance.GetGemMulti[0]),2);
         //TODO Sound FX
         //TODO VFX +Text Effect
 
-        while (mUser.Progress >= mFloorProgress[mUser.PlayerPos])
+        if (mUser.Progress >= mFloorProgress[mUser.PlayerPos])
         {
-            mUser.Progress = Math.Round((mUser.Progress - mFloorProgress[mUser.PlayerPos]),2);
-            gain++;
+            //mUser.Progress = Math.Round((mUser.Progress - mFloorProgress[mUser.PlayerPos]),2);
+            //gain++;
+            gain = mUser.Progress / mFloorProgress[mUser.PlayerPos];
+            mUser.Progress = Math.Round(mUser.Progress % mFloorProgress[mUser.PlayerPos],2);
         }
+
         AddAmoutGem_O[mUser.PlayerPos] += gain ;
         GemSellController.Instance.RefreshGemData();
-        if (Achieve_Click == 0)
-        {
-            mUser.ClickAmount++;
-            if (mUser.ClickAmount >= 100000000)
-            {
-                QuestController.Instance.Achive_Click();
-            }
-        }
         //TextEffect effect = TextEffectPool.Instance.GetFromPool();
         //effect.SetText(gain.ToString());
         ////TODO Icon 변경 effect.SetIcon();
