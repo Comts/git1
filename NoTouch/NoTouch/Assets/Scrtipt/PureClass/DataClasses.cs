@@ -182,7 +182,9 @@ public class SaveData
     public int Achive_Dosirak;
 
     public int UseSilverAmount;
-    public int Achive_Silver;
+    public int UseGoldAmount;
+    public int Achive_Silver_FLEX;
+    public int Achive_Gold_FLEX;
 
     public int Achive_Earth;
     public double EarthCurrentProgress;

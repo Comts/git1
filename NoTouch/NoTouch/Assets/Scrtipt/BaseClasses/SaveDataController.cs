@@ -362,7 +362,9 @@ public class SaveDataController : MonoBehaviour
         mUser.Achive_Dosirak = 0;
 
         mUser.UseSilverAmount = 0;
-        mUser.Achive_Silver = 0;
+        mUser.UseGoldAmount = 0;
+        mUser.Achive_Silver_FLEX = 0;
+        mUser.Achive_Gold_FLEX = 0;
         mUser.Achive_Earth = 0;
         mUser.EarthCurrentProgress = 0;
 

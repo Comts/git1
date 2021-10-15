@@ -32,7 +32,9 @@ public class QuestController : MonoBehaviour
     [SerializeField]
     private Image Achieve_Dosirak_Window, Achieve_Dosirak_Image;
     [SerializeField]
-    private Image Achieve_Silver_Window, Achieve_Silver_Image;
+    private Image Achieve_Silver_FLEX_Window, Achieve_Silver_FLEX_Image;
+    [SerializeField]
+    private Image Achieve_Gold_FLEX_Window, Achieve_Gold_FLEX_Image;
     [SerializeField]
     private Image[] Achieve_Earth_Window, Achieve_Earth_Image;
     [SerializeField]
@@ -228,9 +230,14 @@ public class QuestController : MonoBehaviour
             Achieve_Dosirak_Image.gameObject.SetActive(true);
             AchieveProgress++;
         }
-        if (GameController.Instance.Achive_Silver == 1)
+        if (GameController.Instance.Achive_Silver_FLEX == 1)
         {
-            Achieve_Silver_Image.gameObject.SetActive(true);
+            Achieve_Silver_FLEX_Image.gameObject.SetActive(true);
+            AchieveProgress++;
+        }
+        if (GameController.Instance.Achive_Gold_FLEX == 1)
+        {
+            Achieve_Gold_FLEX_Image.gameObject.SetActive(true);
             AchieveProgress++;
         }
         if (GameController.Instance.Achive_Earth > 0)
@@ -255,7 +262,7 @@ public class QuestController : MonoBehaviour
 
         string progressStr = string.Format("{0} / {1}",
                                             AchieveProgress,
-                                            16);
+                                            17);
         mAchieveText.text = progressStr;
     }
     public void ShowQuestProgress()
@@ -291,7 +298,7 @@ public class QuestController : MonoBehaviour
         Achieve_Dia_Image.gameObject.SetActive(false);
         Achieve_Vib_Image.gameObject.SetActive(false);
         Achieve_Dosirak_Image.gameObject.SetActive(false);
-        Achieve_Silver_Image.gameObject.SetActive(false);
+        Achieve_Silver_FLEX_Image.gameObject.SetActive(false);
 
         for (int i = 0; i < Achieve_Earth_Image.Length; i++)
         {
@@ -308,6 +315,7 @@ public class QuestController : MonoBehaviour
         Achieve_Click_Window.gameObject.SetActive(true);
         Achieve_Click_Image.gameObject.SetActive(true);
         AchieveProgress++;
+        SoundController.Instance.FXSound(11);
         ShowAchieveProgress();
     }
     public void Achive_Mole()
@@ -316,6 +324,7 @@ public class QuestController : MonoBehaviour
         Achieve_Mole_Window.gameObject.SetActive(true);
         Achieve_Mole_Image.gameObject.SetActive(true);
         AchieveProgress++;
+        SoundController.Instance.FXSound(11);
         ShowAchieveProgress();
     }
     public void Achive_AutoClick()
@@ -324,6 +333,7 @@ public class QuestController : MonoBehaviour
         Achieve_AutoClick_Window.gameObject.SetActive(true);
         Achieve_AutoClick_Image.gameObject.SetActive(true);
         AchieveProgress++;
+        SoundController.Instance.FXSound(11);
         ShowAchieveProgress();
     }
     public void Achive_Norini()
@@ -332,6 +342,7 @@ public class QuestController : MonoBehaviour
         Achieve_Norini_Window.gameObject.SetActive(true);
         Achieve_Norini_Image.gameObject.SetActive(true);
         AchieveProgress++;
+        SoundController.Instance.FXSound(11);
         ShowAchieveProgress();
     }
     public void Achive_Coal()
@@ -342,6 +353,7 @@ public class QuestController : MonoBehaviour
             Achieve_Coal_Window.gameObject.SetActive(true);
             Achieve_Coal_Image.gameObject.SetActive(true);
             AchieveProgress++;
+            SoundController.Instance.FXSound(11);
             ShowAchieveProgress();
         }
     }
@@ -353,6 +365,7 @@ public class QuestController : MonoBehaviour
             Achieve_Ame_Window.gameObject.SetActive(true);
             Achieve_Ame_Image.gameObject.SetActive(true);
             AchieveProgress++;
+            SoundController.Instance.FXSound(11);
             ShowAchieveProgress();
         }
     }
@@ -364,6 +377,7 @@ public class QuestController : MonoBehaviour
             Achieve_Gold_Window.gameObject.SetActive(true);
             Achieve_Gold_Image.gameObject.SetActive(true);
             AchieveProgress++;
+            SoundController.Instance.FXSound(11);
             ShowAchieveProgress();
         }
     }
@@ -375,6 +389,7 @@ public class QuestController : MonoBehaviour
             Achieve_Dia_Window.gameObject.SetActive(true);
             Achieve_Dia_Image.gameObject.SetActive(true);
             AchieveProgress++;
+            SoundController.Instance.FXSound(11);
             ShowAchieveProgress();
         }
     }
@@ -386,6 +401,7 @@ public class QuestController : MonoBehaviour
             Achieve_Vib_Window.gameObject.SetActive(true);
             Achieve_Vib_Image.gameObject.SetActive(true);
             AchieveProgress++;
+            SoundController.Instance.FXSound(11);
             ShowAchieveProgress();
         }
     }
@@ -395,14 +411,25 @@ public class QuestController : MonoBehaviour
         Achieve_Dosirak_Window.gameObject.SetActive(true);
         Achieve_Dosirak_Image.gameObject.SetActive(true);
         AchieveProgress++;
+        SoundController.Instance.FXSound(11);
         ShowAchieveProgress();
     }
-    public void Achive_Silver()
+    public void Achive_Silver_FLEX()
     {
-        GameController.Instance.Achive_Silver = 1;
-        Achieve_Silver_Window.gameObject.SetActive(true);
-        Achieve_Silver_Image.gameObject.SetActive(true);
+        GameController.Instance.Achive_Silver_FLEX = 1;
+        Achieve_Silver_FLEX_Window.gameObject.SetActive(true);
+        Achieve_Silver_FLEX_Image.gameObject.SetActive(true);
         AchieveProgress++;
+        SoundController.Instance.FXSound(11);
+        ShowAchieveProgress();
+    }
+    public void Achive_Gold_FLEX()
+    {
+        GameController.Instance.Achive_Gold_FLEX = 1;
+        Achieve_Gold_FLEX_Window.gameObject.SetActive(true);
+        Achieve_Gold_FLEX_Image.gameObject.SetActive(true);
+        AchieveProgress++;
+        SoundController.Instance.FXSound(11);
         ShowAchieveProgress();
     }
     public void Achive_Earth()
@@ -411,6 +438,7 @@ public class QuestController : MonoBehaviour
         Achieve_Earth_Image[GameController.Instance.Achive_Earth].gameObject.SetActive(true);
         GameController.Instance.Achive_Earth++;
         AchieveProgress++;
+        SoundController.Instance.FXSound(11);
         ShowAchieveProgress();
     }
 }

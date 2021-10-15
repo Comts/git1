@@ -183,6 +183,7 @@ public class CustomImage : MonoBehaviour
             CustomController.Instance.ChangeCustomImage(spr);
             StageController.Instance.ChangeCustomImage(spr);
             PlayerUpgradeController.Instance.ChangeCustomImage(spr);
+            EarthController.Instance.ChangeCustomImage(spr);
         }
         //  byte[] bytes = Drawtex.EncodeToPNG();
         //pathText.text = filePath;

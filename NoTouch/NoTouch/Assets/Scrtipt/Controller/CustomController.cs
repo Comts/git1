@@ -96,6 +96,7 @@ public class CustomController : MonoBehaviour
             GameController.Instance.PlayerProfile = mCurrentProfile;
             PlayerUpgradeController.Instance.ChangeProfile();
             StageController.Instance.ChangePlayerHeadImage();
+            EarthController.Instance.ChangePlayerHead();
             ChangeSucces.gameObject.SetActive(true);
         }
         else

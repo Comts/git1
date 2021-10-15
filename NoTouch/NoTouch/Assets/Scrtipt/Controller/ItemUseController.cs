@@ -107,32 +107,32 @@ public class ItemUseController : MonoBehaviour
         switch (buttonID)
         {
             case 0://광물가격상승
-                mItemCooltimeArr[buttonID] = 30;
+                mItemCooltimeArr[buttonID] = 20;
                 SoundController.Instance.FXSound(9);
                 mSellGemMulti = StartCoroutine(SellGemMultiRoutine(mItemCooltimeArr[buttonID], 2));
                 break;
             case 1://광부의 도시락
-                mItemCooltimeArr[buttonID] = 20;
+                mItemCooltimeArr[buttonID] = 15;
                 SoundController.Instance.FXSound(10);
                 mGetGemMultiPlayer = StartCoroutine(GetGemMultiRoutine(0, mItemCooltimeArr[buttonID], 10));
                 break;
             case 2://알바들의 도시락
-                mItemCooltimeArr[buttonID] = 40;
+                mItemCooltimeArr[buttonID] = 30;
                 SoundController.Instance.FXSound(10);
                 mGetGemMultiCoworker = StartCoroutine(GetGemMultiRoutine(1, mItemCooltimeArr[buttonID], 10));
                 break;
             case 3:
-                mItemCooltimeArr[buttonID] = 30;
+                mItemCooltimeArr[buttonID] = 20;
                 SoundController.Instance.FXSound(9);
                 mSellGemMulti = StartCoroutine(SellGemMultiRoutine(mItemCooltimeArr[buttonID], 20));
                 break;
             case 4:
-                mItemCooltimeArr[buttonID] = 20;
+                mItemCooltimeArr[buttonID] = 15;
                 SoundController.Instance.FXSound(10);
                 mGetGemMultiPlayer = StartCoroutine(GetGemMultiRoutine(0, mItemCooltimeArr[buttonID], 100));
                 break;
             case 5:
-                mItemCooltimeArr[buttonID] = 40;
+                mItemCooltimeArr[buttonID] = 30;
                 SoundController.Instance.FXSound(10);
                 mGetGemMultiCoworker = StartCoroutine(GetGemMultiRoutine(1, mItemCooltimeArr[buttonID], 100));
                 break;
@@ -145,18 +145,26 @@ public class ItemUseController : MonoBehaviour
             if (buttonID < 3)
             {
                 GameController.Instance.HaveItem[0]--;
-                if (GameController.Instance.Achive_Silver == 0)
+                if (GameController.Instance.Achive_Silver_FLEX == 0)
                 {
                     GameController.Instance.UseSilverAmount++;
                     if (GameController.Instance.UseSilverAmount >= 100)
                     {
-                        QuestController.Instance.Achive_Silver();
+                        QuestController.Instance.Achive_Silver_FLEX();
                     }
                 }
             }
             else if (buttonID <6)
             {
                 GameController.Instance.HaveItem[1]--;
+                if (GameController.Instance.Achive_Gold_FLEX == 0)
+                {
+                    GameController.Instance.UseGoldAmount++;
+                    if (GameController.Instance.UseGoldAmount >= 10)
+                    {
+                        QuestController.Instance.Achive_Gold_FLEX();
+                    }
+                }
             }
         }
         StartCoroutine(CooltimeRoutine(buttonID, mItemCooltimeArr[buttonID]));

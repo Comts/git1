@@ -480,12 +480,12 @@ public class GameController : SaveDataController
         }
 
     }
-    public int Achive_Silver
+    public int Achive_Silver_FLEX
     {
-        get { return mUser.Achive_Silver; }
+        get { return mUser.Achive_Silver_FLEX; }
         set
         {
-            mUser.Achive_Silver = value;
+            mUser.Achive_Silver_FLEX = value;
         }
 
     }
@@ -495,6 +495,24 @@ public class GameController : SaveDataController
         set
         {
             mUser.UseSilverAmount = value;
+        }
+
+    }
+    public int Achive_Gold_FLEX
+    {
+        get { return mUser.Achive_Gold_FLEX; }
+        set
+        {
+            mUser.Achive_Gold_FLEX = value;
+        }
+
+    }
+    public int UseGoldAmount
+    {
+        get { return mUser.UseGoldAmount; }
+        set
+        {
+            mUser.UseGoldAmount = value;
         }
 
     }
@@ -683,7 +701,9 @@ public class GameController : SaveDataController
         mUser.Achive_Dosirak = 0;
 
         mUser.UseSilverAmount = 0;
-        mUser.Achive_Silver = 0;
+        mUser.UseGoldAmount = 0;
+        mUser.Achive_Silver_FLEX = 0;
+        mUser.Achive_Gold_FLEX = 0;
         mUser.Achive_Earth = 0;
         mUser.EarthCurrentProgress = 0;
 

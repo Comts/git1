@@ -44,7 +44,7 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 4475d78b7e44ffb49aaa6933043ab257, type: 3}
     - {fileID: 2800000, guid: ed64dd068a80d13498801aff7c166dac, type: 3}
     - {fileID: 2800000, guid: 0f20c48cb25c39c4ba1e5cbea59e0e42, type: 3}
-    totalSpriteSurfaceArea: 29578515
+    totalSpriteSurfaceArea: 29638515
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
@@ -112,6 +112,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 8eb03a33fbc59ce409a2506dbe1fc6db, type: 3}
   - {fileID: 21300000, guid: 8397ed33dc86355478d472cc4b9fc8dc, type: 3}
   - {fileID: 21300000, guid: d59e73432c4e02a4ba7ddbb419d63459, type: 3}
+  - {fileID: 21300000, guid: 3a981153f1b59c84c94cd182129a53fd, type: 3}
   - {fileID: 21300000, guid: 353d206349178014ca0f51c05f3c6d6c, type: 3}
   - {fileID: 21300000, guid: f7cca263471d0b9498e32d29789a3e03, type: 3}
   - {fileID: 21300000, guid: d00bb773418803f4ca3ae9248396e081, type: 3}
@@ -339,6 +340,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: b07594feb1b2101419bde8a8a3cce34b, type: 3}
   - {fileID: 21300000, guid: c9c2da1f290be644ea88c8392446ec3f, type: 3}
   - {fileID: 21300000, guid: 9c7baa2f11d4aa54c88a643fa515dc44, type: 3}
+  - {fileID: 21300000, guid: 5d1dad4fd2dce05478f208b658756ac8, type: 3}
   - {fileID: 21300000, guid: 4aa0617f87f722f43bb3873c16766363, type: 3}
   - {fileID: 21300000, guid: ca7d1e7f042cf73438e3d326a13fc765, type: 3}
   - {fileID: 21300000, guid: 28e8be7f9ec8e3a48a8017c4e5e788d4, type: 3}
@@ -417,6 +419,7 @@ SpriteAtlas:
   - New Piskel-2.png
   - 04
   - PlayerBody_03
+  - Achieve_Gold_FLEX
   - Sleep_Back_2
   - Gem_00-1.png
   - Gem_07-1.png
@@ -558,7 +561,7 @@ SpriteAtlas:
   - New Piskel-5.png
   - New Piskel-3.png
   - Gem_03-1.png
-  - Achieve_Silver
+  - Achieve_Silver_FLEX
   - Gem_13-4.png
   - Prifile01
   - 11
@@ -644,6 +647,7 @@ SpriteAtlas:
   - cave03
   - 3f
   - New Piskel-1.png
+  - Earth_Dig_Body
   - Slider_back
   - BronzeDazi
   - Gold50

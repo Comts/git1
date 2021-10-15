@@ -17,6 +17,9 @@ public class EarthController : InformationLoader
     private Earth[] Earth_Window;
     [SerializeField]
     private Image Earth_Window_END;
+    [SerializeField]
+    private Image[] HeadImage;
+    private Sprite[] mHeadIconArr;
 
 #pragma warning restore 0649
     private void Awake()
@@ -34,7 +37,26 @@ public class EarthController : InformationLoader
     void Start()
     {
         LoadJson(out mInfoArr, Paths.Earth_INFO_TABLE);
+        mHeadIconArr = Resources.LoadAll<Sprite>(Paths.PROFILE);
+        Sprite spr = CustomImage.Instance.CheckCustompath();
+        if (spr != null)
+        {
+            mHeadIconArr[mHeadIconArr.Length - 1] = spr;
+        }
+        ChangePlayerHead();
+    }
 
+    public void ChangePlayerHead()
+    {
+        for(int i =0; i< HeadImage.Length; i++)
+        {
+            HeadImage[i].sprite = mHeadIconArr[GameController.Instance.PlayerProfile];
+        }
+    }
+    public void ChangeCustomImage(Sprite spr)
+    {
+        mHeadIconArr[mHeadIconArr.Length - 1] = spr;
+        ChangePlayerHead();
     }
     public void Open_Earth_Window()
     {

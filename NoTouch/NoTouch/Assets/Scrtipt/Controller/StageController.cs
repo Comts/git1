@@ -24,6 +24,8 @@ public class StageController : MonoBehaviour
     [SerializeField]
     private Toggle[] mPlayerPos;
     [SerializeField]
+    private Text[] mStageGem;
+    [SerializeField]
     private Button mDigButton;
     private double mDigCost;
 
@@ -171,10 +173,12 @@ public class StageController : MonoBehaviour
     public void PlayerButtoninteractable(int f)
     {
         mPlayerPos[f].interactable = true;
+        mStageGem[f].gameObject.SetActive(true);
     }
     public void PlayerButtoninteractableFalse(int f)
     {
         mPlayerPos[f].interactable = false;
+        mStageGem[f].gameObject.SetActive(false);
     }
     public void PlayerActive(int f)
     {

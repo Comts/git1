@@ -11,6 +11,8 @@ public class UIController : MonoBehaviour
     private Image[] mWindowArr;
     [SerializeField]
     private Text mMoneyText;
+    [SerializeField]
+    private Image mItemWindow,mItemButton;
 #pragma warning restore 0649
     private void Awake()
     {
@@ -38,11 +40,19 @@ public class UIController : MonoBehaviour
                 }
                 mWindowArr[i].gameObject.SetActive(false);
             }
+            mItemWindow.rectTransform.localPosition = new Vector2(0, 230);
+            mItemButton.rectTransform.localPosition = new Vector2(325, 220);
         }
         else
         {
             mWindowArr[id].gameObject.SetActive(false);
+            ResetItemPos();
         }
+    }
+    public void ResetItemPos()
+    {
+        mItemWindow.rectTransform.localPosition = new Vector2(0, -270);
+        mItemButton.rectTransform.localPosition = new Vector2(325, -285);
     }
     public void ShowMoney()
     {
