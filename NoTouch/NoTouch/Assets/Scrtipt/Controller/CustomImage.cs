@@ -21,6 +21,8 @@ public class CustomImage : MonoBehaviour
     static Texture2D Opentex, Resettex;
     [SerializeField]
     public Text pathText;
+    [SerializeField]
+    public Image[] Backround;
     // Start is called before the first frame update
 
     private int tool;
@@ -38,18 +40,47 @@ public class CustomImage : MonoBehaviour
     }
     public void StartCustom()
     {
+        SettingSlider();
+        SetBackGround(tool);
+    }
+    public void Pan()
+    {
+        tool = 0;
+        SetBackGround(tool);
+    }
+    public void Eraser()
+    {
+        tool = 1;
+        SetBackGround(tool);
+    }
+    public void Spoid()
+    {
+        tool = 2;
+        SetBackGround(tool);
+    }
+    public void Paint()
+    {
+        tool = 3;
+        SetBackGround(tool);
+    }
+    public void SettingSlider()
+    {
         mRSlider.value = selectedColor.r;
         mGSlider.value = selectedColor.g;
         mBSlider.value = selectedColor.b;
         mColorImage.color = selectedColor;
     }
-    public void Eraser()
+    public void SetBackGround(int num)
     {
-        tool = 1;
-    }
-    public void Pan()
-    {
-        tool = 0;
+        for (int i = 0; i < Backround.Length; i++)
+        {
+            if (i == num)
+            {
+                Backround[i].gameObject.SetActive(true);
+                continue;
+            }
+            Backround[i].gameObject.SetActive(false);
+        }
     }
     public Sprite CheckCustompath()
     {
@@ -138,7 +169,7 @@ public class CustomImage : MonoBehaviour
         // Load Texture from file
         //Resettex = LoadImageFromFile(Application.dataPath + Paths.PROFILE_RESET);
         Sprite Stex = Resources.Load<Sprite>(Paths.PROFILE_RESET);
-        Resettex = Stex.texture;
+        Resettex = Instantiate(Stex.texture);
         // Create a new Image with textures dimensions
         //RsetImg = CreateImage(tex.width, tex.height);
         // Set pixel colors
@@ -214,23 +245,41 @@ public class CustomImage : MonoBehaviour
     }
     public void Draw(Vector2 touchPos)
     {
-        if (tool == 1)
+        switch (tool)
         {
-            SetPixelByPos(Color.clear, touchPos);
-        }
-        else if (tool == 0)
-        {
-            SetPixelByPos(selectedColor, touchPos);
+            case 0:
+                BrushPixelByPos(selectedColor, touchPos);
+                break;
+            case 1:
+                BrushPixelByPos(Color.clear, touchPos);
+                break;
+            case 2:
+                GetPixelColorByPos(touchPos);
+                break;
+            case 3:
+                PaintPixelsFromPos(touchPos);
+                break;
+            default:
+                Debug.LogError("tool : " + tool);
+                break;
         }
     }
-    public void ShowColor()
+    public void SetColor_R()
     {
         selectedColor.r = mRSlider.value;
+        mColorImage.color = selectedColor;
+    }
+    public void SetColor_G()
+    {
         selectedColor.g = mGSlider.value;
+        mColorImage.color = selectedColor;
+    }
+    public void SetColor_B()
+    {
         selectedColor.b = mBSlider.value;
         mColorImage.color = selectedColor;
     }
-    public void SetPixelByPos(Color color, Vector2 pos)
+    public void BrushPixelByPos(Color color, Vector2 pos)
     {
         Vector2 pixelCoordinate = GetPixelCoordinate(pos);
 
@@ -242,12 +291,12 @@ public class CustomImage : MonoBehaviour
         //Debug.Log("color :"+ color);
         //Undo.RecordObject (layers[layer].tex, "ColorPixel");
 
-        SetPixel((int)((pixelCoordinate.x + 8) / 2), (int)(pixelCoordinate.y / 2), color);
+        BrushPixel((int)((pixelCoordinate.x + 8) / 2), (int)(pixelCoordinate.y / 2), color);
 
         //EditorUtility.SetDirty (this);
         //dirty = true;
     }
-    public void SetPixel(int x, int y, Color color)
+    public void BrushPixel(int x, int y, Color color)
     {
 
         Drawtex.SetPixel(x, y, color);
@@ -256,6 +305,50 @@ public class CustomImage : MonoBehaviour
         //CustomImage.Instance.mImage.sprite = Sprite.Create(Drawtex, new Rect(0, 0, Drawtex.width, Drawtex.height), new Vector2(0.5f, 0.5f));
 
         //map [x + y * - 1 * parentImg.width - parentImg.height] = color;
+    }
+    public void PaintPixelsFromPos(Vector2 pos)
+    {
+        Vector2 pixelCoordinate = GetPixelCoordinate(pos);
+
+        if (pixelCoordinate == new Vector2(-1, -1))
+            return;
+
+        //Debug.Log("(int)pixelCoordinate.x :"+ (int)pixelCoordinate.x);
+        //Debug.Log("(int)pixelCoordinate.y :"+ (int)pixelCoordinate.y);
+        //Debug.Log("color :"+ color);
+        //Undo.RecordObject (layers[layer].tex, "ColorPixel");
+
+        PaintPixels((int)((pixelCoordinate.x + 8) / 2), (int)(pixelCoordinate.y / 2));
+
+        //EditorUtility.SetDirty (this);
+        //dirty = true;
+    }
+    public void PaintPixels(int x, int y)
+    {
+        Color Checkcolor = Drawtex.GetPixel(x, y);
+        if (Checkcolor != selectedColor)
+        {
+            Painting(x, y, Checkcolor);
+            Drawtex.Apply();
+            CustomImage.Instance.mImage.GetComponent<Image>().sprite = Sprite.Create(Drawtex, new Rect(0, 0, Drawtex.width, Drawtex.height), new Vector2(0.5f, 0.5f));
+        }
+    }
+    public void Painting(int x, int y, Color color)
+    {
+        if (x < 0 || x > 39 || y < 0 || y > 39)
+        {
+            return;
+        }
+        Color Checkcolor = Drawtex.GetPixel(x, y);
+        if (color != Checkcolor)
+        {
+            return;
+        }
+        Drawtex.SetPixel(x, y, selectedColor);
+        Painting(x - 1, y, color);
+        Painting(x + 1, y, color);
+        Painting(x, y - 1, color);
+        Painting(x, y + 1, color);
     }
 
 
@@ -273,5 +366,30 @@ public class CustomImage : MonoBehaviour
         int pixelY = (int)(16 * relY);
 
         return new Vector2(pixelX, pixelY);
+    }
+    public void GetPixelColorByPos(Vector2 pos)
+    {
+        Vector2 pixelCoordinate = GetPixelCoordinate(pos);
+
+        if (pixelCoordinate == new Vector2(-1, -1))
+            return;
+
+        //Debug.Log("(int)pixelCoordinate.x :"+ (int)pixelCoordinate.x);
+        //Debug.Log("(int)pixelCoordinate.y :"+ (int)pixelCoordinate.y);
+        //Debug.Log("color :"+ color);
+        //Undo.RecordObject (layers[layer].tex, "ColorPixel");
+
+        GetPixelColor((int)((pixelCoordinate.x + 8) / 2), (int)(pixelCoordinate.y / 2));
+
+        //EditorUtility.SetDirty (this);
+        //dirty = true;
+    }
+    public void GetPixelColor(int x, int y)
+    {
+        if (Drawtex.GetPixel(x, y) != Color.clear)
+        {
+            selectedColor = Drawtex.GetPixel(x, y);
+            SettingSlider();
+        }
     }
 }
