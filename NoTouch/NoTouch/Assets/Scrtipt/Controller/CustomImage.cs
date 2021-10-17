@@ -26,7 +26,7 @@ public class CustomImage : MonoBehaviour
     // Start is called before the first frame update
 
     private int tool;
-    private Color selectedColor=new Color(0,0,0,1);
+    private Color selectedColor;
     private void Awake()
     {
         if (Instance == null)
@@ -37,6 +37,10 @@ public class CustomImage : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+    private void Start()
+    {
+        selectedColor =  Color.black;
     }
     public void StartCustom()
     {
@@ -302,6 +306,16 @@ public class CustomImage : MonoBehaviour
         Drawtex.SetPixel(x, y, color);
         Drawtex.Apply();
         CustomImage.Instance.mImage.GetComponent<Image>().sprite = Sprite.Create(Drawtex, new Rect(0, 0, Drawtex.width, Drawtex.height), new Vector2(0.5f, 0.5f));
+        
+        if (color != Color.clear)
+        {
+            Color Checkcolor = Drawtex.GetPixel(x, y);
+            if (Checkcolor != selectedColor)
+            {
+                selectedColor = Checkcolor;
+                SettingSlider();
+            }
+        }
         //CustomImage.Instance.mImage.sprite = Sprite.Create(Drawtex, new Rect(0, 0, Drawtex.width, Drawtex.height), new Vector2(0.5f, 0.5f));
 
         //map [x + y * - 1 * parentImg.width - parentImg.height] = color;
@@ -328,27 +342,74 @@ public class CustomImage : MonoBehaviour
         Color Checkcolor = Drawtex.GetPixel(x, y);
         if (Checkcolor != selectedColor)
         {
-            Painting(x, y, Checkcolor);
+            Painting(x, y, Checkcolor,0);
             Drawtex.Apply();
             CustomImage.Instance.mImage.GetComponent<Image>().sprite = Sprite.Create(Drawtex, new Rect(0, 0, Drawtex.width, Drawtex.height), new Vector2(0.5f, 0.5f));
+            selectedColor = Drawtex.GetPixel(x, y);
+            SettingSlider();
         }
     }
-    public void Painting(int x, int y, Color color)
+    public void Painting(int x, int y, Color color, int num)
     {
         if (x < 0 || x > 39 || y < 0 || y > 39)
         {
             return;
         }
+        //if (x < Px - 2 || x > Px + 2 || y < Py - 2 || y > Py + 2)
+        //{
+        //    return;
+        //}
         Color Checkcolor = Drawtex.GetPixel(x, y);
-        if (color != Checkcolor)
+        if (color != Checkcolor|| Checkcolor == selectedColor)
         {
             return;
         }
         Drawtex.SetPixel(x, y, selectedColor);
-        Painting(x - 1, y, color);
-        Painting(x + 1, y, color);
-        Painting(x, y - 1, color);
-        Painting(x, y + 1, color);
+
+        if( num != 1 )
+        {
+            Painting(x - 1, y, color, 2);
+        }
+        if (num != 2)
+        {
+            Painting(x + 1, y, color, 1);
+        }
+        if (num != 3 )
+        {
+            Painting(x, y + 1, color, 4);
+        }
+        if (num != 4 )
+        {
+            Painting(x, y - 1, color, 3);
+        }
+        //if( num != 1 || Px > x)
+        //{
+        //    if (x <= Px)
+        //    {
+        //        Painting(x - 1, y, color, Px, Py, 2);
+        //    }
+        //}
+        //if (num != 2)
+        //{
+        //    if(x >= Px)
+        //    {
+        //        Painting(x + 1, y, color, Px, Py, 1);
+        //    }
+        //}
+        //if (num != 3 || Py < y)
+        //{
+        //    if(y >= Py)
+        //    {
+        //        Painting(x, y + 1, color, Px, Py, 4);
+        //    }
+        //}
+        //if (num != 4 || Py > y )
+        //{
+        //    if (y <= Py)
+        //    {
+        //        Painting(x, y - 1, color, Px, Py, 3);
+        //    }
+        //}
     }
 
 
@@ -386,9 +447,10 @@ public class CustomImage : MonoBehaviour
     }
     public void GetPixelColor(int x, int y)
     {
-        if (Drawtex.GetPixel(x, y) != Color.clear)
+        Color Checkcolor = Drawtex.GetPixel(x, y);
+        if (Checkcolor != Color.clear)
         {
-            selectedColor = Drawtex.GetPixel(x, y);
+            selectedColor = Checkcolor;
             SettingSlider();
         }
     }
