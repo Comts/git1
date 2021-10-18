@@ -46,7 +46,7 @@ public class MineUIElement : MonoBehaviour
     }
     public void ShowAmount(double amount)
     {
-        mAmountText.text = UnitSetter.GetUnitStr(amount).ToString();
+        mAmountText.text = string.Format("{0}개", UnitSetter.GetUnitStr(amount).ToString());
     }
 
     public void SetBuyButtonActive(bool isActive)
