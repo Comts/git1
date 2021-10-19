@@ -316,6 +316,7 @@ public class QuestController : MonoBehaviour
         Achieve_Click_Image.gameObject.SetActive(true);
         AchieveProgress++;
         SoundController.Instance.FXSound(11);
+        PointController.Instance.ShowAchievePoint();
         ShowAchieveProgress();
     }
     public void Achive_Mole()
@@ -325,6 +326,7 @@ public class QuestController : MonoBehaviour
         Achieve_Mole_Image.gameObject.SetActive(true);
         AchieveProgress++;
         SoundController.Instance.FXSound(11);
+        PointController.Instance.ShowAchievePoint();
         ShowAchieveProgress();
     }
     public void Achive_AutoClick()
@@ -334,6 +336,7 @@ public class QuestController : MonoBehaviour
         Achieve_AutoClick_Image.gameObject.SetActive(true);
         AchieveProgress++;
         SoundController.Instance.FXSound(11);
+        PointController.Instance.ShowAchievePoint();
         ShowAchieveProgress();
     }
     public void Achive_Norini()
@@ -343,6 +346,7 @@ public class QuestController : MonoBehaviour
         Achieve_Norini_Image.gameObject.SetActive(true);
         AchieveProgress++;
         SoundController.Instance.FXSound(11);
+        PointController.Instance.ShowAchievePoint();
         ShowAchieveProgress();
     }
     public void Achive_Coal()
@@ -354,6 +358,7 @@ public class QuestController : MonoBehaviour
             Achieve_Coal_Image.gameObject.SetActive(true);
             AchieveProgress++;
             SoundController.Instance.FXSound(11);
+            PointController.Instance.ShowAchievePoint();
             ShowAchieveProgress();
         }
     }
@@ -366,6 +371,7 @@ public class QuestController : MonoBehaviour
             Achieve_Ame_Image.gameObject.SetActive(true);
             AchieveProgress++;
             SoundController.Instance.FXSound(11);
+            PointController.Instance.ShowAchievePoint();
             ShowAchieveProgress();
         }
     }
@@ -378,6 +384,7 @@ public class QuestController : MonoBehaviour
             Achieve_Gold_Image.gameObject.SetActive(true);
             AchieveProgress++;
             SoundController.Instance.FXSound(11);
+            PointController.Instance.ShowAchievePoint();
             ShowAchieveProgress();
         }
     }
@@ -390,6 +397,7 @@ public class QuestController : MonoBehaviour
             Achieve_Dia_Image.gameObject.SetActive(true);
             AchieveProgress++;
             SoundController.Instance.FXSound(11);
+            PointController.Instance.ShowAchievePoint();
             ShowAchieveProgress();
         }
     }
@@ -402,6 +410,7 @@ public class QuestController : MonoBehaviour
             Achieve_Vib_Image.gameObject.SetActive(true);
             AchieveProgress++;
             SoundController.Instance.FXSound(11);
+            PointController.Instance.ShowAchievePoint();
             ShowAchieveProgress();
         }
     }
@@ -412,6 +421,7 @@ public class QuestController : MonoBehaviour
         Achieve_Dosirak_Image.gameObject.SetActive(true);
         AchieveProgress++;
         SoundController.Instance.FXSound(11);
+        PointController.Instance.ShowAchievePoint();
         ShowAchieveProgress();
     }
     public void Achive_Silver_FLEX()
@@ -421,6 +431,7 @@ public class QuestController : MonoBehaviour
         Achieve_Silver_FLEX_Image.gameObject.SetActive(true);
         AchieveProgress++;
         SoundController.Instance.FXSound(11);
+        PointController.Instance.ShowAchievePoint();
         ShowAchieveProgress();
     }
     public void Achive_Gold_FLEX()
@@ -430,6 +441,7 @@ public class QuestController : MonoBehaviour
         Achieve_Gold_FLEX_Image.gameObject.SetActive(true);
         AchieveProgress++;
         SoundController.Instance.FXSound(11);
+        PointController.Instance.ShowAchievePoint();
         ShowAchieveProgress();
     }
     public void Achive_Earth()
@@ -439,6 +451,7 @@ public class QuestController : MonoBehaviour
         GameController.Instance.Achive_Earth++;
         AchieveProgress++;
         SoundController.Instance.FXSound(11);
+        PointController.Instance.ShowAchievePoint();
         ShowAchieveProgress();
     }
 }

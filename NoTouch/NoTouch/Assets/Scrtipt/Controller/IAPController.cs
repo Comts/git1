@@ -14,7 +14,7 @@ public class IAPController : MonoBehaviour, IStoreListener
     private static IExtensionProvider m_StoreExtensionProvider; // The store-specific Purchasing subsystems.
 
 
-    private Coroutine mCor_AutoClick1;
+    private Coroutine mCor_AutoClick1, mCor_AutoClick2;
 
 #pragma warning disable 0649
     [SerializeField] GameObject StarterPack1;
@@ -113,24 +113,31 @@ public class IAPController : MonoBehaviour, IStoreListener
             InitializePurchasing();
         }
 
-        if (CheckHistory(Nonconsumable_StarterPack))
+        Invoke("CheckNonconsumable", 2f);
+
+    }
+    public void CheckNonconsumable()
+    {
+        if (IsInitialized())
         {
-            StarterPack1.SetActive(false);
             if (CheckHistory(Nonconsumable_StarterPack))
             {
-                StarterPack2.SetActive(true);
-                if(CheckHistory(Nonconsumable_StarterPack2))
+                StarterPack1.SetActive(false);
+
+                if (CheckHistory(Nonconsumable_StarterPack2))
                 {
                     StarterPack2.SetActive(false);
                 }
+                else
+                {
+                    StarterPack2.SetActive(true);
+                }
             }
-        }
 
-        if (CheckHistory(Nonconsumable_AutoClick))
-        {
-            AutoClick1.SetActive(false);
             if (CheckHistory(Nonconsumable_AutoClick))
             {
+                AutoClick1.SetActive(false);
+
                 if (CheckHistory(Nonconsumable_AutoClick2))
                 {
                     //오토클릭2 실행
@@ -139,7 +146,10 @@ public class IAPController : MonoBehaviour, IStoreListener
                         StopCoroutine(mCor_AutoClick1);
                     }
                     GameController.Instance.Achive_AutoClick = 1;
-                    StartCoroutine(Cor_AutoClick(0.1f));
+                    if (mCor_AutoClick2 == null)
+                    {
+                        mCor_AutoClick2 = StartCoroutine(Cor_AutoClick(0.1f));
+                    }
                 }
                 else
                 {
@@ -149,17 +159,17 @@ public class IAPController : MonoBehaviour, IStoreListener
                 }
 
             }
-        }
 
-        if (CheckHistory(Nonconsumable_CustomApply))
-        {
-            CustomApplyWindow.SetActive(false);
-            CustomApply = true;
-        }
+            if (CheckHistory(Nonconsumable_CustomApply))
+            {
+                CustomApplyWindow.SetActive(false);
+                CustomApply = true;
+            }
 
-        if (!CustomApply)
-        {
-            GameController.Instance.PlayerProfile = 0;
+            if (!CustomApply)
+            {
+                GameController.Instance.PlayerProfile = 0;
+            }
         }
     }
     public void ReStart()
@@ -263,7 +273,11 @@ public class IAPController : MonoBehaviour, IStoreListener
     public bool CheckHistory(string productID)
     {
         Product product = m_StoreController.products.WithID(productID);
-        return product.hasReceipt;
+        if(product != null)
+        {
+            return product.hasReceipt;
+        }
+        return false;
     }
 
     public void BuyDaziGold10()
@@ -302,11 +316,12 @@ public class IAPController : MonoBehaviour, IStoreListener
     {
         if (CheckHistory(Nonconsumable_StarterPack))
         {
+            StarterPack1.SetActive(false);
+            StarterPack2.SetActive(true);
             Debug.Log("이미 구매한 상품");
             return;
         }
         BuyProductID(Nonconsumable_StarterPack);
-        QuestController.Instance.Achive_Norini();
     }
     public void BuyStarterPack2()
     {
@@ -314,6 +329,7 @@ public class IAPController : MonoBehaviour, IStoreListener
         {
             if (CheckHistory(Nonconsumable_StarterPack2))
             {
+                StarterPack2.SetActive(false);
                 Debug.Log("이미 구매한 상품");
                 return;
             }
@@ -324,6 +340,12 @@ public class IAPController : MonoBehaviour, IStoreListener
     {
         if (CheckHistory(Nonconsumable_AutoClick))
         {
+            AutoClick1.SetActive(false);
+            AutoClick2.SetActive(true);
+            if (mCor_AutoClick1 == null)
+            {
+                mCor_AutoClick1 = StartCoroutine(Cor_AutoClick(0.2f));
+            }
             Debug.Log("이미 구매한 상품");
             return;
         }
@@ -336,17 +358,28 @@ public class IAPController : MonoBehaviour, IStoreListener
         {
             if (CheckHistory(Nonconsumable_AutoClick2))
             {
+                AutoClick2.SetActive(false);
+                if (mCor_AutoClick1 != null)
+                {
+                    StopCoroutine(mCor_AutoClick1);
+                }
+
+                if (mCor_AutoClick2 == null)
+                {
+                    mCor_AutoClick2 = StartCoroutine(Cor_AutoClick(0.1f));
+                }
                 Debug.Log("이미 구매한 상품");
                 return;
             }
             BuyProductID(Nonconsumable_AutoClick2);
-            QuestController.Instance.Achive_AutoClick();
         }
     }
     public void BuyCustomApply()
     {
         if (CheckHistory(Nonconsumable_CustomApply))
         {
+            CustomApplyWindow.SetActive(false);
+            CustomApply = true;
             Debug.Log("이미 구매한 상품");
             return;
         }
@@ -575,6 +608,7 @@ public class IAPController : MonoBehaviour, IStoreListener
                 GameController.Instance.HaveItem[1] += 10;
                 StarterPack1.SetActive(false);
                 StarterPack2.SetActive(true);
+                QuestController.Instance.Achive_Norini();
             }
             else if (String.Equals(args.purchasedProduct.definition.id, Nonconsumable_StarterPack2, StringComparison.Ordinal))
             {
@@ -601,6 +635,7 @@ public class IAPController : MonoBehaviour, IStoreListener
                     StopCoroutine(mCor_AutoClick1);
                 }
                 StartCoroutine(Cor_AutoClick(0.1f));
+                QuestController.Instance.Achive_AutoClick();
             }
             else if (String.Equals(args.purchasedProduct.definition.id, Nonconsumable_CustomApply, StringComparison.Ordinal))
             {

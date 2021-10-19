@@ -569,6 +569,14 @@ public class GameController : SaveDataController
             mUser.ChangeName = value;
         }
     }
+    public int GemSellTutorial
+    {
+        get { return mUser.GemSellTutorial; }
+        set
+        {
+            mUser.GemSellTutorial = value;
+        }
+    }
     private void Awake()
     {
         if(Instance == null)
@@ -602,7 +610,7 @@ public class GameController : SaveDataController
         {
             mUser.PlayerPos = mUser.Stage;
         }
-        if (mUser.FirstTry == 0)
+        if (mUser.FirstTry < 2)
         {
             ExplainWindow.gameObject.SetActive(true);
         }
@@ -784,11 +792,16 @@ public class GameController : SaveDataController
         {
             //mUser.Progress = Math.Round((mUser.Progress - mFloorProgress[mUser.PlayerPos]),2);
             //gain++;
-            gain = mUser.Progress / mFloorProgress[mUser.PlayerPos];
+            gain = (int)(mUser.Progress / mFloorProgress[mUser.PlayerPos]);
             mUser.Progress = Math.Round(mUser.Progress % mFloorProgress[mUser.PlayerPos],2);
+            if (mUser.GemSellTutorial < 1)
+            {
+                PointController.Instance.ShowGemSellPoint();
+            }
         }
 
         AddAmoutGem_O[mUser.PlayerPos] += gain ;
+
         GemSellController.Instance.RefreshGemData();
         //TextEffect effect = TextEffectPool.Instance.GetFromPool();
         //effect.SetText(gain.ToString());
@@ -802,6 +815,6 @@ public class GameController : SaveDataController
     }
     public void FirstTry()
     {
-        mUser.FirstTry =1;
+        mUser.FirstTry++;
     }
 }

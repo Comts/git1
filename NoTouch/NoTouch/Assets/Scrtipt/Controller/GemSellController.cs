@@ -22,6 +22,8 @@ public class GemSellController : InformationLoader
     private Transform mElementArea;
     [SerializeField]
     private Toggle mAllSellToggle;
+    [SerializeField]
+    private Image LayerPoint, SellPoint;
 #pragma warning restore 0649
     private List<GemSellUIElement> mElementList;
     private List<LayerButtonUIElement> mButtonElementList;
@@ -104,7 +106,7 @@ public class GemSellController : InformationLoader
             element.Init(i, mIconArr[i],
                         mTextInfoArr[i].Title,
                         string.Format("가격 : {0} 원", UnitSetter.GetUnitStr(mInfoArr[i].Cost)),
-                        SellGem);
+                        SellGem, LayerPoint,SellPoint);
 
 
             mElementList.Add(element);
@@ -113,7 +115,7 @@ public class GemSellController : InformationLoader
             if (i % 4 == 3)
             {
                 mButtonElementList[mButtonElementList.Count - 1].bToggleIsOn(false);
-                mButtonElementList[mButtonElementList.Count-1].setting(mElementList[i-3], mElementList[i-2], mElementList[i-1], mElementList[i]);
+                mButtonElementList[mButtonElementList.Count-1].setting(mElementList[i-3], mElementList[i-2], mElementList[i-1], mElementList[i], LayerPoint,SellPoint);
             }
             if (i / 4 <= GameController.Instance.Stage)
             {
@@ -143,6 +145,7 @@ public class GemSellController : InformationLoader
             }
         });
 
+        mButtonElementList[GameController.Instance.Stage].SetGemSellUI();
         SetAllSellToggle(GameController.Instance.CheckAllSell);
 
     }

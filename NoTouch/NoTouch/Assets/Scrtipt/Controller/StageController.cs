@@ -53,10 +53,19 @@ public class StageController : MonoBehaviour
     {
         if (GameController.Instance.Gold >= mDigCost)
         {
+            if (mDigButton.interactable == false)
+            {
+                SoundController.Instance.FXSound(12);
+                PointController.Instance.ShowDigPoint(true);
+            }
             mDigButton.interactable = true;
         }
         else
         {
+            if (mDigButton.interactable == true)
+            {
+                PointController.Instance.ShowDigPoint(false);
+            }
             mDigButton.interactable = false;
         }
     }
@@ -234,5 +243,6 @@ public class StageController : MonoBehaviour
             mLastSibling.gameObject.SetActive(false);
         }
         Quest_DigCount.Instance.CheckQuest();
+        PlayerActive(GameController.Instance.Stage);
     }
 }

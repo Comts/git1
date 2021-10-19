@@ -26,7 +26,9 @@ public class GemSellUIElement : MonoBehaviour
                      Sprite icon,
                      string title,
                      string contents,
-                     Delegates.IntDoubleInVoidCallback callback)
+                     Delegates.IntDoubleInVoidCallback callback,
+                     Image LayerPoint,
+                     Image SellPoint)
     {
         mID = id;
         mIconImage.sprite = icon;
@@ -37,6 +39,12 @@ public class GemSellUIElement : MonoBehaviour
         mButton.onClick.AddListener(() =>
         {
             callback(mID, mSellAmount);
+            if (SellPoint.gameObject.activeInHierarchy)
+            {
+                GameController.Instance.GemSellTutorial = 1;
+                LayerPoint.gameObject.SetActive(false);
+                SellPoint.gameObject.SetActive(false);
+            }
         });
         mToggle.onValueChanged.AddListener((bOn) =>
         {

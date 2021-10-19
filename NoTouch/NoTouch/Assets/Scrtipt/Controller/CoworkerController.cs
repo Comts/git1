@@ -42,6 +42,8 @@ public class CoworkerController : InformationLoader
     private BuffUIElement mDoubleBuffUIElement;
     [SerializeField]
     private Sprite mBlockIcon,mDoubleBuffIcon;
+    [SerializeField]
+    private Image mBuffWindow;
 #pragma warning restore 0649
     private List<UIElement> mElementList;
     private List<SleepUIElement> mSleepElementList;
@@ -218,6 +220,8 @@ public class CoworkerController : InformationLoader
             mBuffUIElement[id].ShowBuff(mIconArr[id]);
             ShowCoworkerBuff();
             PlayerUpgradeController.Instance.ReSetSlider();
+            PointController.Instance.ShowPlayerPoint();
+            mBuffWindow.gameObject.SetActive(true);
         }
         AddCowerker(id);
 
@@ -257,6 +261,7 @@ public class CoworkerController : InformationLoader
                             LevelUP);
 
                 mElementList.Add(element);
+                PointController.Instance.ShowCoworkerPoint(true);
             }
         }
     }

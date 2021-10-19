@@ -72,6 +72,8 @@ public class QuestUIElement : MonoBehaviour
     {
         mGaugeBar.gameObject.SetActive(false);
         mButton.gameObject.SetActive(true);
+        SoundController.Instance.FXSound(12);
+        PointController.Instance.ShowQuestPoint();
     }
     public void AllClearQuest()
     {
