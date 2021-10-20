@@ -376,6 +376,7 @@ public class SaveDataController : MonoBehaviour
         mUser.FirstTry = 0;
         mUser.ChangeName = 0;
         mUser.GemSellTutorial = 0;
+        mUser.PlayerLevelUpTutorial = 0;
     }
 
     protected void Save()

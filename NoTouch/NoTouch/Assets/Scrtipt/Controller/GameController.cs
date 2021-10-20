@@ -38,7 +38,7 @@ public class GameController : SaveDataController
         get { return mUser.Gold; }
         set
         {
-            if(value >=0)
+            if (value >= 0)
             {
                 mUser.Gold = value;
                 if (GoldCallback != null)
@@ -53,6 +53,18 @@ public class GameController : SaveDataController
             GoldCallback = null;
             UIController.Instance.ShowMoney();
             StageController.Instance.CheckDigButton();
+            if (mUser.PlayerLevelUpTutorial == 0 && !PointController.Instance.CheckPlyerLevelUpPoint())
+            {
+                if (mUser.Gold >= PlayerUpgradeController.Instance.CheckTutorial())
+                {
+                    SoundController.Instance.FXSound(12);
+                    PointController.Instance.ShowPlayerLevelUpPoint(true);
+                }
+                else
+                {
+                    PointController.Instance.ShowPlayerLevelUpPoint(false);
+                }
+            }
         }
     }
     #region Gem Count
@@ -575,6 +587,14 @@ public class GameController : SaveDataController
         set
         {
             mUser.GemSellTutorial = value;
+        }
+    }
+    public int PlayerLevelUpTutorial
+    {
+        get { return mUser.PlayerLevelUpTutorial; }
+        set
+        {
+            mUser.PlayerLevelUpTutorial = value;
         }
     }
     private void Awake()

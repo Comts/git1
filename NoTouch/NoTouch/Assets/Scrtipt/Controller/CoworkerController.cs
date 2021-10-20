@@ -220,7 +220,8 @@ public class CoworkerController : InformationLoader
             mBuffUIElement[id].ShowBuff(mIconArr[id]);
             ShowCoworkerBuff();
             PlayerUpgradeController.Instance.ReSetSlider();
-            PointController.Instance.ShowPlayerPoint();
+            SoundController.Instance.FXSound(12);
+            PointController.Instance.ShowPlayerPoint(true);
             mBuffWindow.gameObject.SetActive(true);
         }
         AddCowerker(id);

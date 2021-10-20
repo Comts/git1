@@ -79,7 +79,10 @@ public class GemSellController : InformationLoader
         {
             if(GameController.Instance.CheckAutoSell[i])
             {
-                SellGem(i, mElementList[i].GetMaxSellAmount());
+                if (mElementList[i].GetMaxSellAmount() > 0)
+                {
+                    SellGem(i, mElementList[i].GetMaxSellAmount());
+                }
                 mElementList[i].bToggleIsOn(true);
             }
         }
@@ -106,7 +109,7 @@ public class GemSellController : InformationLoader
             element.Init(i, mIconArr[i],
                         mTextInfoArr[i].Title,
                         string.Format("가격 : {0} 원", UnitSetter.GetUnitStr(mInfoArr[i].Cost)),
-                        SellGem, LayerPoint,SellPoint);
+                        SellGem, SellPoint);
 
 
             mElementList.Add(element);

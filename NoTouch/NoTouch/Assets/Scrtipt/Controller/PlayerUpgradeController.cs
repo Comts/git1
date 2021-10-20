@@ -123,6 +123,11 @@ public class PlayerUpgradeController : InformationLoader
         {
             mElement.SetButtonActive(false);
         }
+        if (GameController.Instance.PlayerLevelUpTutorial == 0)
+        {
+            GameController.Instance.PlayerLevelUpTutorial = 1;
+            PointController.Instance.ShowPlayerLevelUpPoint(false);
+        }
         GameController.Instance.GetPlayerLevel = mInfo.CurrentLevel;
         Refresh();
         Quest_PlayerLevel.Instance.CheckQuest();
@@ -146,6 +151,10 @@ public class PlayerUpgradeController : InformationLoader
         GameController.Instance.MaxManPower = mInfo.ValueCurrent;
         GameController.Instance.ManPower = GameController.Instance.CalBuffManPower();
         ReSetSlider();
+    }
+    public double CheckTutorial()
+    {
+        return mInfo.CostCurrent;
     }
     public void ReSetSlider()
     {

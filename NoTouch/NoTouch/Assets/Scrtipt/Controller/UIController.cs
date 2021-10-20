@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -39,6 +40,10 @@ public class UIController : MonoBehaviour
                     continue;
                 }
                 mWindowArr[i].gameObject.SetActive(false);
+                if (i == 8)
+                {
+                    PointController.Instance.NoShowGemSellPoint();
+                }
             }
             mItemWindow.rectTransform.localPosition = new Vector2(0, 230);
             mItemButton.rectTransform.localPosition = new Vector2(325, 220);
@@ -46,6 +51,10 @@ public class UIController : MonoBehaviour
         else
         {
             mWindowArr[id].gameObject.SetActive(false);
+            if (id == 8)
+            {
+                PointController.Instance.NoShowGemSellPoint();
+            }
             ResetItemPos();
         }
     }
@@ -56,7 +65,7 @@ public class UIController : MonoBehaviour
     }
     public void ShowMoney()
     {
-        mMoneyText.text = UnitSetter.GetUnitStr(GameController.Instance.Gold);
+        mMoneyText.text = UnitSetter.GetUnitStr(Math.Round(GameController.Instance.Gold,2));
     }
 
 }

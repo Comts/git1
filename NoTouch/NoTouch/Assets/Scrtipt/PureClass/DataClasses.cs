@@ -196,5 +196,6 @@ public class SaveData
     public int FirstTry;
     public int ChangeName;
     public int GemSellTutorial;
+    public int PlayerLevelUpTutorial;
 
 }

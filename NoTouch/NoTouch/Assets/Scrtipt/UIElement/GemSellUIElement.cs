@@ -27,7 +27,6 @@ public class GemSellUIElement : MonoBehaviour
                      string title,
                      string contents,
                      Delegates.IntDoubleInVoidCallback callback,
-                     Image LayerPoint,
                      Image SellPoint)
     {
         mID = id;
@@ -42,8 +41,7 @@ public class GemSellUIElement : MonoBehaviour
             if (SellPoint.gameObject.activeInHierarchy)
             {
                 GameController.Instance.GemSellTutorial = 1;
-                LayerPoint.gameObject.SetActive(false);
-                SellPoint.gameObject.SetActive(false);
+                PointController.Instance.NoShowGemSellPoint();
             }
         });
         mToggle.onValueChanged.AddListener((bOn) =>
