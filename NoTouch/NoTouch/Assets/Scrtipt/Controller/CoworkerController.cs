@@ -46,6 +46,8 @@ public class CoworkerController : InformationLoader
     private Image mBuffWindow;
     [SerializeField]
     private GetGemEffectPool mGetGemEffectPool;
+    [SerializeField]
+    private Image mCoworkerWindow;
 #pragma warning restore 0649
     private List<UIElement> mElementList;
     private List<SleepUIElement> mSleepElementList;
@@ -276,7 +278,10 @@ public class CoworkerController : InformationLoader
                             LevelUP);
 
                 mElementList.Add(element);
-                PointController.Instance.ShowCoworkerPoint(true);
+                if (!mCoworkerWindow.gameObject.activeInHierarchy)
+                {
+                    PointController.Instance.ShowCoworkerPoint(true);
+                }
             }
         }
     }
