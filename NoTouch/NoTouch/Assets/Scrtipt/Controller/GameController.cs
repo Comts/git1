@@ -818,6 +818,7 @@ public class GameController : SaveDataController
             {
                 PointController.Instance.ShowGemSellPoint();
             }
+            StageController.Instance.PlayerGemEffect();
         }
 
         AddAmoutGem_O[mUser.PlayerPos] += gain ;

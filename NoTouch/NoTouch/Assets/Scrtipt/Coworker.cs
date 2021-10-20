@@ -37,6 +37,8 @@ public class Coworker : MonoBehaviour
             if (mCurrentTime >= mWorkPeriod)
             {
                 CoworkerController.Instance.JobFinish(mID);//TODO FX, mTextEffectPos.position);
+
+
                 mCurrentTime = mCurrentTime - mWorkPeriod;
             }
         }

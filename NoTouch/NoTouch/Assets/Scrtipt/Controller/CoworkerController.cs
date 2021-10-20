@@ -44,9 +44,13 @@ public class CoworkerController : InformationLoader
     private Sprite mBlockIcon,mDoubleBuffIcon;
     [SerializeField]
     private Image mBuffWindow;
+    [SerializeField]
+    private GetGemEffectPool mGetGemEffectPool;
 #pragma warning restore 0649
     private List<UIElement> mElementList;
     private List<SleepUIElement> mSleepElementList;
+    private Sprite[] mGemIconArr;
+    //private Transform[] mEffectPos = new Transform[Constants.MAX_fLOOR];
     private void Awake()
     {
         if (Instance == null)
@@ -70,6 +74,7 @@ public class CoworkerController : InformationLoader
         mLevelArr = GameController.Instance.GetCoworkerLevelArr();
         mElementList = new List<UIElement>();
         mSleepElementList = new List<SleepUIElement>();
+        mGemIconArr = Resources.LoadAll<Sprite>(Paths.CRAFT_ICON);
         Load();
     }
     public void ReStart()
@@ -86,6 +91,10 @@ public class CoworkerController : InformationLoader
 
         Load();
     }
+    //public void SetCoworkerPos(int i, Transform trans)
+    //{
+    //    mEffectPos[i].position = trans.position;
+    //}
     private void Load()
     {
         GameController.Instance.Buff_Coworker = 0;
@@ -102,6 +111,7 @@ public class CoworkerController : InformationLoader
             {
                 mCoworkerArr[i].gameObject.SetActive(true);
                 mCoworkerArr[i].StartWork(i, mInfoArr[i].PeriodCurrent);
+
 
                 if (i == mInfoArr.Length-1)
                 {
@@ -148,6 +158,9 @@ public class CoworkerController : InformationLoader
         GameController.Instance.AddAmoutGem_O[id]+= (AddAmount * ItemUseController.Instance.GetGemMulti[1]);
         GemSellController.Instance.RefreshGemData();
         //TODO FX
+        GetGemEffect effect = mGetGemEffectPool.GetFromPool();
+        effect.SetIcon(mGemIconArr[id]);
+        effect.transform.position = StageController.Instance.GetCoworkerPos(id).position;
     }
 
     public void SleepJob(int num)
@@ -229,6 +242,7 @@ public class CoworkerController : InformationLoader
         CalcData(id);
 
         mCoworkerArr[id].StartWork(id, mInfoArr[id].PeriodCurrent);
+
 
         mElementList[id].Refresh(
                                     string.Format("레벨 : {0}", mInfoArr[id].CurrentLevel.ToString()),

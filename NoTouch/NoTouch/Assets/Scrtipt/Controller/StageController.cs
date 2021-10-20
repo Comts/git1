@@ -28,6 +28,9 @@ public class StageController : MonoBehaviour
     [SerializeField]
     private Button mDigButton;
     private double mDigCost;
+    [SerializeField]
+    private GetGemEffectPool mGetGemEffectPool;
+    private Sprite[] mGemIconArr;
 
 
 #pragma warning restore 0649
@@ -47,6 +50,7 @@ public class StageController : MonoBehaviour
     {
         mAnimArr = Resources.LoadAll<Animator>("Coworker");
         mElementList = new List<StageUIElement>();
+        mGemIconArr = Resources.LoadAll<Sprite>(Paths.CRAFT_ICON);
         Load();
     }
     public void CheckDigButton()
@@ -151,6 +155,16 @@ public class StageController : MonoBehaviour
         }
 
 
+    }
+    public void PlayerGemEffect()
+    {
+        GetGemEffect effect = mGetGemEffectPool.GetFromPool();
+        effect.SetIcon(mGemIconArr[GameController.Instance.PlayerPos]);
+        effect.transform.position = mElementList[GameController.Instance.PlayerPos].CheckPlayePos().position;
+    }
+    public Transform GetCoworkerPos(int i)
+    {
+        return mElementList[i].GetCoworkerPos();
     }
     public void mPlayerPosSet()
     {

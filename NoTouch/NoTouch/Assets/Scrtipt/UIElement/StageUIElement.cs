@@ -52,6 +52,10 @@ public class StageUIElement : MonoBehaviour
     {
         BodyImage.gameObject.SetActive(b);
     }
+    public Transform CheckPlayePos()
+    {
+        return BodyImage.gameObject.transform;
+    }
     public void CoworkerActive(bool b)
     {
         CoworkerAnim.gameObject.SetActive(b);
@@ -70,6 +74,10 @@ public class StageUIElement : MonoBehaviour
     public void HaveStage()
     {
         mImage.color += Color.black;
+    }
+    public Transform GetCoworkerPos()
+    {
+        return CoworkerPos;
     }
     public void ShowStage()
     {
