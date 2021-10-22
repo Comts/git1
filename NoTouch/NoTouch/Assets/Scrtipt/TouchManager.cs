@@ -43,7 +43,7 @@ public class TouchManager : MonoBehaviour
         mTouchImage = 1;
         mCurrentImage = 0;
     }
-    
+
     private Ray GenerateRay(Vector3 screenPos)
     {
         screenPos.z = mMainCamera.nearClipPlane;
@@ -53,21 +53,40 @@ public class TouchManager : MonoBehaviour
 
         return new Ray(origin, dest - origin);
     }
+    public void Drawing()
+    {
 
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+            if (touch.phase == TouchPhase.Moved)
+            {
+                Ray ray = GenerateRay(touch.position);
+                RaycastHit hit;
+                if (Physics.Raycast(ray, out hit))
+                {
+                    if (hit.collider.gameObject.CompareTag("Dot"))
+                    {
+                        Vector2 touchPos = new Vector2(hit.point.x, hit.point.y);
+                        CustomImage.Instance.Drawing(touchPos);
+                    }
+                }
+            }
+        }
+    }
     private bool CheckTouch(out Vector3 vec)
     {
-        if(Input.touchCount>0)
+        if (Input.touchCount > 0)
         {
             mTouchCount++;
-            for (int i=0;i<Input.touchCount;i++)
+            for (int i = 0; i < Input.touchCount; i++)
             {
-                Debug.Log("hit2");
                 Touch touch = Input.GetTouch(i);
-                if(touch.phase==TouchPhase.Began)
+                if (touch.phase == TouchPhase.Began)
                 {
                     Ray ray = GenerateRay(touch.position);
                     RaycastHit hit;
-                    if(Physics.Raycast(ray,out hit))
+                    if (Physics.Raycast(ray, out hit))
                     {
                         if (GameController.Instance.Achieve_Click == 0)
                         {
@@ -84,7 +103,7 @@ public class TouchManager : MonoBehaviour
                             mTouchCount++;
                             GameController.Instance.Touch();
 
-                            if(mTouchCount>= mChangeCount)
+                            if (mTouchCount >= mChangeCount)
                             {
                                 StageController.Instance.ChangePlayerImage(mTouchImage);
                                 if (mTouchImage == 0)
@@ -118,9 +137,8 @@ public class TouchManager : MonoBehaviour
                         }
                         if (hit.collider.gameObject.CompareTag("Dot"))
                         {
-                            Vector2 touchPos = new Vector2(hit.point.x , hit.point.y);
+                            Vector2 touchPos = new Vector2(hit.point.x, hit.point.y);
                             CustomImage.Instance.Draw(touchPos);
-                            SoundController.Instance.FXSound(UnityEngine.Random.Range(0, 2));
                         }
                         vec = hit.point;
                         return true;
@@ -193,14 +211,27 @@ public class TouchManager : MonoBehaviour
                 if (hit.collider.gameObject.CompareTag("Dot"))
                 {
                     Vector2 touchPos = new Vector2(hit.point.x, hit.point.y);
-                    //Debug.Log("Dot Pos: "+ touchPos);
                     CustomImage.Instance.Draw(touchPos);
-                    SoundController.Instance.FXSound(UnityEngine.Random.Range(0, 2));
                 }
             }
             Timer effect = mEffectPool.GetFromPool();
-            effect.transform.position = hit.point + (Vector3.back *3);
+            effect.transform.position = hit.point + (Vector3.back * 3);
         }
+
+        if (Input.GetMouseButton(0))
+        {
+            Ray ray = GenerateRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit))
+            {
+                if (hit.collider.gameObject.CompareTag("Dot"))
+                {
+                    Vector2 touchPos = new Vector2(hit.point.x, hit.point.y);
+                    CustomImage.Instance.Drawing(touchPos);
+                }
+            }
+        }
+        Drawing();
         Vector3 pos;
         if (CheckTouch(out pos))
         {

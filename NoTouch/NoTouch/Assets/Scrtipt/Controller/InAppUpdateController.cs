@@ -17,7 +17,7 @@ public class InAppUpdateController : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        CheckUpdate();
+        Invoke("CheckUpdate", 2f);
     }
     public void CheckUpdate()
     {
@@ -30,7 +30,6 @@ public class InAppUpdateController : MonoBehaviour
         foreach (HtmlNode node in doc.DocumentNode.SelectNodes("//span[@class='htlgb']"))
         {
             marketVersion = node.InnerText.Trim();
-            
             if(marketVersion != null)
             {
                 if (System.Text.RegularExpressions.Regex.IsMatch(marketVersion, @"^\d{1}\.\d{1}\.\d{1}$"))
@@ -55,5 +54,10 @@ public class InAppUpdateController : MonoBehaviour
     public void OpenUpdate()
     {
         Application.OpenURL(url);
+    }
+    public void OpenYouTube()
+    {
+        string YouTubeurl = "https://www.youtube.com/channel/UCBI6BwViDckmOL0tVdupuew";
+        Application.OpenURL(YouTubeurl);
     }
 }

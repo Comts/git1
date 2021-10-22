@@ -73,6 +73,11 @@ public class Quest_DigCount : InformationLoader
     public void RequireAward()
     {
         GameController.Instance.Quest_DigCount = mElementList[GameController.Instance.Quest_DigCount].GetAward();
+
+        string DaziName = mElementList[GameController.Instance.Quest_DigCount].GetDaziName();
+        int DaziAmount = mElementList[GameController.Instance.Quest_DigCount].GetDaizAmount();
+        QuestController.Instance.ShowGetDazi(DaziName, DaziAmount);
+
         ItemUseController.Instance.ShowHaveItem();
         QuestController.Instance.QuestProgress++;
         ShowQuest(GameController.Instance.Quest_DigCount);

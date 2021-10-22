@@ -44,7 +44,7 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 4475d78b7e44ffb49aaa6933043ab257, type: 3}
     - {fileID: 2800000, guid: ed64dd068a80d13498801aff7c166dac, type: 3}
     - {fileID: 2800000, guid: 0f20c48cb25c39c4ba1e5cbea59e0e42, type: 3}
-    totalSpriteSurfaceArea: 25919296
+    totalSpriteSurfaceArea: 25933696
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
@@ -88,6 +88,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 12f6000230ea7204a94203fe40f9e1fb, type: 3}
   - {fileID: 21300000, guid: 81ebb602bff27cc4485397451449f8bc, type: 3}
   - {fileID: 21300000, guid: 9842ff22f93b6ad478fed042f98dbb41, type: 3}
+  - {fileID: 21300000, guid: d378cb32340f0a74b84a186164052d75, type: 3}
   - {fileID: 21300000, guid: db7eda422f0686a47bbf1b5c25c7c7b7, type: 3}
   - {fileID: 21300000, guid: 91a9ee4200720fd4cb444aab342bbd16, type: 3}
   - {fileID: 21300000, guid: 30f96662678ed8f41aa5778c49937622, type: 3}
@@ -391,6 +392,7 @@ SpriteAtlas:
   - AutoClick1
   - Gem_12-1.png
   - Achieve_Vib
+  - RandomDazi
   - New Piskel-3.png
   - Gem_09-3.png
   - Gem_02-3.png

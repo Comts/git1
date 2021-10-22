@@ -73,6 +73,11 @@ public class Quest_MoleCount : InformationLoader
     public void RequireAward()
     {
         GameController.Instance.Quest_MoleCount = mElementList[GameController.Instance.Quest_MoleCount].GetAward();
+
+        string DaziName = mElementList[GameController.Instance.Quest_MoleCount].GetDaziName();
+        int DaziAmount = mElementList[GameController.Instance.Quest_MoleCount].GetDaizAmount();
+        QuestController.Instance.ShowGetDazi(DaziName, DaziAmount);
+
         ItemUseController.Instance.ShowHaveItem();
         QuestController.Instance.QuestProgress++;
         ShowQuest(GameController.Instance.Quest_MoleCount);

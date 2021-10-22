@@ -73,6 +73,11 @@ public class Quest_GoldDazi : InformationLoader
     public void RequireAward()
     {
         GameController.Instance.Quest_GoldDazi = mElementList[GameController.Instance.Quest_GoldDazi].GetAward();
+
+        string DaziName = mElementList[GameController.Instance.Quest_GoldDazi].GetDaziName();
+        int DaziAmount = mElementList[GameController.Instance.Quest_GoldDazi].GetDaizAmount();
+        QuestController.Instance.ShowGetDazi(DaziName, DaziAmount);
+
         ItemUseController.Instance.ShowHaveItem();
         QuestController.Instance.QuestProgress++;
         ShowQuest(GameController.Instance.Quest_GoldDazi);

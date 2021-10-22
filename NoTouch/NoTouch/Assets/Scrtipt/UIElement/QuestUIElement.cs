@@ -21,6 +21,8 @@ public class QuestUIElement : MonoBehaviour
 
     // Update is called once per frame
     private int mID, mItemNum,NextID, mRequire, mAmount;
+    string DaziName;
+    int DaziAmount;
     public void Init(   int id , 
                         Sprite Q_image,
                         int ItemNum,
@@ -39,13 +41,16 @@ public class QuestUIElement : MonoBehaviour
         mTitleText.text = title;
         mContentsText.text = contents;
         mButtonText.text = string.Format("{0} 개 받기", mAmount);
+        DaziAmount = mAmount;
         if (mItemNum == 0)
         {
             mButtonImage.sprite = SilverDazi;
+            DaziName = "실버다지";
         }
         else
         {
             mButtonImage.sprite = GoldDazi;
+            DaziName = "골드다지";
         }
 
         mButton.onClick.AddListener(() =>
@@ -56,6 +61,14 @@ public class QuestUIElement : MonoBehaviour
     public int GetRequire()
     {
         return mRequire;
+    }
+    public int GetDaizAmount()
+    {
+        return DaziAmount;
+    }
+    public string GetDaziName()
+    {
+        return DaziName;
     }
     public int GetAward()
     {

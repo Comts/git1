@@ -100,6 +100,11 @@ public class Quest_CraftGem : InformationLoader
     public void RequireAward()
     {
         GameController.Instance.Quest_CraftGem = mElementList[GameController.Instance.Quest_CraftGem].GetAward();
+
+        string DaziName = mElementList[GameController.Instance.Quest_CraftGem].GetDaziName();
+        int DaziAmount = mElementList[GameController.Instance.Quest_CraftGem].GetDaizAmount();
+        QuestController.Instance.ShowGetDazi(DaziName, DaziAmount);
+
         ItemUseController.Instance.ShowHaveItem();
         QuestController.Instance.QuestProgress++;
         ShowQuest(GameController.Instance.Quest_CraftGem);

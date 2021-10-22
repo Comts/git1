@@ -268,6 +268,21 @@ public class CustomImage : MonoBehaviour
                 break;
         }
     }
+    public void Drawing(Vector2 touchPos)
+    {
+        switch (tool)
+        {
+            case 0:
+                BrushPixelByPos(selectedColor, touchPos);
+                break;
+            case 1:
+                BrushPixelByPos(Color.clear, touchPos);
+                break;
+            default:
+                Debug.LogError("tool : " + tool);
+                break;
+        }
+    }
     public void SetColor_R()
     {
         selectedColor.r = mRSlider.value;

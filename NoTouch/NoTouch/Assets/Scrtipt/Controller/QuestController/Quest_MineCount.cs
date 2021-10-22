@@ -73,6 +73,11 @@ public class Quest_MineCount : InformationLoader
     public void RequireAward()
     {
         GameController.Instance.Quest_MineCount = mElementList[GameController.Instance.Quest_MineCount].GetAward();
+
+        string DaziName = mElementList[GameController.Instance.Quest_MineCount].GetDaziName();
+        int DaziAmount = mElementList[GameController.Instance.Quest_MineCount].GetDaizAmount();
+        QuestController.Instance.ShowGetDazi(DaziName, DaziAmount);
+
         ItemUseController.Instance.ShowHaveItem();
         QuestController.Instance.QuestProgress++;
         ShowQuest(GameController.Instance.Quest_MineCount);

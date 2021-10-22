@@ -674,6 +674,18 @@ public class GameController : SaveDataController
         InvokeRepeating("GetEndTime", 2f, 60f); 
 
     }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Save();
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                OnApplicationQuit();
+                Application.Quit();
+            }
+        }
+    }
     public void ReStart()
     {
         mUser.Gold = 0;

@@ -46,6 +46,10 @@ public class QuestController : MonoBehaviour
     private Button[] Attend_Reward_Button;
     [SerializeField]
     private Image[] Attend_Block_Image;
+    [SerializeField]
+    private GameObject GetDaziWindow, GetDaziWindow2;
+    [SerializeField]
+    private Text GetDaziText, GetDaziText2;
 #pragma warning restore 0649
     private int AchieveProgress;
     public int QuestMax,QuestProgress;
@@ -88,42 +92,62 @@ public class QuestController : MonoBehaviour
     }
     public void GetAttendReward(int num)
     {
+        string DaziName = "다지다지";
+        int DaziAmount = 0;
 
         switch (num)
         {
             case 0:
                 GameController.Instance.HaveItem[0] += 5;
                 Attend_Block_Image[num].gameObject.SetActive(true);
+                DaziName = "실버다지";
+                DaziAmount = 5;
                 break;
 
             case 1:
                 GameController.Instance.HaveItem[0] += 5;
                 Attend_Block_Image[num].gameObject.SetActive(true);
+                DaziName = "실버다지";
+                DaziAmount = 5;
                 break;
 
             case 2:
                 GameController.Instance.HaveItem[1] += 1;
                 Attend_Block_Image[num].gameObject.SetActive(true);
+                DaziName = "골드다지";
+                DaziAmount = 1;
                 break;
 
             case 3:
                 GameController.Instance.HaveItem[0] += 5;
                 Attend_Block_Image[num].gameObject.SetActive(true);
+                DaziName = "실버다지";
+                DaziAmount = 5;
                 break;
 
             case 4:
                 GameController.Instance.HaveItem[0] += 5;
                 Attend_Block_Image[num].gameObject.SetActive(true);
+                DaziName = "실버다지";
+                DaziAmount = 5;
                 break;
 
             case 5:
                 GameController.Instance.HaveItem[1] += 1;
                 Attend_Block_Image[num].gameObject.SetActive(true);
+                DaziName = "골드다지";
+                DaziAmount = 1;
                 break;
 
             case 6:
                 GameController.Instance.HaveItem[0] += 10;
                 GameController.Instance.HaveItem[1] += 2;
+                string DaziName2 = "골드다지";
+                int DaziAmount2 = 2;
+                DaziName = "실버다지";
+                DaziAmount = 10;
+                GetDaziText2.text = string.Format("{0} {1}개를 획득했습니다.", DaziName2, DaziAmount2);
+                GetDaziWindow2.gameObject.SetActive(true);
                 ResetAttendReward();
                 break;
 
@@ -131,6 +155,8 @@ public class QuestController : MonoBehaviour
                 Debug.LogError("GetAttendReward Error " + num);
                 break;
         }
+        GetDaziText.text = string.Format("{0} {1}개를 획득했습니다.", DaziName, DaziAmount);
+        GetDaziWindow.gameObject.SetActive(true);
         ItemUseController.Instance.ShowHaveItem();
         GameController.Instance.Check_Attend_Reward = 0;
         if (GameController.Instance.Attend_Reward >= 6)
@@ -138,6 +164,11 @@ public class QuestController : MonoBehaviour
             GameController.Instance.Attend_Reward = -1;
         }
         CheckAttendRewardButton();
+    }
+    public void ShowGetDazi(string mDaziName, int mDaziAmount)
+    {
+        GetDaziText.text = string.Format("{0} {1}개를 획득했습니다.", mDaziName, mDaziAmount);
+        GetDaziWindow.gameObject.SetActive(true);
     }
     public void CheckAttendRewardButton()
     {
