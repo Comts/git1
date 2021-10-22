@@ -5,6 +5,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.Purchasing;
 using UnityEngine.Purchasing.Security;
+using UnityEngine.UI;
 
 // Deriving the Purchaser class from IStoreListener enables it to receive messages from Unity Purchasing.
 public class IAPController : MonoBehaviour, IStoreListener
@@ -22,6 +23,10 @@ public class IAPController : MonoBehaviour, IStoreListener
     [SerializeField] GameObject AutoClick1;
     [SerializeField] GameObject AutoClick2;
     [SerializeField] GameObject CustomApplyWindow;
+    [SerializeField]
+    private GameObject GetDaziWindow, GetDaziWindow2;
+    [SerializeField]
+    private Text GetDaziText, GetDaziText2;
 #pragma warning restore 0649
     public bool CustomApply;
 
@@ -510,6 +515,8 @@ public class IAPController : MonoBehaviour, IStoreListener
     public PurchaseProcessingResult ProcessPurchase(PurchaseEventArgs args) //args 는 유니티 id로들어옴
     {
         bool validPurchase = true; // Presume valid for platforms with no R.V.
+        String DaziName;
+        int DaziAmount;
 
         // Unity IAP's validation logic is only included on these platforms.
 #if UNITY_EDITOR
@@ -565,47 +572,77 @@ public class IAPController : MonoBehaviour, IStoreListener
                 // The consumable item has been successfully purchased, add 100 coins to the player's in-game score.
                 //해당아이템 지급
                 GameController.Instance.HaveItem[1]+=10;
+                DaziName = "골드다지";
+                DaziAmount = 10;
+                ShowGetDazi(DaziName, DaziAmount);
             }
             else if (String.Equals(args.purchasedProduct.definition.id, Consumable_Dazi_Gold_20, StringComparison.Ordinal))
             {
                 Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
                 GameController.Instance.HaveItem[1] += 25;
+                DaziName = "골드다지";
+                DaziAmount = 25;
+                ShowGetDazi(DaziName, DaziAmount);
             }
             else if (String.Equals(args.purchasedProduct.definition.id, Consumable_Dazi_Gold_50, StringComparison.Ordinal))
             {
                 Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
                 GameController.Instance.HaveItem[1] += 75;
+                DaziName = "골드다지";
+                DaziAmount = 75;
+                ShowGetDazi(DaziName, DaziAmount);
             }
             else if (String.Equals(args.purchasedProduct.definition.id, Consumable_Dazi_Gold_100, StringComparison.Ordinal))
             {
                 Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
                 GameController.Instance.HaveItem[1] += 200;
+                DaziName = "골드다지";
+                DaziAmount = 200;
+                ShowGetDazi(DaziName, DaziAmount);
             }
             else if (String.Equals(args.purchasedProduct.definition.id, Consumable_Dazi_Silver_50, StringComparison.Ordinal))
             {
                 Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
                 GameController.Instance.HaveItem[0] += 50;
+                DaziName = "실버다지";
+                DaziAmount = 50;
+                ShowGetDazi(DaziName, DaziAmount);
             }
             else if (String.Equals(args.purchasedProduct.definition.id, Consumable_Dazi_Silver_100, StringComparison.Ordinal))
             {
                 Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
                 GameController.Instance.HaveItem[0] += 120;
+                DaziName = "실버다지";
+                DaziAmount = 120;
+                ShowGetDazi(DaziName, DaziAmount);
             }
             else if (String.Equals(args.purchasedProduct.definition.id, Consumable_Dazi_Silver_200, StringComparison.Ordinal))
             {
                 Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
                 GameController.Instance.HaveItem[0] += 250;
+                DaziName = "실버다지";
+                DaziAmount = 250;
+                ShowGetDazi(DaziName, DaziAmount);
             }
             else if (String.Equals(args.purchasedProduct.definition.id, Consumable_Dazi_Silver_500, StringComparison.Ordinal))
             {
                 Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
                 GameController.Instance.HaveItem[0] += 700;
+                DaziName = "실버다지";
+                DaziAmount = 700;
+                ShowGetDazi(DaziName, DaziAmount);
             }
             else if (String.Equals(args.purchasedProduct.definition.id, Nonconsumable_StarterPack, StringComparison.Ordinal))
             {
                 Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
                 GameController.Instance.HaveItem[0] += 100;
                 GameController.Instance.HaveItem[1] += 10;
+                string DaziName2 = "골드다지";
+                int DaziAmount2 = 10;
+                ShowGetDazi2(DaziName2, DaziAmount2);
+                DaziName = "실버다지";
+                DaziAmount = 100;
+                ShowGetDazi(DaziName, DaziAmount);
                 StarterPack1.SetActive(false);
                 StarterPack2.SetActive(true);
                 QuestController.Instance.Achive_Norini();
@@ -615,6 +652,12 @@ public class IAPController : MonoBehaviour, IStoreListener
                 Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
                 GameController.Instance.HaveItem[0] += 150;
                 GameController.Instance.HaveItem[1] += 15;
+                string DaziName2 = "골드다지";
+                int DaziAmount2 = 15;
+                ShowGetDazi2(DaziName2, DaziAmount2);
+                DaziName = "실버다지";
+                DaziAmount = 150;
+                ShowGetDazi(DaziName, DaziAmount);
                 StarterPack2.SetActive(false);
             }
             else if (String.Equals(args.purchasedProduct.definition.id, Nonconsumable_AutoClick, StringComparison.Ordinal))
@@ -664,5 +707,15 @@ public class IAPController : MonoBehaviour, IStoreListener
         // A product purchase attempt did not succeed. Check failureReason for more detail. Consider sharing 
         // this reason with the user to guide their troubleshooting actions.
         Debug.Log(string.Format("OnPurchaseFailed: FAIL. Product: '{0}', PurchaseFailureReason: {1}", product.definition.storeSpecificId, failureReason));
+    }
+    public void ShowGetDazi(string mDaziName, int mDaziAmount)
+    {
+        GetDaziText.text = string.Format("{0} {1}개를 획득했습니다.", mDaziName, mDaziAmount);
+        GetDaziWindow.gameObject.SetActive(true);
+    }
+    public void ShowGetDazi2(string mDaziName, int mDaziAmount)
+    {
+        GetDaziText2.text = string.Format("{0} {1}개를 획득했습니다.", mDaziName, mDaziAmount);
+        GetDaziWindow2.gameObject.SetActive(true);
     }
 }

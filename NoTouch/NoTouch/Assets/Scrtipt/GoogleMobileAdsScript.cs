@@ -40,6 +40,7 @@ public class GoogleMobileAdsScript : MonoBehaviour
 #endif
 
         // Create an empty ad request.
+        //AdRequest request = new AdRequest.Builder().AddTestDevice("5919871F5E8EDA40").Build();
         AdRequest request = new AdRequest.Builder().Build();
         // Load the rewarded video ad with the request.
         rewardBasedVideo.LoadAd(request, adUnitId);
@@ -53,7 +54,6 @@ public class GoogleMobileAdsScript : MonoBehaviour
             rewardBasedVideo.OnAdRewarded += HandleRewardBasedVideoRewarded_Mole;
         }
         RequestRewardBasedVideo();
-        rewardBasedVideo.OnAdRewarded -= HandleRewardBasedVideoRewarded_Mole;
     }
 
     public void UserOptToWatchAd_Item()
@@ -65,7 +65,6 @@ public class GoogleMobileAdsScript : MonoBehaviour
 
         }
         RequestRewardBasedVideo();
-        rewardBasedVideo.OnAdRewarded -= HandleRewardBasedVideoRewarded_Item;
     }
     public void UserOptToWatchAd_RandomItem()
     {
@@ -76,7 +75,6 @@ public class GoogleMobileAdsScript : MonoBehaviour
 
         }
         RequestRewardBasedVideo();
-        rewardBasedVideo.OnAdRewarded -= HandleRewardBasedVideoRewarded_RandomItem;
     }
     public void UserOptToWatchAd_Sleep()
     {
@@ -87,13 +85,13 @@ public class GoogleMobileAdsScript : MonoBehaviour
 
         }
         RequestRewardBasedVideo();
-        rewardBasedVideo.OnAdRewarded -= HandleRewardBasedVideoRewarded_Sleep;
     }
     public void HandleRewardBasedVideoRewarded_Mole(object sender, Reward args)
     {
         MoleController.Instance.AddMoney(3);
         PopWindow.SetActive(false);
         MoleWindow.SetActive(false);
+        rewardBasedVideo.OnAdRewarded -= HandleRewardBasedVideoRewarded_Mole;
     }
     public void HandleRewardBasedVideoRewarded_Sleep(object sender, Reward args)
     {
@@ -101,6 +99,7 @@ public class GoogleMobileAdsScript : MonoBehaviour
         MineShopController.Instance.SleepWork(3);
         SleepWindow.SetActive(false);
         SleepWorkWindow.SetActive(true);
+        rewardBasedVideo.OnAdRewarded -= HandleRewardBasedVideoRewarded_Sleep;
     }
     public void HandleRewardBasedVideoRewarded_Item(object sender, Reward args)
     {
@@ -109,6 +108,7 @@ public class GoogleMobileAdsScript : MonoBehaviour
         GetDaziText.text = "실버다지 1개를 획득했습니다.";
         GetDaziWindow.gameObject.SetActive(true);
         ItemUseController.Instance.ShowHaveItem();
+        rewardBasedVideo.OnAdRewarded -= HandleRewardBasedVideoRewarded_Item;
     }
     public void HandleRewardBasedVideoRewarded_RandomItem(object sender, Reward args)
     {
@@ -173,6 +173,7 @@ public class GoogleMobileAdsScript : MonoBehaviour
         GetDaziText.text = string.Format("{0} {1}개를 획득했습니다.",DaziName,DaziAmount);
         GetDaziWindow.gameObject.SetActive(true);
         ItemUseController.Instance.ShowHaveItem();
+        rewardBasedVideo.OnAdRewarded -= HandleRewardBasedVideoRewarded_RandomItem;
     }
 }
 

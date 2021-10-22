@@ -105855,6 +105855,10 @@ MonoBehaviour:
   AutoClick1: {fileID: 1656875288}
   AutoClick2: {fileID: 1913607858}
   CustomApplyWindow: {fileID: 253643418}
+  GetDaziWindow: {fileID: 1150406803}
+  GetDaziWindow2: {fileID: 1736356806}
+  GetDaziText: {fileID: 1511397191}
+  GetDaziText2: {fileID: 1205972795}
   CustomApply: 0
 --- !u!1 &1992321383
 GameObject:
