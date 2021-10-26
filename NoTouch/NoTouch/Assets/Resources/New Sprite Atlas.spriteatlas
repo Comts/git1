@@ -44,7 +44,7 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 4475d78b7e44ffb49aaa6933043ab257, type: 3}
     - {fileID: 2800000, guid: ed64dd068a80d13498801aff7c166dac, type: 3}
     - {fileID: 2800000, guid: 0f20c48cb25c39c4ba1e5cbea59e0e42, type: 3}
-    totalSpriteSurfaceArea: 25933696
+    totalSpriteSurfaceArea: 25934720
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
@@ -155,6 +155,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 289f3f5548d674347a35cb3f19c78724, type: 3}
   - {fileID: 21300000, guid: 645fbf5556f58a749a3f28e92cb43837, type: 3}
   - {fileID: 21300000, guid: a7f90675e6e7d414386eaa96f7de968e, type: 3}
+  - {fileID: 21300000, guid: c7df578504738e441b265a42faffe8b1, type: 3}
   - {fileID: 21300000, guid: 01d5dc85aad90ca49a23c8cbb3d90935, type: 3}
   - {fileID: 21300000, guid: 04dbc3c5c535b9a41bc9730c2bd7c51e, type: 3}
   - {fileID: 21300000, guid: 3c87dc0643ffe034e81ca205c0259d43, type: 3}
@@ -459,6 +460,7 @@ SpriteAtlas:
   - Achieve_Click
   - Gem_04-2.png
   - Gem_09-1.png
+  - downpoint
   - New Piskel-1.png
   - Achieve_Earth_03
   - Gem_07-2.png

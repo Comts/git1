@@ -173,7 +173,7 @@ public class GemSellController : InformationLoader
     }
     public bool CheckGemSellTogle(int num)
     {
-        return mElementList[num].bToggleState();
+        return mElementList[num*4].bToggleState();
          
     }
         
@@ -201,6 +201,7 @@ public class GemSellController : InformationLoader
         GameController.Instance.Gold += cost;
         mElementList[id].CalSellAmount();
         mElementList[id].ReSetSlider();
+        CraftController.Instance.CheckCraftButton();
     }
 
 }
