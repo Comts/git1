@@ -44,7 +44,7 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 4475d78b7e44ffb49aaa6933043ab257, type: 3}
     - {fileID: 2800000, guid: ed64dd068a80d13498801aff7c166dac, type: 3}
     - {fileID: 2800000, guid: 0f20c48cb25c39c4ba1e5cbea59e0e42, type: 3}
-    totalSpriteSurfaceArea: 25934720
+    totalSpriteSurfaceArea: 25944720
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
@@ -120,6 +120,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 96302a8300163694b9a5e71a0bb248e1, type: 3}
   - {fileID: 21300000, guid: e9e184930cc4fe14a8e51509c364eb22, type: 3}
   - {fileID: 21300000, guid: 65a6c2b38a1a3c741a9faee3f7a92fd5, type: 3}
+  - {fileID: 21300000, guid: ec3f7db3dd072144086a9f5e7632430c, type: 3}
   - {fileID: 21300000, guid: 6fb333c3f179d8245b78f09654637c7b, type: 3}
   - {fileID: 21300000, guid: a5705fd3c8adac34eb7a2b40244f0b57, type: 3}
   - {fileID: 21300000, guid: 33a843e3acffd0f4da02a5b7b8eb7fdb, type: 3}
@@ -130,6 +131,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: f68f2904138b30b479ff748c80141cac, type: 3}
   - {fileID: 21300000, guid: df4b5b14d8decf740a3856e860a3605f, type: 3}
   - {fileID: 21300000, guid: d825062410410364c9cd59699c3a3aef, type: 3}
+  - {fileID: 21300000, guid: 7ffb4434982d7a54ab335b068df38e5d, type: 3}
   - {fileID: 21300000, guid: ed39d644ae55ec04898ec936ae0cc52a, type: 3}
   - {fileID: 21300000, guid: 2d2eb654b3d0fc84f80c01b1800d4844, type: 3}
   - {fileID: 21300000, guid: 11a83774760aa55499c5ad547d5c86c3, type: 3}
@@ -425,6 +427,7 @@ SpriteAtlas:
   - cave06
   - New Piskel-2
   - CoworkerPowerUpX100
+  - DaziExplain
   - New Piskel-4.png
   - Achieve_Mole
   - cave08
@@ -435,6 +438,7 @@ SpriteAtlas:
   - 15
   - Gem_15-1.png
   - 03
+  - Dazi
   - Gem_11-1.png
   - New Piskel-3.png
   - Gem_05-1.png

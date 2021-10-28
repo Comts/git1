@@ -146,6 +146,10 @@ public class MoleController : MonoBehaviour
         Score = 0;
         Quest_MoleCount.Instance.CheckQuest();
         SoundController.Instance.ChangeBGM(0);
+        if (GameController.Instance.MoleTutorial == 0)
+        {
+            PointController.Instance.ShowEndMoleExplain();
+        }
     }
     private IEnumerator SpwanMole()
     {

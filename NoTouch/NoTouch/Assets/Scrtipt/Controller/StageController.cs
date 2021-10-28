@@ -55,12 +55,28 @@ public class StageController : MonoBehaviour
     }
     public void CheckDigButton()
     {
+        if (!GameController.Instance.CheckScrollPin)
+        {
+            if (GameController.Instance.GetPlayerLevel >= 10 && GameController.Instance.StagePinTutorial == 0)
+            {
+                PointController.Instance.ShowStagePinExplain();
+            }
+        }
+        else
+        {
+            GameController.Instance.StagePinTutorial = 1;
+        }
+           
         if (GameController.Instance.Gold >= mDigCost)
         {
             if (mDigButton.interactable == false)
             {
                 SoundController.Instance.FXSound(12);
                 PointController.Instance.ShowDigPoint(true);
+                if(GameController.Instance.Stage == 0)
+                {
+                    PointController.Instance.ShowDigExplain();
+                }
             }
             mDigButton.interactable = true;
         }
@@ -94,7 +110,7 @@ public class StageController : MonoBehaviour
             mElementList[i].HaveStage();
             PlayerButtoninteractable(i);
 
-            if (GameController.Instance.GetCoworkerLevelArr()[i] > 0)
+            if (GameController.Instance.CoworkerLevelArr[i] > 0)
             {
                 mElementList[i].CoworkerActive(true);
             }
@@ -123,7 +139,7 @@ public class StageController : MonoBehaviour
             mElementList[i].HaveStage();
             PlayerButtoninteractable(i);
 
-            if (GameController.Instance.GetCoworkerLevelArr()[i]>0)
+            if (GameController.Instance.CoworkerLevelArr[i]>0)
             {
                 mElementList[i].CoworkerActive(true);
             }
@@ -137,6 +153,11 @@ public class StageController : MonoBehaviour
         mPinToggle.onValueChanged.AddListener((bool bOn) =>
         {
             mScrollArea.vertical = !bOn;
+            if(GameController.Instance.StagePinTutorial == 0&& bOn)
+            {
+                GameController.Instance.StagePinTutorial = 1;
+                PointController.Instance.ShowStagePinPoint(false);
+            }
         });
 
         if (GameController.Instance.CheckScrollPin)
@@ -234,6 +255,10 @@ public class StageController : MonoBehaviour
         MineShopController.Instance.SetMine(id);
         CraftController.Instance.SetCraft(id);
         GemSellController.Instance.SetSellUI(id);
+        if (GameController.Instance.Stage == 1)
+        {
+            PointController.Instance.ShowStageChangeExplain();
+        }
 
         if (mElementList.Count <= nextID)
         {

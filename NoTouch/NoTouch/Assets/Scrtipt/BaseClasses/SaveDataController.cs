@@ -377,6 +377,10 @@ public class SaveDataController : MonoBehaviour
         mUser.ChangeName = 0;
         mUser.GemSellTutorial = 0;
         mUser.PlayerLevelUpTutorial = 0;
+        mUser.MoleTutorial = 0;
+        mUser.StagePinTutorial = 0;
+        mUser.CraftGemTutorial = 0;
+        mUser.MineTutorial = 0;
     }
 
     protected void Save()

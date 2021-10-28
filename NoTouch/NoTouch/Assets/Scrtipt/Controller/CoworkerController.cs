@@ -12,7 +12,7 @@ public class CoworkerController : InformationLoader
     private CoworkerInfo[] mInfoArr;
     private CoworkerTextInfo[] mTextInfoArr;
 
-    private int[] mLevelArr;
+    //private int[] mLevelArr;
 
     //textdata class
 #pragma warning disable 0649
@@ -73,7 +73,7 @@ public class CoworkerController : InformationLoader
             Paths.LANGUAGE_TYPE_ARR[GameController.Instance.LanguageType]);
 
 
-        mLevelArr = GameController.Instance.GetCoworkerLevelArr();
+        //mLevelArr = GameController.Instance.CoworkerLevelArr;
         mElementList = new List<UIElement>();
         mSleepElementList = new List<SleepUIElement>();
         mGemIconArr = Resources.LoadAll<Sprite>(Paths.CRAFT_ICON);
@@ -82,7 +82,7 @@ public class CoworkerController : InformationLoader
     public void ReStart()
     {
 
-        mLevelArr = GameController.Instance.GetCoworkerLevelArr();
+        //mLevelArr = GameController.Instance.CoworkerLevelArr;
         for (int i = 0; i < mElementList.Count; i++)
         {
             mCoworkerArr[i].StopWork();
@@ -105,9 +105,9 @@ public class CoworkerController : InformationLoader
         for (int i = 0; i < mInfoArr.Length; i++)
         {
             mBuffUIElement[i].Init(mBlockIcon, mTextInfoArr[i].Title, string.Format(100 * mInfoArr[i].BuffAmount + "%"));
-            if (mLevelArr[i] < 0)
+            if (GameController.Instance.CoworkerLevelArr[i] < 0)
             { continue; }
-            mInfoArr[i].CurrentLevel = mLevelArr[i];
+            mInfoArr[i].CurrentLevel = GameController.Instance.CoworkerLevelArr[i];
             CalcData(i);
             if (mInfoArr[i].CurrentLevel > 0)
             {
@@ -214,7 +214,7 @@ public class CoworkerController : InformationLoader
         {
             mElementList[id].SetButtonActive(false);
         }
-        mLevelArr[id] = mInfoArr[id].CurrentLevel;
+        GameController.Instance.CoworkerLevelArr[id] = mInfoArr[id].CurrentLevel;
 
         if (mInfoArr[id].CurrentLevel == 1)
         {
@@ -263,7 +263,7 @@ public class CoworkerController : InformationLoader
 
             if (mElementList.Count <= nextID)
             {
-                mLevelArr[nextID] = mInfoArr[nextID].CurrentLevel = 0;
+                GameController.Instance.CoworkerLevelArr[nextID] = mInfoArr[nextID].CurrentLevel = 0;
                 CalcData(nextID);
 
                 UIElement element = Instantiate(mElementPrefab, mElementArea);
@@ -283,6 +283,13 @@ public class CoworkerController : InformationLoader
                     PointController.Instance.ShowCoworkerPoint(true);
                 }
             }
+        }
+    }
+    public void CheckCoworkerTutorial()
+    {
+        if(GameController.Instance.Gold >= mInfoArr[0].CostCurrent)
+        {
+            PointController.Instance.ShowCoworkerExplain();
         }
     }
 

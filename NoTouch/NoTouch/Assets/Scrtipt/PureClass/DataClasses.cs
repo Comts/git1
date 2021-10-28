@@ -197,5 +197,9 @@ public class SaveData
     public int ChangeName;
     public int GemSellTutorial;
     public int PlayerLevelUpTutorial;
+    public int MoleTutorial;
+    public int StagePinTutorial;
+    public int CraftGemTutorial;
+    public int MineTutorial;
 
 }

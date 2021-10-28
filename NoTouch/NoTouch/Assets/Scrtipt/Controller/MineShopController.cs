@@ -122,6 +122,7 @@ public class MineShopController : InformationLoader
             {
                 mElementList[i].SetBuyButtonActive(false);
                 GameController.Instance.MineCount += 1;
+                GameController.Instance.MineTutorial = 1;
             }
             if (i<=GameController.Instance.Stage)
             {
@@ -139,6 +140,13 @@ public class MineShopController : InformationLoader
         }
         mElementList[0].gameObject.SetActive(true);
     }
+    public void CheckMineTutorial()
+    {
+        if (GameController.Instance.Gold >= mInfoArr[0].Cost)
+        {
+            PointController.Instance.ShowMineExplain();
+        }
+    }
     public void SetMine(int num)
     {
         mElementList[num].gameObject.SetActive(true);
@@ -149,6 +157,7 @@ public class MineShopController : InformationLoader
         GameController.Instance.GoldCallback = callback;
         double cost = mInfoArr[id].Cost;
         GameController.Instance.Gold -= cost;
+        GameController.Instance.MineTutorial = 1;
 
     }
     public void BuyCallback(int id, int add)

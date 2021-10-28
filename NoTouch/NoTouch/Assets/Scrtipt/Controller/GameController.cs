@@ -53,19 +53,48 @@ public class GameController : SaveDataController
             GoldCallback = null;
             UIController.Instance.ShowMoney();
             StageController.Instance.CheckDigButton();
-            if (mUser.PlayerLevelUpTutorial == 0 && !PointController.Instance.CheckPlyerLevelUpPoint())
+        }
+    }
+    public void CheckTutorial()
+    {
+        if (mUser.CoworkerLevelArr[0] == 0)
+        {
+            CoworkerController.Instance.CheckCoworkerTutorial();
+        }
+        if (mUser.MineTutorial == 0)
+        {
+            MineShopController.Instance.CheckMineTutorial();
+        }
+        if (mUser.PlayerLevelUpTutorial == 0 && !PointController.Instance.CheckPlyerLevelUpPoint())
+        {
+            if (mUser.Gold >= PlayerUpgradeController.Instance.CheckTutorial())
             {
-                if (mUser.Gold >= PlayerUpgradeController.Instance.CheckTutorial())
+                SoundController.Instance.FXSound(12);
+                PointController.Instance.ShowPlayerLevelUpPoint(true);
+            }
+            else
+            {
+                PointController.Instance.ShowPlayerLevelUpPoint(false);
+            }
+        }
+        if (mUser.PlayerLevelUpTutorial == 1)
+        {
+            if (mUser.Gold >= 100 || mUser.PlayerLevel > 4)
+            {
+                if (mUser.ChangeName == 0)
                 {
-                    SoundController.Instance.FXSound(12);
-                    PointController.Instance.ShowPlayerLevelUpPoint(true);
+                    PointController.Instance.ShowNameExplain();
                 }
                 else
                 {
-                    PointController.Instance.ShowPlayerLevelUpPoint(false);
+                    if (mUser.WhackCount == 0)
+                    {
+                        PointController.Instance.ShowMoleExplain();
+                    }
                 }
             }
         }
+
     }
     #region Gem Count
     public double[] AddAmoutGem_O
@@ -98,6 +127,14 @@ public class GameController : SaveDataController
         set
         {
             mUser.AmoutGem_S = value;
+        }
+    }
+    public int[] CoworkerLevelArr
+    {
+        get { return mUser.CoworkerLevelArr; }
+        set
+        {
+            mUser.CoworkerLevelArr = value;
         }
     }
     #endregion
@@ -163,6 +200,19 @@ public class GameController : SaveDataController
             {
                 Debug.LogError("Error on manpower update " + value);
             }
+            if (mManPower >= 3000 && mUser.CraftGemTutorial == 0)
+            {
+                PointController.Instance.ShowCraftGemExplain();
+                mUser.CraftGemTutorial = 1;
+            }
+
+            if (Achive_Earth == 0 && mUser.EarthCurrentProgress == 0)
+            {
+                if (mManPower >= 5000)
+                {
+                    PointController.Instance.ShowEarthExplain();
+                }
+            }
         }
     }
     public double MaxManPower
@@ -178,6 +228,7 @@ public class GameController : SaveDataController
             {
                 Debug.LogError("Error on mMaxManPower update " + value);
             }
+
         }
     }
     public double Buff_Achieve
@@ -597,6 +648,30 @@ public class GameController : SaveDataController
             mUser.PlayerLevelUpTutorial = value;
         }
     }
+    public int MoleTutorial
+    {
+        get { return mUser.MoleTutorial; }
+        set
+        {
+            mUser.MoleTutorial = value;
+        }
+    }
+    public int StagePinTutorial
+    {
+        get { return mUser.StagePinTutorial; }
+        set
+        {
+            mUser.StagePinTutorial = value;
+        }
+    }
+    public int MineTutorial
+    {
+        get { return mUser.MineTutorial; }
+        set
+        {
+            mUser.MineTutorial = value;
+        }
+    }
     private void Awake()
     {
         if(Instance == null)
@@ -793,10 +868,10 @@ public class GameController : SaveDataController
     {
         return mUser.ItemMaxCooltimeArr;
     }
-    public int[] GetCoworkerLevelArr()
-    {
-        return mUser.CoworkerLevelArr;
-    }
+    //public int[] GetCoworkerLevelArr()
+    //{
+    //    return mUser.CoworkerLevelArr;
+    //}
     public int GetCoworkerLevelSum()
     {
         int LevelSum = 0;
@@ -849,5 +924,9 @@ public class GameController : SaveDataController
     public void FirstTry()
     {
         mUser.FirstTry++;
+        if (mUser.Gold == 0)
+        {
+            PointController.Instance.ShowTouchExplain();
+        }
     }
 }

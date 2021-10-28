@@ -102,6 +102,7 @@ public class TouchManager : MonoBehaviour
                         {
                             mTouchCount++;
                             GameController.Instance.Touch();
+                            GameController.Instance.CheckTutorial();
 
                             if (mTouchCount >= mChangeCount)
                             {
@@ -177,6 +178,7 @@ public class TouchManager : MonoBehaviour
                 {
                     mTouchCount++;
                     GameController.Instance.Touch();
+                    GameController.Instance.CheckTutorial();
                     if (mTouchCount >= mChangeCount)
                     {
                         StageController.Instance.ChangePlayerImage(mTouchImage);
