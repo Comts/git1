@@ -746,7 +746,7 @@ public class GameController : SaveDataController
 
         GetStartTime();
 
-        InvokeRepeating("GetEndTime", 2f, 60f); 
+        InvokeRepeating("GetEndTime", 2f, 60f);
 
     }
     private void Update()
@@ -825,10 +825,12 @@ public class GameController : SaveDataController
         mUser.Attend_Reward = -1;
         mUser.Check_Attend_Reward = 0;
         mUser.CheckDay = 0;
+        mUser.RandomDaziFinishTime = 0;
 
         mUser.WhackCount = 0;
         mUser.MineCount = 0;
         mUser.PlayMoleCount = 3;
+        mUser.RandomDaziCount = 10;
 
         GemSellController.Instance.ReStart();
         PlayerUpgradeController.Instance.ReStart();
@@ -840,6 +842,7 @@ public class GameController : SaveDataController
         IAPController.Instance.ReStart();
         MineShopController.Instance.ReStart();
         CraftController.Instance.ReStart();
+        ResetRandomDazi();
 
         MoleController.Instance.CheckPlayButton();
 

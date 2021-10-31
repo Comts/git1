@@ -152,10 +152,13 @@ public class SaveData
     public double StartTime;
     public double EndTime;
     public double CheckDay;
+    public double RandomDaziFinishTime;
+    public double AutoClilckTime;
 
     public int PlayMoleCount;
     public int WhackCount;
     public int MineCount;
+    public int RandomDaziCount;
 
     public int Quest_PlayerLevel;
     public int Quest_CoworkerLevelSum;

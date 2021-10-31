@@ -5,6 +5,7 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.UI;
 
 public class SaveDataController : MonoBehaviour
 {
@@ -15,16 +16,28 @@ public class SaveDataController : MonoBehaviour
 #pragma warning disable 0649
     [SerializeField]
     private Transform SleepWindow;
+    [SerializeField]
+    private int RandomDaziCoolTime;
+    [SerializeField]
+    private Text RandomDaziText;
+    [SerializeField]
+    private ItemButton RandomDaziButton;
+    [SerializeField]
+    private Image PointRandomDaziButton;
+    [SerializeField]
+    private Text Testreward,TestClosed;
 #pragma warning restore 0649
 
     private double mTenMinCount;
     private double mPlayMoletime;
     private double mStartMoletime;
+    private double mRandomDaziClicktime;
+    private Coroutine RandomDaziRouting, StartRandomDaziRouting;
+    double CheckDay = 0;
 
     IEnumerator StartTimeChk()
     {
         double starttime=0;
-        double CheckDay = 0;
         UnityWebRequest request = new UnityWebRequest();
         using (request = UnityWebRequest.Get(url))
         {
@@ -42,11 +55,16 @@ public class SaveDataController : MonoBehaviour
                 TimeSpan timestamp = dateTime - new DateTime(1970, 1, 1, 0, 0, 0);
                 starttime = timestamp.TotalSeconds;
                 CheckDay = timestamp.Days;
-
+                if (mUser.CheckDay == 0)
+                {
+                    mUser.CheckDay = CheckDay;
+                }
                 if (CheckDay - mUser.CheckDay >= 1)
                 {
                     mUser.CheckDay = CheckDay;
-                    if(mUser.Check_Attend_Reward == 0)
+                    mUser.RandomDaziCount = 10;
+                    ShowRandomDaziText(false);
+                    if (mUser.Check_Attend_Reward == 0)
                     {
                         GameController.Instance.Attend_Reward++;
                         mUser.Check_Attend_Reward = 1;
@@ -101,6 +119,155 @@ public class SaveDataController : MonoBehaviour
         }
         mUser.EndTime = Endtime;
     }
+    private IEnumerator RandomDaziClickTimeCheck()
+    {
+        double Gettime = 0;
+        UnityWebRequest request = new UnityWebRequest();
+        using (request = UnityWebRequest.Get(url))
+        {
+            yield return request.SendWebRequest();
+
+            if (request.isNetworkError)
+            {
+                Debug.Log(request.error);
+            }
+            else
+            {
+                string date = request.GetResponseHeader("date");
+
+                DateTime dateTime = DateTime.Parse(date).ToUniversalTime();
+                TimeSpan timestamp = dateTime - new DateTime(1970, 1, 1, 0, 0, 0);
+                Gettime = timestamp.TotalSeconds;
+            }
+        }
+        mRandomDaziClicktime = Gettime;
+        if (mUser.RandomDaziFinishTime == 0)
+        {
+            mUser.RandomDaziFinishTime = Gettime;
+        }
+    }
+    private IEnumerator GetTestClosedTime()
+    {
+        double Gettime = 0;
+        UnityWebRequest request = new UnityWebRequest();
+        using (request = UnityWebRequest.Get(url))
+        {
+            yield return request.SendWebRequest();
+
+            if (request.isNetworkError)
+            {
+                Debug.Log(request.error);
+            }
+            else
+            {
+                string date = request.GetResponseHeader("date");
+
+                DateTime dateTime = DateTime.Parse(date).ToUniversalTime();
+                TimeSpan timestamp = dateTime - new DateTime(1970, 1, 1, 0, 0, 0);
+                Gettime = timestamp.TotalSeconds;
+            }
+        }
+        TestClosed.text = string.Format("TestClosed : {0}", Gettime);
+    }
+    private IEnumerator RandomDaziRoutine()
+    {
+        WaitForFixedUpdate frame = new WaitForFixedUpdate();
+        mRandomDaziClicktime = 0;
+
+        while (mRandomDaziClicktime == 0)
+        {
+            StartCoroutine(RandomDaziClickTimeCheck());
+            yield return frame;
+        }
+        Testreward.text = string.Format("TestReward : {0}", mRandomDaziClicktime);
+
+        if (mRandomDaziClicktime >= mUser.RandomDaziFinishTime)
+        {
+            mUser.RandomDaziFinishTime = mRandomDaziClicktime + RandomDaziCoolTime;
+            mUser.RandomDaziCount--;
+
+        }
+        ShowRandomDaziText(false);
+        double cooltime = mUser.RandomDaziFinishTime - mRandomDaziClicktime;
+
+        PointRandomDaziButton.gameObject.SetActive(false);
+        while (cooltime >= 0)
+        {
+            yield return frame;
+            cooltime -= Time.deltaTime;
+            RandomDaziButton.ShowCooltime((float)cooltime, RandomDaziCoolTime);
+        }
+        ShowRandomDaziText(true);
+    }
+    private IEnumerator StartRandomDazi()
+    {
+        WaitForFixedUpdate frame = new WaitForFixedUpdate();
+        mRandomDaziClicktime = 0;
+
+        while (mRandomDaziClicktime == 0)
+        {
+            StartCoroutine(RandomDaziClickTimeCheck());
+            yield return frame;
+        }
+
+        ShowRandomDaziText(false);
+        if (mRandomDaziClicktime < mUser.RandomDaziFinishTime)
+        {
+            double cooltime = mUser.RandomDaziFinishTime - mRandomDaziClicktime;
+
+            PointRandomDaziButton.gameObject.SetActive(false);
+            while (cooltime >= 0)
+            {
+                yield return frame;
+                cooltime -= Time.deltaTime;
+                RandomDaziButton.ShowCooltime((float)cooltime, RandomDaziCoolTime);
+            }
+            ShowRandomDaziText(true);
+        }
+    }
+    public void RandomDazi()
+    {
+        RandomDaziRouting=StartCoroutine(RandomDaziRoutine());
+    }
+    public void OnAdClosed()
+    {
+        StartCoroutine(GetTestClosedTime());
+    }
+    public void ShowRandomDaziText(bool b)
+    {
+        RandomDaziText.text = String.Format("하루 광고 제한 10회  남은 광고 : {0}회", mUser.RandomDaziCount);
+        if (mUser.RandomDaziCount > 0)
+        {
+            if (b)
+            {
+                SoundController.Instance.FXSound(12);
+            }
+            RandomDaziButton.SetButtonActive(true);
+            PointRandomDaziButton.gameObject.SetActive(true);
+        }
+        else
+        {
+            RandomDaziButton.SetButtonActive(false);
+            PointRandomDaziButton.gameObject.SetActive(false);
+        }
+    }
+    public void ResetRandomDazi()
+    {
+        if (mUser.CheckDay == 0)
+        {
+            mUser.CheckDay = CheckDay;
+        }
+        ShowRandomDaziText(false);
+        if (RandomDaziRouting != null)
+        {
+            StopCoroutine(RandomDaziRouting);
+        }
+        if (StartRandomDaziRouting != null)
+        {
+            StopCoroutine(StartRandomDaziRouting);
+        }
+        RandomDaziButton.ShowCooltime(0,0);
+    }
     IEnumerator MoleTimeChk()
     {
         double MoleChecktime=0;
@@ -150,6 +317,7 @@ public class SaveDataController : MonoBehaviour
     public void GetStartTime()
     {
         StartCoroutine(StartTimeChk());
+        StartRandomDaziRouting=StartCoroutine(StartRandomDazi());
     }
     public void GetEndTime()
     {
@@ -336,6 +504,7 @@ public class SaveDataController : MonoBehaviour
         mUser.PlayMoleCount = 3;
         mUser.WhackCount = 0;
         mUser.MineCount = 0;
+        mUser.RandomDaziCount = 10;
 
         mUser.Quest_PlayerLevel = 0;
         mUser.Quest_CoworkerLevelSum = 0;
@@ -371,6 +540,7 @@ public class SaveDataController : MonoBehaviour
         mUser.Attend_Reward = -1;
         mUser.Check_Attend_Reward = 0;
         mUser.CheckDay = 0;
+        mUser.RandomDaziFinishTime = 0;
 
         mUser.PlayerProfile = 0;
         mUser.FirstTry = 0;

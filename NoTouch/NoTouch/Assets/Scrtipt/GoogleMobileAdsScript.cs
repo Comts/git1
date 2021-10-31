@@ -72,6 +72,7 @@ public class GoogleMobileAdsScript : MonoBehaviour
         {
             rewardBasedVideo.Show();
             rewardBasedVideo.OnAdRewarded += HandleRewardBasedVideoRewarded_RandomItem;
+            rewardBasedVideo.OnAdClosed += HandleRewardBasedVideoClosed_RandomItem;
 
         }
         RequestRewardBasedVideo();
@@ -109,6 +110,11 @@ public class GoogleMobileAdsScript : MonoBehaviour
         GetDaziWindow.gameObject.SetActive(true);
         ItemUseController.Instance.ShowHaveItem();
         rewardBasedVideo.OnAdRewarded -= HandleRewardBasedVideoRewarded_Item;
+    }
+    public void HandleRewardBasedVideoClosed_RandomItem(object sender, EventArgs args)
+    {
+        GameController.Instance.OnAdClosed();
+        rewardBasedVideo.OnAdClosed -= HandleRewardBasedVideoClosed_RandomItem;
     }
     public void HandleRewardBasedVideoRewarded_RandomItem(object sender, Reward args)
     {
@@ -173,6 +179,7 @@ public class GoogleMobileAdsScript : MonoBehaviour
         GetDaziText.text = string.Format("{0} {1}개를 획득했습니다.",DaziName,DaziAmount);
         GetDaziWindow.gameObject.SetActive(true);
         ItemUseController.Instance.ShowHaveItem();
+        GameController.Instance.RandomDazi();
         rewardBasedVideo.OnAdRewarded -= HandleRewardBasedVideoRewarded_RandomItem;
     }
 }
