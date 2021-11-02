@@ -153,7 +153,7 @@ public class SaveData
     public double EndTime;
     public double CheckDay;
     public double RandomDaziFinishTime;
-    public double AutoClilckTime;
+    public double AutoClilckAdsFinishTime;
 
     public int PlayMoleCount;
     public int WhackCount;

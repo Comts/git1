@@ -52,6 +52,7 @@ public class GoogleMobileAdsScript : MonoBehaviour
         {
             rewardBasedVideo.Show();
             rewardBasedVideo.OnAdRewarded += HandleRewardBasedVideoRewarded_Mole;
+            rewardBasedVideo.OnAdClosed += HandleRewardBasedVideoClosed_Mole;
         }
         RequestRewardBasedVideo();
     }
@@ -62,6 +63,7 @@ public class GoogleMobileAdsScript : MonoBehaviour
         {
             rewardBasedVideo.Show();
             rewardBasedVideo.OnAdRewarded += HandleRewardBasedVideoRewarded_Item;
+            rewardBasedVideo.OnAdClosed += HandleRewardBasedVideoClosed_Item;
 
         }
         RequestRewardBasedVideo();
@@ -83,16 +85,46 @@ public class GoogleMobileAdsScript : MonoBehaviour
         {
             rewardBasedVideo.Show();
             rewardBasedVideo.OnAdRewarded += HandleRewardBasedVideoRewarded_Sleep;
+            rewardBasedVideo.OnAdClosed += HandleRewardBasedVideoClosed_Sleep;
 
         }
         RequestRewardBasedVideo();
+    }
+    public void UserOptToWatchAd_AutoClilck()
+    {
+        if (rewardBasedVideo.IsLoaded())
+        {
+            rewardBasedVideo.Show();
+            rewardBasedVideo.OnAdRewarded += HandleRewardBasedVideoRewarded_AutoClilck;
+            rewardBasedVideo.OnAdClosed += HandleRewardBasedVideoClosed_AutoClilck;
+
+        }
+        RequestRewardBasedVideo();
+    }
+    public void HandleRewardBasedVideoClosed_AutoClilck(object sender, EventArgs args)
+    {
+        rewardBasedVideo.OnAdRewarded -= HandleRewardBasedVideoRewarded_AutoClilck;
+        rewardBasedVideo.OnAdClosed -= HandleRewardBasedVideoClosed_AutoClilck;
+    }
+    public void HandleRewardBasedVideoRewarded_AutoClilck(object sender, Reward args)
+    {
+        GameController.Instance.AutoClick_Ads();
+    }
+    public void HandleRewardBasedVideoClosed_Mole(object sender, EventArgs args)
+    {
+        rewardBasedVideo.OnAdRewarded -= HandleRewardBasedVideoRewarded_Mole;
+        rewardBasedVideo.OnAdClosed -= HandleRewardBasedVideoClosed_Mole;
     }
     public void HandleRewardBasedVideoRewarded_Mole(object sender, Reward args)
     {
         MoleController.Instance.AddMoney(3);
         PopWindow.SetActive(false);
         MoleWindow.SetActive(false);
-        rewardBasedVideo.OnAdRewarded -= HandleRewardBasedVideoRewarded_Mole;
+    }
+    public void HandleRewardBasedVideoClosed_Sleep(object sender, EventArgs args)
+    {
+        rewardBasedVideo.OnAdRewarded -= HandleRewardBasedVideoRewarded_Sleep;
+        rewardBasedVideo.OnAdClosed -= HandleRewardBasedVideoClosed_Sleep;
     }
     public void HandleRewardBasedVideoRewarded_Sleep(object sender, Reward args)
     {
@@ -100,7 +132,11 @@ public class GoogleMobileAdsScript : MonoBehaviour
         MineShopController.Instance.SleepWork(3);
         SleepWindow.SetActive(false);
         SleepWorkWindow.SetActive(true);
-        rewardBasedVideo.OnAdRewarded -= HandleRewardBasedVideoRewarded_Sleep;
+    }
+    public void HandleRewardBasedVideoClosed_Item(object sender, EventArgs args)
+    {
+        rewardBasedVideo.OnAdRewarded -= HandleRewardBasedVideoRewarded_Item;
+        rewardBasedVideo.OnAdClosed -= HandleRewardBasedVideoClosed_Item;
     }
     public void HandleRewardBasedVideoRewarded_Item(object sender, Reward args)
     {
@@ -109,11 +145,10 @@ public class GoogleMobileAdsScript : MonoBehaviour
         GetDaziText.text = "실버다지 1개를 획득했습니다.";
         GetDaziWindow.gameObject.SetActive(true);
         ItemUseController.Instance.ShowHaveItem();
-        rewardBasedVideo.OnAdRewarded -= HandleRewardBasedVideoRewarded_Item;
     }
     public void HandleRewardBasedVideoClosed_RandomItem(object sender, EventArgs args)
     {
-        GameController.Instance.OnAdClosed();
+        rewardBasedVideo.OnAdRewarded -= HandleRewardBasedVideoRewarded_RandomItem;
         rewardBasedVideo.OnAdClosed -= HandleRewardBasedVideoClosed_RandomItem;
     }
     public void HandleRewardBasedVideoRewarded_RandomItem(object sender, Reward args)
@@ -180,7 +215,6 @@ public class GoogleMobileAdsScript : MonoBehaviour
         GetDaziWindow.gameObject.SetActive(true);
         ItemUseController.Instance.ShowHaveItem();
         GameController.Instance.RandomDazi();
-        rewardBasedVideo.OnAdRewarded -= HandleRewardBasedVideoRewarded_RandomItem;
     }
 }
 

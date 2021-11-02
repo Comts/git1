@@ -826,6 +826,7 @@ public class GameController : SaveDataController
         mUser.Check_Attend_Reward = 0;
         mUser.CheckDay = 0;
         mUser.RandomDaziFinishTime = 0;
+        mUser.AutoClilckAdsFinishTime = 0;
 
         mUser.WhackCount = 0;
         mUser.MineCount = 0;

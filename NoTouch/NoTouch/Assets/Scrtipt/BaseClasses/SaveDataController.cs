@@ -17,22 +17,21 @@ public class SaveDataController : MonoBehaviour
     [SerializeField]
     private Transform SleepWindow;
     [SerializeField]
-    private int RandomDaziCoolTime;
+    private int RandomDaziCoolTime,AutoClickAdsCoolTime;
     [SerializeField]
     private Text RandomDaziText;
     [SerializeField]
-    private ItemButton RandomDaziButton;
+    private ItemButton RandomDaziButton,AutoClickAdsButton;
     [SerializeField]
-    private Image PointRandomDaziButton;
-    [SerializeField]
-    private Text Testreward,TestClosed;
+    private Image PointRandomDaziButton, PointAutoClickAdsButton;
 #pragma warning restore 0649
 
     private double mTenMinCount;
     private double mPlayMoletime;
     private double mStartMoletime;
-    private double mRandomDaziClicktime;
+    private double mRandomDaziClicktime,mAutoClickAdstime;
     private Coroutine RandomDaziRouting, StartRandomDaziRouting;
+    private Coroutine AutoClickAds;
     double CheckDay = 0;
 
     IEnumerator StartTimeChk()
@@ -146,29 +145,6 @@ public class SaveDataController : MonoBehaviour
             mUser.RandomDaziFinishTime = Gettime;
         }
     }
-    private IEnumerator GetTestClosedTime()
-    {
-        double Gettime = 0;
-        UnityWebRequest request = new UnityWebRequest();
-        using (request = UnityWebRequest.Get(url))
-        {
-            yield return request.SendWebRequest();
-
-            if (request.isNetworkError)
-            {
-                Debug.Log(request.error);
-            }
-            else
-            {
-                string date = request.GetResponseHeader("date");
-
-                DateTime dateTime = DateTime.Parse(date).ToUniversalTime();
-                TimeSpan timestamp = dateTime - new DateTime(1970, 1, 1, 0, 0, 0);
-                Gettime = timestamp.TotalSeconds;
-            }
-        }
-        TestClosed.text = string.Format("TestClosed : {0}", Gettime);
-    }
     private IEnumerator RandomDaziRoutine()
     {
         WaitForFixedUpdate frame = new WaitForFixedUpdate();
@@ -179,7 +155,6 @@ public class SaveDataController : MonoBehaviour
             StartCoroutine(RandomDaziClickTimeCheck());
             yield return frame;
         }
-        Testreward.text = string.Format("TestReward : {0}", mRandomDaziClicktime);
 
         if (mRandomDaziClicktime >= mUser.RandomDaziFinishTime)
         {
@@ -225,13 +200,114 @@ public class SaveDataController : MonoBehaviour
             ShowRandomDaziText(true);
         }
     }
+    private IEnumerator AutoClickAdsRoutine()
+    {
+        WaitForFixedUpdate frame = new WaitForFixedUpdate();
+        mAutoClickAdstime = 0;
+
+        while (mAutoClickAdstime == 0)
+        {
+            StartCoroutine(AutoClickAdsTimeCheck());
+            yield return frame;
+        }
+
+        if (mAutoClickAdstime >= mUser.AutoClilckAdsFinishTime)
+        {
+            mUser.AutoClilckAdsFinishTime = mAutoClickAdstime + AutoClickAdsCoolTime;
+
+        }
+        double cooltime = mUser.AutoClilckAdsFinishTime - mAutoClickAdstime;
+
+        AutoClickAds = StartCoroutine(AutoClick());
+        PointAutoClickAdsButton.gameObject.SetActive(false);
+        while (cooltime >= 0)
+        {
+            yield return frame;
+            cooltime -= Time.deltaTime;
+            AutoClickAdsButton.ShowCooltime((float)cooltime, AutoClickAdsCoolTime);
+        }
+        if (AutoClickAds != null)
+        {
+            StopCoroutine(AutoClickAds);
+        }
+        SoundController.Instance.FXSound(12);
+        PointAutoClickAdsButton.gameObject.SetActive(true);
+    }
+    private IEnumerator AutoClickAdsTimeCheck()
+    {
+        double Gettime = 0;
+        UnityWebRequest request = new UnityWebRequest();
+        using (request = UnityWebRequest.Get(url))
+        {
+            yield return request.SendWebRequest();
+
+            if (request.isNetworkError)
+            {
+                Debug.Log(request.error);
+            }
+            else
+            {
+                string date = request.GetResponseHeader("date");
+
+                DateTime dateTime = DateTime.Parse(date).ToUniversalTime();
+                TimeSpan timestamp = dateTime - new DateTime(1970, 1, 1, 0, 0, 0);
+                Gettime = timestamp.TotalSeconds;
+            }
+        }
+        mAutoClickAdstime = Gettime;
+        if (mUser.AutoClilckAdsFinishTime == 0)
+        {
+            mUser.AutoClilckAdsFinishTime = Gettime;
+        }
+    }
+    private IEnumerator StartAutoClick()
+    {
+        WaitForFixedUpdate frame = new WaitForFixedUpdate();
+        mAutoClickAdstime = 0;
+
+        PointAutoClickAdsButton.gameObject.SetActive(true);
+        while (mAutoClickAdstime == 0)
+        {
+            StartCoroutine(AutoClickAdsTimeCheck());
+            yield return frame;
+        }
+
+        if (mAutoClickAdstime < mUser.AutoClilckAdsFinishTime)
+        {
+            double cooltime = mUser.AutoClilckAdsFinishTime - mAutoClickAdstime;
+
+            AutoClickAds = StartCoroutine(AutoClick());
+            PointAutoClickAdsButton.gameObject.SetActive(false);
+            while (cooltime >= 0)
+            {
+                yield return frame;
+                cooltime -= Time.deltaTime;
+                AutoClickAdsButton.ShowCooltime((float)cooltime, AutoClickAdsCoolTime);
+            }
+            if (AutoClickAds != null)
+            {
+                StopCoroutine(AutoClickAds);
+            }
+            SoundController.Instance.FXSound(12);
+            PointAutoClickAdsButton.gameObject.SetActive(true);
+        }
+    }
+    private IEnumerator AutoClick()
+    {
+        WaitForSeconds TouchSec = new WaitForSeconds(0.2f);
+        while (true)
+        {
+            yield return TouchSec;
+            GameController.Instance.Touch();
+        }
+    }
+    public void AutoClick_Ads()
+    {
+        StartCoroutine(AutoClickAdsRoutine());
+    }
     public void RandomDazi()
     {
         RandomDaziRouting=StartCoroutine(RandomDaziRoutine());
-    }
-    public void OnAdClosed()
-    {
-        StartCoroutine(GetTestClosedTime());
     }
     public void ShowRandomDaziText(bool b)
     {
@@ -317,7 +393,9 @@ public class SaveDataController : MonoBehaviour
     public void GetStartTime()
     {
         StartCoroutine(StartTimeChk());
+        StartCoroutine(StartAutoClick());
         StartRandomDaziRouting=StartCoroutine(StartRandomDazi());
+
     }
     public void GetEndTime()
     {
@@ -541,6 +619,7 @@ public class SaveDataController : MonoBehaviour
         mUser.Check_Attend_Reward = 0;
         mUser.CheckDay = 0;
         mUser.RandomDaziFinishTime = 0;
+        mUser.AutoClilckAdsFinishTime = 0;
 
         mUser.PlayerProfile = 0;
         mUser.FirstTry = 0;
