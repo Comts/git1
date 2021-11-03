@@ -112,7 +112,7 @@ public class MineShopController : InformationLoader
             MineUIElement element = Instantiate(mElementPrefab, mElementArea);
             element.Init(i, mIconArr[i],
                         mTextInfoArr[i].Title,
-                        string.Format(mTextInfoArr[i].ContentsFormat, mTime, mAddGem),
+                        string.Format(mTextInfoArr[i].ContentsFormat, mTime, UnitSetter.GetUnitStr(mAddGem)),
                         UnitSetter.GetUnitStr(mInfoArr[i].Cost),
                         BuyMine, SellMine);
 

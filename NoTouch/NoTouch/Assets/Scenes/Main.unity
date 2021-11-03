@@ -2714,6 +2714,7 @@ MonoBehaviour:
   mLayerButtonPrefab: {fileID: 4844339842914561963, guid: 1b906844bc4e9564d92bc5e085cfbf4b,
     type: 3}
   mElementArea: {fileID: 130950115}
+  mElementTarget: {fileID: 130950115}
   mAllSellToggle: {fileID: 1337318194}
   LayerPoint: {fileID: 2067176677}
   SellPoint: {fileID: 1980685763}
@@ -84666,7 +84667,7 @@ MonoBehaviour:
   mElementArea: {fileID: 2042276795}
   mSleepElementArea: {fileID: 1891345950}
   mTime: 1
-  mAddGem: 500
+  mAddGem: 2000
   mTimePeriod: 20
 --- !u!1 &1554667658
 GameObject:

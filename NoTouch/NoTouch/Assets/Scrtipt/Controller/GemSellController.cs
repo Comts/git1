@@ -118,7 +118,7 @@ public class GemSellController : InformationLoader
             if (i % 4 == 3)
             {
                 mButtonElementList[mButtonElementList.Count - 1].bToggleIsOn(false);
-                mButtonElementList[mButtonElementList.Count-1].setting(mElementList[i-3], mElementList[i-2], mElementList[i-1], mElementList[i], LayerPoint,SellPoint);
+                mButtonElementList[mButtonElementList.Count-1].setting(mElementList[i-3], mElementList[i-2], mElementList[i-1], mElementList[i], LayerPoint,SellPoint, mElementArea);
             }
             if (i / 4 <= GameController.Instance.Stage)
             {

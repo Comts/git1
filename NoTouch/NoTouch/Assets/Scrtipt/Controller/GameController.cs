@@ -746,7 +746,7 @@ public class GameController : SaveDataController
 
         GetStartTime();
 
-        InvokeRepeating("GetEndTime", 2f, 60f);
+        InvokeRepeating("GetEndTime", 3f, 60f);
 
     }
     private void Update()

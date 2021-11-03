@@ -13,17 +13,19 @@ public class LayerButtonUIElement : MonoBehaviour
 #pragma warning restore 0649
     private int mID;
     private GemSellUIElement UI1, UI2, UI3, UI4;
+    private Transform mElementArea;
     public void Init(int id)
     {
         mTitleText.text = string.Format("B{0}",id+1);
         mID = id;
     }
-    public void setting (GemSellUIElement GemSellUIElement1, GemSellUIElement GemSellUIElement2, GemSellUIElement GemSellUIElement3, GemSellUIElement GemSellUIElement4, Image LayerPoint, Image SellPoint)
+    public void setting (GemSellUIElement GemSellUIElement1, GemSellUIElement GemSellUIElement2, GemSellUIElement GemSellUIElement3, GemSellUIElement GemSellUIElement4, Image LayerPoint, Image SellPoint, Transform ElementArea)
     {
         UI1 = GemSellUIElement1;
         UI2 = GemSellUIElement2;
         UI3 = GemSellUIElement3;
         UI4 = GemSellUIElement4;
+        mElementArea = ElementArea;
 
         mToggle.onValueChanged.AddListener((bOn) =>
         {
@@ -37,9 +39,17 @@ public class LayerButtonUIElement : MonoBehaviour
             {
                 SellPoint.gameObject.SetActive(bOn);
             }
+            if (bOn == true)
+            {
+                Invoke("MoveUp", 0.05f);
+            }
 
 
         });
+    }
+    public void MoveUp()
+    {
+        mElementArea.transform.position += Vector3.up;
     }
     public void bToggleIsOn(bool f)
     {
