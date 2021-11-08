@@ -44,7 +44,7 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 4475d78b7e44ffb49aaa6933043ab257, type: 3}
     - {fileID: 2800000, guid: ed64dd068a80d13498801aff7c166dac, type: 3}
     - {fileID: 2800000, guid: 0f20c48cb25c39c4ba1e5cbea59e0e42, type: 3}
-    totalSpriteSurfaceArea: 25959120
+    totalSpriteSurfaceArea: 25950244
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
@@ -97,7 +97,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 3c1abd825dcdaa94aa403b69be3a8de2, type: 3}
   - {fileID: 21300000, guid: ad603492555778f499addb2c5857f395, type: 3}
   - {fileID: 21300000, guid: 6f1fd7a2bae5aad438d9a236513f8e16, type: 3}
-  - {fileID: 21300000, guid: c3970cb21002b444b9881618d12a54ad, type: 3}
   - {fileID: 21300000, guid: 5955a3c2de069a44fa5a9278bb44da00, type: 3}
   - {fileID: 21300000, guid: c65887d2823fbdb42891f2e29103f046, type: 3}
   - {fileID: 21300000, guid: 996dd6e2645d24341a2f190d27487bff, type: 3}
@@ -323,6 +322,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 15eeacad4ac0bd04eac8bb997b897fef, type: 3}
   - {fileID: 21300000, guid: 6fa62fbd4fe01c444bbf7c70cbd680ea, type: 3}
   - {fileID: 21300000, guid: f14ffccdbd5abc24bb59cf2e38d6e482, type: 3}
+  - {fileID: 21300000, guid: 2d3891ed54bbcef43833065690336221, type: 3}
   - {fileID: 21300000, guid: ad15aafd43ea5a242a74ea5c1afc2efd, type: 3}
   - {fileID: 21300000, guid: 0ee6e01e66257f04cb1f6dbc7f2505fe, type: 3}
   - {fileID: 21300000, guid: 8c18972e932069a44847eb0c33d26b22, type: 3}
@@ -405,7 +405,6 @@ SpriteAtlas:
   - New Piskel-4.png
   - CoworkerPowerUpX10
   - Gem_06-1.png
-  - 22Back
   - Achieve_Earth_01
   - New Piskel-2.png
   - Coworker03
@@ -631,6 +630,7 @@ SpriteAtlas:
   - Gem_00-1.png
   - EarthWindow_01
   - cave01
+  - Back
   - Gem_03-4.png
   - cave13
   - cave12
