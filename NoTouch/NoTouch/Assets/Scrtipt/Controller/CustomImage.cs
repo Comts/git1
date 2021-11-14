@@ -278,6 +278,10 @@ public class CustomImage : MonoBehaviour
             case 1:
                 BrushPixelByPos(Color.clear, touchPos);
                 break;
+            case 2:
+                break;
+            case 3:
+                break;
             default:
                 Debug.LogError("tool : " + tool);
                 break;
